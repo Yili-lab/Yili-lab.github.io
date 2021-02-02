@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/02/02/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>markdown的基本使用</title>
+    <url>/2021/02/02/markdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<ol>
+<li><p>标题 使用#，n个井号表示n级标题</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1></li>
+<li><p>列表 使用<code>-</code>，子列表使用<code>a，b ...</code></p>
+</li>
+</ol>
+<ul>
+<li>li</li>
+<li>li<br>  a li<br>  b li</li>
+</ul>
+<ol start="3">
+<li><p>链接 <code>[主题](链接地址)</code><br><a href="https://baidu.com/">链接</a></p>
+</li>
+<li><p>插入图片 <code>![图片名称](图片地址)</code><br><img src="%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80" alt="图片名称"></p>
+</li>
+<li><p>斜体 <code>*内容*</code></p>
+</li>
+</ol>
+<p><em>内容</em></p>
+<ol start="6">
+<li>加粗 <code>**内容**</code></li>
+</ol>
+<p><strong>内容</strong></p>
+<ol start="7">
+<li><p>单行代码  <code>haha</code>, 用一个反引号<br>多行代码</p>
+<ul>
+<li>用三个反引号  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;&lt;&#x2F;body&gt;</span><br><span class="line">&lt;html&gt;</span><br></pre></td></tr></table></figure></li>
+<li>使用codeblock方式  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; 10</span><br><span class="line">b &#x3D; 10</span><br><span class="line">a,b &#x3D; b,a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>引用 <code>&gt;引用内容</code></p>
+<blockquote>
+<p>引用内容</p>
+</blockquote>
+</li>
+<li><p>横线 <code>---</code></p>
+</li>
+</ol>
+<hr>
+]]></content>
+  </entry>
+  <entry>
+    <title>raf simons</title>
+    <url>/2021/02/02/raf-simons/</url>
+    <content><![CDATA[<p>– 21aw<br>– 20ss<br>– 20aw</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>书写博客，修改博客的分类及标签</title>
+    <url>/2021/02/02/%E4%B9%A6%E5%86%99%E5%8D%9A%E5%AE%A2%EF%BC%8C%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE/</url>
+    <content><![CDATA[<h1 id="如何定义文档内容样式"><a href="#如何定义文档内容样式" class="headerlink" title="如何定义文档内容样式"></a>如何定义文档内容样式</h1><p>– 在hexo主页下文档document栏front-matter部分，介绍了一些基本的参数，注意—开始—结束。</p>
+<h2 id="next格式下-更改标签页和分类页"><a href="#next格式下-更改标签页和分类页" class="headerlink" title="next格式下 更改标签页和分类页"></a>next格式下 更改标签页和分类页</h2><p>在themes/next/_config.yml下找到menu，可以开启/隐藏目录页。<br>home：主页<br>tag：标签页<br>categories：分类页</p>
+<h2 id="创建标签页"><a href="#创建标签页" class="headerlink" title="创建标签页"></a>创建标签页</h2><p><code>hexo n page tags</code></p>
+<h2 id="创建分类页"><a href="#创建分类页" class="headerlink" title="创建分类页"></a>创建分类页</h2><p><code>hexo n page categories</code></p>
+<h2 id="设置主页阅读全文"><a href="#设置主页阅读全文" class="headerlink" title="? 设置主页阅读全文"></a>? 设置主页阅读全文</h2><p>在themes/next/_config.yml<br>excerpt_description: true</p>
+<h2 id="设置文章内链接样式"><a href="#设置文章内链接样式" class="headerlink" title="? 设置文章内链接样式"></a>? 设置文章内链接样式</h2><p>打开文件 <code>themes/next/source/css/_common/components/post/post-body.styl</code><br>新版本该文件全部放入.post-body下，在最后面添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.post-body p a&#123;</span><br><span class="line">    color:red;</span><br><span class="line">    border-bottom:none;</span><br><span class="line">    &amp;:hover&#123;</span><br><span class="line">      color:#8C8C8C；</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这样改成功不了<br>在主题_config.yml中取消#<br><code>#style: source/_data/custom.styl</code><br>然后新建<code>source/_data/custom.styl</code>，在其中插入</p>
+]]></content>
+      <categories>
+        <category>online</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>share</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客主题的安装与推荐</title>
+    <url>/2021/02/02/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p> 在hexo官网下的Themes部分选择喜欢的目标样式，选择后点击名称，跳转到github。</p>
+</li>
+<li><p>根据github中文档中的操作信息进行操作。<br> 以Cactus为例（ github网址；<a href="https://github.com/probberechts/hexo-theme-cactus%EF%BC%89">https://github.com/probberechts/hexo-theme-cactus）</a><br> 2.1 命令行，hexo根目录下 ：</p>
+<pre><code> $ git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
+</code></pre>
+<p> 2.2 clone操作完成后，在根目录下找到config.yml文件，并修改文件内的参数theme：</p>
+<pre><code> vim _config.yml
+ 找到 theme: yilia
+ 修改为 theme: cactus
+</code></pre>
+<p> 2.3 然后 hexo s 启动博客来查看</p>
+</li>
+<li><p>可以参考github主页上提供的方法来修改博客主题的内容参数。</p>
+</li>
+</ol>
+<h2 id="更改，-以next为例"><a href="#更改，-以next为例" class="headerlink" title="更改， 以next为例"></a>更改， 以next为例</h2><p>进入主题的page文件：themes/next/config.vml<br>在 # Schemes下设置样式</p>
+<h2 id="更改头像"><a href="#更改头像" class="headerlink" title="更改头像"></a>更改头像</h2><p>进入主题的page文件：themes/next/config.vml<br>在 # Avatar 下：<br>    url设置路径头像，需要是网络路径。推荐：极简图床</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>启动侧边栏社交链接</title>
+    <url>/2021/02/02/%E5%90%AF%E5%8A%A8%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%A4%BE%E4%BA%A4%E9%93%BE%E6%8E%A5/</url>
+    <content><![CDATA[<h2 id="社交链接"><a href="#社交链接" class="headerlink" title="社交链接"></a>社交链接</h2><p>进入主题的page文件：<code>themes/next/config.vml</code><br>找到 <code># Social Links</code><br>在 <code>social</code> 下更改个人信息</p>
+<h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2><p>进入主题的page文件：<code>themes/next/config.vml</code><br>找到 <code>links</code>:<br>    <code># Title: https://example.com</code></p>
+<h2 id="打赏功能"><a href="#打赏功能" class="headerlink" title="打赏功能"></a>打赏功能</h2><p>进入主题的page文件：<code>themes/next/config.vml</code><br>找到 <code>#reward</code></p>
+<h2 id="订阅公众号"><a href="#订阅公众号" class="headerlink" title="订阅公众号"></a>订阅公众号</h2><p>进入主题的page文件：<code>themes/next/config.vml</code><br>找到 <code>follow_me</code>:</p>
+<h2 id="添加fork-Github"><a href="#添加fork-Github" class="headerlink" title="添加fork Github"></a>添加fork Github</h2><p>制作网站：<code>https://tholman.com/github-corners/</code><br>复制链接<br>打开文件 <code>themes/next/layout/_layout.njk</code><br>在<code>&lt;div class=&quot;headband&quot;&gt;&lt;/div&gt;</code>下一行粘贴代码<br>更改<code>href=&quot;https://your-url&quot;</code>中的链接改成自己的网站地址</p>
+<h2 id="添加评论功能"><a href="#添加评论功能" class="headerlink" title="添加评论功能"></a>添加评论功能</h2><p>进入主题的page文件：<code>themes/next/config.vml</code><br>在<code>changyan</code>处设置</p>
+<h2 id="添加搜索功能"><a href="#添加搜索功能" class="headerlink" title="添加搜索功能"></a>添加搜索功能</h2><p><code>http://theme-next.iissnan.com/third-party-services.html#local-search</code>网站下，<code>local Search</code>中根据步骤执行操作<br>注意：   <code>站点配置文件</code>：<code>_config.vml</code><br>        <code>主题配置文件</code>：`themes/next/config.vml</p>
+<h2 id="隐藏强力驱动"><a href="#隐藏强力驱动" class="headerlink" title="隐藏强力驱动"></a>隐藏强力驱动</h2><p>进入文件<code>themes/next/layout/_partials/footer.njk</code><br>使用<code>&lt;!-- --&gt;</code><br>隐藏<code>&#123;%- if theme.footer.powered %&#125;</code>栏</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>图片插入</title>
+    <url>/2021/02/02/%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>部署到github</title>
+    <url>/2021/02/03/%E9%83%A8%E7%BD%B2%E5%88%B0github/</url>
+    <content><![CDATA[<p>在<code>_config</code>下找到<code>deploy</code><br>修改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type: git</span><br><span class="line">repo: [github库链接]</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+<p><code>hexo g</code> 本地生成文件<br><code>hexo d</code> 远程部署</p>
+<p>部署时可能会报错，根据官方文档中的部署操作<code>npm install hexo-deployer-git --save</code>来安装插件</p>
+]]></content>
+  </entry>
+</search>
