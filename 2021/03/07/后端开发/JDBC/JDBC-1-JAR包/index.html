@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="JAR包  定义：Java Archive File，主要放置类文件，提高类文件复用性。 建立：IntelliJ IDEA&#x2F;File&#x2F;New&#x2F;Module  command+n可以自动创建方法 一个模块需要使用另一个模块的jar包：   Build:build artifacts:build 在out&#x2F;artifacts中可以看到导出的jar包 复制 然后在另一个模块下粘贴       JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDBC-1-JAR包与介绍">
+<meta property="og:url" content="http://example.com/2021/03/07/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JDBC/JDBC-1-JAR%E5%8C%85/index.html">
+<meta property="og:site_name" content="Raf Simons">
+<meta property="og:description" content="JAR包  定义：Java Archive File，主要放置类文件，提高类文件复用性。 建立：IntelliJ IDEA&#x2F;File&#x2F;New&#x2F;Module  command+n可以自动创建方法 一个模块需要使用另一个模块的jar包：   Build:build artifacts:build 在out&#x2F;artifacts中可以看到导出的jar包 复制 然后在另一个模块下粘贴       JAVA">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/03/07/51HnR3eDcvlayVw.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/07/pIP9fLvohbiKFXn.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/07/2n1SdzqTZkfAJVL.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/07/MceIJrO1pnmHbxi.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/07/IwlfTsakO1ZuN3W.jpg">
+<meta property="article:published_time" content="2021-03-07T07:08:47.000Z">
+<meta property="article:modified_time" content="2021-03-09T05:33:57.138Z">
+<meta property="article:author" content="Yili">
+<meta property="article:tag" content="JDBC">
+<meta property="article:tag" content="后端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/03/07/51HnR3eDcvlayVw.png">
+
+
+<link rel="canonical" href="http://example.com/2021/03/07/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JDBC/JDBC-1-JAR%E5%8C%85/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>JDBC-1-JAR包与介绍 | Raf Simons</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/Yili-lab" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Raf Simons</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jar%E5%8C%85"><span class="nav-number">1.</span> <span class="nav-text"> JAR包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javaee%E8%A7%84%E8%8C%83%E5%92%8Cjavase%E8%A7%84%E8%8C%83"><span class="nav-number">2.</span> <span class="nav-text"> JAVAEE规范和JAVASE规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jdbc%E8%A7%84%E8%8C%83"><span class="nav-number">3.</span> <span class="nav-text"> JDBC规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jdbc%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text"> JDBC调用流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jdbc%E8%A7%84%E8%8C%83%E4%B8%8B%E6%8E%A5%E5%8F%A3%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.2.</span> <span class="nav-text"> JDBC规范下接口介绍</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yili</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yili-lab" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yili-lab" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/07/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JDBC/JDBC-1-JAR%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JDBC-1-JAR包与介绍
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-07 15:08:47" itemprop="dateCreated datePublished" datetime="2021-03-07T15:08:47+08:00">2021-03-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-09 13:33:57" itemprop="dateModified" datetime="2021-03-09T13:33:57+08:00">2021-03-09</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="jar包"><a class="markdownIt-Anchor" href="#jar包"></a> JAR包</h3>
+<ol>
+<li>定义：Java Archive File，主要放置类文件，提高类文件复用性。</li>
+<li>建立：<strong>IntelliJ IDEA/File/New/Module</strong>
+<ul>
+<li><code>command+n</code>可以自动创建方法<br />
+一个模块需要使用另一个模块的jar包：<br />
+<img src="https://i.loli.net/2021/03/07/51HnR3eDcvlayVw.png" alt="" /><br />
+<img src="https://i.loli.net/2021/03/07/pIP9fLvohbiKFXn.png" alt="" /><br />
+Build:build artifacts:build<br />
+在out/artifacts中可以看到导出的jar包<br />
+复制<br />
+然后在另一个模块下粘贴<br />
+<img src="https://i.loli.net/2021/03/07/2n1SdzqTZkfAJVL.png" alt="" /><br />
+<img src="https://i.loli.net/2021/03/07/MceIJrO1pnmHbxi.png" alt="" /></li>
+</ul>
+</li>
+</ol>
+<h3 id="javaee规范和javase规范"><a class="markdownIt-Anchor" href="#javaee规范和javase规范"></a> JAVAEE规范和JAVASE规范</h3>
+<ul>
+<li>JAVASE：<br />
+指java类在单独执行，在单独处理业务时需要遵守的语法规则。</li>
+<li>JAVAEE：<br />
+指java在商业开发时遵守的开发规则。需要java类与不同的服务器进行沟通来解决当前业务。<br />
+由于在商业开发过程中，java需要与13种不同的服务器进行沟通，因此SUN公司指定了13套接口，这13套接口统称为javaEE规范。<br />
+不同的实现类由不同的<strong>服务器厂商</strong>进行实现。服务器厂商完成的实现类以jar包形式提供。<br />
+程序员通过<strong>jar包</strong>得到接口中的实现类，从而实现与指定服务器之间交流。</li>
+</ul>
+<h3 id="jdbc规范"><a class="markdownIt-Anchor" href="#jdbc规范"></a> JDBC规范</h3>
+<ol>
+<li>是JAVAEE中的一种规范，指定java类与关系型数据服务器之间的沟通规则。</li>
+<li>提供的接口存在于<strong>JDKJAR</strong>中，在<strong>java.sql</strong>包下。</li>
+<li>JDBC接口实现类由不同关系型数据库厂商以jar包形式提供。<br />
+即： JDBC指定了与数据库之前的规则接口JDK.jar，MySql服务器实现了这个接口，给出实现类mysql_jdbc.jar</li>
+</ol>
+<h4 id="jdbc调用流程"><a class="markdownIt-Anchor" href="#jdbc调用流程"></a> JDBC调用流程</h4>
+<ol>
+<li>将MySql厂商的<strong>Driver接口实现类</strong>注册到JVM中，明确与MySql连接</li>
+<li>通过JDBC规范中的<strong>DriverManager工具类</strong>在JAVA工程中与MySql服务器之间建立<strong>连接通道</strong></li>
+<li>通过MySql服务器厂商提供Connection接口实现类建立一个交通工具<strong>PreparedStatement</strong></li>
+<li>通过交通工具<strong>PreparedStatement</strong>将SQL命令从JAVA工具推送到MySql服务器上执行并且返回结果</li>
+<li>销毁本次操作涉及的所有资源对象：<br />
+a. Connection接口实现类(管理连接通道)<br />
+b. PreparedStatement接口实现类对象(管理交通工具)<br />
+c. ResultSet接口实现类对象(查询命令返回临时表)<br />
+<img src="https://i.loli.net/2021/03/07/IwlfTsakO1ZuN3W.jpg" alt="" /></li>
+</ol>
+<h4 id="jdbc规范下接口介绍"><a class="markdownIt-Anchor" href="#jdbc规范下接口介绍"></a> JDBC规范下接口介绍</h4>
+<ul>
+<li>位置：JDBC规范下的接口存在于<strong>JDK.jar</strong>下的<strong>java.sql</strong>包中</li>
+<li>分类：
+<ol>
+<li><strong>java.sql.DriverManager类</strong>：存在<strong>JDK</strong>下。负责将数据库厂商的<strong>Driver接口实现</strong>进行注册。同时负责在Java与mysql服务器之间建立一个<strong>连接通道</strong>。</li>
+<li><strong>java.sql.Connection接口</strong>：管理连接通道</li>
+<li><strong>java,sql.PreparedStatement接口</strong>：管理往返交通的交通工具</li>
+<li><strong>java.sql.ResultSet接口</strong>：管理服务器返回的临时表</li>
+</ol>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JDBC/" rel="tag"># JDBC</a>
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"># 后端</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/06/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E8%A1%A8%E6%96%87%E4%BB%B6%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C/" rel="prev" title="mysql表文件查询">
+                  <i class="fa fa-chevron-left"></i> mysql表文件查询
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/07/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JDBC/JDBC-2-%E5%BC%80%E5%8F%91/" rel="next" title="JDBC-2-开发">
+                  JDBC-2-开发 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yili</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

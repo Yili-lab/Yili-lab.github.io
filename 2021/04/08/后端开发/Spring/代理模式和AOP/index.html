@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="代理模式  代理模式的分类  静态代理  角色分析：  抽象角色：一般使用接口或者抽象类来解决 真实角色：被代理的角色 代理角色：代理真实角色，进行附属操作 客户： 代理对象的人   代码步骤：  创建Rent接口，内置rent()抽象方法 创建真实角色Client和LandLoad对象，其中LanLoad内置rent()真实方法。 创建代理角色Proxy，实例变量为LandLoad，一个代理角">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代理模式和AOP">
+<meta property="og:url" content="http://example.com/2021/04/08/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Spring/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%92%8CAOP/index.html">
+<meta property="og:site_name" content="Raf Simons">
+<meta property="og:description" content="代理模式  代理模式的分类  静态代理  角色分析：  抽象角色：一般使用接口或者抽象类来解决 真实角色：被代理的角色 代理角色：代理真实角色，进行附属操作 客户： 代理对象的人   代码步骤：  创建Rent接口，内置rent()抽象方法 创建真实角色Client和LandLoad对象，其中LanLoad内置rent()真实方法。 创建代理角色Proxy，实例变量为LandLoad，一个代理角">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-08T08:37:46.000Z">
+<meta property="article:modified_time" content="2021-04-11T15:58:23.884Z">
+<meta property="article:author" content="Yili">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/04/08/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Spring/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%92%8CAOP/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>代理模式和AOP | Raf Simons</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/Yili-lab" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Raf Simons</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text"> 代理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text"> 代理模式的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 静态代理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 代理模式的好处</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 代理模式的缺点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 动态代理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aop-aspect-oriented-programming"><span class="nav-number">2.</span> <span class="nav-text"> AOP （Aspect Oriented Programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80%E4%BD%BF%E7%94%A8spring%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8E%9F%E7%94%9Fapi%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text"> 方式一：使用Spring提供的原生API接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#aspectj%E5%88%87%E5%85%A5%E7%82%B9%E8%AF%AD%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.1.</span> <span class="nav-text"> AspectJ切入点语法定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%AE%9E%E7%8E%B0aop"><span class="nav-number">2.2.</span> <span class="nav-text"> 方法二：使用自定义类实现AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0aop"><span class="nav-number">2.3.</span> <span class="nav-text"> 方法三：使用注解实现AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E7%BB%95%E5%A2%9E%E5%BC%BA"><span class="nav-number">2.3.1.</span> <span class="nav-text"> 环绕增强</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yili</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yili-lab" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yili-lab" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/08/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Spring/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%92%8CAOP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          代理模式和AOP
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-08 16:37:46" itemprop="dateCreated datePublished" datetime="2021-04-08T16:37:46+08:00">2021-04-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-11 23:58:23" itemprop="dateModified" datetime="2021-04-11T23:58:23+08:00">2021-04-11</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="代理模式"><a class="markdownIt-Anchor" href="#代理模式"></a> 代理模式</h2>
+<h3 id="代理模式的分类"><a class="markdownIt-Anchor" href="#代理模式的分类"></a> 代理模式的分类</h3>
+<h4 id="静态代理"><a class="markdownIt-Anchor" href="#静态代理"></a> 静态代理</h4>
+<ul>
+<li>角色分析：
+<ol>
+<li>抽象角色：一般使用接口或者抽象类来解决</li>
+<li>真实角色：被代理的角色</li>
+<li>代理角色：代理真实角色，进行附属操作</li>
+<li>客户： 代理对象的人</li>
+</ol>
+</li>
+<li>代码步骤：
+<ol>
+<li>创建Rent接口，内置rent()抽象方法</li>
+<li>创建真实角色Client和LandLoad对象，其中LanLoad内置rent()真实方法。</li>
+<li>创建代理角色Proxy，实例变量为LandLoad，一个代理角色代表一个房东，并且继承Rent接口。重写rent方法为直接调用房东的rent方法。同时，Proxy类还可以声明其他方法，比如看房，收中介费等…</li>
+</ol>
+</li>
+</ul>
+<h5 id="代理模式的好处"><a class="markdownIt-Anchor" href="#代理模式的好处"></a> 代理模式的好处</h5>
+<ol>
+<li>使真实角色的操作更加纯粹！去关注一些双方共同参加的业务。</li>
+<li>双方共同参加的业务也就交给了代理角色，实现了业务分工。</li>
+<li>双方共同参加的业务发生拓展时，方便了集中管理。</li>
+</ol>
+<h5 id="代理模式的缺点"><a class="markdownIt-Anchor" href="#代理模式的缺点"></a> 代理模式的缺点</h5>
+<p>一个真实角色就需要一个代理角色：增加代码量，开发量翻倍 --&gt; 动态代理</p>
+<h4 id="动态代理"><a class="markdownIt-Anchor" href="#动态代理"></a> 动态代理</h4>
+<ul>
+<li>介绍：<br />
+动态代理和静态代理角色一致<br />
+代理类是动态生成的，而不是直接写好的。</li>
+<li>分类：
+<ol>
+<li>基于接口的动态代理：JDK动态代理</li>
+<li>基于类的动态代理：cglib</li>
+<li>通过java字节码：JAVAssist</li>
+</ol>
+</li>
+<li>需要了解两个类：
+<ol>
+<li>Proxy：代理</li>
+<li>InvocationHandler：调用处理程序</li>
+</ol>
+</li>
+<li>优点：一个动态代理类可以实现多个类</li>
+</ul>
+<h2 id="aop-aspect-oriented-programming"><a class="markdownIt-Anchor" href="#aop-aspect-oriented-programming"></a> AOP （Aspect Oriented Programming)</h2>
+<p>在SpringAop中，可以通过Advice定义横切逻辑</p>
+<ul>
+<li>首先导入依赖</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.aspectj&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;aspectjweaver&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.9.4&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>前提：</li>
+</ul>
+<ol>
+<li>以下描述的所有的类，包含需要被插入的类和切片方法类，都需要被注册到ioc容器中。既可以选择bean标签内注册，也可以直接使用@Component注解来注册，不过使用注解注册一定不要忘记了在ioc容器中设置<code>context:component-scan</code> 标签中扫描到这个类。</li>
+<li>需要注册一个接口，可以直接使用<code>@Service</code>注册</li>
+<li>测试时，实现动态代理，得到的是这个接口的接口实现类，并不是接口！<br />
+<code>UserService userService = context.getBean(&quot;userServiceImpl&quot;, UserService.class);</code></li>
+</ol>
+<h3 id="方式一使用spring提供的原生api接口"><a class="markdownIt-Anchor" href="#方式一使用spring提供的原生api接口"></a> 方式一：使用Spring提供的原生API接口</h3>
+<ol>
+<li>导入约束</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop</span><br><span class="line">http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-aop.xsd</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p>设置新建log日志文件夹，定义切面方法，继承<code>MethodBeforeAdvice</code>， <code>MethodAfterAdvice</code> …</p>
+</li>
+<li>
+<p>注册接口和切面执行的方法<br />
+使用@Service注册接口<br />
+使用@Component注册方法类</p>
+</li>
+<li>
+<p>设置切入点</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--1. 使用原生Spring API接口--&gt;</span><br><span class="line">    &lt;!--配置aop--&gt;</span><br><span class="line">    &lt;aop:config&gt;</span><br><span class="line">        &lt;!--切入点：expression&#x3D;&quot;表达式(*修饰词，*返回值，*类名，*方法名，*参数)&quot;--&gt;</span><br><span class="line">        &lt;aop:pointcut id&#x3D;&quot;pointcut&quot; expression&#x3D;&quot;execution(* com.lyl.service.UserServiceImpl.*(..) )&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--执行环绕增强:将afterlog切入到上述方法--&gt;</span><br><span class="line">        &lt;aop:advisor advice-ref&#x3D;&quot;afterLog&quot; pointcut-ref&#x3D;&quot;pointcut&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--执行环绕增强:将afterlog切入到上述方法--&gt;</span><br><span class="line">        &lt;aop:advisor advice-ref&#x3D;&quot;beforeLog&quot; pointcut-ref&#x3D;&quot;pointcut&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;aop:config&gt;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>然后测试</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    ApplicationContext context &#x3D; new ClassPathXmlApplicationContext(&quot;applciationContext.xml&quot;);</span><br><span class="line">    &#x2F;&#x2F; 动态代理代理的是接口</span><br><span class="line">    UserService userService &#x3D; context.getBean(&quot;userServiceImpl&quot;, UserService.class);</span><br><span class="line">    userService.add();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="aspectj切入点语法定义"><a class="markdownIt-Anchor" href="#aspectj切入点语法定义"></a> AspectJ切入点语法定义</h4>
+<p>在使用spring框架配置AOP的时候，不管是通过XML配置文件还是注解的方式都需要定义pointcut”切入点”<br />
+最常见的切点函数就是execution()，其表达式可以分为五个部分<br />
+例子：<code>expression=&quot;execution(* com.lyl.service.UserServiceImpl.*(..) )&quot;</code></p>
+<ol>
+<li>execution()：表达式主体</li>
+<li>第一个 * 表示返回的类型，*表示所有类型</li>
+<li>com.lyl.service.UserServiceImpl 表示该类下的所有方法</li>
+<li>*(…) 这个星号表示方法名，*号表示所有的方法，后面括弧里面表示方法的参数，两个句点表示任何参数</li>
+</ol>
+<h3 id="方法二使用自定义类实现aop"><a class="markdownIt-Anchor" href="#方法二使用自定义类实现aop"></a> 方法二：使用自定义类实现AOP</h3>
+<ol>
+<li>创建diy包下的diy.java，定义需要插入的方法。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package com.lyl.diy;</span><br><span class="line"></span><br><span class="line">public class DiyPointerCut &#123;</span><br><span class="line"></span><br><span class="line">	public void before()&#123;</span><br><span class="line">		System.out.println(&quot;After Method&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void after()&#123;</span><br><span class="line">		System.out.println(&quot;After Method&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p>在xml文件中注入这个类<br />
+<code>&lt;bean id=&quot;diy&quot; class=&quot;com.lyl.diy.DiyPointerCut&quot;/&gt;</code></p>
+</li>
+<li>
+<p>然后设置方法来插入切面方法</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;aop:config&gt;</span><br><span class="line">    &lt;!--自定义切面， ref需要引用的类--&gt;</span><br><span class="line">    &lt;aop:aspect ref&#x3D;&quot;diy&quot;&gt;</span><br><span class="line">        &lt;!--切入点--&gt;</span><br><span class="line">        &lt;aop:pointcut id&#x3D;&quot;point&quot; expression&#x3D;&quot;execution(* com.lyl.service.UserServiceImpl.*(..) )&quot;&#x2F;&gt;</span><br><span class="line">        &lt;!--通知插入的方法--&gt;</span><br><span class="line">        &lt;aop:before method&#x3D;&quot;before&quot; pointcut-ref&#x3D;&quot;point&quot;&#x2F;&gt;</span><br><span class="line">        &lt;aop:after  method&#x3D;&quot;after&quot;  pointcut-ref&#x3D;&quot;point&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;aop:aspect&gt;</span><br><span class="line">&lt;&#x2F;aop:config&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="方法三使用注解实现aop"><a class="markdownIt-Anchor" href="#方法三使用注解实现aop"></a> 方法三：使用注解实现AOP</h3>
+<ol>
+<li>自定义切面方法类，并且实现注册，这里偷懒直接使用<code>@Component</code>注册，并且定义切面类<code>@Aspect</code></li>
+<li>设置切面方法，并且增加注解<code>@Before()</code>和<code>@After()</code>，括号内放置表达式主体，即expression的值</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">@Component</span><br><span class="line">public class AnnotationPointCut &#123;</span><br><span class="line"></span><br><span class="line">	@Before(&quot;execution(* com.lyl.service.UserServiceImpl.*(..) )&quot;)</span><br><span class="line">	public void before()&#123;</span><br><span class="line">		System.out.println(&quot;&#x3D;&#x3D;&#x3D; 实现方法之前&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@After(&quot;execution(* com.lyl.service.UserServiceImpl.*(..) )&quot;)</span><br><span class="line">	public void after()&#123;</span><br><span class="line">		System.out.println(&quot;实现方法之后 &#x3D;&#x3D;&#x3D;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>然后在xml文件中开启aop注解支持<code>&lt;aop:aspectj-autoproxy/&gt;</code></li>
+</ol>
+<h4 id="环绕增强"><a class="markdownIt-Anchor" href="#环绕增强"></a> 环绕增强</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Around(&quot;execution(* com.lyl.service.UserServiceImpl.*(..) )&quot;)</span><br><span class="line">&#x2F;&#x2F; 可以定义一个参数，代表我们要获取处理切入的点</span><br><span class="line">&#x2F;&#x2F; 这个参数可以得到一个签名，来获得一些类的信息</span><br><span class="line">public void around(ProceedingJoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line">    System.out.println(&quot;环绕前&quot;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 签名</span><br><span class="line">    Signature signature &#x3D; joinPoint.getSignature();</span><br><span class="line">    System.out.println(&quot;signature:  &quot;+signature.getName());</span><br><span class="line">    &#x2F;&#x2F; 执行当前方法</span><br><span class="line">    Object proceed &#x3D; joinPoint.proceed();</span><br><span class="line">    System.out.println(&quot;环绕后&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法的顺序为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">环绕前</span><br><span class="line">signature:  add</span><br><span class="line">&#x3D;&#x3D;&#x3D; 实现方法之前</span><br><span class="line">add a user</span><br><span class="line">实现方法之后 &#x3D;&#x3D;&#x3D;</span><br><span class="line">环绕后</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/08/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Spring/Spring%20%E4%BD%BF%E7%94%A8Java%E7%9A%84%E6%96%B9%E5%BC%8F%E9%85%8D%E7%BD%AESpring/" rel="prev" title="Spring 使用Java的方式配置Spring">
+                  <i class="fa fa-chevron-left"></i> Spring 使用Java的方式配置Spring
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/08/basic%20operation/Latex%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/" rel="next" title="Latex公式编辑">
+                  Latex公式编辑 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yili</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

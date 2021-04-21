@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="多个Servlet之间的数据共享实现方案  数据共享：Oneservlet工作完毕后，将产生的数据交给TwoServlet来使用。 四种数据共享方案：  ServletContext接口 Cookie接口 HttpSession接口 HttpServletRequest接口     ServletContext接口  介绍  来自于Servlet规范 存在于servlet-api.jar 如果两">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多个Servlet之间的数据共享方案">
+<meta property="og:url" content="http://example.com/2021/03/13/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E5%A4%9A%E4%B8%AAServlet%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%AB%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="Raf Simons">
+<meta property="og:description" content="多个Servlet之间的数据共享实现方案  数据共享：Oneservlet工作完毕后，将产生的数据交给TwoServlet来使用。 四种数据共享方案：  ServletContext接口 Cookie接口 HttpSession接口 HttpServletRequest接口     ServletContext接口  介绍  来自于Servlet规范 存在于servlet-api.jar 如果两">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/03/13/TcMabQjROg7CZwm.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/03/13/ujnRGPfSMQhAcTF.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/03/13/daswvFyOMrokDPp.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/03/14/3owJsZphALrjeGq.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/03/14/3ujGVqoSKntE1Nz.jpg">
+<meta property="article:published_time" content="2021-03-13T03:20:50.000Z">
+<meta property="article:modified_time" content="2021-03-14T07:01:09.697Z">
+<meta property="article:author" content="Yili">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="servlet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/03/13/TcMabQjROg7CZwm.jpg">
+
+
+<link rel="canonical" href="http://example.com/2021/03/13/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E5%A4%9A%E4%B8%AAServlet%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%AB%E6%96%B9%E6%A1%88/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>多个Servlet之间的数据共享方案 | Raf Simons</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/Yili-lab" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Raf Simons</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AAservlet%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%AB%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text"> 多个Servlet之间的数据共享实现方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#servletcontext%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text"> ServletContext接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text"> 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AAmap%E6%9C%89key-value%E9%94%AE%E5%80%BC%E5%AF%B9"><span class="nav-number">2.2.</span> <span class="nav-text"> 原理：相当于一个map，有key : value键值对。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.3.</span> <span class="nav-text"> 生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.4.</span> <span class="nav-text"> 命令实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">3.</span> <span class="nav-text"> Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="nav-number">3.1.</span> <span class="nav-text"> 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text"> 过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E5%88%99"><span class="nav-number">3.3.</span> <span class="nav-text"> 规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.4.</span> <span class="nav-text"> 代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E4%BC%9A%E5%91%98%E5%8D%A1%E5%9C%A8%E7%BA%BF%E7%82%B9%E9%A4%90"><span class="nav-number">3.5.</span> <span class="nav-text"> 实例：会员卡在线点餐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%80%E6%AF%81%E7%9A%84%E6%97%B6%E6%9C%BA"><span class="nav-number">3.6.</span> <span class="nav-text"> 销毁的时机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#httpsession%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text"> HttpSession接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-3"><span class="nav-number">4.1.</span> <span class="nav-text"> 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8Ecookie%E5%8C%BA%E5%88%AB"><span class="nav-number">4.2.</span> <span class="nav-text"> 与Cookie区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tomcat-%E8%BE%A8%E5%88%AB%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84session"><span class="nav-number">4.3.</span> <span class="nav-text"> Tomcat 辨别不同浏览器的session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E5%AE%9E%E7%8E%B0-2"><span class="nav-number">4.4.</span> <span class="nav-text"> 命令实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E6%A8%A1%E6%8B%9F%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="nav-number">4.4.1.</span> <span class="nav-text"> 实例：模拟购物车</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">4.4.2.</span> <span class="nav-text"> 注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-2"><span class="nav-number">4.5.</span> <span class="nav-text"> 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E9%97%B2%E6%97%B6%E9%97%B4%E6%89%8B%E5%8A%A8%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.5.1.</span> <span class="nav-text"> 空闲时间手动设置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#httpservletrequest%E6%8E%A5%E5%8F%A3"><span class="nav-number">5.</span> <span class="nav-text"> HttpServletRequest接口</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yili</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yili-lab" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yili-lab" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/13/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E5%A4%9A%E4%B8%AAServlet%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%AB%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          多个Servlet之间的数据共享方案
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-13 11:20:50" itemprop="dateCreated datePublished" datetime="2021-03-13T11:20:50+08:00">2021-03-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-14 15:01:09" itemprop="dateModified" datetime="2021-03-14T15:01:09+08:00">2021-03-14</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="多个servlet之间的数据共享实现方案"><a class="markdownIt-Anchor" href="#多个servlet之间的数据共享实现方案"></a> 多个Servlet之间的数据共享实现方案</h2>
+<ul>
+<li>数据共享：Oneservlet工作完毕后，将产生的数据交给TwoServlet来使用。</li>
+<li>四种数据共享方案：
+<ol>
+<li>ServletContext接口</li>
+<li>Cookie接口</li>
+<li>HttpSession接口</li>
+<li>HttpServletRequest接口</li>
+</ol>
+</li>
+</ul>
+<h2 id="servletcontext接口"><a class="markdownIt-Anchor" href="#servletcontext接口"></a> ServletContext接口</h2>
+<h3 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h3>
+<ul>
+<li>来自于Servlet规范</li>
+<li>存在于servlet-api.jar</li>
+<li>如果两个Servlet来自于<strong>同一个网站</strong>。彼此之间通过网站的<strong>ServletContext实例对象</strong>实现数据共享</li>
+<li>开发人员习惯于称之为<strong>全局作用域对象</strong></li>
+</ul>
+<h3 id="原理相当于一个map有key-value键值对"><a class="markdownIt-Anchor" href="#原理相当于一个map有key-value键值对"></a> 原理：相当于一个map，有key : value键值对。</h3>
+<p><img src="https://i.loli.net/2021/03/13/TcMabQjROg7CZwm.jpg" alt="" /><br />
+每一个网站都存在一个全局作用域对象。这个网站中每一个Servlet都可以将一个数据存入到全局作用域对象中，也都可以从全局作用域对象中得到这个数据进行使用。</p>
+<h3 id="生命周期"><a class="markdownIt-Anchor" href="#生命周期"></a> 生命周期</h3>
+<ol>
+<li>http服务器启动过程中，都会自动为网站创建一个<strong>ServletContext实例对象</strong></li>
+<li>运行期间一个网站只有一个全局对象</li>
+<li>http服务器运行期间，全局对象一直存活</li>
+<li>http服务器准备关闭前，全局对象进行销毁</li>
+</ol>
+<h3 id="命令实现"><a class="markdownIt-Anchor" href="#命令实现"></a> 命令实现</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">OneServlet&#123;</span><br><span class="line"></span><br><span class="line">    public void doGet(request, response)&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 1.通过请求对象向Tomcat请求全局作用对象，习惯用application命名</span><br><span class="line">        ServletContext application &#x3D; request.getServletContext();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 2. 将数据添加到全局作用对象中</span><br><span class="line">        application.setAttribute(&quot;key&quot;，value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">-----------------------------------------------------------------</span><br><span class="line">TwoServlet&#123;</span><br><span class="line"></span><br><span class="line">    public void doGet(request, response)&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 1.通过请求对象向Tomcat请求全局作用对象，习惯用application命名</span><br><span class="line">        ServletContext application &#x3D; request.getServletContext();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 2. 从全局作用对象中得到指定关键字对象数据</span><br><span class="line">        Object 数据名 &#x3D; application.getAttribute(&quot;key&quot;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 3. 后面根据需要作数据类型转换</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="cookie"><a class="markdownIt-Anchor" href="#cookie"></a> Cookie</h2>
+<h3 id="介绍-2"><a class="markdownIt-Anchor" href="#介绍-2"></a> 介绍</h3>
+<ul>
+<li>Cookie来自于Servlet规范中的一个工具类</li>
+<li>存在于servlet-api.jar中</li>
+<li>存放当前用户的私人数据，在共享数据过程中提高服务质量，用于记录私人记录</li>
+<li>前提：两个Servlet来自于<strong>同一个网站</strong>，并且为<strong>同一个浏览器</strong>提供服务</li>
+</ul>
+<h3 id="过程"><a class="markdownIt-Anchor" href="#过程"></a> 过程</h3>
+<p><img src="https://i.loli.net/2021/03/13/ujnRGPfSMQhAcTF.jpg" alt="" /></p>
+<ol>
+<li>用户通过浏览器第一次向myWeb网站发送请求申请OneServlet。OneServlet在运行期间创建一个Cookie储存与当前用户相关的数据。</li>
+<li>OneServlet工作完毕后，将Cookie写入到<strong>响应头</strong>中交还给当前浏览器。</li>
+<li>浏览器接收到响应包中，将cookie存储在<strong>浏览器的缓存</strong>中。</li>
+<li>下次该用户通过同一个浏览器再次向myWeb网站发送请求申请TwoServlet时，浏览器需要无条件将<strong>之前的Cookie</strong>写入到请求头中发送过去。</li>
+</ol>
+<h3 id="规则"><a class="markdownIt-Anchor" href="#规则"></a> 规则</h3>
+<ul>
+<li>Cookie相当于一个map</li>
+<li>一个cookie只能存放一个键值对</li>
+<li>这个键值对的key与value只能是String</li>
+<li>key不能是中文</li>
+</ul>
+<h3 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">OneServlet&#123;</span><br><span class="line">    public void doGet( request, response )&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 1. 创建cookie对象，保存共享数据（当前用户数据）</span><br><span class="line">        Cookie card1 &#x3D; new Cookie( &quot;key1&quot;, &quot;value1&quot; );</span><br><span class="line">        Cookie card2 &#x3D; new Cookie( &quot;key2&quot;, &quot;value2&quot; );</span><br><span class="line">        ......</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 2. 将cookie写入到响应头中，交给浏览器</span><br><span class="line">        response.addCookie(card1);</span><br><span class="line">        response.addCookie(card2);</span><br><span class="line">        ......</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">-----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">浏览器&#x2F;用户 &lt;---响应包 [  200  ]</span><br><span class="line">                    [  cookie: key1 &#x3D; value1</span><br><span class="line">                               key2 &#x3D; value2  ]</span><br><span class="line">                    []</span><br><span class="line">                    [  处理结果  ]</span><br><span class="line">浏览器向myWeb网站发送请求访问TwoServlet ---&gt; 请求包 [  url: myWeb&#x2F;two  method:get  ]</span><br><span class="line">                                               [  请求参数： xxxx</span><br><span class="line">                                                   cookie： key1 &#x3D; value1</span><br><span class="line">                                                            key2 &#x3D; value2     ]</span><br><span class="line">                                                [       ]</span><br><span class="line">                                                [       ]</span><br><span class="line">-----------------------------------------------------------------</span><br><span class="line">TwoServlet&#123;</span><br><span class="line">    public void doGet( request, response )&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 1. 调用请求对象从请求头中得到浏览器返回的Cookie</span><br><span class="line">        Cookie cookieArray[] &#x3D; request.getCookies() &#x2F;&#x2F; 以数组的方式返回cookie</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 2. 循环遍历数据得到每一个Cookie的key与value</span><br><span class="line">        for (Cookie card : cookieArray)&#123;</span><br><span class="line">            String key &#x3D; card.getName(); &#x2F;&#x2F;得到key值</span><br><span class="line">            String value &#x3D; card.getValue(); &#x2F;&#x2F;得到value值</span><br><span class="line">            &#x2F;&#x2F; 提供后续服务</span><br><span class="line">            ......</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实例会员卡在线点餐"><a class="markdownIt-Anchor" href="#实例会员卡在线点餐"></a> 实例：会员卡在线点餐</h3>
+<p><img src="https://i.loli.net/2021/03/13/daswvFyOMrokDPp.jpg" alt="" /><br />
+Git: <code>https://gist.github.com/Yili-lab/23737030ca03922185b3db85fc81ca61</code></p>
+<h3 id="销毁的时机"><a class="markdownIt-Anchor" href="#销毁的时机"></a> 销毁的时机</h3>
+<ol>
+<li>在默认情况下，cookie对象存放在浏览器缓存中，所以只要浏览器关闭，cookie就会被销毁。</li>
+<li>手动设置情况下，可以设置浏览器将接收到的cookie存放在客户端计算机硬盘上，同时需要指定cookie在硬盘上存活的时间。在存活范围内，关机都不会导致其销毁。<br />
+<code>cookie.setMaxAge(60) //存活一分钟</code></li>
+</ol>
+<h2 id="httpsession接口"><a class="markdownIt-Anchor" href="#httpsession接口"></a> HttpSession接口</h2>
+<h3 id="介绍-3"><a class="markdownIt-Anchor" href="#介绍-3"></a> 介绍</h3>
+<ul>
+<li>HttpSession接口来自于Servlet规范下的一个接口。存在于servlet-api.jar中</li>
+<li>实现类由http服务器提供</li>
+<li>习惯称之为<strong>会话作用域对象</strong></li>
+<li>前提：两个Servlet来自于<strong>同一个网站</strong>，并且为<strong>同一个浏览器/用户</strong>提供服务，此时借助于<strong>HttpSession对象</strong>进行数据共享</li>
+</ul>
+<h3 id="与cookie区别"><a class="markdownIt-Anchor" href="#与cookie区别"></a> 与Cookie区别</h3>
+<ol>
+<li>存储位置：
+<ul>
+<li>Cookie：存放于客户端计算机中</li>
+<li>HttpSession：存放于服务端计算机内存中</li>
+</ul>
+</li>
+<li>数据类型：
+<ul>
+<li>Cookie：存储对象只能String</li>
+<li>HttpSession：存储任意类型的共享数据Object</li>
+</ul>
+</li>
+<li>数据数量：
+<ul>
+<li>Cookie：1 for 1</li>
+<li>HttpSession：使用map集合，可以存储任意数量的共享数据</li>
+</ul>
+</li>
+<li>参照物：
+<ul>
+<li>Cookie：相当于客户在服务点<strong>会员卡</strong></li>
+<li>HttpSession：相当于<strong>私人保险柜</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="tomcat-辨别不同浏览器的session"><a class="markdownIt-Anchor" href="#tomcat-辨别不同浏览器的session"></a> Tomcat 辨别不同浏览器的session</h3>
+<p>Tomcat在创建HttpSession对象时，会自动地为这个Session对象生成一个唯一的编号。<br />
+Tomcat将这个编号保存到Cookie对象中，推送到当前浏览器的缓存中。<br />
+Cookie： JSESSIONID = 编号<br />
+<img src="https://i.loli.net/2021/03/14/3owJsZphALrjeGq.jpg" alt="" /></p>
+<h3 id="命令实现-2"><a class="markdownIt-Anchor" href="#命令实现-2"></a> 命令实现</h3>
+<ul>
+<li>同一个网站下OneServlet将数据传递给TwoServlet</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">OneServlet&#123;</span><br><span class="line">    public void doGet(request, response)&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 1. 调用请求对象向Tomcat索要当前用户在服务端的私人储物柜</span><br><span class="line">        HttpSession session &#x3D; request.getSession();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 2. 将数据添加到私人储物柜中</span><br><span class="line">        session.setAttribute(&quot;key1&quot;, value1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>浏览器访问同一个网站 /myWeb/TwoServlet，想要拿到OneServlet存储的数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TwoServlet&#123;</span><br><span class="line">    public void doGet(request, response)&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 1. 索要私人储物柜</span><br><span class="line">        HttpSession session &#x3D; request.getSession();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 2. 从会话作用域对象得到共享数据</span><br><span class="line">        Object value1 &#x3D; session.getAttribute(&quot;key1&quot;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>getSession()与getSession(false)
+<ul>
+<li>getSession()：如果已经拥有了自己的私人储物柜，则返回这个私人储物柜。如果没有，则为之新建一个新的储物柜。&lt;-- 用于已登陆用户。</li>
+<li>getSession(false)：如果已经拥有了自己的私人储物柜，则返回这个私人储物柜。如果没有，则直接返回null。   &lt;-- 用于游客。</li>
+</ul>
+</li>
+</ul>
+<h4 id="实例模拟购物车"><a class="markdownIt-Anchor" href="#实例模拟购物车"></a> 实例：模拟购物车</h4>
+<p><img src="https://i.loli.net/2021/03/14/3ujGVqoSKntE1Nz.jpg" alt="" /></p>
+<h4 id="注意"><a class="markdownIt-Anchor" href="#注意"></a> 注意</h4>
+<ol>
+<li>可以遍历session中的所有对象，得到一个枚举对象。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 1. 调用请求对象</span><br><span class="line">HttpSession session &#x3D; request.getSession();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 将session中所有key读取出来，存放在一个枚举对象</span><br><span class="line">Enumeration goodsNames &#x3D; session.getAttributeNames();</span><br><span class="line">while(goodsNames.hasMoreElements())&#123;</span><br><span class="line">    String goodsName &#x3D; (String)goodsNames.nextElement();</span><br><span class="line">    int goodsNum &#x3D; (int)session.getAttribute(goodsName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>getAttribute()</code>方法得到的是一个object对象，可以强制转换为转化为Integer而不是int，避免空指针异常，然后再后续的操作中判断Integer类型的值是否为空。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer	value1 &#x3D; (Integer) session.getAttribute(good);</span><br><span class="line">if (value1&#x3D;&#x3D;null) ... else ...</span><br></pre></td></tr></table></figure>
+<h3 id="生命周期-2"><a class="markdownIt-Anchor" href="#生命周期-2"></a> 生命周期</h3>
+<ol>
+<li>用户与HttpSession关联时使用的Cookie只能存放在浏览器缓存中</li>
+<li>浏览器关闭时，意味着用户与HttpSession之间的关系被切断了</li>
+<li>Tomcat无法检测浏览器何时关闭，因此浏览器关闭时不会导致Tomcat将浏览器关联的HttpSession进行销毁</li>
+<li>Tomcat会为每一个HttpSession对象设置空闲时间，默认为30mins，达到时Tomcat会删除Session</li>
+</ol>
+<h4 id="空闲时间手动设置"><a class="markdownIt-Anchor" href="#空闲时间手动设置"></a> 空闲时间手动设置</h4>
+<p>当前网站/web/web-inf/web.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;session-config&gt;</span><br><span class="line">    &lt;session-timeout&gt;5&lt;&#x2F;session-timeout&gt; &#x2F;&#x2F;最大时间5分钟</span><br><span class="line">&lt;&#x2F;session-config&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="httpservletrequest接口"><a class="markdownIt-Anchor" href="#httpservletrequest接口"></a> HttpServletRequest接口</h2>
+<ul>
+<li>介绍：在同一个网站中，如果两个Servlet之间通过<strong>请求转发</strong>的方式进行调用，两者将会共享同一个请求协议包。而一个请求协议包只对应一个请求对象，因此Servlet之间共享同一个请求对象，所以可以利用这个请求对象在两个Servlet之间实现数据共享。</li>
+<li>通常称为<strong>请求作用域对象</strong></li>
+<li>命令实现：<br />
+OneServlet通过请求转发申请调用TwoServlet时，需要给Servlet提供共享数据。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">OneServlet&#123;</span><br><span class="line">    public void doGet(request, response)&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 1. 将数据添加到请求作用域对象中的attribute属性</span><br><span class="line">        request.setAttribute(&quot;key1&quot;, value1);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 2. 申请调用TwoServlet</span><br><span class="line">        request.getRequestDispatcher(&quot;&#x2F;two&quot;).forward(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TwoServlet&#123;</span><br><span class="line">    public void doGet(request, response)&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 1. 直接拿出数据</span><br><span class="line">        Object value1 &#x3D; request.getAttribute(&quot;key1&quot;);</span><br><span class="line">        &#x2F;&#x2F; 后续做类型转换</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"># 后端</a>
+              <a href="/tags/servlet/" rel="tag"># servlet</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/13/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E5%A4%9A%E4%B8%AAservlet%E4%B9%8B%E9%97%B4%E7%9A%84%E8%B0%83%E7%94%A8%E8%A7%84%E5%88%99/" rel="prev" title="多个servlet之间的调用规则">
+                  <i class="fa fa-chevron-left"></i> 多个servlet之间的调用规则
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/14/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/servlet%E7%9B%91%E5%90%AC%E5%99%A8%E6%8E%A5%E5%8F%A3/" rel="next" title="servlet监听器接口">
+                  servlet监听器接口 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yili</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

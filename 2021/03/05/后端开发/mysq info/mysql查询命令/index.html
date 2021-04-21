@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="mysql一共有7个查询命令：FROM，SELECT，WHERE，GROUP BY，HAVING，ORDER BY，LIMIT  查询命令和临时表  每一个查询命令在执行时，都是在操作上一个命令生成的临时表。 每一个命令执行完毕后，Mysql服务器自动在内存中销毁上一个查询命令生成的临时表。所以，用户只能看到最后一个查询命令生成的临时表。 只有FROM命令不需要操作临时表。 只有GROUP BY命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql查询命令">
+<meta property="og:url" content="http://example.com/2021/03/05/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Raf Simons">
+<meta property="og:description" content="mysql一共有7个查询命令：FROM，SELECT，WHERE，GROUP BY，HAVING，ORDER BY，LIMIT  查询命令和临时表  每一个查询命令在执行时，都是在操作上一个命令生成的临时表。 每一个命令执行完毕后，Mysql服务器自动在内存中销毁上一个查询命令生成的临时表。所以，用户只能看到最后一个查询命令生成的临时表。 只有FROM命令不需要操作临时表。 只有GROUP BY命">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-03-05T13:46:54.000Z">
+<meta property="article:modified_time" content="2021-03-09T05:33:33.129Z">
+<meta property="article:author" content="Yili">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/03/05/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>mysql查询命令 | Raf Simons</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/Yili-lab" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Raf Simons</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4%E5%92%8C%E4%B8%B4%E6%97%B6%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text"> 查询命令和临时表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text"> FROM命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text"> SELECT命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#where%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text"> WHERE命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text"> 聚合函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#like%E5%91%BD%E4%BB%A4%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.</span> <span class="nav-text"> like命令：模糊查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#group-by%E5%91%BD%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text"> GROUP BY命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#having%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text"> HAVING命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#order-by%E5%91%BD%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text"> ORDER BY命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit%E5%91%BD%E4%BB%A4"><span class="nav-number">9.</span> <span class="nav-text"> LIMIT命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text"> 总结：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%93%8D%E4%BD%9C"><span class="nav-number">11.</span> <span class="nav-text"> 常用查询操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E5%AD%97%E6%AE%B5%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="nav-number">11.0.1.</span> <span class="nav-text"> 多字段分组查询</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yili</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yili-lab" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yili-lab" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mysql查询命令
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-05 21:46:54" itemprop="dateCreated datePublished" datetime="2021-03-05T21:46:54+08:00">2021-03-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-09 13:33:33" itemprop="dateModified" datetime="2021-03-09T13:33:33+08:00">2021-03-09</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>mysql一共有7个查询命令：FROM，SELECT，WHERE，GROUP BY，HAVING，ORDER BY，LIMIT</strong></p>
+<h3 id="查询命令和临时表"><a class="markdownIt-Anchor" href="#查询命令和临时表"></a> <strong>查询命令和临时表</strong></h3>
+<ol>
+<li>每一个查询命令在执行时，都是在操作上一个命令生成的临时表。</li>
+<li>每一个命令执行完毕后，Mysql服务器自动在内存中销毁上一个查询命令生成的临时表。所以，用户只能看到最后一个查询命令生成的临时表。</li>
+<li>只有FROM命令不需要操作临时表。</li>
+<li>只有GROUP BY命令在执行完后有机会生成多个临时表。</li>
+<li>只有HAVING命令在执行完毕后，不会生成新的临时表。负责将GROUP BY命令生成的临时表中不满足的临时表从内存中删除。</li>
+</ol>
+<h3 id="from命令"><a class="markdownIt-Anchor" href="#from命令"></a> <strong>FROM命令</strong></h3>
+<ol>
+<li>永远是第一个执行的查询命令，负责将硬盘上的表文件加载到内存中生成<strong>临时表</strong>供后续查询命令使用。所以，执行查询命令时，是不会修改文件原来的数据的。</li>
+<li>临时表的名称与硬盘上的表文件名称保持一致。</li>
+</ol>
+<h3 id="select命令"><a class="markdownIt-Anchor" href="#select命令"></a> <strong>SELECT命令</strong></h3>
+<ol>
+<li>操作的是由FROM命令生成的临时表。</li>
+<li>会像切蛋糕一样，将指定字段下所有的数据读取出来，在内存中将读取的数据组成一个全新的临时表。</li>
+<li>完成SELECT命令之后，服务器会返回SELECT建立的临时表，并且销毁FROM建立的临时表。</li>
+<li>如果临时表由FROM和WHERE提供，则SELECT面对的只有一个临时表。SELECT会读取临时表并形成一个新的。如果是由GROUP BY提供的，SELECT可能会面临多个临时表，SELECT会依次每一个临时表，并且在操作某一个临时表时，SELECT只会读取指定字段下的第一个数据，因为按该数据分组，同一个表该字段数据都相同。SELECT会将从多个临时表中读取的数据合成为一列并且保存到一个全新的临时表中。</li>
+</ol>
+<h3 id="where命令"><a class="markdownIt-Anchor" href="#where命令"></a> <strong>WHERE命令</strong></h3>
+<ol>
+<li>执行顺序：FROM --&gt; WHERE --&gt; SELECT</li>
+<li>书写顺序： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名，函数，子查询</span><br><span class="line">FROM   表文件</span><br><span class="line">WHERE  关系运算&#x2F;逻辑运算</span><br></pre></td></tr></table></figure>
+</li>
+<li>作用：循环遍历所有的数据行，每次得到一个数据行，判断是否需要被<strong>定位</strong>。循环结束后，WHERE命令会生成一个所有定位数据行的临时表。</li>
+<li>运算符：<br />
+a. <strong>关系运算</strong>：<br />
+=<br />
+!=<br />
+&gt;<br />
+&lt;<br />
+&gt;=<br />
+&lt;=<br />
+b. <strong>逻辑运行</strong>：<br />
+and<br />
+or<br />
+between … and …<br />
+in(选项1，选项2，选项3)<br />
+not in(选项1，选项2，选项3)<br />
+c. <strong>特殊运算符</strong>：null值表示一个不确定的值，而非空含义。所以null值不可以参加运算，即”=null“不成立。<br />
+is null<br />
+is not null</li>
+</ol>
+<h4 id="聚合函数"><a class="markdownIt-Anchor" href="#聚合函数"></a> <strong>聚合函数</strong></h4>
+<ol>
+<li>max(字段)<br />
+<code>select max(sal) from emp where deptno=20</code></li>
+<li>min(字段)</li>
+<li>sum(字段)</li>
+<li>avg(字段)</li>
+<li>count(字段) 不为null的个数</li>
+<li>count(*) 统计数据行的个数，包含null</li>
+</ol>
+<h3 id="like命令模糊查询"><a class="markdownIt-Anchor" href="#like命令模糊查询"></a> <strong>like命令：模糊查询</strong></h3>
+<ol>
+<li>前置条件模糊查询：以s开头 <code>like 's%'</code><br />
+<code>select ename from emp where ename like 's%'</code><br />
+‘%’ 是一个通配符，表示一个长度任意的字符串</li>
+<li>后置条件模糊查询：以s结尾 <code>like '%s'</code></li>
+<li>包含s：<code>like &quot;%s%&quot;</code></li>
+<li>第二个字母是S：<code>like '_S%'</code><br />
+‘_’ 也是一个通配符，表示一个任意的字符</li>
+</ol>
+<h3 id="group-by命令"><a class="markdownIt-Anchor" href="#group-by命令"></a> <strong>GROUP BY命令</strong></h3>
+<ol>
+<li>分组：先根据分组字段数据种类，将临时表进行分类。然后将具有相同特征的数据行读取出来保存到一个全新的临时表中。</li>
+<li>举例：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT JOB, COUNT(*)</span><br><span class="line">FROM EMP</span><br><span class="line">WHERE DEPTNO&#x3D;30</span><br><span class="line">GROUP BY JOB</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>执行顺序为：<br />
+FROM–&gt;WHERE–&gt;<strong>GROUP BY</strong>–&gt;SELECT<br />
+选择表–&gt;定位数据行–&gt;根据属性分组–&gt;按要求输出</li>
+<li>只有group by命令有机会在执行完毕后，依次生成多个临时表</li>
+</ol>
+<h3 id="having命令"><a class="markdownIt-Anchor" href="#having命令"></a> <strong>HAVING命令</strong></h3>
+<ol>
+<li>执行顺序：FROM–&gt;WHERE–&gt;GROUP BY–&gt;<strong>HAVING</strong>–&gt;SELECT</li>
+<li>只能出现在GROUP BY命令后</li>
+<li>通过统计临时表中的信息决定是否删除<strong>整个临时表</strong></li>
+<li>只有HAVING命令有可能删除临时表。</li>
+</ol>
+<h3 id="order-by命令"><a class="markdownIt-Anchor" href="#order-by命令"></a> <strong>ORDER BY命令</strong></h3>
+<ol>
+<li><code>order by sal desc</code> 按照sal降序</li>
+<li><code>order by 3 desc</code> 按照生成的表的第三列排序</li>
+</ol>
+<h3 id="limit命令"><a class="markdownIt-Anchor" href="#limit命令"></a> <strong>LIMIT命令</strong></h3>
+<p>从指定位置的数据行开始，向下截取指定数量的数据行。将截取出来的数据保存到一个全新的临时表中。<br />
+一个参数，从第一行开始，截取参数的行数。两个参数使用&quot;,&quot;隔开，可以指定起始行数。<br />
+<em><strong>注意：数据行位置从0开始计算。</strong></em></p>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结：</h3>
+<ul>
+<li>执行顺序：<br />
+FROM–&gt;WHERE–&gt;GROUP BY–&gt;HAVING–&gt;SELECT–&gt;ORDER BY–&gt;LIMIT</li>
+<li>书写顺序：<br />
+SELECT  字段，函数，子查询<br />
+FROM    表<br />
+WHERE   定位数据行条件<br />
+GROUP BY  分组字段<br />
+HAVING  删除的判断条件<br />
+ORDER BY  排序字段<br />
+LIMIT   起始行位置，从改行开始向下截取行数</li>
+</ul>
+<h3 id="常用查询操作"><a class="markdownIt-Anchor" href="#常用查询操作"></a> 常用查询操作</h3>
+<h5 id="多字段分组查询"><a class="markdownIt-Anchor" href="#多字段分组查询"></a> 多字段分组查询</h5>
+<p>需求：查询各个部门下各个职位的人数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select DEPTNO,JOB,count(*)</span><br><span class="line">from emp</span><br><span class="line">GROUP BY DEPTNO,JOB  #多字段分组</span><br></pre></td></tr></table></figure>
+<ol>
+<li>多字段分组时，分组顺序对于最终查询的结果没有任何影响。</li>
+<li>多字段分组时，GROUP BY一次只能根据一个分组字段进行分组。<code>GROUP BY DEPTNO,JOB</code>时，需要执行两次。</li>
+<li>从第二个分组字段开始，操作的时上一个分组字段生成的临时表。对于<code>GROUP BY DEPTNO,JOB</code>，当执行<code>GROUP BY JOB</code>时，操作由<code>GROUP BY DEPTNO</code>生成的临时表。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/04/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E6%95%B0%E6%8D%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%8B%E7%BB%8D/" rel="prev" title="mysql数据服务器介绍">
+                  <i class="fa fa-chevron-left"></i> mysql数据服务器介绍
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/06/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E8%A1%A8%E6%96%87%E4%BB%B6%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C/" rel="next" title="mysql表文件查询">
+                  mysql表文件查询 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yili</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

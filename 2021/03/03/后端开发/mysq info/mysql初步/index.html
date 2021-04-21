@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="打开与退出 命令行：输入 mysql -u root -p，还可以选添 -P 3306 来设置端口号 进入后：quit退出  数据库管理命令  所有的表文件都存放在data文件夹中 查看所有数据库名：show databases; information_schema 存放在内存中，每次都会自动销毁 创建一个数据库：  create database 数据库名; 目录下手动新建文件夹也可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql表文件管理命令">
+<meta property="og:url" content="http://example.com/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E5%88%9D%E6%AD%A5/index.html">
+<meta property="og:site_name" content="Raf Simons">
+<meta property="og:description" content="打开与退出 命令行：输入 mysql -u root -p，还可以选添 -P 3306 来设置端口号 进入后：quit退出  数据库管理命令  所有的表文件都存放在data文件夹中 查看所有数据库名：show databases; information_schema 存放在内存中，每次都会自动销毁 创建一个数据库：  create database 数据库名; 目录下手动新建文件夹也可以">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-03-03T14:44:21.000Z">
+<meta property="article:modified_time" content="2021-03-24T05:12:34.867Z">
+<meta property="article:author" content="Yili">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E5%88%9D%E6%AD%A5/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>mysql表文件管理命令 | Raf Simons</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/Yili-lab" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Raf Simons</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E4%B8%8E%E9%80%80%E5%87%BA"><span class="nav-number">1.</span> <span class="nav-text"> 打开与退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text"> 数据库管理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text"> 表文件管理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql%E7%BA%A6%E6%9D%9F"><span class="nav-number">4.</span> <span class="nav-text"> mysql约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E8%A1%8C%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text"> 表文件数据行管理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql%E7%B4%A2%E5%BC%95index"><span class="nav-number">6.</span> <span class="nav-text"> mysql索引(index)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mql%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92explain"><span class="nav-number">7.</span> <span class="nav-text"> mql执行计划(explain)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">8.</span> <span class="nav-text"> 视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="nav-number">9.</span> <span class="nav-text"> 存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E7%89%A9transaction"><span class="nav-number">10.</span> <span class="nav-text"> 事物(transaction)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yili</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yili-lab" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yili-lab" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E5%88%9D%E6%AD%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mysql表文件管理命令
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-03 22:44:21" itemprop="dateCreated datePublished" datetime="2021-03-03T22:44:21+08:00">2021-03-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-24 13:12:34" itemprop="dateModified" datetime="2021-03-24T13:12:34+08:00">2021-03-24</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="打开与退出"><a class="markdownIt-Anchor" href="#打开与退出"></a> 打开与退出</h3>
+<p>命令行：输入 <code>mysql -u root -p</code>，还可以选添 <code>-P 3306</code> 来设置端口号<br />
+进入后：<code>quit</code>退出</p>
+<h3 id="数据库管理命令"><a class="markdownIt-Anchor" href="#数据库管理命令"></a> 数据库管理命令</h3>
+<ul>
+<li>所有的表文件都存放在data文件夹中</li>
+<li>查看所有数据库名：<code>show databases;</code></li>
+<li>information_schema 存放在内存中，每次都会自动销毁</li>
+<li>创建一个数据库：
+<ol>
+<li><code>create database 数据库名;</code></li>
+<li>目录下手动新建文件夹也可以</li>
+</ol>
+</li>
+<li>删除一个数据库：<code>drop database 数据库名;</code></li>
+</ul>
+<h3 id="表文件管理命令"><a class="markdownIt-Anchor" href="#表文件管理命令"></a> 表文件管理命令</h3>
+<ul>
+<li>查看指定的数据库下所有的表文件名：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">USE 数据库名;</span><br><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+</li>
+<li>在指定数据库下创建表文件：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名;</span><br><span class="line">create table 表文件名(</span><br><span class="line">    字段名 数据类型名,</span><br><span class="line">    字段名 数据类型名  &lt;--最后一个字段不要加&quot;,&quot;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database bjpowernode;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; use bjpowernode;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; create table stu(</span><br><span class="line">    -&gt; sid int,</span><br><span class="line">    -&gt; sname varchar(10),</span><br><span class="line">    -&gt; age int</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure>
+在这里面，字符串类型使用 <strong>varchar(5)</strong>，括号内放置最大字符长度。
+<ul>
+<li>数据类型：
+<ol>
+<li>char() 固定长度字符串</li>
+<li>varchar() 可变长度字符串</li>
+<li>YEAR: YYYY</li>
+<li>TIME: HH:MM:SS</li>
+<li>DATE: YYYY-MM-DD</li>
+<li>DATETIME: YYYY-MM-DD HH:MM:SS</li>
+<li>TIMESTAMP: YYYY-MM-DD HH:MM:SS 描述的时间在不同时区索引出来可能是不同的，动态计算出对应时区时间。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>删除表文件： <code>drop table 表文件名;</code></li>
+<li>查看表文件中相关的字段信息： <code>show create table 表文件名称;</code></li>
+<li>为表文件添加字段： <code>alter table 表文件名 add 新字段名 数据类型名称;</code></li>
+<li>删除表文件字段： <code>alter table 表文件名 drop 字段名;</code></li>
+</ul>
+<h3 id="mysql约束"><a class="markdownIt-Anchor" href="#mysql约束"></a> mysql约束</h3>
+<ol>
+<li>非空约束：管理的字段不能存储null值。<code>sname VARCHAR(10) not null</code></li>
+<li>唯一性约束：存储的字段值不能有重复值，但是可以存储null。<code>email varchar(20) UNIQUE</code></li>
+<li>主键约束 <code>sid int PRIMARY KEY</code></li>
+<li>外键约束：要求外键字段值应该来源于关联表的主键的值，但是可以存储null值。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 多方表 </span><br><span class="line">ADD CONSTRAINT 外键约束对象名 FOREIGN KEY(外键字段名)</span><br><span class="line">REFERENCE 一方表(主键字段)</span><br></pre></td></tr></table></figure>
+<h3 id="表文件数据行管理命令"><a class="markdownIt-Anchor" href="#表文件数据行管理命令"></a> 表文件数据行管理命令</h3>
+<ul>
+<li>插入命令：要求mysql服务器向指定的表文件中添加数据行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into 表文件名 (字段名1,字段名2,字段名3)</span><br><span class="line">values(值1,值2,值3);        &lt;-字符串的值使用单引号扩起来</span><br></pre></td></tr></table></figure>
+<ul>
+<li>高级插入命：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insert into 表文件名(字段1,字段2,字段3)</span><br><span class="line">values</span><br><span class="line">(值1,值2,值3),</span><br><span class="line">(值1,值2,值3),</span><br><span class="line">(值1,值2,值3);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>简化版本插入命令：<code>insert into 表文件名 values(值1,值2,值3);</code><br />
+如果插入数据时，每一个字段都可以赋值，此时插入命令不需要指定字段名，数据顺序此时要与表文件字段顺序相同</li>
+<li>查询命令：<code>select * from 表文件名;</code>要求mysql服务器将指定的表文件数据行展示</li>
+<li>删除命令：
+<ol>
+<li><code>delete from 表文件名;</code>删除所有数据</li>
+<li><code>delete from 表文件名 where 判断条件;</code>删除满足条件的数据行数据。判断数据一般放置关系条件或者逻辑条件。(等于使用单等号=)</li>
+</ol>
+</li>
+<li>更新命令：要求mysql服务器将指定的表文件数据进行更新
+<ol>
+<li>对所有数据行<code>update 表文件名 set 字段名1=值,字段名2=值;</code></li>
+</ol>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update stu set age&#x3D;age+3;</span><br><span class="line">Query OK, 2 rows affected (0.00 sec)</span><br><span class="line">Rows matched: 2  Changed: 2  Warnings: 0</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>对指定数据行<code>update 表文件名 set 字段名1=值,字段名2=值 where 判断条件;</code>使用where来选择</li>
+</ol>
+</li>
+<li>数据行复制命令：<code>insert into B select * from A</code>可以将表A中的数据行复制到表B(要求表A与表B字段结构完全一致)</li>
+<li>表文件备份命令：<code>create table B select * from A</code>将表A进行一次备份，备份生成表B</li>
+</ul>
+<h3 id="mysql索引index"><a class="markdownIt-Anchor" href="#mysql索引index"></a> mysql索引(index)</h3>
+<ol>
+<li>查询速度问题： 由于表文件存放的数据行有可能会很多，WHERE命令会遍历所有的数据行。所以，时间越久，数据行越大，WHERE命令消耗的时间就越长。</li>
+<li>索引作用： 在表文件数据行增加时，不会大幅度降低查询语句执行的效率。</li>
+<li>工作原理：<br />
+数据1: [100, 80, 45, 50, 90, 200, 17]<br />
+数据2: [17, 45, 50, 80, 90, 100, 200]<br />
+从数据2得到最小值的消耗更小<br />
+所以：应该先对字段内容进行一次排序，然后再WHERE命令进行定位时，根据排序顺序定位最小值，来提升查询顺序。</li>
+<li>索引命令：
+<ul>
+<li>添加索引：<code>CREATE INDEX 索引名 ON 表名(字段)</code></li>
+<li>查看索引：<code>SHOW INDEX FROM 表明</code><br />
+这时会看到三个索引，因为服务器会默认为<strong>主键约束</strong>，<strong>外键约束</strong>，<strong>唯一性约束</strong>绑定索引。</li>
+<li>删除索引：<code>DROP INDEX 索引名 ON 表名</code>、</li>
+</ul>
+</li>
+</ol>
+<h3 id="mql执行计划explain"><a class="markdownIt-Anchor" href="#mql执行计划explain"></a> mql执行计划(explain)</h3>
+<ol>
+<li>命令格式：explain 查询命令</li>
+<li>命令作用：展示当前查询得到的结果是否通过索引来进行定位</li>
+<li>例子：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM emp WHERE ename&#x3D;&#39;smith&#39;</span><br><span class="line">--&gt; EXPLAIN SELECT * FROM emp WHERE ename&#x3D;&#39;smith&#39;</span><br><span class="line">--&gt; type: ref(索引查询) rows:1(查询次数)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>判断：type属性表示执行效率。<br />
+<strong>all</strong>(对所有数据行进行遍历)<br />
+<strong>type</strong>(WHERE对所有数据行进行遍历，SELECT从索引中抓取)<br />
+<strong>range</strong>(WHERE直接通过索引来查询，但是不稳定，因为字段变化时会导致失效)<br />
+<strong>ref</strong>(WHERE直接通过索引来查询，一次只得到一行数据 --&gt; 该行数据没有重复)<br />
+<strong>const</strong>(通过主键索引来进行定位)</li>
+</ol>
+<p><strong>mysql如果发现通过索引得到数据行数&gt;1/3是，会自动放弃索引查询，type依然是all</strong></p>
+<h3 id="视图"><a class="markdownIt-Anchor" href="#视图"></a> 视图</h3>
+<ol>
+<li>定义：Mysql对象，用于存储查询语句。</li>
+<li>目的：提高查询语句使用效率，可复用性。</li>
+<li>命令：<code>CREATE VIEW 视图对象名 AS 查询语句</code></li>
+<li>调用：<code>SELECT * FROM 视图对象名</code>，还可以通过视图对象关联表文件数据行进行插入，删除，更新操作。</li>
+<li>作用：<strong>隐藏业务中涉及表关系，开发人员通过视图进行操作时不会知道具体操作的表，提高了安全性。</strong></li>
+</ol>
+<h3 id="存储引擎"><a class="markdownIt-Anchor" href="#存储引擎"></a> 存储引擎</h3>
+<ol>
+<li>定义：是mysql服务器对表文件内容的管理方式，目前主要采用INNODB，Myisam.</li>
+<li>管理命令：
+<ul>
+<li>查看支持存储引擎种类：<code>show engines</code>，默认使用innodb引擎</li>
+<li>修改引擎，<code>my.cnf文件</code>，在<code>/etc</code>配置文件夹下，<code>default-storage-engine=INNODB</code></li>
+<li>设置表文件呢依赖的存储引擎：<code>alter TABLE 表名 ENGINE=存储引擎</code></li>
+</ul>
+</li>
+<li>存储引擎特征：
+<ul>
+<li>Myisam：
+<ul>
+<li>修改表时，不会备份。提高效率，操作后无法取消本操作。</li>
+<li>使用三个表存储信息：<strong>test1.frm</strong>储存表文件字段信息，<strong>test1.myd</strong>储存表文件数据行信息，<strong>test1.myi</strong>存储表文件字段关联的索引信息。</li>
+</ul>
+</li>
+<li>INNODB：
+<ul>
+<li>对表内容修改时，首先进行一次备份，因此效率较慢。</li>
+<li>但是执行完毕后，可以使用备份取消当前操作，增加安全性。</li>
+<li>使用一个文件<strong>test1.frm</strong>存储所有信息。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="事物transaction"><a class="markdownIt-Anchor" href="#事物transaction"></a> 事物(transaction)</h3>
+<ol>
+<li>介绍：用于对当前表文件备份进行管理。</li>
+<li>命令格式：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">start transaction #通过服务器提供一个事物对象来管理备份接下来的操作</span><br><span class="line">delete from emp where deptno&#x3D;30 #生成emp.bak</span><br><span class="line">delete from dept where deptno&#x3D;30 #生成emp.bak</span><br><span class="line">ROLLBACK #取消本次操作</span><br><span class="line">COMMIT #提交操作：将本次操作的所有备份信息删除</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/02/basic%20operation/py2neo%E4%BB%8B%E7%BB%8D/" rel="prev" title="py2neo介绍">
+                  <i class="fa fa-chevron-left"></i> py2neo介绍
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E4%BA%92%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1/" rel="next" title="互联网通信">
+                  互联网通信 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yili</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

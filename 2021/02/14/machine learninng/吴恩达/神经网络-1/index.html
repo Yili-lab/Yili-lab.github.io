@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="神经网络 Neural Networks  非线性假设 Non-linear Hypotheses 我们之前学的内容，无论是线性回归还是逻辑回归都有一些缺点：特征太多时候，计算的负荷θ会非常大。之前我们已经看到过，使用非线性的多项式项，能够帮助我们建立更好的分类模型。 假设我们有非常多的特征，例如大于 100 个变量，我们希望用这 100 个特征来构建一个非线性的多项式模型，结果将是数量非常惊人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经网络-1">
+<meta property="og:url" content="http://example.com/2021/02/14/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-1/index.html">
+<meta property="og:site_name" content="Raf Simons">
+<meta property="og:description" content="神经网络 Neural Networks  非线性假设 Non-linear Hypotheses 我们之前学的内容，无论是线性回归还是逻辑回归都有一些缺点：特征太多时候，计算的负荷θ会非常大。之前我们已经看到过，使用非线性的多项式项，能够帮助我们建立更好的分类模型。 假设我们有非常多的特征，例如大于 100 个变量，我们希望用这 100 个特征来构建一个非线性的多项式模型，结果将是数量非常惊人">
+<meta property="og:locale">
+<meta property="og:image" content="http://i1.fuimg.com/733078/addf33d5ca37425c.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/28523b22b4dfda8f.png">
+<meta property="og:image" content="http://i2.tiimg.com/733078/9cfb3b23bde0ab29.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/242beb9ed73fa505.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/aedec1681bbc01f0.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/c81f673420074c84.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/f78d784ce3e4add6.png">
+<meta property="og:image" content="http://i2.tiimg.com/733078/60c801668092241a.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/64ef1d73e684dec1.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/2db78bad2c8f6412.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/0b5307d86268b040.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/a09637588f0f960f.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/e251635a803acb2a.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/1b4e2ae5559c57c0.png">
+<meta property="og:image" content="http://i1.fuimg.com/733078/ebbadc3aed8b50ba.png">
+<meta property="article:published_time" content="2021-02-14T07:57:46.000Z">
+<meta property="article:modified_time" content="2021-04-06T14:26:10.510Z">
+<meta property="article:author" content="Yili">
+<meta property="article:tag" content="wed">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://i1.fuimg.com/733078/addf33d5ca37425c.png">
+
+
+<link rel="canonical" href="http://example.com/2021/02/14/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-1/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>神经网络-1 | Raf Simons</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/Yili-lab" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Raf Simons</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-neural-networks"><span class="nav-number">1.</span> <span class="nav-text"> 神经网络 Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%81%87%E8%AE%BE-non-linear-hypotheses"><span class="nav-number">1.1.</span> <span class="nav-text"> 非线性假设 Non-linear Hypotheses</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E6%88%91%E4%BB%AC%E5%B8%8C%E6%9C%9B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9E%8B%E6%9D%A5%E8%AF%86%E5%88%AB%E8%A7%86%E8%A7%89%E5%AF%B9%E8%B1%A1%E4%BE%8B%E5%A6%82%E8%AF%86%E5%88%AB%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E4%B8%8A%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%80%E8%BE%86%E6%B1%BD%E8%BD%A6%E6%88%91%E4%BB%AC%E6%80%8E%E6%A0%B7%E6%89%8D%E8%83%BD%E8%BF%99%E4%B9%88%E5%81%9A%E5%91%A2%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95%E6%98%AF%E6%88%91%E4%BB%AC%E5%88%A9%E7%94%A8%E5%BE%88%E5%A4%9A%E6%B1%BD%E8%BD%A6%E7%9A%84%E5%9B%BE%E7%89%87%E5%92%8C%E5%BE%88%E5%A4%9A%E9%9D%9E%E6%B1%BD%E8%BD%A6%E7%9A%84%E5%9B%BE%E7%89%87%E7%84%B6%E5%90%8E%E5%88%A9%E7%94%A8%E8%BF%99%E4%BA%9B%E5%9B%BE%E7%89%87%E4%B8%8A%E4%B8%80%E4%B8%AA%E4%B8%AA%E5%83%8F%E7%B4%A0%E7%9A%84%E5%80%BC%E9%A5%B1%E5%92%8C%E5%BA%A6%E6%88%96%E4%BA%AE%E5%BA%A6%E6%9D%A5%E4%BD%9C%E4%B8%BA%E7%89%B9%E5%BE%81-%E5%81%87%E4%BD%BF%E6%88%91%E4%BB%AC%E9%87%87%E7%94%A8%E7%9A%84%E9%83%BD%E6%98%AF-50x50-%E5%83%8F%E7%B4%A0%E7%9A%84%E5%B0%8F%E5%9B%BE%E7%89%87%E5%B9%B6%E4%B8%94%E6%88%91%E4%BB%AC%E5%B0%86%E6%89%80%E6%9C%89%E7%9A%84%E5%83%8F%E7%B4%A0%E8%A7%86%E4%B8%BA%E7%89%B9%E5%BE%81%E5%88%99%E4%BC%9A%E6%9C%892500-%E4%B8%AA%E7%89%B9%E5%BE%81%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E8%A6%81%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%B0%86%E4%B8%A4%E4%B8%A4%E7%89%B9%E5%BE%81%E7%BB%84%E5%90%88%E6%9E%84%E6%88%90%E4%B8%80%E4%B8%AA%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%A8%A1%E5%9E%8B%E5%88%99%E4%BC%9A%E6%9C%89%E7%BA%A6250022%E4%B8%AA%E6%8E%A5%E8%BF%91-3-%E7%99%BE%E4%B8%87%E4%B8%AA%E7%89%B9%E5%BE%81-%E6%99%AE%E9%80%9A%E7%9A%84%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E4%B8%8D%E8%83%BD%E6%9C%89%E6%95%88%E5%9C%B0%E5%A4%84%E7%90%86%E8%BF%99%E4%B9%88%E5%A4%9A%E7%9A%84%E7%89%B9%E5%BE%81%E8%BF%99%E6%97%B6%E5%80%99%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number"></span> <span class="nav-text"> 假设我们希望训练一个模型来识别视觉对象（例如识别一张图片上是否是一辆汽车），我们怎样才能这么做呢？一种方法是我们利用很多汽车的图片和很多非汽车的图片，然后利用这些图片上一个个像素的值（饱和度或亮度）来作为特征。
+
+假使我们采用的都是 50x50 像素的小图片，并且我们将所有的像素视为特征，则会有2500 个特征，如果我们要进一步将两两特征组合构成一个多项式模型，则会有约2500^2&#x2F;2个（接近 3 百万个）特征。
+
+普通的逻辑回归模型，不能有效地处理这么多的特征，这时候我们需要神经网络。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%A4%BA-model-representation"><span class="nav-number">0.1.</span> <span class="nav-text"> 模型表示 Model Representation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%92%8C%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3-examples-and-intuitions"><span class="nav-number">0.2.</span> <span class="nav-text"> 特征和直观理解 Examples and Intuitions</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-number">0.2.1.</span> <span class="nav-text"> 逻辑运算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98-multiclass-classification"><span class="nav-number">0.3.</span> <span class="nav-text"> 多分类问题 Multiclass Classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0-cost-function"><span class="nav-number">0.4.</span> <span class="nav-text"> 代价函数 Cost Function</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%BC%95%E8%BF%9B%E7%9A%84%E6%A0%87%E8%AE%B0"><span class="nav-number">0.4.1.</span> <span class="nav-text"> 新引进的标记：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98-multiclass-classification-2"><span class="nav-number">0.4.2.</span> <span class="nav-text"> 多分类问题 Multiclass Classification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0-cost-function-2"><span class="nav-number">0.4.3.</span> <span class="nav-text"> 代价函数 Cost Function</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yili</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yili-lab" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yili-lab" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/14/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          神经网络-1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-14 15:57:46" itemprop="dateCreated datePublished" datetime="2021-02-14T15:57:46+08:00">2021-02-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-06 22:26:10" itemprop="dateModified" datetime="2021-04-06T22:26:10+08:00">2021-04-06</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="神经网络-neural-networks"><a class="markdownIt-Anchor" href="#神经网络-neural-networks"></a> 神经网络 Neural Networks</h3>
+<h4 id="非线性假设-non-linear-hypotheses"><a class="markdownIt-Anchor" href="#非线性假设-non-linear-hypotheses"></a> 非线性假设 Non-linear Hypotheses</h4>
+<p>我们之前学的内容，无论是线性回归还是逻辑回归都有一些缺点：特征太多时候，计算的负荷θ会非常大。之前我们已经看到过，使用非线性的多项式项，能够帮助我们建立更好的分类模型。</p>
+<p>假设我们有非常多的特征，例如大于 100 个变量，我们希望用这 100 个特征来构建一个非线性的多项式模型，结果将是数量非常惊人的特征组合，即便我们只采用两两特征的组合(𝑥1𝑥2 + 𝑥1𝑥3 + 𝑥1𝑥4+. . . +𝑥2𝑥3 + 𝑥2𝑥4+. . . +𝑥99𝑥100)，我们也会有接近 5000 个组合而成的特征。这对于一般的逻辑回归来说需要计算的特征太多了。</p>
+<h2 id="假设我们希望训练一个模型来识别视觉对象例如识别一张图片上是否是一辆汽车我们怎样才能这么做呢一种方法是我们利用很多汽车的图片和很多非汽车的图片然后利用这些图片上一个个像素的值饱和度或亮度来作为特征-假使我们采用的都是-50x50-像素的小图片并且我们将所有的像素视为特征则会有2500-个特征如果我们要进一步将两两特征组合构成一个多项式模型则会有约250022个接近-3-百万个特征-普通的逻辑回归模型不能有效地处理这么多的特征这时候我们需要神经网络"><a class="markdownIt-Anchor" href="#假设我们希望训练一个模型来识别视觉对象例如识别一张图片上是否是一辆汽车我们怎样才能这么做呢一种方法是我们利用很多汽车的图片和很多非汽车的图片然后利用这些图片上一个个像素的值饱和度或亮度来作为特征-假使我们采用的都是-50x50-像素的小图片并且我们将所有的像素视为特征则会有2500-个特征如果我们要进一步将两两特征组合构成一个多项式模型则会有约250022个接近-3-百万个特征-普通的逻辑回归模型不能有效地处理这么多的特征这时候我们需要神经网络"></a> 假设我们希望训练一个模型来识别视觉对象（例如识别一张图片上是否是一辆汽车），我们怎样才能这么做呢？一种方法是我们利用很多汽车的图片和很多非汽车的图片，然后利用这些图片上一个个像素的值（饱和度或亮度）来作为特征。<br />
+假使我们采用的都是 50x50 像素的小图片，并且我们将所有的像素视为特征，则会有2500 个特征，如果我们要进一步将两两特征组合构成一个多项式模型，则会有约2500^2/2个（接近 3 百万个）特征。<br />
+普通的逻辑回归模型，不能有效地处理这么多的特征，这时候我们需要神经网络。</h2>
+<h4 id="模型表示-model-representation"><a class="markdownIt-Anchor" href="#模型表示-model-representation"></a> 模型表示 Model Representation</h4>
+<ul>
+<li>神经元(Processing unit/Nucleus)，含有许多输入/树突(input/Dendrite)，并且有一个输出/轴突(output/Axon)。<br />
+神经网络是大量神经元相互连接并且通过电脉冲来交流的网络。</li>
+<li>神经网络模型建立在很多神经元之上，每一个神经元又是一个个学习模型，也叫激活单元(activation unit)。其采纳一些特征作为输入，并且根据本身的模型提供输出。<br />
+在神经元网络中，参数又可以称为权重(weight):<br />
+<img src="http://i1.fuimg.com/733078/addf33d5ca37425c.png" alt="Markdown" /></li>
+<li>我们设计出了类似于神经元的神经网络：其中𝑥1, 𝑥2, 𝑥3是输入单元（input units），我们将原始数据输入给它们。𝑎1, 𝑎2, 𝑎3是中间单元，它们负责将数据进行处理，然后呈递到下一层。最后是输出单元，它负责计算ℎ<sub>𝜃</sub>(𝑥)。<br />
+<img src="http://i1.fuimg.com/733078/28523b22b4dfda8f.png" alt="Markdown" /></li>
+<li>神经网络模型是许多逻辑单元按照不同层级组织起来的网络，每一层的输出变量都是下一层的输入变量。下图为一个 3 层的神经网络，第一层成为输入层（Input Layer），最后一层称为输出层(Output Layer), 中间一层成为隐藏层（Hidden Layers）。我们为每一层都增加一个偏差单位(bias unit)：<br />
+<img src="http://i2.tiimg.com/733078/9cfb3b23bde0ab29.png" alt="Markdown" /></li>
+<li>引入一些标记：</li>
+</ul>
+<ol>
+<li>𝑎<sub>𝑖</sub><sup>(𝑗)</sup>：第j层的第i个激活单元</li>
+<li>𝜃<sup>(𝑗)</sup>：从第j层映射到j+1层时权重的矩阵，尺寸为以第𝑗+1层的激活单元数量 * (第j层的激活单元数+1)<br />
+<img src="http://i1.fuimg.com/733078/242beb9ed73fa505.png" alt="Markdown" /></li>
+</ol>
+<ul>
+<li>（我们把这样从左到右的算法称为前向传播算法( FORWARD PROPAGATION )<br />
+把𝑥, 𝜃, 𝑎分别用矩阵表示，我们可以得到 𝜃 ⋅ 𝑋 = 𝑎：<br />
+<img src="http://i1.fuimg.com/733078/aedec1681bbc01f0.png" alt="Markdown" /><br />
+<img src="http://i1.fuimg.com/733078/c81f673420074c84.png" alt="Markdown" /><br />
+令 𝑧<sup>(2)</sup> = 𝜃<sup>(1)</sup>𝑥，则 𝑎<sup>(2)</sup> = 𝑔(𝑧<sup>(2)</sup>) ，计算后添加 𝑎<sub>0</sub>(2) = 1。 计算输出的值为：<br />
+<img src="http://i1.fuimg.com/733078/f78d784ce3e4add6.png" alt="Markdown" /><br />
+则 𝑧<sup>(3)</sup> = 𝜃<sup>(2)</sup>𝑎<sup>(2)</sup>，则 ℎ<sub>𝜃</sub>(𝑥) = 𝑎<sup>(3)</sup> = 𝑔(𝑧<sup>(3)</sup>）</li>
+<li>如果我们要对整个训练集进行计算，我们需要将训练集特征矩阵进行转置，使得<strong>同一个实例的特征都在同一列里</strong>。即：<br />
+𝑧<sup>(2)</sup> = 𝛩<sup>(1)</sup> × 𝑋<sup>T</sup>,  𝑎<sup>(2)</sup> = 𝑔(𝑧<sup>(2)</sup></li>
+<li>为了更好了了解 Neuron Networks 的工作原理，我们先把左半部分遮住：<br />
+<img src="http://i2.tiimg.com/733078/60c801668092241a.png" alt="Markdown" /><br />
+其实神经网络就像是 logistic regression，只不过我们把 logistic regression 中的输入向量[𝑥1 ∼ 𝑥3] 变成了中间层的[𝑎<sub>1</sub><sup>(2)</sup> ∼ 𝑎<sub>3</sub><sup>(2)</sup>], 即:<br />
+ℎ<sub>𝛩</sub>(𝑥) = 𝑔 (𝜃<sub>0</sub><sup>(2)</sup>𝑎<sub>0</sub><sup>(2)</sup> + 𝜃<sub>1</sub><sup>(2)</sup>𝑎<sub>1</sub><sup>(2)</sup> + 𝜃<sub>2</sub><sup>(2)</sup>𝑎<sub>2</sub><sup>(2)</sup> + 𝜃<sub>3</sub><sup>(2)</sup>𝑎<sub>3</sub><sup>(2)</sup><br />
+我们可以把𝑎0, 𝑎1, 𝑎2, 𝑎3看成更为高级的特征值，也就是𝑥0, 𝑥1, 𝑥2, 𝑥3的进化体，并且它们是由 𝑥与决定的，因为是梯度下降的，所以𝑎是变化的，并且变得越来越厉害，<strong>所以这些更高级的特征值远比仅仅将𝑥次方厉害</strong>，也能更好的预测新数据。</li>
+</ul>
+<hr />
+<h4 id="特征和直观理解-examples-and-intuitions"><a class="markdownIt-Anchor" href="#特征和直观理解-examples-and-intuitions"></a> 特征和直观理解 Examples and Intuitions</h4>
+<p>在神经网络中，<strong>原始特征只是输入层</strong>，在我们上面三层的神经网络例子中，第三层也就是<strong>输出层做出的预测利用的是第二层的特征</strong>，而非输入层中的原始特征，我们可以认为第二层中的特征是神经网络通过学习后自己得出的<strong>一系列用于预测输出变量的新特征</strong>。</p>
+<h5 id="逻辑运算"><a class="markdownIt-Anchor" href="#逻辑运算"></a> 逻辑运算</h5>
+<ul>
+<li>神经网络中，单层神经元（无中间层）的计算可用来表示逻辑运算，比如逻辑与(AND)、逻辑或(OR)。<br />
+<img src="http://i1.fuimg.com/733078/64ef1d73e684dec1.png" alt="Markdown" /><br />
+<img src="http://i1.fuimg.com/733078/2db78bad2c8f6412.png" alt="Markdown" /></li>
+<li>OR，AND和NOT整体一样，区别只在于的取值不同。<br />
+<img src="http://i1.fuimg.com/733078/0b5307d86268b040.png" alt="Markdown" /></li>
+<li>我们可以利用神经元来组合成更为复杂的神经网络以实现更复杂的运算。例如我们要实<br />
+现 XNOR 功能（输入的两个值必须一样，均为 1 或均为 0），即：<br />
+(-30,20,20)表示 x<sub>1</sub> and x<sub>2</sub><br />
+(10,-20,-20)表示 (NOT x<sub>1</sub>)AND(NOT x<sub>2</sub>)<br />
+(-10,20,20)表示 OR<br />
+所以：<br />
+<img src="http://i1.fuimg.com/733078/a09637588f0f960f.png" alt="Markdown" /></li>
+</ul>
+<hr />
+<h4 id="多分类问题-multiclass-classification"><a class="markdownIt-Anchor" href="#多分类问题-multiclass-classification"></a> 多分类问题 Multiclass Classification</h4>
+<p>不止两种分类时，比如区别图片是路人，汽车，摩托车…，这时在输出层我们要有四个值，依次表示是某个事物的可能。<br />
+eg. 输入向量x有三个维度，两个中间层，输出层有4个神经元来表示4类：<br />
+<img src="http://i1.fuimg.com/733078/e251635a803acb2a.png" alt="Markdown" /></p>
+<hr />
+<h4 id="代价函数-cost-function"><a class="markdownIt-Anchor" href="#代价函数-cost-function"></a> 代价函数 Cost Function</h4>
+<h5 id="新引进的标记"><a class="markdownIt-Anchor" href="#新引进的标记"></a> 新引进的标记：</h5>
+<p>m：训练样本<br />
+x：输入信号<br />
+y：输出信号<br />
+L：神经网络层数<br />
+S<sub>I</sub>：每层神经元的个数<br />
+S<sub>l</sub>：输出层神经元个数<br />
+S<sub>L</sub>：最后一层处理单元的个数</p>
+<h5 id="多分类问题-multiclass-classification-2"><a class="markdownIt-Anchor" href="#多分类问题-multiclass-classification-2"></a> 多分类问题 Multiclass Classification</h5>
+<p>将神经网络的分类定义为两种情况：二类分类和多类分类，<br />
+二类分类：S<sub>L</sub> = 0, 𝑦 = 0 𝑜𝑟 1表示哪一类；<br />
+𝐾类分类：S<sub>L</sub> = 𝑘, 𝑦<sub>i</sub> = 1表示分到第 i 类；(𝑘 &gt; 2)</p>
+<h5 id="代价函数-cost-function-2"><a class="markdownIt-Anchor" href="#代价函数-cost-function-2"></a> 代价函数 Cost Function</h5>
+<p>已学过逻辑回归问题中我们的代价函数为：<br />
+<img src="http://i1.fuimg.com/733078/1b4e2ae5559c57c0.png" alt="Markdown" /></p>
+<p>而神经网络中的ℎ<sub>𝜃</sub>(𝑥)是一个维度为𝐾的向量，并且我们训练集中的因变量也是同样维度的一个向量，因此我们的代价函数会比逻辑回归更加复杂一些，为： ℎ<sub>𝜃</sub>(𝑥) ∈ ℝ<sup>𝐾</sup> ，(ℎ<sub>𝜃</sub>(𝑥))<sub>𝑖</sub> = 𝑖<sup>𝑡ℎ</sup>output<br />
+<img src="http://i1.fuimg.com/733078/ebbadc3aed8b50ba.png" alt="Markdown" /></p>
+<ul>
+<li>可能有k种预测情况，我们可以利用循环在k个预测中选择可能性最高的那一项，与y中市局数据进行对比</li>
+<li>正则化项：正则化的那一项只是排除了每一层𝜃0后，每一层的𝜃 矩阵的和。最里层的循环𝑗循环所有的行（由𝑠<sub>𝑙</sub> +1 层的激活单元数决定），循环𝑖则循环所有的列，由该层（𝑠𝑙层）的激活单<br />
+元数所决定。即：ℎ<sub>𝜃</sub>(𝑥)与真实值之间的距离为每个样本-每个类输出的加和，对参数进行regularization 的 bias 项处理所有参数的平方和。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/wed/" rel="tag"># wed</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/10/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E8%BF%87%E6%8B%9F%E5%90%88%E4%B8%8E%E6%AD%A3%E5%88%99%E5%8C%96%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="prev" title="过拟合与正则化线性回归">
+                  <i class="fa fa-chevron-left"></i> 过拟合与正则化线性回归
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/16/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-2/" rel="next" title="神经网络-2">
+                  神经网络-2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yili</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
