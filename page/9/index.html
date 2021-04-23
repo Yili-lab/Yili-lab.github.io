@@ -196,7 +196,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -243,6 +243,743 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/04/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E6%95%B0%E6%8D%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/04/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E6%95%B0%E6%8D%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">mysql数据服务器介绍</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-04 23:29:24" itemprop="dateCreated datePublished" datetime="2021-03-04T23:29:24+08:00">2021-03-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-09 13:33:33" itemprop="dateModified" datetime="2021-03-09T13:33:33+08:00">2021-03-09</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="服务器介绍"><a class="markdownIt-Anchor" href="#服务器介绍"></a> 服务器介绍</h3>
+<ol>
+<li>服务器是一种软件，不是硬件。</li>
+<li>不同服务器负责调用不同的文件类型。</li>
+</ol>
+<h3 id="表文件数据库和数据库服务器"><a class="markdownIt-Anchor" href="#表文件数据库和数据库服务器"></a> 表文件，数据库和数据库服务器</h3>
+<ul>
+<li>
+<p>表文件</p>
+<ul>
+<li>简介：
+<ol>
+<li>以&quot;.frm&quot;结尾的一种文件</li>
+<li>存在于服务端计算机硬盘上</li>
+<li>以数据形式进行数据存储的文件</li>
+</ol>
+</li>
+<li>结构：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            student.frm</span><br><span class="line">标题行  sid  sname  sex   age   home</span><br><span class="line">数据行  10   lyl    man   20   jiangsu</span><br><span class="line">       20   lz    woman  10   jiangsu</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>数据库：存放表文件的文件夹</p>
+</li>
+<li>
+<p>数据库服务器：</p>
+<ol>
+<li>一种专门对表文件进行调用和管理的软件</li>
+<li>用户通过数据库服务器对数据库进行操作</li>
+</ol>
+</li>
+</ul>
+<h3 id="sql命令"><a class="markdownIt-Anchor" href="#sql命令"></a> SQL命令</h3>
+<ul>
+<li>全称：Structured Query Language 结构化查询编程语言</li>
+<li>作用：用户通过SQL命令向数据库服务器发送请求，用于对表文件进行调用管理</li>
+<li>特点：包含主谓宾</li>
+</ul>
+<h3 id="数据库服务器分类"><a class="markdownIt-Anchor" href="#数据库服务器分类"></a> 数据库服务器分类</h3>
+<ol>
+<li>关系型数据库服务器<br />
+a. 管理的表文件有隶属关系，可以完整地描述一段数据<br />
+b. 在查询时，所涉及的数据比较多，因此查询的速度有所下降<br />
+c. 分类：甲骨文公司的Oracle和Mysql，微软公司的SqlServer</li>
+<li>非关系型数据库服务器<br />
+a. 表文件都是独立的，无法描述一段完整的数据<br />
+b. 查询的大数据比较少，查询速度快</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/04/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JDBC/html%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/04/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JDBC/html%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">html简介</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-04 11:10:56" itemprop="dateCreated datePublished" datetime="2021-03-04T11:10:56+08:00">2021-03-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-09 13:33:57" itemprop="dateModified" datetime="2021-03-09T13:33:57+08:00">2021-03-09</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="基本标签命令"><a class="markdownIt-Anchor" href="#基本标签命令"></a> 基本标签命令</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt; 包含了两个子标签</span><br><span class="line"></span><br><span class="line">    &lt;head&gt; 设置基础参数信息</span><br><span class="line">        &lt;meta charset&#x3D;&quot;utf-8&quot;&#x2F;&gt; 字符集编译方法</span><br><span class="line">    &lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt; 负责通知浏览器将质地ing内容以指定方式展示在窗口中</span><br><span class="line">        &lt;p&gt;段落标签&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;h1&gt;&lt;&#x2F;h1&gt; 标题标签</span><br><span class="line"></span><br><span class="line">        &lt;ol&gt; 有序列表</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">        &lt;&#x2F;ol&gt;</span><br><span class="line"></span><br><span class="line">        &lt;ul&gt; 无序列表</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">        &lt;table border&#x3D;&quot;2&quot;边框大小  align&#x3D;&quot;center&quot;对齐方式&gt; 表格</span><br><span class="line">            &lt;tr&gt; 第一行</span><br><span class="line">                &lt;td&gt; 第一格</span><br><span class="line">                &lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt; 第二格</span><br><span class="line">                &lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line"></span><br><span class="line">            &lt;tr&gt; 第二行</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;table&gt;</span><br><span class="line">    &lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="控制浏览器请求地址"><a class="markdownIt-Anchor" href="#控制浏览器请求地址"></a> 控制浏览器请求地址</h3>
+<ol>
+<li>超链接标签命令<br />
+a. 格式：<code>&lt;a href=&quot;请求地址&quot;&gt;提示命令&lt;/a&gt;</code><br />
+b. 工作原理：单机时按照href的属性去发送请求</li>
+<li>表单标签命令<br />
+a. 格式：<br />
+<form action="请求地址"><br />
+<input type="submit"> <!--提交按钮--><br />
+</form><br />
+b. 在点击提交按钮时，表单命令标签被触发执行。执行时浏览器按照action属性地址发送请求。</li>
+</ol>
+<h3 id="控制浏览器发送请求的方式"><a class="markdownIt-Anchor" href="#控制浏览器发送请求的方式"></a> 控制浏览器发送请求的方式</h3>
+<ol>
+<li>请求方式：决定了浏览器发送请求时的行为特征</li>
+<li>浏览器可以选择的请求方式有7种类，目前只考虑<strong>post</strong>和<strong>get</strong>两种方式</li>
+</ol>
+<ul>
+<li>GET请求方式：<br />
+a. 浏览器发送请求时，携带的<strong>请求参数数量</strong>不超过4k<br />
+b. 浏览器发送请求时，必须在浏览器地址栏上将请求参数信息展示出来<br />
+c. 必须将请求参数信息保存在HTTP请求协议包中的<strong>请求头</strong>中<br />
+d. 浏览器在接收到服务器返回的数据之后，必须将资源文件内容保存在浏览器的缓存中</li>
+<li>POST请求方式：<br />
+a. 浏览器发送请求时，可以携带任意数量的<strong>请求参数</strong><br />
+b. 浏览器发送请求时，必须在地址栏上隐藏参数信息<br />
+c. 浏览器发送请求时，必须将请求参数信息保存在HTTP请求协议包中的<strong>请求体</strong>中<br />
+d. 浏览器在接收到服务器返回的数据之后，///将资源文件内容删除</li>
+</ul>
+<ol start="3">
+<li>控制浏览器发送请求的方式</li>
+</ol>
+<ul>
+<li>
+<p>控制发送请求时采用GET请求方式：</p>
+<ol>
+<li>超链接标签命令在执行时，要求浏览器必须采用GET方式发送请求</li>
+<li>表单标签存放在一个method属性中，通过这个属性可以要求对应的请求方式发送请求。默认请求方式为get。<br />
+<code>form action=&quot;ask&quot; method=&quot;get&quot;</code><br />
+<code>form action=&quot;ask&quot; method=&quot;post&quot;</code></li>
+</ol>
+</li>
+<li>
+<p>控制发送请求时采用POST请求方式：</p>
+<ol>
+<li>只能够通过form表单标签，设置method的方式。</li>
+<li>考虑到post请求可以将病毒命令发送到服务器上，因此绝大多数门户级网站拒绝接受post请求。</li>
+<li>必须使用post：文件上传，登录验证(隐藏个人信息)，索要实时变化的数据(股票，剩余门票)。</li>
+</ol>
+</li>
+</ul>
+<h3 id="浏览器携带请求参数"><a class="markdownIt-Anchor" href="#浏览器携带请求参数"></a> 浏览器携带请求参数</h3>
+<ul>
+<li>例子：用户请求学生信息，后端会建立一个该学生的类，然后调用方法得到结果并返回。这表示，浏览器发送请求时需要携带调用方法需要的实参。<br />
+eg. <code>http://www.baidu.com?n1=100&amp;n2=200</code></li>
+<li>请求参数的格式： 请求地址?请求参数1=值1&amp;请求参数2=值2</li>
+<li>浏览器发送请求时，携带的接受参数来源：
+<ol>
+<li>通过超链接标签命令指定请求参数：<br />
+eg. <code>&lt;a href=&quot;http://www.baidu.com?userName=mike&amp;password=123&gt;百度&lt;/a&gt;</code><br />
+缺点：请求<strong>参数相对固定</strong>，不够灵活</li>
+<li>通过表单域标签命令指定请求参数</li>
+</ol>
+</li>
+</ul>
+<h4 id="通过表单域标签命令指定请求参数"><a class="markdownIt-Anchor" href="#通过表单域标签命令指定请求参数"></a> 通过表单域标签命令指定请求参数</h4>
+<ul>
+<li>是一组声明在form标签内部的标签命令</li>
+<li>提示用户填写对应的<strong>请求参数内容</strong>，用于提供相对灵活的请求参数内容</li>
+<li>所有的表单域标签都有两个属性：name和value，类似字典。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot; value&#x3D;&quot;mike&quot;&#x2F;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;submit&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<p>当用户单击submit之后，浏览器发送信息 <a target="_blank" rel="noopener" href="http://www.baidu.com?userName=mike">http://www.baidu.com?userName=mike</a><br />
+即会在末尾生成<strong>name=value</strong>，使用 <strong>&amp;</strong> 连接</p>
+<ul>
+<li>表单域标签分类:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input &#x2F;&gt;</span><br><span class="line">&lt;select&gt;&lt;&#x2F;select&gt;</span><br><span class="line">&lt;textarea&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>表单域标签value属性默认值：
+<ol>
+<li>大多数表单域标签的value属性默认值是空字符串</li>
+<li>radio和checkbox的默认值为on</li>
+</ol>
+</li>
+<li>表单域标签作为请求参数的条件：
+<ol>
+<li>声明在form标签内部</li>
+<li>声明name属性</li>
+<li>对于radio和checkbox标签，只有在被选中的情况下才可以作为请求参数</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">密码：&lt;input type&#x3D;&quot;password&quot;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">\&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;&gt;</span><br><span class="line">    姓名：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">    年龄：&lt;input type&#x3D;&quot;text&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<p>上面只显示姓名。</p>
+<ul>
+<li>可以在标签中使用 disabled 设置标签不可选中，该表单标签永远不能作为请求参数</li>
+<li>可以在标签中使用 readOnly 设置只读，不会影响作为请求参数</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E4%BA%92%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E4%BA%92%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1/" class="post-title-link" itemprop="url">互联网通信</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-03 23:39:39" itemprop="dateCreated datePublished" datetime="2021-03-03T23:39:39+08:00">2021-03-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-16 17:03:44" itemprop="dateModified" datetime="2021-03-16T17:03:44+08:00">2021-03-16</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="浏览器通信"><a class="markdownIt-Anchor" href="#浏览器通信"></a> 浏览器通信</h3>
+<p>Http服务器下对于共享资源文件分类：</p>
+<ol>
+<li>静态资源文件：<br />
+a. 文件内容固定，比如文档，图片，视频。<br />
+b. 如果文件中存放的是命令，则这些命令只能在浏览器中编译与执行。<br />
+c. 静态文件被索要时，Http服务器直接通过<strong>输出流</strong>将静态文件中的内容或者命令以<strong>二进制形式</strong>推送给发起请求浏览器。</li>
+<li>动态资源文件：<br />
+a.文件中存放命令，并且命令不能够在浏览器中编译与执行，只能在服务端计算机编译执行 (.class)<br />
+b. 动态文件被索要时，http服务器自动使用new函数创建当前的class文件的实例对象，通过调用对象的方法来处理请求。通过<strong>输出流</strong>将运行结果返回请求浏览器。</li>
+</ol>
+<p><img src="https://i.loli.net/2021/03/04/dCGtvIoKLqgJE2B.png" alt="互联网通信1" /><br />
+<img src="https://i.loli.net/2021/03/09/6QboE5Y4FOy8L92.png" alt="新版本通信图" /><br />
+<img src="https://i.loli.net/2021/03/16/1ctEGDh4el3X2wV.png" alt="" /></p>
+<h3 id="后端开发人员的职责"><a class="markdownIt-Anchor" href="#后端开发人员的职责"></a> 后端开发人员的职责</h3>
+<p>控制浏览器请求行为：</p>
+<ol>
+<li>发送的请求地址</li>
+<li>发送请求的方式</li>
+<li>发送请求携带的参数<br />
+<img src="https://i.loli.net/2021/03/04/HDjyScWtAe8Mh4C.png" alt="开发职责" /></li>
+</ol>
+<h3 id="一次请求过程"><a class="markdownIt-Anchor" href="#一次请求过程"></a> 一次请求过程</h3>
+<p><img src="https://i.loli.net/2021/03/12/TR5UQ26h4jbn8HB.jpg" alt="" /></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E5%88%9D%E6%AD%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E5%88%9D%E6%AD%A5/" class="post-title-link" itemprop="url">mysql表文件管理命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-03 22:44:21" itemprop="dateCreated datePublished" datetime="2021-03-03T22:44:21+08:00">2021-03-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-24 13:12:34" itemprop="dateModified" datetime="2021-03-24T13:12:34+08:00">2021-03-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="打开与退出"><a class="markdownIt-Anchor" href="#打开与退出"></a> 打开与退出</h3>
+<p>命令行：输入 <code>mysql -u root -p</code>，还可以选添 <code>-P 3306</code> 来设置端口号<br />
+进入后：<code>quit</code>退出</p>
+<h3 id="数据库管理命令"><a class="markdownIt-Anchor" href="#数据库管理命令"></a> 数据库管理命令</h3>
+<ul>
+<li>所有的表文件都存放在data文件夹中</li>
+<li>查看所有数据库名：<code>show databases;</code></li>
+<li>information_schema 存放在内存中，每次都会自动销毁</li>
+<li>创建一个数据库：
+<ol>
+<li><code>create database 数据库名;</code></li>
+<li>目录下手动新建文件夹也可以</li>
+</ol>
+</li>
+<li>删除一个数据库：<code>drop database 数据库名;</code></li>
+</ul>
+<h3 id="表文件管理命令"><a class="markdownIt-Anchor" href="#表文件管理命令"></a> 表文件管理命令</h3>
+<ul>
+<li>查看指定的数据库下所有的表文件名：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">USE 数据库名;</span><br><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+</li>
+<li>在指定数据库下创建表文件：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名;</span><br><span class="line">create table 表文件名(</span><br><span class="line">    字段名 数据类型名,</span><br><span class="line">    字段名 数据类型名  &lt;--最后一个字段不要加&quot;,&quot;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database bjpowernode;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; use bjpowernode;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; create table stu(</span><br><span class="line">    -&gt; sid int,</span><br><span class="line">    -&gt; sname varchar(10),</span><br><span class="line">    -&gt; age int</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure>
+在这里面，字符串类型使用 <strong>varchar(5)</strong>，括号内放置最大字符长度。
+<ul>
+<li>数据类型：
+<ol>
+<li>char() 固定长度字符串</li>
+<li>varchar() 可变长度字符串</li>
+<li>YEAR: YYYY</li>
+<li>TIME: HH:MM:SS</li>
+<li>DATE: YYYY-MM-DD</li>
+<li>DATETIME: YYYY-MM-DD HH:MM:SS</li>
+<li>TIMESTAMP: YYYY-MM-DD HH:MM:SS 描述的时间在不同时区索引出来可能是不同的，动态计算出对应时区时间。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>删除表文件： <code>drop table 表文件名;</code></li>
+<li>查看表文件中相关的字段信息： <code>show create table 表文件名称;</code></li>
+<li>为表文件添加字段： <code>alter table 表文件名 add 新字段名 数据类型名称;</code></li>
+<li>删除表文件字段： <code>alter table 表文件名 drop 字段名;</code></li>
+</ul>
+<h3 id="mysql约束"><a class="markdownIt-Anchor" href="#mysql约束"></a> mysql约束</h3>
+<ol>
+<li>非空约束：管理的字段不能存储null值。<code>sname VARCHAR(10) not null</code></li>
+<li>唯一性约束：存储的字段值不能有重复值，但是可以存储null。<code>email varchar(20) UNIQUE</code></li>
+<li>主键约束 <code>sid int PRIMARY KEY</code></li>
+<li>外键约束：要求外键字段值应该来源于关联表的主键的值，但是可以存储null值。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 多方表 </span><br><span class="line">ADD CONSTRAINT 外键约束对象名 FOREIGN KEY(外键字段名)</span><br><span class="line">REFERENCE 一方表(主键字段)</span><br></pre></td></tr></table></figure>
+<h3 id="表文件数据行管理命令"><a class="markdownIt-Anchor" href="#表文件数据行管理命令"></a> 表文件数据行管理命令</h3>
+<ul>
+<li>插入命令：要求mysql服务器向指定的表文件中添加数据行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into 表文件名 (字段名1,字段名2,字段名3)</span><br><span class="line">values(值1,值2,值3);        &lt;-字符串的值使用单引号扩起来</span><br></pre></td></tr></table></figure>
+<ul>
+<li>高级插入命：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insert into 表文件名(字段1,字段2,字段3)</span><br><span class="line">values</span><br><span class="line">(值1,值2,值3),</span><br><span class="line">(值1,值2,值3),</span><br><span class="line">(值1,值2,值3);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>简化版本插入命令：<code>insert into 表文件名 values(值1,值2,值3);</code><br />
+如果插入数据时，每一个字段都可以赋值，此时插入命令不需要指定字段名，数据顺序此时要与表文件字段顺序相同</li>
+<li>查询命令：<code>select * from 表文件名;</code>要求mysql服务器将指定的表文件数据行展示</li>
+<li>删除命令：
+<ol>
+<li><code>delete from 表文件名;</code>删除所有数据</li>
+<li><code>delete from 表文件名 where 判断条件;</code>删除满足条件的数据行数据。判断数据一般放置关系条件或者逻辑条件。(等于使用单等号=)</li>
+</ol>
+</li>
+<li>更新命令：要求mysql服务器将指定的表文件数据进行更新
+<ol>
+<li>对所有数据行<code>update 表文件名 set 字段名1=值,字段名2=值;</code></li>
+</ol>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update stu set age&#x3D;age+3;</span><br><span class="line">Query OK, 2 rows affected (0.00 sec)</span><br><span class="line">Rows matched: 2  Changed: 2  Warnings: 0</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>对指定数据行<code>update 表文件名 set 字段名1=值,字段名2=值 where 判断条件;</code>使用where来选择</li>
+</ol>
+</li>
+<li>数据行复制命令：<code>insert into B select * from A</code>可以将表A中的数据行复制到表B(要求表A与表B字段结构完全一致)</li>
+<li>表文件备份命令：<code>create table B select * from A</code>将表A进行一次备份，备份生成表B</li>
+</ul>
+<h3 id="mysql索引index"><a class="markdownIt-Anchor" href="#mysql索引index"></a> mysql索引(index)</h3>
+<ol>
+<li>查询速度问题： 由于表文件存放的数据行有可能会很多，WHERE命令会遍历所有的数据行。所以，时间越久，数据行越大，WHERE命令消耗的时间就越长。</li>
+<li>索引作用： 在表文件数据行增加时，不会大幅度降低查询语句执行的效率。</li>
+<li>工作原理：<br />
+数据1: [100, 80, 45, 50, 90, 200, 17]<br />
+数据2: [17, 45, 50, 80, 90, 100, 200]<br />
+从数据2得到最小值的消耗更小<br />
+所以：应该先对字段内容进行一次排序，然后再WHERE命令进行定位时，根据排序顺序定位最小值，来提升查询顺序。</li>
+<li>索引命令：
+<ul>
+<li>添加索引：<code>CREATE INDEX 索引名 ON 表名(字段)</code></li>
+<li>查看索引：<code>SHOW INDEX FROM 表明</code><br />
+这时会看到三个索引，因为服务器会默认为<strong>主键约束</strong>，<strong>外键约束</strong>，<strong>唯一性约束</strong>绑定索引。</li>
+<li>删除索引：<code>DROP INDEX 索引名 ON 表名</code>、</li>
+</ul>
+</li>
+</ol>
+<h3 id="mql执行计划explain"><a class="markdownIt-Anchor" href="#mql执行计划explain"></a> mql执行计划(explain)</h3>
+<ol>
+<li>命令格式：explain 查询命令</li>
+<li>命令作用：展示当前查询得到的结果是否通过索引来进行定位</li>
+<li>例子：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM emp WHERE ename&#x3D;&#39;smith&#39;</span><br><span class="line">--&gt; EXPLAIN SELECT * FROM emp WHERE ename&#x3D;&#39;smith&#39;</span><br><span class="line">--&gt; type: ref(索引查询) rows:1(查询次数)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>判断：type属性表示执行效率。<br />
+<strong>all</strong>(对所有数据行进行遍历)<br />
+<strong>type</strong>(WHERE对所有数据行进行遍历，SELECT从索引中抓取)<br />
+<strong>range</strong>(WHERE直接通过索引来查询，但是不稳定，因为字段变化时会导致失效)<br />
+<strong>ref</strong>(WHERE直接通过索引来查询，一次只得到一行数据 --&gt; 该行数据没有重复)<br />
+<strong>const</strong>(通过主键索引来进行定位)</li>
+</ol>
+<p><strong>mysql如果发现通过索引得到数据行数&gt;1/3是，会自动放弃索引查询，type依然是all</strong></p>
+<h3 id="视图"><a class="markdownIt-Anchor" href="#视图"></a> 视图</h3>
+<ol>
+<li>定义：Mysql对象，用于存储查询语句。</li>
+<li>目的：提高查询语句使用效率，可复用性。</li>
+<li>命令：<code>CREATE VIEW 视图对象名 AS 查询语句</code></li>
+<li>调用：<code>SELECT * FROM 视图对象名</code>，还可以通过视图对象关联表文件数据行进行插入，删除，更新操作。</li>
+<li>作用：<strong>隐藏业务中涉及表关系，开发人员通过视图进行操作时不会知道具体操作的表，提高了安全性。</strong></li>
+</ol>
+<h3 id="存储引擎"><a class="markdownIt-Anchor" href="#存储引擎"></a> 存储引擎</h3>
+<ol>
+<li>定义：是mysql服务器对表文件内容的管理方式，目前主要采用INNODB，Myisam.</li>
+<li>管理命令：
+<ul>
+<li>查看支持存储引擎种类：<code>show engines</code>，默认使用innodb引擎</li>
+<li>修改引擎，<code>my.cnf文件</code>，在<code>/etc</code>配置文件夹下，<code>default-storage-engine=INNODB</code></li>
+<li>设置表文件呢依赖的存储引擎：<code>alter TABLE 表名 ENGINE=存储引擎</code></li>
+</ul>
+</li>
+<li>存储引擎特征：
+<ul>
+<li>Myisam：
+<ul>
+<li>修改表时，不会备份。提高效率，操作后无法取消本操作。</li>
+<li>使用三个表存储信息：<strong>test1.frm</strong>储存表文件字段信息，<strong>test1.myd</strong>储存表文件数据行信息，<strong>test1.myi</strong>存储表文件字段关联的索引信息。</li>
+</ul>
+</li>
+<li>INNODB：
+<ul>
+<li>对表内容修改时，首先进行一次备份，因此效率较慢。</li>
+<li>但是执行完毕后，可以使用备份取消当前操作，增加安全性。</li>
+<li>使用一个文件<strong>test1.frm</strong>存储所有信息。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="事物transaction"><a class="markdownIt-Anchor" href="#事物transaction"></a> 事物(transaction)</h3>
+<ol>
+<li>介绍：用于对当前表文件备份进行管理。</li>
+<li>命令格式：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">start transaction #通过服务器提供一个事物对象来管理备份接下来的操作</span><br><span class="line">delete from emp where deptno&#x3D;30 #生成emp.bak</span><br><span class="line">delete from dept where deptno&#x3D;30 #生成emp.bak</span><br><span class="line">ROLLBACK #取消本次操作</span><br><span class="line">COMMIT #提交操作：将本次操作的所有备份信息删除</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/02/basic%20operation/py2neo%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/02/basic%20operation/py2neo%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">py2neo介绍</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-02 18:41:24" itemprop="dateCreated datePublished" datetime="2021-03-02T18:41:24+08:00">2021-03-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-08 21:14:15" itemprop="dateModified" datetime="2021-04-08T21:14:15+08:00">2021-04-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="导入包"><a class="markdownIt-Anchor" href="#导入包"></a> 导入包</h3>
+<p><code>from py2neo import Graph, Node, Relationship</code></p>
+<h3 id="建立连接"><a class="markdownIt-Anchor" href="#建立连接"></a> 建立连接</h3>
+<ul>
+<li>与网站建立连接：py2neo.graph 函数，参数为用户名以及密码，会返回一个链接对象<br />
+<code>link = Graph(&quot;http://localhost:7474&quot;,auth=(&quot;neo4j&quot;,&quot;password&quot;))</code></li>
+</ul>
+<h3 id="清空原数据"><a class="markdownIt-Anchor" href="#清空原数据"></a> 清空原数据</h3>
+<p><code>graph.delete_all()</code></p>
+<p><strong>Node和Relationship在这个驱动中都继承了PropertyDict这个类，而这个类继承类python里面的dict,所以操作和python本身的dict一模一样</strong></p>
+<h3 id="节点操作"><a class="markdownIt-Anchor" href="#节点操作"></a> 节点操作</h3>
+<ul>
+<li>新建节点：py2neo.Node 函数，参数为标签和数据，返回一个节点对象<br />
+<code>a = Node(&quot;Person&quot;, name=&quot;Alice&quot;)</code></li>
+<li>放置节点：py2neo.graph.create 函数<br />
+<code>graph.create(buy_node)</code></li>
+</ul>
+<p>一些额外操作：</p>
+<ul>
+<li>获取node的属性：<code>x=node[key]</code></li>
+<li>设置node的属性：<code>node[key] = value</code></li>
+<li>删除node的属性：<code>del node[key]</code></li>
+<li>返回node里面property的个数：<code>len(node)</code></li>
+<li>返回所有和这个节点有关的label：<code>node.labels</code></li>
+<li>删除某个label：<code>node.labels.remove(labelname)</code></li>
+<li>将node的所有property以dictionary的形式返回：<code>dic(node)</code></li>
+</ul>
+<h3 id="关系操作"><a class="markdownIt-Anchor" href="#关系操作"></a> 关系操作</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ab &#x3D; Relationship(a, &quot;KNOWS&quot;, b)</span><br><span class="line">graph.create(ab)</span><br></pre></td></tr></table></figure>
+<p>关系同样也有类似的操作：</p>
+<ul>
+<li>创建relationship：<code>Relationship(start_node, type, end_node, properties)</code></li>
+<li>返回Relationship的property：<code>Relationship[key]</code></li>
+<li>删除某个property：<code>del Relationship[key]</code></li>
+<li>将property以字典形式返回：<code>dict(relationship)</code></li>
+</ul>
+<h3 id="查询query"><a class="markdownIt-Anchor" href="#查询query"></a> 查询Query</h3>
+<ol>
+<li>可以在nodes中调用match来找点</li>
+<li>或者使用py2neo.matching包里面的NodeMatcher(graph)函数构建一个matcher再查询</li>
+</ol>
+<p>py2neo提供了专门的查询模块：NodeMatcher和RelationshipMatcher</p>
+<ul>
+<li>创建matcher，返回的结果仍然是NodeMatcher对象或RelationshipMatcher对象</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph &#x3D; Graph()</span><br><span class="line">matcher_1 &#x3D; NodeMatcher(graph)</span><br><span class="line">matcher_2 &#x3D; NodeMatcher(graph)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 <strong>matcher.match()</strong> 进行查询,，可继续使用where()，first()，order_by()等进行操作。</li>
+<li>where中可以选择属性名进行查找，或者使用名称进行查找</li>
+</ul>
+<ol>
+<li>属性名：<code>where(year=2017)</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node &#x3D; matcher_1.match(&quot;Paper&quot;,ID&#x3D;&#39;09076&#39;).where(year&#x3D;2017)  # 匹配指定ID和year的Paper结点</span><br><span class="line">relation &#x3D; matcher_2.match(r_type&#x3D;&quot;Cited&quot;).limit(50)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>名称：<code>where(&quot;_.name=&quot; + &quot;'&quot; + *名称 + &quot;'&quot;))</code><br />
+match后返回的结果仍然能是Matcher对象，可以用first()函数得到首个实体或者使用list(Matcher)将其转换为列表。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -344,7 +1081,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/01/inclass/week-1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/01/inclass/JAVAOOP/week-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -357,7 +1094,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/01/inclass/week-1/" class="post-title-link" itemprop="url">week-1</a>
+          <a href="/2021/03/01/inclass/JAVAOOP/week-1/" class="post-title-link" itemprop="url">week-1</a>
         </h2>
 
         <div class="post-meta-container">
@@ -375,7 +1112,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-19 15:29:40" itemprop="dateModified" datetime="2021-03-19T15:29:40+08:00">2021-03-19</time>
+        <time title="Modified: 2021-04-19 23:57:13" itemprop="dateModified" datetime="2021-04-19T23:57:13+08:00">2021-04-19</time>
       </span>
 
   
@@ -854,885 +1591,8 @@ S<sub>L</sub>：最后一层处理单元的个数</p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/08/basic%20operation/pandas%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%B2%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/08/basic%20operation/pandas%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%B2%E8%A7%A3/" class="post-title-link" itemprop="url">pandas库的简单讲解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-08 22:10:47" itemprop="dateCreated datePublished" datetime="2021-02-08T22:10:47+08:00">2021-02-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-10 11:54:17" itemprop="dateModified" datetime="2021-03-10T11:54:17+08:00">2021-03-10</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="pandas-表格容器"><a class="markdownIt-Anchor" href="#pandas-表格容器"></a> pandas: 表格容器</h3>
-<p>基于NumPy的一种工具，该工具是为了解决数据分析任务而创建的。Pandas纳入了大量库和一些标准的数据模型，提供了高效地操作大型数据集所需的工具。</p>
-<h4 id="导入pandas库"><a class="markdownIt-Anchor" href="#导入pandas库"></a> 导入pandas库：</h4>
-<p><code>import pandas as pd</code></p>
-<h3 id="series对象"><a class="markdownIt-Anchor" href="#series对象"></a> Series对象</h3>
-<h4 id="series对象的创建"><a class="markdownIt-Anchor" href="#series对象的创建"></a> Series对象的创建</h4>
-<p>使用<code>pd.Series()</code>方法<br />
-参数：1. 数组 2. index=数组，非必选</p>
-<h2 id="-code0-"><a class="markdownIt-Anchor" href="#-code0-"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a&#x3D; pd.Series([1,2,3,4],index&#x3D;[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;,&#39;d&#39;])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    1</span><br><span class="line">b    2</span><br><span class="line">c    3</span><br><span class="line">d    4</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></h2>
-<h4 id="series对象的支持的特性"><a class="markdownIt-Anchor" href="#series对象的支持的特性"></a> Series对象的支持的特性</h4>
-<ol>
-<li>索引方式： a. 下标索引/键值索引/花式索引<br />
-中括号中的整数，一定会被解释成标签名。可以用loc[]和iloc[]:<br />
-a. <code>loc[]</code> 中括号中解释为标签<br />
-b. <code>iloc[]</code> 中括号中解释为索引 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; pd.Series(range(10))</span><br><span class="line">a &#x3D; a[5:10]</span><br><span class="line">print(a)</span><br><span class="line">&gt;&gt;&gt; 5    5</span><br><span class="line">    6    6</span><br><span class="line">    7    7</span><br><span class="line">    8    8</span><br><span class="line">    9    9</span><br><span class="line">    dtype: int64</span><br><span class="line"></span><br><span class="line">print(a.loc[5])     &gt;&gt;&gt; 5</span><br><span class="line">print(a.iloc[4])    &gt;&gt;&gt; 9</span><br></pre></td></tr></table></figure>
-</li>
-<li>支持切片</li>
-<li><code>index</code>属性返回标签的列表，<code>values</code>返回值的列表</li>
-<li>可以和标量，或者series对象批量运算。注意这里牵扯到<strong>数据对齐</strong>：两个series对象运算时，是按照标签来对应的，而不是索引。如果存在标签不同的，则结果为NaN。<br />
-解决NaN:<br />
-a. <code>sr1.add(sr2, fill_value=默认值)</code>：添加并将NaN设置为默认值。<br />
-b. <code>sr.isnull()/notnull()</code>：如果值为NaN，返回True/False，否则返回false/True。<br />
-c. <code>sr.dropna()</code>：返回删除所有缺失值的Series对象<br />
-d. <code>sr.fillna(参数)</code>：填充NaN并返回。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">sr1 &#x3D; pd.Series([11,12,13], index&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;])</span><br><span class="line">sr2 &#x3D; pd.Series([13,14,15], index&#x3D;[&#39;c&#39;,&#39;a&#39;,&#39;d&#39;])</span><br><span class="line"></span><br><span class="line">print(sr1.add(sr2, fill_value &#x3D; 0))</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    25.0</span><br><span class="line">b    12.0</span><br><span class="line">c    26.0</span><br><span class="line">d    15.0</span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">sr &#x3D; sr1.add(sr2)</span><br><span class="line">print(sr.isnull())</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    False</span><br><span class="line">b     True</span><br><span class="line">c    False</span><br><span class="line">d     True</span><br><span class="line">dtype: bool</span><br><span class="line"></span><br><span class="line">print(sr.dropna())</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    25.0</span><br><span class="line">c    26.0</span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">print(sr.fillna(8))</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    25.0</span><br><span class="line">b     8.0</span><br><span class="line">c    26.0</span><br><span class="line">d     8.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr />
-<h3 id="dataframe对象"><a class="markdownIt-Anchor" href="#dataframe对象"></a> DataFrame对象</h3>
-<h4 id="dataframe对象的创建"><a class="markdownIt-Anchor" href="#dataframe对象的创建"></a> DataFrame对象的创建</h4>
-<ol>
-<li>直接创建：</li>
-</ol>
-<ul>
-<li>不指定行索引index（行索引被默认为数字，从0开始），参数为列的字典</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&#39;one&#39;: [1, 2, 3], &#39;two&#39;: [4, 5, 6]&#125;)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">0    1    4</span><br><span class="line">1    2    5</span><br><span class="line">2    3    6</span><br></pre></td></tr></table></figure>
-<ul>
-<li>指定行索引index，参数为列的字典和行索引</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&#39;one&#39;: [1, 2, 3], &#39;two&#39;: [4, 5, 6]&#125;, index&#x3D;[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">a    1    4</span><br><span class="line">b    2    5</span><br><span class="line">c    3    6</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>使用Series创建：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&quot;one&quot;: pd.Series([1, 2, 3], index&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]), &quot;two&quot;:pd.Series([1,2,3,4],index&#x3D;[&#39;b&#39;,&#39;a&#39;,&#39;c&#39;,&#39;d&#39;])&#125;)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">a  1.0    2</span><br><span class="line">b  2.0    1</span><br><span class="line">c  3.0    3</span><br><span class="line">d  NaN    4</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>使用index和columns参数创建：</li>
-</ol>
-<h2 id="-code6-"><a class="markdownIt-Anchor" href="#-code6-"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dates &#x3D; pd.date_range(&#39;today&#39;,periods&#x3D;6) # 定义时间序列作为 index</span><br><span class="line">num_arr &#x3D; np.random.randn(6,4) # 传入 numpy 随机数组</span><br><span class="line">columns &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;] # 将列表作为列名</span><br><span class="line">df1 &#x3D; pd.DataFrame(num_arr, index &#x3D; dates, columns &#x3D; columns)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">                                   A         B         C         D</span><br><span class="line">2021-02-14 11:00:38.210410 -0.234308  0.458834  1.758701 -0.390679</span><br><span class="line">2021-02-15 11:00:38.210410 -1.448708  0.534228  0.404082  0.722971</span><br><span class="line">2021-02-16 11:00:38.210410  0.540040 -0.593858  0.882544  0.499553</span><br><span class="line">2021-02-17 11:00:38.210410 -1.295320  0.909557 -1.058109 -0.530681</span><br><span class="line">2021-02-18 11:00:38.210410  0.307840  0.328438 -0.680865 -2.096587</span><br><span class="line">2021-02-19 11:00:38.210410 -1.777850  0.615222 -0.213545 -0.219512</span><br></pre></td></tr></table></figure></h2>
-<h4 id="dataframe常用属性"><a class="markdownIt-Anchor" href="#dataframe常用属性"></a> DataFrame常用属性</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&quot;one&quot;: [1,2,3], &quot;two&quot;: [2,3,4]&#125;, index&#x3D;[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;])</span><br><span class="line"></span><br><span class="line">d &gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">a    1    2</span><br><span class="line">b    2    3</span><br><span class="line">c    3    4</span><br></pre></td></tr></table></figure>
-<ol>
-<li>index：获取索引</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d.index &gt;&gt;&gt; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>T：转制</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d.T &gt;&gt;&gt;</span><br><span class="line">     a  b  c</span><br><span class="line">one  1  2  3</span><br><span class="line">two  2  3  4</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>columns：获取列索引</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d.columns &gt;&gt;&gt; [&#39;one&#39;, &#39;two&#39;]</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>values：获取值数组</li>
-</ol>
-<h2 id="-code11-5-info方法显示dataframe的基础信息包括行的数量列名每一列值的数量-类型"><a class="markdownIt-Anchor" href="#-code11-5-info方法显示dataframe的基础信息包括行的数量列名每一列值的数量-类型"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d.values &gt;&gt;&gt;</span><br><span class="line">[[1 2]</span><br><span class="line"> [2 3]</span><br><span class="line"> [3 4]]</span><br></pre></td></tr></table></figure><br />
-5. info()方法：显示DataFrame的基础信息，包括行的数量；列名；每一列值的数量、类型</h2>
-<h4 id="dataframe切片和索引"><a class="markdownIt-Anchor" href="#dataframe切片和索引"></a> DataFrame切片和索引</h4>
-<p>可以通过索引来查找，修改元素值。支持常规索引，切片索引，布尔值索引，花式索引搭配。</p>
-<ol>
-<li>使用<code>[列][行]</code>选择标签对应的元素，不建议使用这种方式</li>
-<li><code>loc[行标签，列标签]</code>方法<br />
-可以用&quot;:&quot;来选择一整行 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&quot;one&quot;: pd.Series([1, 2, 3], index&#x3D;[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]), &quot;two&quot;: pd.Series([&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;], index&#x3D;[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])&#125;)</span><br><span class="line"></span><br><span class="line">d &gt;&gt;&gt;</span><br><span class="line">    one two</span><br><span class="line">a  1.0   1</span><br><span class="line">b  2.0   2</span><br><span class="line">c  3.0   3</span><br><span class="line">d  NaN   4</span><br><span class="line"></span><br><span class="line">d[&#39;a&#39;, :] &gt;&gt;&gt;</span><br><span class="line">one    1.0</span><br><span class="line">two      1</span><br><span class="line">Name: a, dtype: object</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><code>iloc[行索引，列索引]</code></li>
-</ol>
-<hr />
-<h4 id="数据对齐以及缺失数据"><a class="markdownIt-Anchor" href="#数据对齐以及缺失数据"></a> 数据对齐以及缺失数据</h4>
-<ol>
-<li>和numpy相似，在批处理数据对齐时会保留nan，</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">d1 &#x3D; pd.DataFrame(&#123;&quot;one&quot;: pd.Series([1,2,3], index&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]), &quot;two&quot;: pd.Series([&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;], index&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;])&#125;)</span><br><span class="line"></span><br><span class="line">d2 &#x3D; pd.DataFrame(&#123;&quot;one&quot;: pd.Series([2,3,4], index&#x3D;[&#39;b&#39;,&#39;c&#39;,&#39;d&#39;]), &quot;two&quot;: pd.Series([&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;], index&#x3D;[&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;a&#39;])&#125;)</span><br><span class="line"></span><br><span class="line">d1 &gt;&gt;&gt;</span><br><span class="line">   one two</span><br><span class="line">a  1.0   1</span><br><span class="line">b  2.0   2</span><br><span class="line">c  3.0   3</span><br><span class="line">d  NaN   4</span><br><span class="line"></span><br><span class="line">d2 &gt;&gt;&gt;</span><br><span class="line">   one two</span><br><span class="line">a  NaN   4</span><br><span class="line">b  2.0   1</span><br><span class="line">c  3.0   2</span><br><span class="line">d  4.0   3</span><br><span class="line"></span><br><span class="line">d1+d2 &gt;&gt;&gt;</span><br><span class="line">   one two</span><br><span class="line">a  NaN  14</span><br><span class="line">b  4.0  21</span><br><span class="line">c  6.0  32</span><br><span class="line">d  NaN  43</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><code>fillna(默认值)</code> 用默认值来填充nan</li>
-<li><code>dropna()</code> 将一整行全部删掉，两个参数：how='all’全部为NaN才删除整行，axis=0保留整行，axis=1保留整列</li>
-</ol>
-<h2 id="-code14-"><a class="markdownIt-Anchor" href="#-code14-"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(d1+d2).dropna() &gt;&gt;&gt;</span><br><span class="line">   one two</span><br><span class="line">b  4.0  21</span><br><span class="line">c  6.0  32</span><br><span class="line"></span><br><span class="line">(d1+d2).dropna(axis&#x3D;1) &gt;&gt;&gt;</span><br><span class="line">  two</span><br><span class="line">a  14</span><br><span class="line">b  21</span><br><span class="line">c  32</span><br><span class="line">d  43</span><br></pre></td></tr></table></figure></h2>
-<h4 id="一些方法"><a class="markdownIt-Anchor" href="#一些方法"></a> 一些方法</h4>
-<ol>
-<li><code>mean()</code></li>
-<li><code>sum()</code></li>
-<li><code>sort_values()</code>，参数：
-<ul>
-<li>by=‘列/行标签’</li>
-<li>ascending=Flase 倒序// 有nan的不参加排序，统一放到最后</li>
-<li>当使用多个排序标准时，使用数组 <code>df1.sort_values(by=['age', 'visits'], ascending=[False, True])</code></li>
-</ul>
-</li>
-<li><code>sort_index()</code> 按索引进行排序，默认axis为0，ascending=True</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d1.sort_index(axis&#x3D;1, ascending&#x3D;False) &gt;&gt;&gt;</span><br><span class="line">  two  one</span><br><span class="line">a   1  1.0</span><br><span class="line">b   2  2.0</span><br><span class="line">c   3  3.0</span><br><span class="line">d   1  NaN</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>
-<p><code>concat()</code>可以将数据根据不同的轴作简单的融合,参数说明:<br />
-objs: series，dataframe或者是panel构成的序列list<br />
-axis： 需要合并链接的轴，0是行，1是列<br />
-join：连接的方式 inner，或者outer</p>
-</li>
-<li>
-<p>检视数据<code>head()</code>，默认前5行，可以加入参数来指定行数。或者使用iloc[:n]属性来选择前n行</p>
-</li>
-<li>
-<p>可以使用<code>loc[行标签名]=[行信息列表]</code>来插入某一行</p>
-</li>
-<li>
-<p>使用<code>drop(行标签名)</code>来删除某一行，不可以用该方法删除整列</p>
-</li>
-<li>
-<p><code>shift()</code>方法，用来偏移元素<br />
-参数：</p>
-<ol>
-<li>periods: 偏移量</li>
-<li>frep: DateOffset, timedelta, or time rule string，可选参数，默认值为None，只适用于时间序列，如果这个参数存在，那么会按照参数值移动时间索引，而数据值没有发生变化。</li>
-<li>axis:指定要移位的行或列，0为行，1为列</li>
-<li>fill_value:指定移位后的填充值，fill_value=0，即表示移位后缺失值填充为0<br />
-可以用该方法对单行/列进行操作<br />
-可以用该方法来去除重复行</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df &#x3D; pd.DataFrame(&#123;&#39;A&#39;: [1, 2, 2, 3, 4, 5, 5, 5, 6, 7, 7]&#125;)</span><br><span class="line">df1 &#x3D; df.loc[df[&#39;A&#39;].shift() !&#x3D; df[&#39;A&#39;]]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   A</span><br><span class="line">0  1</span><br><span class="line">1  2</span><br><span class="line">3  3</span><br><span class="line">4  4</span><br><span class="line">5  5</span><br><span class="line">8  6</span><br><span class="line">9  7</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr />
-<h3 id="pandas-时间对象处理"><a class="markdownIt-Anchor" href="#pandas-时间对象处理"></a> pandas 时间对象处理</h3>
-<ul>
-<li>datetime库中的strptime()方法将字符串转换为时间对象，需要输入格式字符串:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">datetime.datetime.strptime(&quot;2000-12-25&quot;, &#39;%Y-%m-%d&#39;)</span><br><span class="line">&gt;&gt;&gt; 2000-12-25 00:00:00</span><br></pre></td></tr></table></figure>
-<ul>
-<li>pandas自动安装了dateutil库,使用parser.parse()方法，可以不用输入格式字符串:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dateutil.parser.parse(&quot;2000.12.25 12:30&quot;)</span><br><span class="line">&gt;&gt;&gt; 2000-12-25 12:30:00</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p><code>pd.to_datetime()</code>：参数为批量时间字符串列表，自动返回对应的datetime对象的数组</p>
-</li>
-<li>
-<p><code>pd.date_range()</code>：生成时间范围数组。参数为起始时间，结束时间，periods=天数，freq频率='H’小时/'W-MON’每个周一，默认为周日/'B’工作日/'A’年/'M’月份。</p>
-</li>
-</ul>
-<h4 id="将时间对象用作series的标签"><a class="markdownIt-Anchor" href="#将时间对象用作series的标签"></a> 将时间对象用作Series的标签</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sr &#x3D; pd.Series(np.arange(100), index &#x3D; pd.date_range(&#39;2017-1-1&#39;, periods&#x3D;100))</span><br><span class="line"></span><br><span class="line">sr &gt;&gt;&gt;</span><br><span class="line">2017-01-01     0</span><br><span class="line">2017-01-02     1</span><br><span class="line">2017-01-03     2</span><br><span class="line">              ..</span><br><span class="line">2017-04-09    98</span><br><span class="line">2017-04-10    99</span><br><span class="line">Freq: D, Length: 100, dtype: int64</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可见Series的索引为时间对象<code>dateTime</code>，方便我们的切片和索引。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 直接找到某个月</span><br><span class="line">sr[&#39;2017-04&#39;] &gt;&gt;&gt;</span><br><span class="line">2017-04-01    90</span><br><span class="line">2017-04-02    91</span><br><span class="line">2017-04-03    92</span><br><span class="line">2017-04-04    93</span><br><span class="line">2017-04-05    94</span><br><span class="line">2017-04-06    95</span><br><span class="line">2017-04-07    96</span><br><span class="line">2017-04-08    97</span><br><span class="line">2017-04-09    98</span><br><span class="line">2017-04-10    99</span><br><span class="line">Freq: D, dtype: int64</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>resample()</code>可以更改series的样式，参数为freq，后面可以加上sum()/mean()等统计方法，来返回整周/月/年的统计数值。</li>
-</ul>
-<h2 id="-code21-"><a class="markdownIt-Anchor" href="#-code21-"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sr.resample(&#39;M&#39;).sum() &gt;&gt;&gt;</span><br><span class="line">2017-01-31     465</span><br><span class="line">2017-02-28    1246</span><br><span class="line">2017-03-31    2294</span><br><span class="line">2017-04-30     945</span><br><span class="line">Freq: M, dtype: int64</span><br></pre></td></tr></table></figure></h2>
-<h3 id="pandas-文件处理"><a class="markdownIt-Anchor" href="#pandas-文件处理"></a> pandas 文件处理</h3>
-<p>注意一些方法即可：<br />
-1.<code>pd.read_csv(文件名)</code>：默认分隔符为逗号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">my_csv &#x3D; pd.read_csv(&quot;test.csv&quot;);</span><br><span class="line">print(my_csv)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">  Unnamed: 0  one  two</span><br><span class="line">0          a  1.0    2</span><br><span class="line">1          b  2.0    1</span><br><span class="line">2          c  3.0    3</span><br><span class="line">3          d  NaN    4</span><br></pre></td></tr></table></figure>
-<ul>
-<li>会出现Unnamed，这是因为他把行索引当成了单独的一列。可以用利用参数<code>index_col=0</code>将第0列作为索引。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print(pd.read_csv(&quot;test.csv&quot;, index_col&#x3D;0))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">a  1.0    2</span><br><span class="line">b  2.0    1</span><br><span class="line">c  3.0    3</span><br><span class="line">d  NaN    4</span><br></pre></td></tr></table></figure>
-<ul>
-<li>除此之外，<code>index_col</code>也可以传入列名称，将某列设置为索引。</li>
-<li>使用<code>parse_dates = [列表名]</code>，将该列元素解析为datetime对象。</li>
-<li>如果文件没有第一行，<code>header=None, names=[列的名称]</code></li>
-<li>注意在识别中，会令一整列都识别为同一种类型。在csv中，NaN可以被识别为浮点数，但是none或者其他数值会被识别为字符串形式。使用<code>na_values=[]</code>参数来指定列表中的某些数值被识别为NaN。</li>
-</ul>
-<ol start="2">
-<li><code>pd.read_table(文件名)</code>：默认分隔符为制表符</li>
-<li><code>dataFrame.to_csv(文件名)</code>：写入到文件<br />
-参数：
-<ul>
-<li><code>sep</code> 指定的文件分隔符号，默认为逗号</li>
-<li><code>na_rep</code> 缺失值转换的字符串，默认为空字符串</li>
-<li><code>header = False</code> 不输出列名称一行</li>
-<li><code>index = False</code> 不输出行索引一列</li>
-<li><code>cols/columns</code> 指定输出的列，传入列表</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/08/basic%20operation/numpy%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%B2%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/08/basic%20operation/numpy%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%B2%E8%A7%A3/" class="post-title-link" itemprop="url">numpy库的简单讲解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-08 20:34:45" itemprop="dateCreated datePublished" datetime="2021-02-08T20:34:45+08:00">2021-02-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-10 11:54:17" itemprop="dateModified" datetime="2021-03-10T11:54:17+08:00">2021-03-10</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="numpy-n维数组容器"><a class="markdownIt-Anchor" href="#numpy-n维数组容器"></a> Numpy: N维数组容器</h3>
-<p>引入了ndarray-多维数组的概念，可用于储存和处理大型矩阵。</p>
-<h3 id="一些基本操作"><a class="markdownIt-Anchor" href="#一些基本操作"></a> 一些基本操作：</h3>
-<h4 id="导入numpy库"><a class="markdownIt-Anchor" href="#导入numpy库"></a> 导入numpy库：</h4>
-<p><code>import numpy as np</code></p>
-<h4 id="创建ndarray对象"><a class="markdownIt-Anchor" href="#创建ndarray对象"></a> 创建ndarray对象：</h4>
-<ol>
-<li><code>np.array(列表)</code><br />
-输入列表，并返回其ndarray形式</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [random.uniform(100.0, 200) for i in range(10)]</span><br><span class="line">a &#x3D; np.array(a)</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>
-<p><code>np.arange()</code><br />
-参数：<br />
-a. 1个参数a，生成0到a-1的列表<br />
-b. 2个参数a,b，生成a到b-1的列表<br />
-c. 3个参数a,b,c，生成a到b-1的列表，步长为c</p>
-</li>
-<li>
-<p><code>np.linspace(起始值，终结值，元素数量)</code>可以将元素均匀分布</p>
-</li>
-<li>
-<p><code>zeros(),ones(),empty()</code><br />
-参数：<br />
-a. 长度，必需<br />
-b. dtype=“”，非必选<br />
-empty()生成的其元素是任意值，等待被赋值。</p>
-</li>
-</ol>
-<h4 id="ndarray对象的一些基本属性"><a class="markdownIt-Anchor" href="#ndarray对象的一些基本属性"></a> ndarray对象的一些基本属性：</h4>
-<ol>
-<li>shape：尺寸</li>
-<li>dtype：内部元素的数据类型</li>
-<li>T：自身的转置矩阵<br />
-<img src="http://i1.fuimg.com/733078/ec7dde96d174a479.jpg" alt="Markdown" /></li>
-</ol>
-<ul>
-<li>批量运算：<br />
-<img src="http://i1.fuimg.com/733078/ea4fa165e149d011.jpg" alt="Markdown" /></li>
-</ul>
-<h4 id="一些常用的方法"><a class="markdownIt-Anchor" href="#一些常用的方法"></a> 一些常用的方法：</h4>
-<ol>
-<li>
-<p><code>sum()</code>： 返回所有元素的和</p>
-</li>
-<li>
-<p>ndarray数组截取：</p>
-<ul>
-<li><strong>索引截取</strong>：<code>被截取数组[起始索引:结尾索引:步长]</code></li>
-</ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.arange(20)</span><br><span class="line">c &#x3D; a[0:15:3]</span><br><span class="line">print(c) --&gt; [ 0  3  6  9 12 15]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>注意：<br />
-不包含结尾索引。<br />
-numpy的截取是一个指针指向原数组，不会重新开辟内存。所以改变截取数组也会改变原数组。可以使用copy()来操作，不影响原数组。</li>
-<li>多维数组的截取：<code>被截取数组[行切片，列切片]</code></li>
-</ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.arange(15).reshape((3,5))</span><br><span class="line">print(a)</span><br><span class="line">print(a[0:2, 0:2])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[[ 0  1  2  3  4]</span><br><span class="line">[ 5  6  7  8  9]</span><br><span class="line">[10 11 12 13 14]]</span><br><span class="line"></span><br><span class="line">[[0 1]</span><br><span class="line">[5 6]]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>布尔型截取</strong>：传入一个相同长度的布尔形式的数组索引，过滤，返回对应值为true的值的数组.<br />
-可以使用批量处理和布尔型截取来筛选数据，注意多个条件使用：并且-&gt;(条件1)&amp;(条件2) ；或-&gt;(条件1)|(条件2)</li>
-</ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [random.randint(1, 10) for i in range(10)]</span><br><span class="line">a &#x3D; np.array(a)   --&gt; [ 2  1  9  5 10  1  6  9  9  3]</span><br><span class="line">print(a)</span><br><span class="line"># 多个条件使用：1. 并且 (条件1)&amp;(条件2) 2. 或 (条件1)|(条件2)</span><br><span class="line">print(a[(a&gt;5) &amp; (a%2&#x3D;&#x3D;0)]) --&gt;[ 2  1  9  5 10  1  6  9  9  3]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>花式索引</strong>：传入一个索引的列表 (列表套列表)</li>
-</ul>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D;np.arange(10)       --&gt; [0 1 2 3 4 5 6 7 8 9]</span><br><span class="line">b &#x3D; a[ [1,3,4,6,7] ]     --&gt; [1 3 4 6 7]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可以使用这三种索引方式组合来索引多维数组</li>
-</ul>
-</li>
-<li>
-<p><code>copy()</code>：复制某个数组，对复制数组修改不会影响原数组。</p>
-</li>
-<li>
-<p><code>reshape(size的元祖数量)</code>：改变矩阵尺寸</p>
-</li>
-<li>
-<p><code>np.abs()</code>：返回ndarray每个元素绝对值的数组</p>
-</li>
-<li>
-<p><code>np.sqrt()</code>：返回开方，负数开方为nan</p>
-</li>
-<li>
-<p><code>np.round()/ np.rint()</code>：每个元素四舍五入</p>
-</li>
-<li>
-<p><code>np.trunc()</code>：向0取整</p>
-</li>
-<li>
-<p><code>np.floor() 和 np.ceil()</code>：向下和向上取整</p>
-</li>
-<li>
-<p><code>np.modf()</code>：返回整数和小数部分数组，共返回2个元素</p>
-</li>
-<li>
-<p><code>np.isnan</code>：判断是否为一个数字</p>
-</li>
-<li>
-<p><code>np.inf</code>表示最大的数，通常是被除数为0的结果。</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.array([3,4,5,6,7])</span><br><span class="line">b &#x3D; np.array([3,0,0,0,7])</span><br><span class="line">print(a&#x2F;b) --&gt; [ 1. inf inf inf  1.]</span><br></pre></td></tr></table></figure>
-<ol start="13">
-<li><code>np.var()</code>方差 <code>np.std()</code>标准差</li>
-<li><code>np.max() np.min()</code>, <code>np.argmax()</code>返回最大数的下标, <code>np.argmin()</code>返回最小值的下标</li>
-</ol>
-<h3 id="np中的random库"><a class="markdownIt-Anchor" href="#np中的random库"></a> np中的random库</h3>
-<p>作用：可以用于生成随机数组<br />
-参数：前两个参数为随机区间，最后一个为数组的尺存(可以是一个元组)<br />
-方法：</p>
-<ol>
-<li><code>randint(x,y,size)</code> 生成随机整数，[x, y)</li>
-<li><code>rand()</code> 生成0到1的随机数，<code>rand(x)</code>生成生成0到1的x个元素的一维数组，<code>rand(x,y)</code>生成x*y的数组</li>
-<li><code>randn()</code>以给定的形状创建一个数组，数组元素来符合标准正态分布N(0,1)</li>
-<li><code>choice(x,y)</code> 从数组x中随机选择元素，生成y尺寸大小的数组</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/05/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/05/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">分类问题和逻辑回归</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-05 18:36:52" itemprop="dateCreated datePublished" datetime="2021-02-05T18:36:52+08:00">2021-02-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-06 22:26:10" itemprop="dateModified" datetime="2021-04-06T22:26:10+08:00">2021-04-06</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="分类问题-classification-problem"><a class="markdownIt-Anchor" href="#分类问题-classification-problem"></a> 分类问题 Classification problem</h2>
-<p>在分类问题中，我们需要预测的变量y是离散的值，比如：</p>
-<ol>
-<li>判断垃圾邮件</li>
-<li>判断诈骗交易</li>
-<li>判断病症</li>
-</ol>
-<p>逻辑回归算法(Logistic Regression)是目前最广泛使用的一种学习算法。</p>
-<h2 id="简单介绍"><a class="markdownIt-Anchor" href="#简单介绍"></a> 简单介绍</h2>
-<p>首先讨论<strong>二元分类问题</strong>：<br />
-我们将<strong>因变量(dependent variable)</strong> 分为 <strong>负向类(negative class)</strong> 和 <strong>正向类(positive class)</strong> 。因变量则为{0-负向类,1-正向类}。<br />
-假设公式为h<sub>θ</sub>(x)，它的值域是没有限制的，因此我们需要一个逻辑回归算法，使其值域永远在0-1之间。</p>
-<ol>
-<li>h<sub>θ</sub>(x) &gt; 0.5 --&gt; y=1</li>
-<li>h<sub>θ</sub>(x) &lt; 0.5 --&gt; y=0</li>
-</ol>
-<p>因此，选择一个合理的假设公式满足上述条件很重要。</p>
-<h2 id="假设表示-hypothesis-representation"><a class="markdownIt-Anchor" href="#假设表示-hypothesis-representation"></a> 假设表示 Hypothesis Representation</h2>
-<p>根据线性回归模型我们只能预测连续的值，然而对于分类问题，我们需要输出 0 或 1。<br />
-逻辑回归的模型为 <strong>h<sub>θ</sub>(x) = g(θ<sup>T</sup>X)</strong></p>
-<ol>
-<li>X 表示特征向量</li>
-<li>g 表示逻辑函数(logistic function)<br />
-一个常用的逻辑函数为 Sigmoid function， 形为 g(z) = (1+e<sup>-z</sup>)<sup>-1</sup><br />
-<img src="http://i1.fuimg.com/733078/faf75921b0ad1e04.png" alt="Markdown" /></li>
-</ol>
-<h2 id="判定边界-decision-boundary"><a class="markdownIt-Anchor" href="#判定边界-decision-boundary"></a> 判定边界 Decision Boundary</h2>
-<p>根据上面g(z)的图，可知：</p>
-<ol>
-<li>z=0 : g(z)=0.5</li>
-<li>z&gt;0 : g(z)&gt;0.5</li>
-<li>z&lt;0 : g(z)&lt;0.5</li>
-</ol>
-<p>又因为z=θ<sup>T</sup>X：</p>
-<ol>
-<li>θ<sup>T</sup>X&gt;0 --&gt; g(z)&gt;0 --&gt; y=1</li>
-<li>θ<sup>T</sup>X&lt;0 --&gt; g(z)&lt;0 --&gt; y=0</li>
-</ol>
-<h2 id="代价函数-cost-function"><a class="markdownIt-Anchor" href="#代价函数-cost-function"></a> 代价函数 Cost Function</h2>
-<ul>
-<li>
-<p>在线性函数中，我们定义的代价函数是所有模型误差的平方和。但是在逻辑回归算法，该代价函数的算法得到的图像是一个非凸函数，有许多局部最小值，所以不实用。</p>
-</li>
-<li>
-<p>重新定义逻辑回归的代价函数为：J(θ) = 1/m ∑ Cost( h<sub>θ</sub>(x<sup>i</sup>), y<sup>i</sup>)。<br />
-其中，Cost(h<sub>θ</sub>(x<sup>i</sup>), y<sup>i</sup>) =</p>
-</li>
-</ul>
-<ol>
-<li>-log(h<sub>θ</sub>(x))       if y=1</li>
-<li>-log(1 - h<sub>θ</sub>(x))   if y=0</li>
-</ol>
-<p><img src="http://i1.fuimg.com/733078/bfb48430f10bc97c.png" alt="Markdown" /></p>
-<ul>
-<li>这样构建的𝐶𝑜𝑠𝑡(ℎ<sub>𝜃</sub>(𝑥), 𝑦)函数的特点是：</li>
-</ul>
-<ol>
-<li>当实际的 𝑦=1 且 ℎ𝜃(𝑥)也为 1 时误差为 0， 当 𝑦 = 1 但ℎ𝜃(𝑥)不为 1 时误差随着ℎ<sub>𝜃</sub>(𝑥)变小而变大；</li>
-<li>当实际的 𝑦=0 且ℎ<sub>𝜃</sub>(𝑥)也为 0 时，代价为 0，当 𝑦 = 0 但ℎ<sub>𝜃</sub>(𝑥)不为 0 时误差随着 ℎ<sub>𝜃</sub>(𝑥)的变大而变大。</li>
-</ol>
-<ul>
-<li>
-<p>简化代价函数𝐶𝑜𝑠𝑡(ℎ<sub>𝜃</sub>(𝑥), 𝑦)函数：<br />
-𝑦 = 0 --&gt; −𝑦 = 0，𝑦 = 1 --&gt; 1−𝑦 = 0<br />
-𝐶𝑜𝑠𝑡(ℎ<sub>𝜃</sub>(𝑥), 𝑦) = −𝑦 × 𝑙𝑜𝑔(ℎ<sub>𝜃</sub>(𝑥)) − (1 − 𝑦) × 𝑙𝑜𝑔(1 − ℎ<sub>𝜃</sub>(𝑥))<br />
-带入代价函数可以得到：<br />
-𝐽(𝜃) = -1/𝑚 ∑ [𝑦<sup>(𝑖)</sup> log (ℎ<sub>𝜃</sub>(𝑥<sup>(𝑖)</sup>)) + (1 − 𝑦<sup>(𝑖)</sup>) log (1 − ℎ<sub>𝜃</sub>(𝑥<sup>(𝑖)</sup>))]</p>
-</li>
-<li>
-<p>梯度下降算法来求得能使代价函数最小的参数：<br />
-𝜃<sub>j</sub> := 𝜃<sub>j</sub> − 𝛼 d/d𝜃<sub>𝑗</sub> × 𝐽(𝜃)</p>
-</li>
-<li>
-<p>对J(0)求导后得到：<br />
-𝜃<sub>j</sub> := 𝜃<sub>𝑗</sub> − 𝛼 × 1/𝑚 ∑ (ℎ<sub>𝜃</sub>(x<sup>(𝑖)</sup> − y<sup>(𝑖)</sup> ) * x<sup>(𝑖)</sup><sub>𝑗</sub></p>
-</li>
-<li>
-<p>注意：</p>
-</li>
-</ul>
-<ol>
-<li>此时也需要同时更新所有的参数 𝜃。</li>
-<li>在运行梯度下降算法之前，进行特征缩放依旧是非常必要的。</li>
-<li>还有一些常被用来令代价函数最小的算法，这些算法更加复杂和优越，而且通常不需要人工选择学习率，通常比梯度下降算法要更加快速。这些算法有：共轭梯度(Conjugate Gradient)，局部优化法(Broyden fletcher goldfarb shann,BFGS)和有限内存局部优化法(LBFGS)。<br />
-fminunc 是 matlab 和 octave中都带的一个最小值优化函数，我们可以直接使用。<br />
-<img src="http://i2.tiimg.com/733078/61d030dbf3abc4ba.png" alt="Markdown" /></li>
-</ol>
-<h2 id="简化的成本函数和梯度下降"><a class="markdownIt-Anchor" href="#简化的成本函数和梯度下降"></a> 简化的成本函数和梯度下降：</h2>
-<ul>
-<li>
-<p>通过上文，我们得到更新参数的公式为：<br />
-𝜃<sub>j</sub> := 𝜃<sub>𝑗</sub> − 𝛼 × 1/𝑚 ∑ (ℎ<sub>𝜃</sub>(x<sup>(𝑖)</sup> − y<sup>(𝑖)</sup> ) * x<sup>(𝑖)</sup><sub>𝑗</sub><br />
-我们的目标是求出使代价J(𝜃)最小的参数𝜃。</p>
-</li>
-<li>
-<p>着眼于后面的公式：∑ (ℎ<sub>𝜃</sub>(x<sup>(𝑖)</sup> − y<sup>(𝑖)</sup> ) * x<sup>(𝑖)</sup><sub>𝑗</sub><br />
-其实就是在i=1到m上求和</p>
-</li>
-<li>
-<p>则单个看来ℎ<sub>𝜃</sub>(x<sup>(𝑖)</sup> − y<sup>(𝑖)</sup> ) * x<sup>(𝑖)</sup><sub>𝑗</sub><br />
-就是预测误差乘x<sup>(𝑖)</sup><sub>𝑗</sub></p>
-</li>
-<li>
-<p>这样看，更新𝜃的公式和原来梯度下降法是一个公式，但是逻辑回归的假设函数和线性回归的假设函数是不同的，所以两者的梯度下降完全不同。</p>
-</li>
-<li>
-<p>操作的注意事项：</p>
-</li>
-</ul>
-<ol>
-<li>推荐用向量化的方式，来同时更新这n个参数。</li>
-<li>特征需要缩放</li>
-</ol>
-<h2 id="优化"><a class="markdownIt-Anchor" href="#优化"></a> 优化：</h2>
-<p>首先明确：在梯度下降法中，每次计算的是𝐽(𝜃)和𝐽=0…n时的偏导数项</p>
-<h2 id="多分类问题一对多问题-multi-class-classification_-one-vs-all"><a class="markdownIt-Anchor" href="#多分类问题一对多问题-multi-class-classification_-one-vs-all"></a> 多分类问题/一对多问题 Multi class Classification_ One-vs-all：</h2>
-<ul>
-<li>举例：
-<ol>
-<li>自动将邮件归类到不同的文件夹中，或者增加不同的标签</li>
-<li>判断一个病人的的多种病症</li>
-</ol>
-</li>
-</ul>
-<p><img src="http://i1.fuimg.com/733078/289b167f17248823.png" alt="Markdown" /></p>
-<ul>
-<li>
-<p>训练方法：<br />
-将上图作为一个例子：在训练类别1时，将其他类别全部设置成负向类<br />
-<img src="http://i1.fuimg.com/733078/09d8a1faf81a9b94.png" alt="Markdown" /></p>
-</li>
-<li>
-<p>模型的使用：<br />
-为了做出预测，我们给出输入一个新的 𝑥 值，用这个做预测。我们要做的就是在我们三个分类器里面输入 𝑥，然后我们选择一个让 ℎ<sub>𝜃</sub><sup>(𝑖)</sup>(𝑥)最大的𝑖，即max<sub>i</sub> ℎ<sub>𝜃</sub><sup>(𝑖)</sup>(𝑥)。</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/04/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/04/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/" class="post-title-link" itemprop="url">正规方程 Normal Equation</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-04 21:34:46" itemprop="dateCreated datePublished" datetime="2021-02-04T21:34:46+08:00">2021-02-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-06 22:26:10" itemprop="dateModified" datetime="2021-04-06T22:26:10+08:00">2021-04-06</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>对于某些线性回归问题，正规方程可能是更好的解决方法。</p>
-<h3 id="正规方程-normal-equation"><a class="markdownIt-Anchor" href="#正规方程-normal-equation"></a> 正规方程 Normal Equation</h3>
-<ul>
-<li>直接求导使假设公式导数为0时，即代价函数最小值时的参数。</li>
-<li>方法：假设训练集特征矩阵为X(含x<sub>0</sub>=1)，且训练集结果为向量y则利用正规方程求出向量θ=(X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y。</li>
-<li>答案的推导方式如下：<br />
-J(θ) = 1/2m * ∑(h<sub>θ</sub>x - y)<sup>2</sup><br />
-h<sub>θ</sub>(x) = θ<sub>0</sub>x<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub><br />
-转化为向量表达形式：<br />
-J(θ) = 1/2 * (Xθ-y)<sup>2</sup><br />
-h<sub>θ</sub>(x) = θ<sup>T</sup>X<br />
-其中：X为m*n的矩阵(m为样本数量，n为特征数量)，θ为n*1的矩阵，y为m*1的矩阵。<br />
-对J(θ)进行变换：<br />
-<img src="http://i1.fuimg.com/733078/dbe5fdc00218a958.png" alt="Markdown" /><br />
-接下来对J(θ)偏导：<br />
-用到求导法则 <strong>dAB/dB = A<sup>T</sup></strong> 和 <strong>dX<sup>T</sup>*AX/dX = 2AX</strong><br />
-得到<img src="http://i1.fuimg.com/733078/21528b3ec5615718.png" alt="Markdown" /><br />
-令dJ(θ)/dθ = 0, 就会得到结果θ=(X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y</li>
-</ul>
-<hr />
-<ul>
-<li>这个方法也称为最小二乘法建立线性回归方程，有篇博客导出答案的方式不同，但是写的很易理解，此处引用: <code>https://blog.csdn.net/u010687164/article/details/86160221</code><br />
-截取结果为<img src="http://i1.fuimg.com/733078/cb74a06ca058b911.png" alt="Markdown" /></li>
-</ul>
-<hr />
-<ul>
-<li>在 Octave 中，正规方程写作：<code>pinv(X'*X)*X'*y</code></li>
-</ul>
-<hr />
-<ul>
-<li>
-<p>注意：对于那些不可逆的矩阵（通常是因为特征之间不独立，如同时包含英尺为单位的尺<br />
-寸和米为单位的尺寸两个特征，也有可能是特征数量大于训练集的数量），正规方程方法是<br />
-不能用的。</p>
-</li>
-<li>
-<p>优势：</p>
-<ol>
-<li>正规方程无需选择学习率</li>
-<li>可以一次性运算得出</li>
-</ol>
-</li>
-<li>
-<p>劣势：</p>
-<ol>
-<li>需要计算(X<sup>T</sup>)<sup>-1</sup>，矩阵逆运算的算法复杂度为O(n<sup>3</sup>)所以不适用于特征数量n比较大的情况</li>
-<li>不适合逻辑回归模型</li>
-</ol>
-</li>
-<li>
-<p>正规方程的不可逆性质：<br />
-其实，奇异矩阵是不可逆的，但在Octave中，pinv()函数仍旧可以计算。</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/04/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/04/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">linear regression with multiple variables 多元/多变量线性回归</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-04 19:16:34" itemprop="dateCreated datePublished" datetime="2021-02-04T19:16:34+08:00">2021-02-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-06 22:26:10" itemprop="dateModified" datetime="2021-04-06T22:26:10+08:00">2021-04-06</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>学习了单个变量的线性模型之后，现在增加更多的特征。</p>
-<h3 id="新的注释"><a class="markdownIt-Anchor" href="#新的注释"></a> 新的注释</h3>
-<ul>
-<li>n: 特征数量</li>
-<li>x<sup>(i)</sup>: 第i个训练实例，为特征矩阵的第i行，是一个向量</li>
-<li>x<sup>(i)</sup><sub>j</sub>: 表示特征矩阵第i行的第j个特征</li>
-</ul>
-<h3 id="假设-hypnosis"><a class="markdownIt-Anchor" href="#假设-hypnosis"></a> 假设 hypnosis</h3>
-<p>h<sub>θ</sub>(x) = θ<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub>，在这个假设中，参数是一个n+1维的向量: [θ<sub>0</sub>, θ<sub>1</sub> …θ<sub>n</sub>]，x则为第n行的特征向量。</p>
-<p>为了简化假设模型，引入x<sub>0</sub>=1，<br />
-则公式简化为h<sub>θ</sub>(x) = θ<sub>0</sub>x<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub>，<br />
-此时参数和单个训练实例都是n+1维的向量，二特征矩阵维度维m*(n+1)。公式可以简化为<strong>h<sub>θ</sub>=θ<sup>T</sup>x</strong>，T表示转制。</p>
-<h3 id="代价函数-cost-function"><a class="markdownIt-Anchor" href="#代价函数-cost-function"></a> 代价函数 cost function</h3>
-<p>与单变量线性回归类似，代价函数是所有建模误差的平方和：<br />
-J(θ<sub>0</sub>, θ<sub>1</sub> … θ<sub>n</sub>) = 1/2m * ∑(h<sub>θ</sub>x - y)<sup>2</sup></p>
-<h3 id="梯度下降算法-gradient-descent-algorithm"><a class="markdownIt-Anchor" href="#梯度下降算法-gradient-descent-algorithm"></a> 梯度下降算法 gradient descent algorithm</h3>
-<p>θ<sub>j</sub> := θ<sub>j</sub> - α*d/dθ<sub>j</sub>*J(θ<sub>0</sub>, θ<sub>1</sub> … θ<sub>n</sub>)<br />
-即：θ<sub>j</sub> := θ<sub>j</sub> - α*d/dθ<sub>j</sub>* 1/2m *∑(h<sub>θ</sub>x - y)<sup>2</sup><br />
-即：θ<sub>j</sub> := θ<sub>j</sub> - α*d/dθ<sub>j</sub>* 1/2m *∑(θ<sub>0</sub>x<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub>-y)<sup>2</sup><br />
-去除求导符号后：θ<sub>j</sub> := θ<sub>j</sub> - α* 1/m *∑( (θ<sub>0</sub>x<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub>-y)*x<sub>j</sub> )</p>
-<h3 id="实践注意事项"><a class="markdownIt-Anchor" href="#实践注意事项"></a> 实践注意事项</h3>
-<h4 id="特征缩放-feature-scaling"><a class="markdownIt-Anchor" href="#特征缩放-feature-scaling"></a> 特征缩放 feature Scaling</h4>
-<p>在计算多维度问题时，我们要保证这些特征都具有相近的尺度，这帮助算法更快地收敛。<br />
-解决方法： 尽量将特征的尺度缩放到[-1,1]之间。</p>
-<h4 id="学习率-learning-rate"><a class="markdownIt-Anchor" href="#学习率-learning-rate"></a> 学习率 learning rate</h4>
-<p>梯度下降算法的迭代收到学习率的影响<br />
-如果学习率α过小，则收敛次数会非常高<br />
-如果学习率α过大，则可能会越过局部最小值导致无法收敛<br />
-常见的学习率有：0.01，0.03，0.1，0.3，1，3，10</p>
-<h3 id="多项式回归-polynomial-regression"><a class="markdownIt-Anchor" href="#多项式回归-polynomial-regression"></a> 多项式回归 Polynomial Regression</h3>
-<p>线性回归不一定适合所有的数据，有时我们需要曲线来模拟我们的数据，即二次方程或者其他多项式方程。<br />
-通常需要先观察数据，然后决定准备尝试怎样的模型。<br />
-特征缩放对多项式回归模型很重要。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

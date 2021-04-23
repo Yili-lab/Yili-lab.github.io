@@ -196,7 +196,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -252,6 +252,683 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/23/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/23/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">语言模型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-23 15:08:58" itemprop="dateCreated datePublished" datetime="2021-04-23T15:08:58+08:00">2021-04-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/23/machine%20learninng/NLP/%E5%88%86%E8%AF%8D%E5%87%86%E7%A1%AE%E7%8E%87%E8%AF%84%E6%B5%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/23/machine%20learninng/NLP/%E5%88%86%E8%AF%8D%E5%87%86%E7%A1%AE%E7%8E%87%E8%AF%84%E6%B5%8B/" class="post-title-link" itemprop="url">分词准确率评测</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-23 11:12:45 / Modified: 14:03:15" itemprop="dateCreated datePublished" datetime="2021-04-23T11:12:45+08:00">2021-04-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>准确率(accuray)是用来衡量一个系统准确程度(accurate)的值。<br />
+NLP分词任务重，使用 <strong>词语级别精确度，召回率和F<sub>1</sub></strong> 来衡量分词器的准确程度。他们都依赖于混淆矩阵：</p>
+<h2 id="混淆矩阵-confusion-matrix"><a class="markdownIt-Anchor" href="#混淆矩阵-confusion-matrix"></a> 混淆矩阵 confusion matrix</h2>
+<p><img src="https://i.loli.net/2021/04/23/pjo9wtrKsPlZG5I.png" alt="" /></p>
+<ul>
+<li>四种组合
+<ul>
+<li>TP (true positive 真阳)：预测和答案都是P</li>
+<li>FP (false positive 假阳)：预测为P，答案为N</li>
+<li>TN (true negative 真阴)：预测为N，答案为N</li>
+<li>FN (false negative 假阴)：预测为N，答案为P</li>
+</ul>
+</li>
+</ul>
+<h3 id="精确率-precision"><a class="markdownIt-Anchor" href="#精确率-precision"></a> 精确率 precision</h3>
+<p>简称p值，分母为预测阳性的数量<br />
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">P = \frac{TP}{TP + FP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.275662em;vertical-align:-0.403331em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.872331em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.403331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h3 id="召回率-recall"><a class="markdownIt-Anchor" href="#召回率-recall"></a> 召回率 Recall</h3>
+<p>简称R值，指正样本被找出来的概率，分母为答案阳性的数量<br />
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">R = \frac{TP}{TP + FN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.275662em;vertical-align:-0.403331em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.872331em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.403331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h3 id="fsub1sub"><a class="markdownIt-Anchor" href="#fsub1sub"></a> F<sub>1</sub></h3>
+<p>一般精确率和召回率很平衡，所以引入一个综合性质的指标.<br />
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mn>2</mn><mo>∗</mo><mi>P</mi><mo>∗</mo><mi>R</mi></mrow><mrow><mi>P</mi><mo>+</mo><mi>R</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">F_1 = \frac{2 * P * R}{P + R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.275662em;vertical-align:-0.403331em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.872331em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mbin mtight">∗</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mbin mtight">∗</span><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.403331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h2 id="中文分词中的prf_1"><a class="markdownIt-Anchor" href="#中文分词中的prf_1"></a> 中文分词中的P,R,F_1</h2>
+<ul>
+<li>前面的情况针对答案等于预测数量的情况，因而针对的是分类问题。但是中午分词针对的是一个分块问题，所以我们需要将分块问题转换为分类问题。</li>
+<li>针对长为n的字符串，分词的结果往往是一系列单词，每个单词可以根据其索引和长度，记为区间[i, j]。</li>
+<li>标准答案的所有区间构成了集合A作为正类，分词结果的所有区间构成集合B。则分词正确的集合为A与B的交集。</li>
+<li>准确率：结果中正确的数量，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∣</mi><mi>A</mi><mo>∩</mo><mi>B</mi><mi mathvariant="normal">∣</mi></mrow><mrow><mi mathvariant="normal">∣</mi><mi>B</mi><mi mathvariant="normal">∣</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{|A \cap B|}{| B |}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span><span class="mord mtight">∣</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathdefault mtight">A</span><span class="mbin mtight">∩</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span><span class="mord mtight">∣</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><br />
+召回率：答案被找出来的数量，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∣</mi><mi>A</mi><mo>∩</mo><mi>B</mi><mi mathvariant="normal">∣</mi></mrow><mrow><mi mathvariant="normal">∣</mi><mi>A</mi><mi mathvariant="normal">∣</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{|A \cap B|}{| A|}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathdefault mtight">A</span><span class="mord mtight">∣</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathdefault mtight">A</span><span class="mbin mtight">∩</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span><span class="mord mtight">∣</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></li>
+<li>当测试文本不止一个时，我们通常累加，然后计算一次P/R。</li>
+</ul>
+<h2 id="oov-和-iv"><a class="markdownIt-Anchor" href="#oov-和-iv"></a> OOV 和 IV</h2>
+<p>OOV指“未登录词”，或者称为“新词”<br />
+IV指登陆词</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/22/python%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/22/python%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">python魔术方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-22 16:44:15" itemprop="dateCreated datePublished" datetime="2021-04-22T16:44:15+08:00">2021-04-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/22/machine%20learninng/NLP/%E5%AD%97%E5%85%B8%E6%A0%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/22/machine%20learninng/NLP/%E5%AD%97%E5%85%B8%E6%A0%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">字典树数据结构</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-22 14:27:36" itemprop="dateCreated datePublished" datetime="2021-04-22T14:27:36+08:00">2021-04-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-23 14:59:20" itemprop="dateModified" datetime="2021-04-23T14:59:20+08:00">2021-04-23</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="匹配算法的数据结构-字典树前缀树"><a class="markdownIt-Anchor" href="#匹配算法的数据结构-字典树前缀树"></a> 匹配算法的数据结构 – 字典树/前缀树</h1>
+<p>匹配算法的操作需要不断判断字符串是否在词典中，如果使用一般的集合TreeMap的话，复杂度为O(log n)，这里我们引用一种新的数据结构：字典树。<br />
+字典树就是典型的前缀树：前缀相同的单词一定通过同一节点。</p>
+<ul>
+<li>一些定义：<br />
+<strong>边</strong>代表字符<br />
+<strong>字符集合</strong>定义了所有边上可能出现的字符。<br />
+<strong>节点</strong>则标记是否为词尾，只是为了方便描述而加上的。<br />
+如果从根可以走到<strong>终点节点</strong>，则这一条<strong>路径</strong>的所有边构成一个单词。</li>
+<li>一些操作：增删改查</li>
+<li>如果“自然”不存在于前缀树中，则所有以“自然”开头的单词都不存在于前缀树中，所以我们可以提前终止扫描。</li>
+</ul>
+<h1 id="基本数据结构"><a class="markdownIt-Anchor" href="#基本数据结构"></a> 基本数据结构</h1>
+<h2 id="节点-node"><a class="markdownIt-Anchor" href="#节点-node"></a> 节点 Node</h2>
+<p>在python中，是一个继承object的类，名为Node。</p>
+<ul>
+<li>属性：1. children字典，键表示边，值表示节点标志。  2. value值，表示当前的节点标志，即<strong>查询到的前缀</strong>。</li>
+<li>方法：add_child，输入边上字符char，节点状态value，和标签overwrite判断是否覆盖。</li>
+</ul>
+<p>伪代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">add_child(char, value, overwrite)：</span><br><span class="line">    child &#x3D; 判断当前节点是否有待插入节点</span><br><span class="line">    如果没有待插入节：</span><br><span class="line">        child &#x3D; 新建 Node(value)</span><br><span class="line">        插入到self中的children字典中去 children[输入边字符] &#x3D; 节点标志</span><br><span class="line">    else：  &#x2F;&#x2F;（如果有这个节点，child不是none）</span><br><span class="line">        如果overwrite标志为true：</span><br><span class="line">            重写children中的value值</span><br><span class="line">    return child</span><br></pre></td></tr></table></figure>
+<p>python代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># char表示子节点键，表示当前的字符串，value表示字节节点的值</span><br><span class="line"># 返回插入的child（Node类）</span><br><span class="line">def _add_child(self, char, value, overwrite&#x3D;False):</span><br><span class="line">    # 判断是否有该节点</span><br><span class="line">    child &#x3D; self._children.get(char)</span><br><span class="line">    # 未找到该子节点返回none</span><br><span class="line">    if child is None:</span><br><span class="line">        # 新建节点并且添加到子节点列表</span><br><span class="line">        child &#x3D; Node(value)</span><br><span class="line">        self._children[char] &#x3D; child</span><br><span class="line">    # 如果允许重写</span><br><span class="line">    elif overwrite:</span><br><span class="line">        child._value &#x3D; value</span><br><span class="line">    return child</span><br></pre></td></tr></table></figure>
+<h2 id="字典树-trie"><a class="markdownIt-Anchor" href="#字典树-trie"></a> 字典树 Trie</h2>
+<p>字典树继承了Node类，同时加入了contains，getitem(key)，setitem(方法)。<br />
+- 查询，如果父节点有满足条件的边，则转移到子节点；否则失败查询不到。<br />
+- 增加，本质也是查询，不过在状态转移失败时加入子节点。</p>
+<ul>
+<li>代码：这里使用了python的魔术方法，具体详见 <a href="/2021/04/22/python%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/" title="python魔术方法">python魔术方法</a> 。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Trie(Node):</span><br><span class="line">    def __init__(self) -&gt; None:</span><br><span class="line">        super().__init__(None)</span><br><span class="line"></span><br><span class="line">    def __contains__(self, key):</span><br><span class="line">        return self[key] is not None</span><br><span class="line"></span><br><span class="line">    def __getitem__(self, key):</span><br><span class="line">        state &#x3D; self</span><br><span class="line">        # key是一个字符串列表，不断更新state</span><br><span class="line">        for char in key:</span><br><span class="line">            print(&quot;__getitem__：&quot;, char)</span><br><span class="line">            state &#x3D; state._children.get(char)</span><br><span class="line">            if state is None:</span><br><span class="line">                return None</span><br><span class="line">        # 返回的是value值</span><br><span class="line">        return state._value</span><br><span class="line"></span><br><span class="line">    def __setitem__(self, key, value):</span><br><span class="line">        state &#x3D; self</span><br><span class="line">        # 先查询</span><br><span class="line">        for i, char in enumerate(key):</span><br><span class="line">            if i &lt; len(key) - 1:</span><br><span class="line">                # 不断返回子节点，中途出现没有则直接添加</span><br><span class="line">                state &#x3D; state._add_child(char, None, False)</span><br><span class="line">            # 找到最后的节点，只有叶节点才允许覆盖</span><br><span class="line">            else:</span><br><span class="line">                state &#x3D; state._add_child(char, value, True)</span><br></pre></td></tr></table></figure>
+<p>value是我们手动赋给他们的值<br />
+一般只有单词结尾的字符才有value<br />
+一般是一个标注，表示这个单词的一些属性</p>
+<h2 id="散列函数"><a class="markdownIt-Anchor" href="#散列函数"></a> 散列函数</h2>
+<ul>
+<li>散列的概念属于查找，它不以关键字的比较为基本操作，采用直接寻址技术。</li>
+<li>hash函数就是把任意长的输入字符串变化成整数的一种函数。</li>
+<li>相同对象，散列值必须相同。</li>
+<li>完美散列：对象不同，散列值不同。</li>
+</ul>
+<h3 id="python中的散列"><a class="markdownIt-Anchor" href="#python中的散列"></a> python中的散列</h3>
+<p>python中没有char类型，词散列函数的结果是str类型的散列函数，64位系统返回的是64位的整数。<br />
+但是Unicode字符只有136690个，哈希值过于分散。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python3</span><br><span class="line">&gt;&gt;&gt; hash(&#39;池&#39;) - hash(&#39;江&#39;)</span><br><span class="line">-18199997415614011790</span><br></pre></td></tr></table></figure>
+<h3 id="java中的散列"><a class="markdownIt-Anchor" href="#java中的散列"></a> java中的散列</h3>
+<p>java中支持char数据类型，并且编码为UTF-16，即每个字符映射为16位整数，恰好是完美散列。</p>
+<h1 id="字典树的其他应用"><a class="markdownIt-Anchor" href="#字典树的其他应用"></a> 字典树的其他应用</h1>
+<h2 id="停用词过滤"><a class="markdownIt-Anchor" href="#停用词过滤"></a> 停用词过滤</h2>
+<p>HanLP提供了一个小巧的停用词词典，位于data/dictionary/stopwords.txt，收录了常见的中英文无意义词汇，每行一个词语。</p>
+<ul>
+<li>代码示例：</li>
+</ul>
+<ol>
+<li>得到停用词字典树</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 加载字典到DAT</span><br><span class="line"># 从路径加载</span><br><span class="line"># 返回DAT类型的停用词字典树</span><br><span class="line">def load_from_file(path):</span><br><span class="line">    map &#x3D; JClass(&#39;java.util.TreeMap&#39;)()</span><br><span class="line">    with open(path) as src:</span><br><span class="line">        for word in src:</span><br><span class="line">            word &#x3D; word.strip()</span><br><span class="line">            map[word] &#x3D; word</span><br><span class="line">    return JClass(&#39;com.hankcs.hanlp.collection.trie.DoubleArrayTrie&#39;)(map)</span><br><span class="line"></span><br><span class="line"># 从单词列表加载</span><br><span class="line">def load_from_words(*words):</span><br><span class="line">    map &#x3D; JClass(&#39;java.util.TreeMao&#39;)()</span><br><span class="line">    for word in words:</span><br><span class="line">        map[word] &#x3D; word</span><br><span class="line">    return JClass(&#39;com.hankcs.hanlp.collection.trie.DoubleArrayTrie&#39;)(map)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>根据停用词字典树过滤分词数组：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def remove_stop_termlist(termlist, trie):</span><br><span class="line">    return [term.word for term in termlist if not trie.containsKey(term.word)]</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>测试</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 加载字典树</span><br><span class="line">trie &#x3D; load_from_file(HanLP.Config.CoreStopWordDictionaryPath)</span><br><span class="line">HanLP.Config.ShowTermNature &#x3D; False</span><br><span class="line">text &#x3D; &quot;这个东西也就那个样子吧比较一般了&quot;</span><br><span class="line"></span><br><span class="line"># 分词</span><br><span class="line">segment &#x3D; DoubleArrayTrieSegment()</span><br><span class="line">termList &#x3D; segment.seg(text)</span><br><span class="line">print(&quot;分词结果：&quot;, termList)</span><br><span class="line"></span><br><span class="line"># 删除停用词</span><br><span class="line">print(&quot;去除停用（file）：&quot;, remove_stop_termlist(termList, trie))</span><br><span class="line"></span><br><span class="line"># 删除自定义单词</span><br><span class="line">trie &#x3D; load_from_words(&quot;比较&quot;, &#39;也&#39;, &#39;就&#39;, &#39;吧&#39;, &#39;了&#39;, &#39;这个&#39;, &#39;那个&#39;)</span><br><span class="line">print(&quot;去除停用（words)：&quot;, remove_stop_termlist(termList, trie))</span><br></pre></td></tr></table></figure>
+<h2 id="停用词替换操作"><a class="markdownIt-Anchor" href="#停用词替换操作"></a> 停用词替换操作</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from jpype import JString</span><br><span class="line"></span><br><span class="line">def replace_stropwords_text(text, replacement, trie):</span><br><span class="line">    searcher &#x3D; trie.getLongestSearcher(JString(text), 0)</span><br><span class="line">    offset &#x3D; 0</span><br><span class="line">    result &#x3D; &#39;&#39;</span><br><span class="line">    while searcher.next():</span><br><span class="line">        begin &#x3D; searcher.begin</span><br><span class="line">        end &#x3D; begin + searcher.length</span><br><span class="line">        if begin &gt; offset:</span><br><span class="line">            result +&#x3D; text[offset: begin]</span><br><span class="line">        result +&#x3D; replacement</span><br><span class="line">        offset &#x3D; end</span><br><span class="line">    if offset &lt; len(text):</span><br><span class="line">        result +&#x3D; text[offset:]</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    text &#x3D; &quot;停用词的意义相对而言无关紧要的词吧&quot;</span><br><span class="line">    trie &#x3D; load_from_words(&quot;的&quot;, &quot;相对而言&quot;, &quot;吧&quot;)</span><br><span class="line">    print(&quot;不分词去掉停用词:&quot;, replace_stropwords_text(text, &quot;**&quot;, trie))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; 不分词去掉停用词: 停用词**意义**无关紧要**词**</span><br></pre></td></tr></table></figure>
+<h2 id="繁简转换"><a class="markdownIt-Anchor" href="#繁简转换"></a> 繁简转换</h2>
+<p>P89</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/21/machine%20learninng/NLP/%E8%AF%8D%E5%85%B8%E5%88%86%E8%AF%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/21/machine%20learninng/NLP/%E8%AF%8D%E5%85%B8%E5%88%86%E8%AF%8D/" class="post-title-link" itemprop="url">词典分词</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-21 20:16:14" itemprop="dateCreated datePublished" datetime="2021-04-21T20:16:14+08:00">2021-04-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-23 11:12:22" itemprop="dateModified" datetime="2021-04-23T11:12:22+08:00">2021-04-23</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="词典设置"><a class="markdownIt-Anchor" href="#词典设置"></a> 词典设置</h2>
+<p>HanLP自带一个迷你核心词典，纯文本格式。每列分别为单词，词性，词频。如果遇到英文单词本身含有空格，则使用英文逗号’,'分隔的<code>.csv</code>格式。</p>
+<h3 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h3>
+<ul>
+<li><code>from pyhanlp import *</code>：首先导入库</li>
+<li>更新字典：库中的字典路径为Hanlp.Config.CoreDictionaryPath，使用<code>Hanlp.ConfigDictionaryPath.replace('.txt', '.mini.txt')</code>，将自带mini字典替换。</li>
+<li>使用<code>IOUil.loadDictionary([path])</code>设置默认字典，该方法支持将多个文件读入同一个字典中，因此需要传入一个list。</li>
+<li>最后因为只考虑键不考虑字典全部，所以转换成set对象。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from pyhanlp import *</span><br><span class="line"></span><br><span class="line">def load_dictionary():</span><br><span class="line">    # 取得IOUtil工具类</span><br><span class="line">    IOUtil &#x3D; JClass(&#39;com.hankcs.hanlp.corpus.io.IOUtil&#39;)</span><br><span class="line">    # 得到词典路径：HanLP.Config.CoreDictionaryPath</span><br><span class="line">    # 加载词典</span><br><span class="line">    path &#x3D; HanLP.Config.CoreDictionaryPath.replace(&#39;.txt&#39;, &#39;.mini.txt&#39;)</span><br><span class="line">    dic &#x3D; IOUtil.loadDictionary([path])</span><br><span class="line">    return set(dic.keySet())</span><br></pre></td></tr></table></figure>
+<p>之后想得到设置的字典，使用<code>dic = load_dictionary()</code>即可</p>
+<h2 id="完全切分"><a class="markdownIt-Anchor" href="#完全切分"></a> 完全切分</h2>
+<p>在一段文本中，找到字典匹配的所有单词，也称分词。<br />
+完全切分会找到所有的单词（“北京大学”会被分为“北京大学”，“北”，“北京”，“大”，“学”，“大学”）。<br />
+而我们只希望得到一整个单词，不需要这么零碎。所以，考虑越<strong>长优先级越高</strong>。</p>
+<h3 id="匹配方式"><a class="markdownIt-Anchor" href="#匹配方式"></a> 匹配方式</h3>
+<p>分类：<strong>正向最长匹配</strong>，<strong>逆向最长匹配</strong>，<strong>双向最长匹配</strong></p>
+<h4 id="双向最长匹配"><a class="markdownIt-Anchor" href="#双向最长匹配"></a> 双向最长匹配</h4>
+<p>正向匹配，和逆向匹配都会出现切分的不到位的情况。取长补短：</p>
+<ol>
+<li>同时执行两种匹配方式，词数不同则返回词更少的一个。</li>
+<li>词数相同则返回单字更少的一个。</li>
+<li>单字数量相同则返回逆向匹配的结果。</li>
+</ol>
+<h3 id="代码实现-2"><a class="markdownIt-Anchor" href="#代码实现-2"></a> 代码实现</h3>
+<ul>
+<li>正向匹配</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def forward_segment(text, dic):</span><br><span class="line">    word_list &#x3D; []</span><br><span class="line">    i &#x3D; 0</span><br><span class="line">    while i &lt; len(text):</span><br><span class="line">        longest_word &#x3D; text[i]</span><br><span class="line">        for j in range(i + 1, len(text) + 1):</span><br><span class="line">            word &#x3D; text[i: j]</span><br><span class="line">            if word in dic:</span><br><span class="line">                if len(word) &gt; len(longest_word):</span><br><span class="line">                    longest_word &#x3D; word</span><br><span class="line">        word_list.append(longest_word)</span><br><span class="line">        i +&#x3D; len(longest_word)</span><br><span class="line">    return word_list</span><br><span class="line"></span><br><span class="line"># test</span><br><span class="line">dic &#x3D; load_dictionary()</span><br><span class="line">print(forward_segment(&quot;欢迎来到北京大学参观&quot;, dic))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>逆向匹配</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def backgroud_segment(text, dic):</span><br><span class="line">    word_list &#x3D; []</span><br><span class="line">    i &#x3D; len(text)-1</span><br><span class="line">    while i &gt;&#x3D; 0:</span><br><span class="line">        longest_word &#x3D; text[i]</span><br><span class="line">        for j in range(0, i):</span><br><span class="line">            word &#x3D; text[j: i+1]</span><br><span class="line">            # print(word)</span><br><span class="line">            if word in dic:</span><br><span class="line">                if len(word) &gt; len(longest_word):</span><br><span class="line">                    longest_word &#x3D; word</span><br><span class="line">                    break</span><br><span class="line">        word_list.insert(0, longest_word)</span><br><span class="line">        i -&#x3D; len(longest_word)</span><br><span class="line">    return word_list</span><br></pre></td></tr></table></figure>
+<ul>
+<li>双向匹配</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">## 双向最长匹配 - 统计结果列表的单字个数</span><br><span class="line">def count_single_char(word_list: list):</span><br><span class="line">    return sum(1 for word in word_list if len(word) &#x3D;&#x3D; 1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 双向最长匹配</span><br><span class="line">def bidirectional_segment(text, dic):</span><br><span class="line">    f &#x3D; forward_segment(text, dic)</span><br><span class="line">    b &#x3D; backgroud_segment(text, dic)</span><br><span class="line">    if len(f) &lt; len(b):</span><br><span class="line">        return f</span><br><span class="line">    elif len(f) &lt; len(b):</span><br><span class="line">        return b</span><br><span class="line">    elif count_single_char(f) &lt; count_single_char(b):</span><br><span class="line">        return f</span><br><span class="line">    else:</span><br><span class="line">        return b</span><br></pre></td></tr></table></figure>
+<h2 id="hanlp的词典分词实现"><a class="markdownIt-Anchor" href="#hanlp的词典分词实现"></a> HanLP的词典分词实现</h2>
+<ul>
+<li>分词的方式有两种：DAT和ACDAT。前者适用于单词比较短的时候，而后者适用于词语比较长的时候。</li>
+<li>接口：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Segment</span><br><span class="line">    |</span><br><span class="line">    |</span><br><span class="line">DictionaryBasedSegment ----- DoubleArrayTrieSegment</span><br><span class="line">                        |</span><br><span class="line">                        |--- AhoCorasickDoubleArrayTrieSegment</span><br></pre></td></tr></table></figure>
+<h3 id="dat代码示例"><a class="markdownIt-Anchor" href="#dat代码示例"></a> DAT代码示例</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HanLP.Config.ShowTermNature &#x3D; False</span><br><span class="line">segment &#x3D; DoubleArrayTrieSegment()</span><br><span class="line">print(segment.seg(&quot;江苏徐州云龙湖110号真是漂亮，云龙山也nice！&quot;))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; [江苏, 徐州, 云龙湖, 1, 1, 0, 号, 真是, 漂亮, ，, 云龙, 山, 也, n, i, c, e, ！]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>这里第一次运行出现了错误，网上查看是因为包内缺失DoubleArrayTrieSegment，则直接在preference中删除pyhanl包，然后重新导入</strong></li>
+<li>结果看到数字和单词都被分开了，而且标点也是，这不利于我们分词。</li>
+<li>使用<code>segment.enablePartOfSpeechTagging(True)</code>来激活数字和英文识别</li>
+<li>segment.seg()返回的是一个Term列表，我们可以调用其<strong>word</strong>和<strong>nature</strong>属性分别获得其单词和词性。</li>
+</ul>
+<h3 id="acdat代码示例"><a class="markdownIt-Anchor" href="#acdat代码示例"></a> ACDAT代码示例</h3>
+<p><code>segment = JClass('com.hankcs.hanlp.seg.Other.AhoCorasickDoubleArrayTrieSegment')()</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/19/inclass/INT202/INT202-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/19/inclass/INT202/INT202-Tree/" class="post-title-link" itemprop="url">INT202-Tree</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-19 23:56:43" itemprop="dateCreated datePublished" datetime="2021-04-19T23:56:43+08:00">2021-04-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-20 13:46:16" itemprop="dateModified" datetime="2021-04-20T13:46:16+08:00">2021-04-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>树是一种分层存储元素的抽象数据类型。</p>
+<h2 id="一些术语定义"><a class="markdownIt-Anchor" href="#一些术语定义"></a> 一些术语定义</h2>
+<ul>
+<li>root 根：顶层元素</li>
+<li>parent node， child node</li>
+<li>siblings 兄弟节点</li>
+<li>external node 外部节点/ leave 叶节点</li>
+<li>internal node 内部节点，根节点属于内部节点</li>
+<li>ordered tree 有序树：每个节点的子节点存在一个定义的线性关系，即可以使用正确固定的顺序规则来遍历。比如有区分的第一个孩子，第二个孩子。</li>
+<li>depth 深度：某节点的祖先数量。<strong>根节点深度为0。</strong></li>
+<li>height 高度：一棵树的一个外部节点的最大深度</li>
+</ul>
+<h2 id="一些操作"><a class="markdownIt-Anchor" href="#一些操作"></a> 一些操作</h2>
+<ul>
+<li>access methods：
+<ul>
+<li>root(): O(1)</li>
+<li>parent(v): O(1)</li>
+<li>children(v)：返回V的子节点迭代器,O(c_v 子节点个数)</li>
+</ul>
+</li>
+<li>query methods：
+<ul>
+<li>isInternal(v)</li>
+<li>isExternal(v)</li>
+<li>isRoot(v)</li>
+</ul>
+</li>
+<li>generic methods:
+<ul>
+<li>size()</li>
+<li>elements()：返回所有存在节点中的元素的一个迭代器</li>
+<li>positions()：返回所有节点的一个迭代器</li>
+<li>swapElements(v, w)</li>
+<li>replaceElements(v, w)</li>
+</ul>
+</li>
+</ul>
+<h3 id="tree-traversal-遍历树"><a class="markdownIt-Anchor" href="#tree-traversal-遍历树"></a> Tree Traversal 遍历树</h3>
+<ul>
+<li>Pre-order traversal：根-&gt;子节点，父节点总是比子节点先被访问。</li>
+<li>Post-order traversal：子节点-&gt;根，子节点总是比父节点先被访问。</li>
+<li>In-order traversal</li>
+</ul>
+<h2 id="binary-tree-二叉树"><a class="markdownIt-Anchor" href="#binary-tree-二叉树"></a> Binary tree 二叉树</h2>
+<p>每个节点最多有两个子节点。节点被标为左子节点和右子节点。</p>
+<ul>
+<li>proper binary tree 真二叉树：每个内部节点都恰好有两个叶节点。</li>
+</ul>
+<h2 id="structure-数据结构"><a class="markdownIt-Anchor" href="#structure-数据结构"></a> Structure 数据结构</h2>
+<p>每个节点是一个对象，存储值和指针，指针指向父节点和子节点。</p>
+<ul>
+<li>对于满足约束：（每个节点最多有t个子节点，有固定的深度）的树，可以使用数组A来表示。<br />
+对于二叉树来说，节点A[i]的子节点为A[2<em>i+1]和A[2</em>i+2]，父节点为A[向下取整(i-1)/2]</li>
+</ul>
+<h3 id="ordered-data"><a class="markdownIt-Anchor" href="#ordered-data"></a> ordered data</h3>
+<p>树结构可以存储，增删固定顺序的数据。</p>
+<ul>
+<li>一些操作：
+<ul>
+<li>findElement(k)：返回位置k处的元素</li>
+<li>insertElement(k, e)</li>
+<li>removeElement(k)</li>
+</ul>
+</li>
+<li>可以将节点存放在一个表中</li>
+<li>二分搜索 Binary search：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi><mo>=</mo><mo stretchy="false">⌊</mo><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>w</mi><mo>+</mo><mi>h</mi><mi>i</mi><mi>g</mi><mi>h</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">mid = \lfloor (low + high)/2 \rfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">h</span><span class="mclose">)</span><span class="mord">/</span><span class="mord">2</span><span class="mclose">⌋</span></span></span></span>
+<ul>
+<li>Three cases are:
+<ol>
+<li>k = key(mid) 成功</li>
+<li>k &lt; key(mid), high = mid -1</li>
+<li>k &gt; key(mid), low = mid +1</li>
+</ol>
+</li>
+<li>使用二叉树来实现，得到<strong>二分搜索树</strong> Binary Search Tree</li>
+</ul>
+</li>
+</ul>
+<h3 id="binary-search-treebst-二分搜索树"><a class="markdownIt-Anchor" href="#binary-search-treebst-二分搜索树"></a> Binary Search Tree/BST 二分搜索树</h3>
+<ul>
+<li>
+<p>搜索</p>
+<ul>
+<li>使用迭代来实现搜索，如果目标小于当前节点则对子树进行操作，反之对右子树进行操作。直到找到目标，或者找到外部节点。</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/20/RUteAioqcxHdhGI.jpg" alt="" /></p>
+<ul>
+<li>时间复杂度：O(h)</li>
+</ul>
+</li>
+<li>
+<p>插入</p>
+<ul>
+<li>先执行查找操作</li>
+<li>然后在结束的叶节点上插入</li>
+</ul>
+</li>
+<li>
+<p>删除</p>
+<ul>
+<li>如果只有一个子节点，则子节点上移填充</li>
+<li>如果有两个节点，则使用中序扫描的下一个叶节点填充</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/20/ImJaMj75HPrqEZR.jpg" alt="" /></p>
+<ul>
+<li>算法复杂度<br />
+设二叉树高度为h，节点数为n。
+<ul>
+<li>空间复杂度：O(n)</li>
+<li>findElement：O(h)</li>
+<li>h：best O(log n) worst O(n)</li>
+</ul>
+</li>
+</ul>
+<h2 id="avl-平衡树"><a class="markdownIt-Anchor" href="#avl-平衡树"></a> AVL 平衡树</h2>
+<p>二分搜索树存在弊端：高度可能与节点数相同。<br />
+所以我们使用平衡树，平衡树的高度为O(log n)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/19/inclass/INT202/INT202-DataStructure/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +954,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-04-19 15:06:10 / Modified: 15:31:22" itemprop="dateCreated datePublished" datetime="2021-04-19T15:06:10+08:00">2021-04-19</time>
+      <time title="Created: 2021-04-19 15:06:10 / Modified: 16:08:41" itemprop="dateCreated datePublished" datetime="2021-04-19T15:06:10+08:00">2021-04-19</time>
     </span>
 
   
@@ -303,6 +980,8 @@
 <li>isFull()</li>
 <li>initialize()</li>
 </ol>
+<h3 id="实现"><a class="markdownIt-Anchor" href="#实现"></a> 实现</h3>
+<p><img src="https://i.loli.net/2021/04/19/GCWjbXMKPfB57aH.jpg" alt="" /></p>
 <h3 id="应用"><a class="markdownIt-Anchor" href="#应用"></a> 应用</h3>
 <ol>
 <li>可以使用栈进行递归和过程调用</li>
@@ -311,7 +990,60 @@
 比如：&quot;x y w z / z *&quot;表示 x*(y-w/z)；而 “x y w / z - *” 则表示 x*(y/w-z)</li>
 <li>逃出迷宫：栈中记录当前位置可以选择的下一步的坐标。从栈中弹出一个元素，表示行走到这个格子，然后继续压入可以走的下一步坐标。一直重复直终点坐标被弹出栈。</li>
 </ol>
-<h2 id="q"><a class="markdownIt-Anchor" href="#q"></a> Q</h2>
+<h2 id="queue-队列"><a class="markdownIt-Anchor" href="#queue-队列"></a> Queue 队列</h2>
+<h3 id="定义-2"><a class="markdownIt-Anchor" href="#定义-2"></a> 定义</h3>
+<ul>
+<li>先进先出原则 (FIFO)，只有队列中存在时间最早的元素才能被取出。</li>
+</ul>
+<h3 id="方法-2"><a class="markdownIt-Anchor" href="#方法-2"></a> 方法</h3>
+<ol>
+<li>enqueue(o)：将对象o插入队列尾</li>
+<li>dequeue()：删除并且返回头对象，队列为空时出错。</li>
+<li>size()</li>
+<li>isEmpty()</li>
+<li>isFull()</li>
+<li>front()：返回但不删除头元素，队列为空时出错。</li>
+</ol>
+<h3 id="实现-2"><a class="markdownIt-Anchor" href="#实现-2"></a> 实现</h3>
+<p>使用数组表示，定义两个变量f和r：</p>
+<ul>
+<li>f：第一个元素Q的下标</li>
+<li>r：下一个可用用单元的下标</li>
+</ul>
+<p>起初,队列为空，f=r=0。进行dequeue操作时，将f递增至下一个单元的下标。进行enqueue时，将r递增至Q中下一个可用单元的下标。<br />
+不断插入和拿出操作可能使f和r都移到了队列最后，但是此时队列为空，所以设置<strong>循环数组</strong>。每次递增的时候，我们进行取模计算(f+1) mod N或者(r+1) mod N。</p>
+<p><img src="https://i.loli.net/2021/04/19/XSnVbjQaKwdWL37.jpg" alt="" /></p>
+<h3 id="应用-2"><a class="markdownIt-Anchor" href="#应用-2"></a> 应用</h3>
+<ol>
+<li>利用队列进行多道程序设计(multiprogramming)，使用循环协议：将所有的可运行线程存储在队列Q中，在CPU可以提供工作时，对Q进行dequeue操作，得到线程T。在运行线程T之前，会启动一个计时器，CPU于是运行进程直到进程结束/阻塞或者计时器停止。当计时器结束之后，CPU会将程序计数器压入T的方法栈顶然后将T放置在Q队尾。</li>
+</ol>
+<h2 id="list-adt-表"><a class="markdownIt-Anchor" href="#list-adt-表"></a> List ADT 表</h2>
+<h3 id="定义-3"><a class="markdownIt-Anchor" href="#定义-3"></a> 定义</h3>
+<p>每个节点存储一个元素，和指向下一个节点的指针。</p>
+<h3 id="方法-3"><a class="markdownIt-Anchor" href="#方法-3"></a> 方法</h3>
+<ul>
+<li>引用方法</li>
+</ul>
+<ol>
+<li>first()：返回第一个元素</li>
+<li>last()：返回最后一个元素</li>
+<li>isFirst§</li>
+<li>isLast§</li>
+<li>before§：返回p之前的位置</li>
+<li>after§</li>
+</ol>
+<ul>
+<li>更新方法</li>
+</ul>
+<ol>
+<li>replaceElement(p, e)：使用e替换位置p处的元素</li>
+<li>swapElement(p, q)：交换p，q处的元素</li>
+<li>insertFirst(e)</li>
+<li>insertLast(e)</li>
+<li>insertBefore(p, e)：位置p前插入元素e</li>
+<li>insertAfter(p, e)</li>
+<li>remove§</li>
+</ol>
 
       
     </div>
@@ -644,817 +1376,8 @@ max\{\ B[k-1, w],\ b_k+B[k-1, w-w_k]\ \} &amp; otherwise
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/17/inclass/INT202/INT202-MasterMethod/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/17/inclass/INT202/INT202-MasterMethod/" class="post-title-link" itemprop="url">INT202-MasterMethod</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-17 23:55:09" itemprop="dateCreated datePublished" datetime="2021-04-17T23:55:09+08:00">2021-04-17</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-18 12:02:12" itemprop="dateModified" datetime="2021-04-18T12:02:12+08:00">2021-04-18</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="the-master-method-主方法"><a class="markdownIt-Anchor" href="#the-master-method-主方法"></a> The Master Method 主方法</h2>
-<p>主方法是表示广泛的递归方程渐进特征的通用方法。</p>
-<h3 id="形式"><a class="markdownIt-Anchor" href="#形式"></a> 形式</h3>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1.4226377952755906em"/><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>c</mi><mspace width="1.4226377952755906em"/></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>n</mi><mo>&lt;</mo><mi>d</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>a</mi><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mi mathvariant="normal">/</mi><mi>b</mi><mo stretchy="false">)</mo><mo>+</mo><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>o</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>w</mi><mi>i</mi><mi>s</mi><mi>e</mi></mrow></mstyle></mtd></mtr></mtable></mrow><mspace linebreak="newline"></mspace><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mspace width="1.4226377952755906em"/><mi>d</mi><mo>&gt;</mo><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mi>a</mi><mo>&gt;</mo><mn>0</mn><mo separator="true">,</mo><mi>c</mi><mo>&gt;</mo><mn>0</mn><mo separator="true">,</mo><mi>b</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\hspace{5mm} T(n) = \begin{cases}
-
-c \hspace{5mm} &amp; {n&lt;d} \\
-aT(n/b)+f(n)  &amp;  otherwise
-
-\end{cases}\\
-
-where \hspace{5mm}  d&gt;=1, a&gt;0, c&gt;0, b&gt;1
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mspace" style="margin-right:1.4226377952755906em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:1.4226377952755906em;"></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord">/</span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">d</span></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:1.4226377952755906em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></p>
-<ul>
-<li>分治法将问题T分为a个子问题，每个子问题的规模最多为n/b，递归求解每个子问题，然后将子问题的解归并成为整个问题的解。</li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>表示把问题划分成为子问题并且归并为原问题的解所需要的时间。</li>
-</ul>
-<h3 id="解法"><a class="markdownIt-Anchor" href="#解法"></a> 解法</h3>
-<ul>
-<li>通过将f(n)与特殊函数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mi>b</mi></msub><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">n^{log_{b}a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">o</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span><span class="mord mathdefault mtight">a</span></span></span></span></span></span></span></span></span></span></span></span>进行比较，然后得出结果，一共有三种情况：</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/18/Y8Qq95TsDZkXNcJ.jpg" alt="" /></p>
-<ul>
-<li>解法：先求特殊函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mi>b</mi></msub><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">n^{log_{b}a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">o</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span><span class="mord mathdefault mtight">a</span></span></span></span></span></span></span></span></span></span></span></span>，然后和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>做比较判断属于哪一种情况，最后套公式。</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/18/nj2Q9spaZU5N6xH.jpg" alt="" /></p>
-<h2 id="矩阵相乘"><a class="markdownIt-Anchor" href="#矩阵相乘"></a> 矩阵相乘</h2>
-<ul>
-<li>当两个(2*2)的矩阵相乘时，需要计算<strong>8次</strong>元素相乘。</li>
-<li>将这些元素看成子矩阵时，这个乘法就变成了分治算法：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi>b</mi><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">T(n) = 8T(n/2) + bn^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord">/</span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></li>
-</ul>
-<h3 id="strassens-algorithm"><a class="markdownIt-Anchor" href="#strassens-algorithm"></a> Strassen’s algorithm</h3>
-<p>这样的2*2矩阵相乘，只需要七个子矩阵的乘法即可得到答案。<br />
-<img src="https://i.loli.net/2021/04/18/CyhkzedrmSo42cU.jpg" alt="" /><br />
-<img src="https://i.loli.net/2021/04/18/i32HGymLp8SXxVr.jpg" alt="" /><br />
-<img src="https://i.loli.net/2021/04/18/MAiNpnQr2P5qulR.jpg" alt="" /></p>
-<h3 id="counting-inversion"><a class="markdownIt-Anchor" href="#counting-inversion"></a> Counting inversion</h3>
-<ul>
-<li>对于一行数字：a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub> … a<sub>n</sub><br />
-一次颠倒 inversion 表示：i&lt; j, 但是 a<sub>i</sub> &gt; a<sub>j</sub></li>
-<li>解法：一种方法是，每两个元素之间都进行比较，比较次数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{n(n-1)}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，时间复杂度为O(n<sup>2</sup>)<br />
-可以用分治法求解，时间复杂度降为O(nlog n)。</li>
-<li>分治求法：不断将列表划分为长度相同/差1的两个列表，然后判断两个子列表的颠倒次数，然后合并。</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/18/8sgytJBrVvD4oGw.png" alt="" /></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">循环神经网络</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-17 16:29:00" itemprop="dateCreated datePublished" datetime="2021-04-17T16:29:00+08:00">2021-04-17</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-18 14:31:56" itemprop="dateModified" datetime="2021-04-18T14:31:56+08:00">2021-04-18</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>循环神经网络 Recurrent Neural Network / RNN<br />
-是一种具有记忆力的网络，允许信息长久地保存在神经网络中。<br />
-适用于数据具有前后依赖性。</p>
-<h2 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h2>
-<ul>
-<li>先前的神经网络，层与层之间相互连接，但是每层上的各个节点是无连接的。</li>
-<li>循环神经网络的隐藏层的值不仅仅取决于当前这次的输入，还取决于上一次隐藏层的值。<br />
-<img src="https://i.loli.net/2021/04/17/BHOdJxYNg39Kq8a.png" alt="" /></li>
-<li>我们将当前时间记为t，上一步时间则为t-1。输入记为x，隐藏层为s，输出为o。则从图上可以看到，x<sub>t</sub>同时受到x和x<sub>t-1</sub>的影响。公式表示为：</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>o</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>V</mi><mo>∗</mo><msub><mi>s</mi><mi>t</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>s</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>U</mi><mo>∗</mo><msub><mi>x</mi><mi>t</mi></msub><mo>+</mo><mi>W</mi><mo>∗</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-o_t &amp;= V * s_t\\
-s_t &amp;= U * x_t + W * s_{t-1}
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0000000000000004em;vertical-align:-1.2500000000000002em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h2 id="长短期记忆网络-long-short-term-memory-lstm"><a class="markdownIt-Anchor" href="#长短期记忆网络-long-short-term-memory-lstm"></a> 长短期记忆网络 Long Short Term Memory / LSTM</h2>
-<ul>
-<li>对于实际问题来说，有时需要更加久远的历史信息，优势仅需要临近的历史信息。</li>
-<li>传统的神经网路的每一个隐藏单元都只是执行一个简单的激活函数的操作，但是LSTM中<strong>每个模块内有四层结构</strong>：3个sigmoid层和1个tanh层。这四层结构构成了三种<strong>门单元</strong>，用于信息选择性通过。</li>
-<li>这三层门单元分别是<strong>遗忘门</strong>，<strong>输入门</strong>和<strong>输出门</strong>。</li>
-<li>简单的循环神经网络只需要传递一个隐藏状态 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">h_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，而长短期记忆网络还需要传递候选状态 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">c_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，和候选内部状态 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mover accent="true"><mi>c</mi><mo>^</mo></mover><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\hat{c}_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;">^</span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</li>
-</ul>
-<h3 id="遗忘门"><a class="markdownIt-Anchor" href="#遗忘门"></a> 遗忘门</h3>
-<p><img src="https://i.loli.net/2021/04/17/KYEfCt2V4mdU7hI.png" alt="" /></p>
-<ul>
-<li>一个sigmoid函数。根据<strong>当前的输入</strong>和<strong>上一时刻的隐藏输出</strong>来决定内部状态有多少被遗忘。</li>
-<li>数学原理：把t-1时的长期记忆输入<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">c_{t-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.638891em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>乘上一个遗忘因子<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">f_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。遗忘因子是由短期记忆<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">h_{t-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.902771em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>以及事件信息<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>来计算。</li>
-<li><strong>遗忘因子</strong>计算公式：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>t</mi></msub><mo>=</mo><mi>σ</mi><mo stretchy="false">(</mo><msub><mi>W</mi><mi>f</mi></msub><mo>∗</mo><mo stretchy="false">[</mo><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>t</mi></msub><mo stretchy="false">]</mo><mo>+</mo><msub><mi>b</mi><mi>f</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f_t = \sigma(W_f * [h_{t-1}, x_t] + b_f)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
-</ul>
-<h3 id="输入门"><a class="markdownIt-Anchor" href="#输入门"></a> 输入门</h3>
-<p><img src="https://i.loli.net/2021/04/17/7MaGKPunZkOijfx.png" alt="" /></p>
-<ul>
-<li>一个sigmoid函数和一个tanh函数。根据当前的输入和上一时刻的隐藏输出决定<strong>什么样的新信息</strong>被存放在细胞状态。针对遗忘门中丢弃的属性信息，在本单元模块找到相应的新的属性信息，添加进去，以补充丢弃的属性信息。</li>
-<li>两个函数的作用：
-<ol>
-<li>sigmoid层，决定什么值需要更新</li>
-<li>tanh层，创建一个新的候选值向量，生成候选记忆</li>
-</ol>
-</li>
-<li>数学原理：根据遗忘因子和上一个隐藏层传递的值得到遗忘之后的保留值；根据上次输出和本次输入得到遗忘的补充值。</li>
-<li>计算公式：</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>i</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>σ</mi><mo stretchy="false">(</mo><msub><mi>W</mi><mi>t</mi></msub><mo>∗</mo><mo stretchy="false">[</mo><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>t</mi></msub><mo stretchy="false">]</mo><mo>+</mo><msub><mi>b</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mover accent="true"><mi>c</mi><mo>^</mo></mover><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>t</mi><mi>a</mi><mi>n</mi><mi>h</mi><mo stretchy="false">(</mo><msub><mi>W</mi><mi>c</mi></msub><mo>∗</mo><mo stretchy="false">[</mo><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>t</mi></msub><mo stretchy="false">]</mo><mo>+</mo><msub><mi>b</mi><mi>c</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>c</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><msub><mi>f</mi><mi>t</mi></msub><mo>∗</mo><msub><mi>c</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>i</mi><mi>t</mi></msub><mo>∗</mo><msub><mover accent="true"><mi>c</mi><mo>^</mo></mover><mi>t</mi></msub></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-i_t &amp;= \sigma( W_t*[h_{t-1}, x_t]+b_i )\\
-\hat{c}_t &amp;= tanh( W_c*[h_{t-1}, x_t]+b_c)\\
-c_t &amp;= f_t*c_{t-1} + i_t*\hat{c}_t
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.500000000000002em;vertical-align:-2.000000000000001em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5000000000000004em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;">^</span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.6599999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.000000000000001em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5000000000000004em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-1.6599999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;">^</span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.000000000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h3 id="输出门"><a class="markdownIt-Anchor" href="#输出门"></a> 输出门</h3>
-<p><img src="https://i.loli.net/2021/04/17/8CERardikXpT6P5.png" alt="" /></p>
-<ul>
-<li>一个sigmoid函数。根据当前候选状态，输入和上一时刻的隐藏输出来决定该时刻的隐藏输出。<br />
-首先我们使用一个Sigmiod函数来去确定细胞状态的哪部分需要输出，然后把细胞状态通过tanh层处理，两者相乘得到最终我们想要输出的信息。</li>
-<li>数学原理：通过一个Sigmoid函数得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>o</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">o_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>o</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">o_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>a</mi><mi>n</mi><mi>h</mi><mo stretchy="false">(</mo><msub><mi>c</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">tanh(c_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>相乘得到最终的输出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">h_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</li>
-<li>计算公式：</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>o</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>σ</mi><mo stretchy="false">(</mo><msub><mi>W</mi><mi>o</mi></msub><mo stretchy="false">[</mo><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>t</mi></msub><mo stretchy="false">]</mo><mo>+</mo><msub><mi>b</mi><mi>o</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>h</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><msub><mi>o</mi><mi>t</mi></msub><mo>∗</mo><mi>t</mi><mi>a</mi><mi>n</mi><mi>h</mi><mo stretchy="false">(</mo><msub><mi>c</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-o_t &amp;= \sigma( W_o[h_{t-1}, x_t] + b_o )\\
-h_t &amp;= o_t* tanh( c_t )
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0000000000000004em;vertical-align:-1.2500000000000002em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h3 id="优势"><a class="markdownIt-Anchor" href="#优势"></a> 优势</h3>
-<p>LSTM有进有出且当前的cell informaton是通过input gate控制之后叠加的，而RNN是叠乘，因此LSTM可以防止梯度消失或者爆炸，会比RNN好一点。</p>
-<h2 id="门控制循环单元-gated-recurrent-unit-gru"><a class="markdownIt-Anchor" href="#门控制循环单元-gated-recurrent-unit-gru"></a> 门控制循环单元 Gated Recurrent Unit / GRU</h2>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38088359/article/details/83960108?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&amp;dist_request_id=1331978.12945.16186698740003693&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control">推荐博客链接</a></p>
-<ul>
-<li>也是循环神经网络的一种，思想与LSTM一致：通过内部模块来控制信息的流动，所以可以看作LSTM的一个变体。</li>
-<li>利用<strong>更新门</strong>替代输入门和遗忘门，通过<strong>重置门</strong>控制当前时刻的候选状态的计算是否依赖于上一个时刻。<br />
-<strong>重置门有助于捕捉时间序列里短期的依赖关系。更新门有助于捕捉时间序列里长期的依赖关系。</strong></li>
-<li>只需要传递<strong>隐藏状态</strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">h_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和<strong>候选隐藏状态</strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mover accent="true"><mi>t</mi><mo>^</mo></mover><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\hat{t}_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0285199999999999em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.87852em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">t</span></span></span><span style="top:-3.18408em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.16666em;">^</span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/17/inclass/INT202/INT202-SortingAlgorithm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/17/inclass/INT202/INT202-SortingAlgorithm/" class="post-title-link" itemprop="url">INT202-SortingAlgorithm</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-17 01:20:02 / Modified: 15:31:55" itemprop="dateCreated datePublished" datetime="2021-04-17T01:20:02+08:00">2021-04-17</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="pq排序"><a class="markdownIt-Anchor" href="#pq排序"></a> PQ排序</h1>
-<h2 id="pq排序-priority-queue"><a class="markdownIt-Anchor" href="#pq排序-priority-queue"></a> PQ排序 Priority Queue</h2>
-<p>集合中的每个元素都有一个相关的键，该键决定了从集合拿出元素的优先级。</p>
-<h3 id="基本方法"><a class="markdownIt-Anchor" href="#基本方法"></a> 基本方法</h3>
-<ol>
-<li>insertItem(k, e): 将键值对为（k, e）的元素插入PQ</li>
-<li>removeMin(): 删除最小的元素</li>
-<li>minElement(): 返回最小的元素</li>
-<li>minKey(): 返回最小元素的键</li>
-</ol>
-<h4 id="时间复杂度"><a class="markdownIt-Anchor" href="#时间复杂度"></a> 时间复杂度</h4>
-<ul>
-<li>
-<p>insertItem(k, e)：O(1)<br />
-insertItem(k, e)一种操作方式是insertLast(k, e)。因为有k来决定该元素的次序，所以在插入时不用考虑其位置。</p>
-</li>
-<li>
-<p>其余的三个操作都需要检查序列中的所有元素，才能找到最小的元素，所以余下三个操作时间复杂度都为O(n)</p>
-</li>
-</ul>
-<h3 id="sorting-algorithm"><a class="markdownIt-Anchor" href="#sorting-algorithm"></a> sorting algorithm</h3>
-<p>设集合C有n个元素</p>
-<ol>
-<li>利用n个insertItem操作序列，将C中的元素放入一个初始为空的优先队列中去</li>
-<li>利用n个removeMin操作序列，按照非降序从P中提取元素并且放入C中</li>
-</ol>
-<p>时间复杂度为O(n^2)</p>
-<hr />
-<h2 id="堆数据结构-heap-data-structure"><a class="markdownIt-Anchor" href="#堆数据结构-heap-data-structure"></a> 堆数据结构 Heap Data Structure</h2>
-<ol>
-<li>将数据项存储在一棵二叉树的内部节点中，外部节点仅仅作为占位符。</li>
-<li>Heap-Order 堆序性质：在内部节点中，子节点<strong>大于</strong>父节点。</li>
-</ol>
-<h3 id="表示方法"><a class="markdownIt-Anchor" href="#表示方法"></a> 表示方法</h3>
-<ul>
-<li>可以使用数组 Array 来表示<strong>堆序性质的完全二叉树 heap-order complete binary tree</strong>，索引从1开始，即根位于索引为1的位置。</li>
-<li>对于任何位置在i的节点：
-<ol>
-<li>其左子节点在数组中的索引为 2*i</li>
-<li>其右子节点在数组中的索引为 2*i+1</li>
-<li>其父节点在数组中的索引为 i/2 （向下取整）</li>
-</ol>
-</li>
-</ul>
-<h2 id="利用堆数据结构实现pq排序"><a class="markdownIt-Anchor" href="#利用堆数据结构实现pq排序"></a> 利用堆数据结构实现PQ排序</h2>
-<h3 id="组成"><a class="markdownIt-Anchor" href="#组成"></a> 组成</h3>
-<ol>
-<li>heap：一个完全二叉树<strong>T</strong>，里面的键满足了堆序性质，并且存放在一个数组中。</li>
-<li>last：<strong>T</strong>中最后一个节点的引用。</li>
-<li>comp：一个比较器，决定了关键字之间的全序关系。并且维持保证将最小元素储存在T的根节点。</li>
-</ol>
-<h3 id="定理"><a class="markdownIt-Anchor" href="#定理"></a> 定理</h3>
-<p>一个存储n个关键字的完全二叉树的高度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>=</mo><mo stretchy="false">⌈</mo><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">h = \lceil{log(n+1)}\rceil</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span></span><span class="mclose">⌉</span></span></span></span><br />
-<img src="https://i.loli.net/2021/04/17/jRy7u3v5OBkds9A.jpg" alt="" /></p>
-<h3 id="用向量表示堆"><a class="markdownIt-Anchor" href="#用向量表示堆"></a> 用向量表示堆</h3>
-<p><img src="https://i.loli.net/2021/04/17/476ETezkVZahQdl.jpg" alt="" /></p>
-<h3 id="插入操作-insertitem"><a class="markdownIt-Anchor" href="#插入操作-insertitem"></a> 插入操作 insertItem</h3>
-<ol>
-<li>找到外部节点z</li>
-<li>将数据项k插入z</li>
-<li>重新存储堆数据结构，需要使用<strong>向上冒泡</strong>的方式</li>
-</ol>
-<h4 id="堆向上冒泡-up-heap-bubbling"><a class="markdownIt-Anchor" href="#堆向上冒泡-up-heap-bubbling"></a> 堆向上冒泡 Up-heap bubbling</h4>
-<ul>
-<li>将插入后的节点和其父节点进行比较，如果小于父节点数据，则与父节点的键值对交换位置。这个操作会不断重。</li>
-<li>最坏的情况下需要一路传到根节点，所以时间复杂度和高度有关，为O(log n)</li>
-</ul>
-<h3 id="删除操作-removemin"><a class="markdownIt-Anchor" href="#删除操作-removemin"></a> 删除操作 removeMin</h3>
-<p>具有最小关键字的元素存储在堆T的根r中，所以不能简单地直接删除。</p>
-<ol>
-<li>交换根的元素与最后一个节点w的元素</li>
-<li>将最后一个节点删除，保留一个叶节点占位符号</li>
-<li>进行<strong>堆向下冒泡</strong>处理</li>
-</ol>
-<h4 id="堆向下冒泡-down-heap-bubbling"><a class="markdownIt-Anchor" href="#堆向下冒泡-down-heap-bubbling"></a> 堆向下冒泡 Down-heap bubbling</h4>
-<p>交换操作后，根节点会变得很大，需要向下与其子节点进行交换。<br />
-直到交换后符合子节点大于或等于父节点的要求。</p>
-<ul>
-<li>时间复杂度和高度有关，为O(log n)</li>
-</ul>
-<h3 id="堆排序-heap-sorting"><a class="markdownIt-Anchor" href="#堆排序-heap-sorting"></a> 堆排序 Heap sorting</h3>
-<p>假设有n个元素存储在堆中：</p>
-<ul>
-<li>空间复杂度：O(n)</li>
-<li>方法 insertItem, removeMin 的时间复杂度为O(log n)</li>
-<li>方法 size, isEmpty, minKey, minElement 的时间复杂度为O(1)</li>
-<li>方法 sort 的时间复杂度为O(n logn)</li>
-</ul>
-<h1 id="divide-and-conquer-分治法"><a class="markdownIt-Anchor" href="#divide-and-conquer-分治法"></a> Divide-and-Conquer 分治法</h1>
-<h2 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h2>
-<ol>
-<li>Divide 划分：如果输入元素数量小于某一个<strong>阀值threshold</strong>，则直接求解这个小问题，并返回解，否则将数据集合分成2或3个<strong>不相交disjoint</strong>集合。</li>
-<li>Recur 递归：递归求解子集合关联问题。</li>
-<li>Conquer 归并：取子集合的解，并合并成为原问题的解。</li>
-</ol>
-<h2 id="mergesort"><a class="markdownIt-Anchor" href="#mergesort"></a> MergeSort</h2>
-<p><img src="https://i.loli.net/2021/04/17/rzwmlQ9eAZBpd7K.jpg" alt="" /></p>
-<h2 id="归并排序树-merge-sort-tree"><a class="markdownIt-Anchor" href="#归并排序树-merge-sort-tree"></a> 归并排序树 merge-sort tree</h2>
-<ul>
-<li>我们可以用一个二叉树T来表示该算法的执行过程。这个二叉树被称为<strong>归并排序树 merge-sort tree</strong>。</li>
-<li>T中的每个节点都表示了归并排序的一次<strong>递归调用</strong></li>
-<li>T的高度约为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">⌈</mo><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi></mrow><mo stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">\lceil{log n}\rceil</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span></span><span class="mclose">⌉</span></span></span></span></li>
-</ul>
-<h2 id="时间复杂度-2"><a class="markdownIt-Anchor" href="#时间复杂度-2"></a> 时间复杂度</h2>
-<ul>
-<li>归并排序树T上的每一个内部节点v都需要进行划分和归并操作，这两个操作的运行时间与该节点上的序列尺寸成正比。归并排序的时间等于T中所有节点花费时间的总和。</li>
-<li>设节点v的深度为i，则该节点的序列的大小为n/2<sup>i，则该节点上花费的时间为O(n/(2</sup>i))，每层有2^i个节点，则每层花费的总时间为 O((2^i) * n/(2^i))=O(n)。一共有logn层，所以归并排序的时间复杂度为O(nlogn)</li>
-</ul>
-<h1 id="quick-sort-快速排序"><a class="markdownIt-Anchor" href="#quick-sort-快速排序"></a> Quick Sort 快速排序</h1>
-<ul>
-<li>步骤</li>
-</ul>
-<ol>
-<li>Divide 划分：随机选择一个元素x(该元素习惯被称<strong>枢纽元素 pivot</strong>，通常选择集合S中的最右边的元素)，并且将集合S分成三个序列：
-<ul>
-<li>L：小于x的元素集合</li>
-<li>E：等于x的元素集合</li>
-<li>G：大于x的元素集合</li>
-</ul>
-</li>
-<li>Recur 递归：对L，G集合进行递归操作</li>
-<li>Conquer 归并：依次从L，E和G集合中向S插入元素</li>
-</ol>
-<ul>
-<li>同样可以用二叉树来表示</li>
-<li>运行时间：T中节点v上的运行时间与其输入大小s(v)成正比。因为集合E的存在，v的子节点的输入大小之和最多为s(v)-1。</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/17/pXGDcQPVx6E8hKl.jpg" alt="" /></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/16/inclass/INT202/INT202-AVLTree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/16/inclass/INT202/INT202-AVLTree/" class="post-title-link" itemprop="url">INT202 AVL树和深度有界查找树</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-16 20:05:02" itemprop="dateCreated datePublished" datetime="2021-04-16T20:05:02+08:00">2021-04-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-17 13:58:12" itemprop="dateModified" datetime="2021-04-17T13:58:12+08:00">2021-04-17</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="avl-tree"><a class="markdownIt-Anchor" href="#avl-tree"></a> AVL Tree</h1>
-<h2 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h2>
-<ul>
-<li><strong>高度平衡规则 height-balance property</strong>：对于树T的每个内部节点v，v的字节点的高度最多相差1。</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/16/DxskpIMz9wZQ5PW.jpg" alt="" /></p>
-<ul>
-<li><strong>定理</strong>：一颗存储n个数据节点的AVL树的高度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span><br />
-证明：假设某棵树的<strong>最少的内部节点数量</strong>为n(h)，高度为h，则有n(1)=1，n(2)=2。<br />
-则对于h&gt;2，n(h)=1+n(h-1)+n(h-2)&gt;2n(h-2)<br />
-所以每当h增加2，原式至少加倍。则有n(h)&gt;2^{i}n(h-2i)<br />
-因为已知n(1)与n(2)，选择h-2i&gt;=1，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>=</mo><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i=\lceil{h/2}\rceil-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mord mathdefault">h</span><span class="mord">/</span><span class="mord">2</span></span><span class="mclose">⌉</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>:</li>
-</ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&gt;</mo><msup><mn>2</mn><mrow><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>−</mo><mn>1</mn></mrow></msup><mo>∗</mo><mi>n</mi><mo stretchy="false">(</mo><mi>h</mi><mo>−</mo><mn>2</mn><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&gt;</mo><mo>=</mo><msup><mn>2</mn><mrow><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>−</mo><mn>1</mn></mrow></msup><mo>∗</mo><mi>n</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&gt;</mo><mo>=</mo><msup><mn>2</mn><mrow><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>−</mo><mn>1</mn></mrow></msup></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&gt;</mo><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn><mo>−</mo><mn>1</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mi>h</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&lt;</mo><mn>2</mn><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo><mo>+</mo><mn>2</mn></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-n(h) &amp;&gt; 2^{\lceil {h/2} \rceil-1}*n(h-2\lceil{h/2}\rceil+2)\\
-     &amp;&gt;= 2^{\lceil {h/2} \rceil-1}*n(1)\\
-     &amp;&gt;= 2^{\lceil {h/2} \rceil-1}\\
-\\
-logn(h) &amp;&gt; h/2 - 1\\
-h &amp;&lt; 2logn(h)+2\\
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:9.294em;vertical-align:-4.397000000000001em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.897em;"><span style="top:-6.9590000000000005em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mclose">)</span></span></span><span style="top:-5.361em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-3.762999999999999em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-2.262999999999999em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-0.7629999999999995em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mclose">)</span></span></span><span style="top:0.7370000000000001em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">h</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.397em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.897em;"><span style="top:-6.9590000000000005em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">⌈</span><span class="mord mtight"><span class="mord mathdefault mtight">h</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span><span class="mclose mtight">⌉</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mopen">⌈</span><span class="mord"><span class="mord mathdefault">h</span><span class="mord">/</span><span class="mord">2</span></span><span class="mclose">⌉</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span><span style="top:-5.361em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">⌈</span><span class="mord mtight"><span class="mord mathdefault mtight">h</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span><span class="mclose mtight">⌉</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span><span style="top:-3.762999999999999em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">⌈</span><span class="mord mtight"><span class="mord mathdefault mtight">h</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span><span class="mclose mtight">⌉</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span><span style="top:-0.762999999999999em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">h</span><span class="mord">/</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span><span style="top:0.737000000000001em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.397000000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<p>所以存储n个关键字的AVL树的高度最多为 2logn(h)+2。</p>
-<h2 id="插入操作"><a class="markdownIt-Anchor" href="#插入操作"></a> 插入操作</h2>
-<ul>
-<li>当插入一个外部节点w，可能会使节点变为<strong>不平衡的unbalanced</strong>。</li>
-<li><strong>操作</strong>：<br />
-从点w向上找到第一个非平衡点z<br />
-令y表示z的子节点，z的祖先节点；<br />
-令x表示y的子节点，x可能是w点或者w点的祖先节点。<br />
-然后通过<strong>三节点重构法 tri-node restructuring</strong>重构根为z的子树：</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/16/ORCyKHEkWxFnuv8.jpg" alt="" /><br />
-<img src="https://i.loli.net/2021/04/16/QOcr5gvhP6pfGjZ.jpg" alt="" /></p>
-<ul>
-<li>常常称这种方法为<strong>旋转rotation</strong>：<br />
-<img src="https://i.loli.net/2021/04/16/mJZ4WRa8ir9xgYB.jpg" alt="" /></li>
-</ul>
-<h2 id="删除操作"><a class="markdownIt-Anchor" href="#删除操作"></a> 删除操作</h2>
-<ul>
-<li>首先模仿普通的二叉树上的操作，如果违反了高度平衡性质。则从先前被删除节点的父节点w到根路径上找不平衡的节点进行重构。<br />
-单次重构可能不能使树恢复平衡，这时需要继续向上找节点重构，直到根。<br />
-<img src="https://i.loli.net/2021/04/16/Nnk3W47ydqFAXzS.jpg" alt="" /></li>
-</ul>
-<h2 id="性能"><a class="markdownIt-Anchor" href="#性能"></a> 性能</h2>
-<ul>
-<li>单次重构 restructure：O(1)</li>
-<li>搜索 Search：O(log n)</li>
-</ul>
-<p>因为插入和删除都是由一次搜索和一次或者多次重构组成的，所以：</p>
-<ul>
-<li>插入 Insertion：O(log n)</li>
-<li>删除 Removal：O(log n)</li>
-</ul>
-<h1 id="multi-way-search-tree-多路搜索树"><a class="markdownIt-Anchor" href="#multi-way-search-tree-多路搜索树"></a> Multi-Way Search Tree 多路搜索树</h1>
-<p>深度有界查找树：树的查找操作往往和其深度有关系。有些树会定义一个深度函数使得每个外部节点的（伪）深度相同。如此，该树的查找和更新操作的时间复杂度为O(log n)。</p>
-<h2 id="定义-2"><a class="markdownIt-Anchor" href="#定义-2"></a> 定义</h2>
-<ol>
-<li>是一棵有序树</li>
-<li>树中的内部节点有<strong>最少两个</strong>子节点</li>
-<li>并且每个节点存储了一个<strong>集合</strong>，集合元素为形如 <strong>(k<sub>i</sub>,o<sub>i</sub>)<strong>的键值对。<br />
-每个节点的集合大小为</strong>该子节点数量-1</strong></li>
-<li>每个节点v存储了键k<sub>1</sub>, k<sub>2</sub>, … k<sub>d-1</sub>，子节点为 v<sub>1</sub>, v<sub>2</sub>, … v<sub>d</sub>：
-<ul>
-<li>v1 &lt; k1</li>
-<li>k<sub>i-1</sub> &lt; v<sub>i</sub> &lt; k<sub>i</sub></li>
-<li>v<sub>d</sub> &gt; k<sub>d</sub></li>
-</ul>
-</li>
-<li>外部节点即叶子节点不存储数据项，只作为占位符。</li>
-</ol>
-<ul>
-<li>一棵二叉树是一个特殊的多路查找树。</li>
-</ul>
-<h2 id="查找操作"><a class="markdownIt-Anchor" href="#查找操作"></a> 查找操作</h2>
-<p><img src="https://i.loli.net/2021/04/16/PQDwRkrzT47b3En.jpg" alt="" /></p>
-<h1 id="24树"><a class="markdownIt-Anchor" href="#24树"></a> (2,4)树</h1>
-<h2 id="定义-3"><a class="markdownIt-Anchor" href="#定义-3"></a> 定义</h2>
-<ul>
-<li>大小性质：每个节点最多有4个子节点</li>
-<li>深度性质：所有外部节点的深度相同</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/16/DboF8xMasH7cRwm.jpg" alt="" /></p>
-<h2 id="插入操作-2"><a class="markdownIt-Anchor" href="#插入操作-2"></a> 插入操作</h2>
-<p>从根节点向下查找，如果待插入节点未出现，则应该查找停止在叶节点z处。<br />
-设v是z的父节点，把数据项插入在节点v处，并且给v添加一个新的子节点w，该w为z左边的外部节点。<br />
-这时可能会出现<strong>上溢overflow</strong>现象：插入之后子节点数变为5，此时需要<strong>分裂split</strong>操作。</p>
-<ul>
-<li>时间复杂度：O(log n)</li>
-</ul>
-<h2 id="分裂操作"><a class="markdownIt-Anchor" href="#分裂操作"></a> 分裂操作</h2>
-<p><img src="https://i.loli.net/2021/04/16/NYa8wkrM5Xeisop.jpg" alt="" /></p>
-<ul>
-<li>时间复杂度：O(1)</li>
-<li>分裂操作完成后，v的父节点u会出现新的上溢，则需要继续向上分裂传播。</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/16/CEc63PyvDWz1J8x.jpg" alt="" /></p>
-<h2 id="删除操作-2"><a class="markdownIt-Anchor" href="#删除操作-2"></a> 删除操作</h2>
-<ul>
-<li>首先从上到下找到待删除节点</li>
-</ul>
-<ol>
-<li>如果该节点在倒数第二层，则直接删除，并且删除其右子叶节点。</li>
-<li>如果该节点在内部，假设其存储在节点z的第i个数据项(k<sub>i</sub>, x<sub>i</sub>)中，将数据项(k<sub>i</sub>, x<sub>i</sub>)与z的第i个子节点的<strong>最左</strong>内部节点v交换。如果交换后数据项满足1）则删除，否则重复该操作。<br />
-<img src="https://i.loli.net/2021/04/16/Oht8A3gqsbLIpxy.jpg" alt="" /></li>
-</ol>
-<ul>
-<li><strong>下溢 underflow</strong>：在删除数据项后，原本的 2-nodes节点v（有两个子节点），会成为一个没有数据项仅有一个子节点的1-node节点。</li>
-<li>为了修正<strong>下溢情况</strong><br />
-1）如果v的临近节点存在一个3-nodes或者4-node的兄弟节点w，进行<strong>转移transfer</strong>操作：<br />
-            将w与v的父节点数据值转移到v中<br />
-           将w靠近v的数据项转移到父节点对应位置中<br />
-<img src="https://i.loli.net/2021/04/17/PHT6Len72R9jkvG.jpg" alt="" /><br />
-2）如果v只有一个临近节点或者v的两个临近节点都是2-nodes节点，进行<strong>合并 fusion</strong>操作：<br />
-           将已经进行删除操作的空节点与临近节点进行合并，即只保留临近节点<br />
-           从父节点中转移一个数据项填充到合并后的节点中</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/17/TxV6t9cskNypoMQ.jpg" alt="" /></p>
-<p><img src="https://i.loli.net/2021/04/17/wOo8Au6xfNlPEZp.jpg" alt="" /></p>
-<p><img src="https://i.loli.net/2021/04/17/mn1wqPkSFM3Azha.jpg" alt="" /></p>
-<h1 id="时间复杂度总结"><a class="markdownIt-Anchor" href="#时间复杂度总结"></a> 时间复杂度总结</h1>
-<p>对于findElement，insertElement，removeElement操作</p>
-<ul>
-<li>BST：所有的操作都是O(h)，h为其高度</li>
-<li>AVL Tree，(2,4) Tree：所有的操作都是O(log n)，n为节点数</li>
-</ul>
-<h2 id="黑红树-p113"><a class="markdownIt-Anchor" href="#黑红树-p113"></a> 黑红树 P113</h2>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/16/machine%20learninng/NLP/NLP%E6%9C%AF%E8%AF%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/16/machine%20learninng/NLP/NLP%E6%9C%AF%E8%AF%AD/" class="post-title-link" itemprop="url">NLP术语</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-16 16:17:58 / Modified: 16:47:54" itemprop="dateCreated datePublished" datetime="2021-04-16T16:17:58+08:00">2021-04-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="一些术语"><a class="markdownIt-Anchor" href="#一些术语"></a> 一些术语</h2>
-<p>BS ｜ This ｜ is ｜ a ｜ simple ｜ sentence ｜ ES</p>
-<ul>
-<li>Words：单词</li>
-<li>Words Segmentation：分词</li>
-<li>Morphology：同一词的不同形式</li>
-<li>Part-of-Speech Tagging：词性标注，将词根据句法分析标注为各自的词性</li>
-<li>Syntax：句法分析</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/16/VB5GTeRuK7Jg8LF.jpg" alt="" /></p>
-<ul>
-<li>
-<p>Semantics：语意</p>
-</li>
-<li>
-<p>Vector Space：向量空间</p>
-</li>
-<li>
-<p>Norm of Vector：向量的模。有不同方式的定义方法：L-0 to L-infinity Norms</p>
-</li>
-<li>
-<p>Matrix：矩阵，向量的向量。</p>
-</li>
-<li>
-<p>Tensor：张量</p>
-</li>
-<li>
-<p>Determinant：行列式。可以看作向量所夹的平面/空间的量。</p>
-</li>
-<li>
-<p>Eigenvector and Eigenvalue：特征向量和特征值</p>
-</li>
-<li>
-<p>Convex Set and Function：凸集合和凸函数</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/15/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/SpringMVC%E6%95%B4%E5%90%88SSM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/15/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/SpringMVC%E6%95%B4%E5%90%88SSM/" class="post-title-link" itemprop="url">SpringMVC整合SSM</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-15 21:44:25 / Modified: 21:45:02" itemprop="dateCreated datePublished" datetime="2021-04-15T21:44:25+08:00">2021-04-15</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="需求分析"><a class="markdownIt-Anchor" href="#需求分析"></a> 需求分析</h2>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

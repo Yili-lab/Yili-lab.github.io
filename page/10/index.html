@@ -196,7 +196,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -243,6 +243,883 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/08/basic%20operation/pandas%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%B2%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/08/basic%20operation/pandas%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%B2%E8%A7%A3/" class="post-title-link" itemprop="url">pandas库的简单讲解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-08 22:10:47" itemprop="dateCreated datePublished" datetime="2021-02-08T22:10:47+08:00">2021-02-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-10 11:54:17" itemprop="dateModified" datetime="2021-03-10T11:54:17+08:00">2021-03-10</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="pandas-表格容器"><a class="markdownIt-Anchor" href="#pandas-表格容器"></a> pandas: 表格容器</h3>
+<p>基于NumPy的一种工具，该工具是为了解决数据分析任务而创建的。Pandas纳入了大量库和一些标准的数据模型，提供了高效地操作大型数据集所需的工具。</p>
+<h4 id="导入pandas库"><a class="markdownIt-Anchor" href="#导入pandas库"></a> 导入pandas库：</h4>
+<p><code>import pandas as pd</code></p>
+<h3 id="series对象"><a class="markdownIt-Anchor" href="#series对象"></a> Series对象</h3>
+<h4 id="series对象的创建"><a class="markdownIt-Anchor" href="#series对象的创建"></a> Series对象的创建</h4>
+<p>使用<code>pd.Series()</code>方法<br />
+参数：1. 数组 2. index=数组，非必选</p>
+<h2 id="-code0-"><a class="markdownIt-Anchor" href="#-code0-"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a&#x3D; pd.Series([1,2,3,4],index&#x3D;[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;,&#39;d&#39;])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    1</span><br><span class="line">b    2</span><br><span class="line">c    3</span><br><span class="line">d    4</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></h2>
+<h4 id="series对象的支持的特性"><a class="markdownIt-Anchor" href="#series对象的支持的特性"></a> Series对象的支持的特性</h4>
+<ol>
+<li>索引方式： a. 下标索引/键值索引/花式索引<br />
+中括号中的整数，一定会被解释成标签名。可以用loc[]和iloc[]:<br />
+a. <code>loc[]</code> 中括号中解释为标签<br />
+b. <code>iloc[]</code> 中括号中解释为索引 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; pd.Series(range(10))</span><br><span class="line">a &#x3D; a[5:10]</span><br><span class="line">print(a)</span><br><span class="line">&gt;&gt;&gt; 5    5</span><br><span class="line">    6    6</span><br><span class="line">    7    7</span><br><span class="line">    8    8</span><br><span class="line">    9    9</span><br><span class="line">    dtype: int64</span><br><span class="line"></span><br><span class="line">print(a.loc[5])     &gt;&gt;&gt; 5</span><br><span class="line">print(a.iloc[4])    &gt;&gt;&gt; 9</span><br></pre></td></tr></table></figure>
+</li>
+<li>支持切片</li>
+<li><code>index</code>属性返回标签的列表，<code>values</code>返回值的列表</li>
+<li>可以和标量，或者series对象批量运算。注意这里牵扯到<strong>数据对齐</strong>：两个series对象运算时，是按照标签来对应的，而不是索引。如果存在标签不同的，则结果为NaN。<br />
+解决NaN:<br />
+a. <code>sr1.add(sr2, fill_value=默认值)</code>：添加并将NaN设置为默认值。<br />
+b. <code>sr.isnull()/notnull()</code>：如果值为NaN，返回True/False，否则返回false/True。<br />
+c. <code>sr.dropna()</code>：返回删除所有缺失值的Series对象<br />
+d. <code>sr.fillna(参数)</code>：填充NaN并返回。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">sr1 &#x3D; pd.Series([11,12,13], index&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;])</span><br><span class="line">sr2 &#x3D; pd.Series([13,14,15], index&#x3D;[&#39;c&#39;,&#39;a&#39;,&#39;d&#39;])</span><br><span class="line"></span><br><span class="line">print(sr1.add(sr2, fill_value &#x3D; 0))</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    25.0</span><br><span class="line">b    12.0</span><br><span class="line">c    26.0</span><br><span class="line">d    15.0</span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">sr &#x3D; sr1.add(sr2)</span><br><span class="line">print(sr.isnull())</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    False</span><br><span class="line">b     True</span><br><span class="line">c    False</span><br><span class="line">d     True</span><br><span class="line">dtype: bool</span><br><span class="line"></span><br><span class="line">print(sr.dropna())</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    25.0</span><br><span class="line">c    26.0</span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">print(sr.fillna(8))</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">a    25.0</span><br><span class="line">b     8.0</span><br><span class="line">c    26.0</span><br><span class="line">d     8.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr />
+<h3 id="dataframe对象"><a class="markdownIt-Anchor" href="#dataframe对象"></a> DataFrame对象</h3>
+<h4 id="dataframe对象的创建"><a class="markdownIt-Anchor" href="#dataframe对象的创建"></a> DataFrame对象的创建</h4>
+<ol>
+<li>直接创建：</li>
+</ol>
+<ul>
+<li>不指定行索引index（行索引被默认为数字，从0开始），参数为列的字典</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&#39;one&#39;: [1, 2, 3], &#39;two&#39;: [4, 5, 6]&#125;)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">0    1    4</span><br><span class="line">1    2    5</span><br><span class="line">2    3    6</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指定行索引index，参数为列的字典和行索引</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&#39;one&#39;: [1, 2, 3], &#39;two&#39;: [4, 5, 6]&#125;, index&#x3D;[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">a    1    4</span><br><span class="line">b    2    5</span><br><span class="line">c    3    6</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用Series创建：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&quot;one&quot;: pd.Series([1, 2, 3], index&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]), &quot;two&quot;:pd.Series([1,2,3,4],index&#x3D;[&#39;b&#39;,&#39;a&#39;,&#39;c&#39;,&#39;d&#39;])&#125;)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">a  1.0    2</span><br><span class="line">b  2.0    1</span><br><span class="line">c  3.0    3</span><br><span class="line">d  NaN    4</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用index和columns参数创建：</li>
+</ol>
+<h2 id="-code6-"><a class="markdownIt-Anchor" href="#-code6-"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dates &#x3D; pd.date_range(&#39;today&#39;,periods&#x3D;6) # 定义时间序列作为 index</span><br><span class="line">num_arr &#x3D; np.random.randn(6,4) # 传入 numpy 随机数组</span><br><span class="line">columns &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;] # 将列表作为列名</span><br><span class="line">df1 &#x3D; pd.DataFrame(num_arr, index &#x3D; dates, columns &#x3D; columns)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">                                   A         B         C         D</span><br><span class="line">2021-02-14 11:00:38.210410 -0.234308  0.458834  1.758701 -0.390679</span><br><span class="line">2021-02-15 11:00:38.210410 -1.448708  0.534228  0.404082  0.722971</span><br><span class="line">2021-02-16 11:00:38.210410  0.540040 -0.593858  0.882544  0.499553</span><br><span class="line">2021-02-17 11:00:38.210410 -1.295320  0.909557 -1.058109 -0.530681</span><br><span class="line">2021-02-18 11:00:38.210410  0.307840  0.328438 -0.680865 -2.096587</span><br><span class="line">2021-02-19 11:00:38.210410 -1.777850  0.615222 -0.213545 -0.219512</span><br></pre></td></tr></table></figure></h2>
+<h4 id="dataframe常用属性"><a class="markdownIt-Anchor" href="#dataframe常用属性"></a> DataFrame常用属性</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&quot;one&quot;: [1,2,3], &quot;two&quot;: [2,3,4]&#125;, index&#x3D;[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;])</span><br><span class="line"></span><br><span class="line">d &gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">a    1    2</span><br><span class="line">b    2    3</span><br><span class="line">c    3    4</span><br></pre></td></tr></table></figure>
+<ol>
+<li>index：获取索引</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d.index &gt;&gt;&gt; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>T：转制</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d.T &gt;&gt;&gt;</span><br><span class="line">     a  b  c</span><br><span class="line">one  1  2  3</span><br><span class="line">two  2  3  4</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>columns：获取列索引</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d.columns &gt;&gt;&gt; [&#39;one&#39;, &#39;two&#39;]</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>values：获取值数组</li>
+</ol>
+<h2 id="-code11-5-info方法显示dataframe的基础信息包括行的数量列名每一列值的数量-类型"><a class="markdownIt-Anchor" href="#-code11-5-info方法显示dataframe的基础信息包括行的数量列名每一列值的数量-类型"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d.values &gt;&gt;&gt;</span><br><span class="line">[[1 2]</span><br><span class="line"> [2 3]</span><br><span class="line"> [3 4]]</span><br></pre></td></tr></table></figure><br />
+5. info()方法：显示DataFrame的基础信息，包括行的数量；列名；每一列值的数量、类型</h2>
+<h4 id="dataframe切片和索引"><a class="markdownIt-Anchor" href="#dataframe切片和索引"></a> DataFrame切片和索引</h4>
+<p>可以通过索引来查找，修改元素值。支持常规索引，切片索引，布尔值索引，花式索引搭配。</p>
+<ol>
+<li>使用<code>[列][行]</code>选择标签对应的元素，不建议使用这种方式</li>
+<li><code>loc[行标签，列标签]</code>方法<br />
+可以用&quot;:&quot;来选择一整行 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; pd.DataFrame(&#123;&quot;one&quot;: pd.Series([1, 2, 3], index&#x3D;[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]), &quot;two&quot;: pd.Series([&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;], index&#x3D;[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])&#125;)</span><br><span class="line"></span><br><span class="line">d &gt;&gt;&gt;</span><br><span class="line">    one two</span><br><span class="line">a  1.0   1</span><br><span class="line">b  2.0   2</span><br><span class="line">c  3.0   3</span><br><span class="line">d  NaN   4</span><br><span class="line"></span><br><span class="line">d[&#39;a&#39;, :] &gt;&gt;&gt;</span><br><span class="line">one    1.0</span><br><span class="line">two      1</span><br><span class="line">Name: a, dtype: object</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><code>iloc[行索引，列索引]</code></li>
+</ol>
+<hr />
+<h4 id="数据对齐以及缺失数据"><a class="markdownIt-Anchor" href="#数据对齐以及缺失数据"></a> 数据对齐以及缺失数据</h4>
+<ol>
+<li>和numpy相似，在批处理数据对齐时会保留nan，</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">d1 &#x3D; pd.DataFrame(&#123;&quot;one&quot;: pd.Series([1,2,3], index&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]), &quot;two&quot;: pd.Series([&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;], index&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;])&#125;)</span><br><span class="line"></span><br><span class="line">d2 &#x3D; pd.DataFrame(&#123;&quot;one&quot;: pd.Series([2,3,4], index&#x3D;[&#39;b&#39;,&#39;c&#39;,&#39;d&#39;]), &quot;two&quot;: pd.Series([&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;], index&#x3D;[&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;a&#39;])&#125;)</span><br><span class="line"></span><br><span class="line">d1 &gt;&gt;&gt;</span><br><span class="line">   one two</span><br><span class="line">a  1.0   1</span><br><span class="line">b  2.0   2</span><br><span class="line">c  3.0   3</span><br><span class="line">d  NaN   4</span><br><span class="line"></span><br><span class="line">d2 &gt;&gt;&gt;</span><br><span class="line">   one two</span><br><span class="line">a  NaN   4</span><br><span class="line">b  2.0   1</span><br><span class="line">c  3.0   2</span><br><span class="line">d  4.0   3</span><br><span class="line"></span><br><span class="line">d1+d2 &gt;&gt;&gt;</span><br><span class="line">   one two</span><br><span class="line">a  NaN  14</span><br><span class="line">b  4.0  21</span><br><span class="line">c  6.0  32</span><br><span class="line">d  NaN  43</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>fillna(默认值)</code> 用默认值来填充nan</li>
+<li><code>dropna()</code> 将一整行全部删掉，两个参数：how='all’全部为NaN才删除整行，axis=0保留整行，axis=1保留整列</li>
+</ol>
+<h2 id="-code14-"><a class="markdownIt-Anchor" href="#-code14-"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(d1+d2).dropna() &gt;&gt;&gt;</span><br><span class="line">   one two</span><br><span class="line">b  4.0  21</span><br><span class="line">c  6.0  32</span><br><span class="line"></span><br><span class="line">(d1+d2).dropna(axis&#x3D;1) &gt;&gt;&gt;</span><br><span class="line">  two</span><br><span class="line">a  14</span><br><span class="line">b  21</span><br><span class="line">c  32</span><br><span class="line">d  43</span><br></pre></td></tr></table></figure></h2>
+<h4 id="一些方法"><a class="markdownIt-Anchor" href="#一些方法"></a> 一些方法</h4>
+<ol>
+<li><code>mean()</code></li>
+<li><code>sum()</code></li>
+<li><code>sort_values()</code>，参数：
+<ul>
+<li>by=‘列/行标签’</li>
+<li>ascending=Flase 倒序// 有nan的不参加排序，统一放到最后</li>
+<li>当使用多个排序标准时，使用数组 <code>df1.sort_values(by=['age', 'visits'], ascending=[False, True])</code></li>
+</ul>
+</li>
+<li><code>sort_index()</code> 按索引进行排序，默认axis为0，ascending=True</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d1.sort_index(axis&#x3D;1, ascending&#x3D;False) &gt;&gt;&gt;</span><br><span class="line">  two  one</span><br><span class="line">a   1  1.0</span><br><span class="line">b   2  2.0</span><br><span class="line">c   3  3.0</span><br><span class="line">d   1  NaN</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>
+<p><code>concat()</code>可以将数据根据不同的轴作简单的融合,参数说明:<br />
+objs: series，dataframe或者是panel构成的序列list<br />
+axis： 需要合并链接的轴，0是行，1是列<br />
+join：连接的方式 inner，或者outer</p>
+</li>
+<li>
+<p>检视数据<code>head()</code>，默认前5行，可以加入参数来指定行数。或者使用iloc[:n]属性来选择前n行</p>
+</li>
+<li>
+<p>可以使用<code>loc[行标签名]=[行信息列表]</code>来插入某一行</p>
+</li>
+<li>
+<p>使用<code>drop(行标签名)</code>来删除某一行，不可以用该方法删除整列</p>
+</li>
+<li>
+<p><code>shift()</code>方法，用来偏移元素<br />
+参数：</p>
+<ol>
+<li>periods: 偏移量</li>
+<li>frep: DateOffset, timedelta, or time rule string，可选参数，默认值为None，只适用于时间序列，如果这个参数存在，那么会按照参数值移动时间索引，而数据值没有发生变化。</li>
+<li>axis:指定要移位的行或列，0为行，1为列</li>
+<li>fill_value:指定移位后的填充值，fill_value=0，即表示移位后缺失值填充为0<br />
+可以用该方法对单行/列进行操作<br />
+可以用该方法来去除重复行</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df &#x3D; pd.DataFrame(&#123;&#39;A&#39;: [1, 2, 2, 3, 4, 5, 5, 5, 6, 7, 7]&#125;)</span><br><span class="line">df1 &#x3D; df.loc[df[&#39;A&#39;].shift() !&#x3D; df[&#39;A&#39;]]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   A</span><br><span class="line">0  1</span><br><span class="line">1  2</span><br><span class="line">3  3</span><br><span class="line">4  4</span><br><span class="line">5  5</span><br><span class="line">8  6</span><br><span class="line">9  7</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr />
+<h3 id="pandas-时间对象处理"><a class="markdownIt-Anchor" href="#pandas-时间对象处理"></a> pandas 时间对象处理</h3>
+<ul>
+<li>datetime库中的strptime()方法将字符串转换为时间对象，需要输入格式字符串:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">datetime.datetime.strptime(&quot;2000-12-25&quot;, &#39;%Y-%m-%d&#39;)</span><br><span class="line">&gt;&gt;&gt; 2000-12-25 00:00:00</span><br></pre></td></tr></table></figure>
+<ul>
+<li>pandas自动安装了dateutil库,使用parser.parse()方法，可以不用输入格式字符串:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dateutil.parser.parse(&quot;2000.12.25 12:30&quot;)</span><br><span class="line">&gt;&gt;&gt; 2000-12-25 12:30:00</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>pd.to_datetime()</code>：参数为批量时间字符串列表，自动返回对应的datetime对象的数组</p>
+</li>
+<li>
+<p><code>pd.date_range()</code>：生成时间范围数组。参数为起始时间，结束时间，periods=天数，freq频率='H’小时/'W-MON’每个周一，默认为周日/'B’工作日/'A’年/'M’月份。</p>
+</li>
+</ul>
+<h4 id="将时间对象用作series的标签"><a class="markdownIt-Anchor" href="#将时间对象用作series的标签"></a> 将时间对象用作Series的标签</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sr &#x3D; pd.Series(np.arange(100), index &#x3D; pd.date_range(&#39;2017-1-1&#39;, periods&#x3D;100))</span><br><span class="line"></span><br><span class="line">sr &gt;&gt;&gt;</span><br><span class="line">2017-01-01     0</span><br><span class="line">2017-01-02     1</span><br><span class="line">2017-01-03     2</span><br><span class="line">              ..</span><br><span class="line">2017-04-09    98</span><br><span class="line">2017-04-10    99</span><br><span class="line">Freq: D, Length: 100, dtype: int64</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可见Series的索引为时间对象<code>dateTime</code>，方便我们的切片和索引。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 直接找到某个月</span><br><span class="line">sr[&#39;2017-04&#39;] &gt;&gt;&gt;</span><br><span class="line">2017-04-01    90</span><br><span class="line">2017-04-02    91</span><br><span class="line">2017-04-03    92</span><br><span class="line">2017-04-04    93</span><br><span class="line">2017-04-05    94</span><br><span class="line">2017-04-06    95</span><br><span class="line">2017-04-07    96</span><br><span class="line">2017-04-08    97</span><br><span class="line">2017-04-09    98</span><br><span class="line">2017-04-10    99</span><br><span class="line">Freq: D, dtype: int64</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>resample()</code>可以更改series的样式，参数为freq，后面可以加上sum()/mean()等统计方法，来返回整周/月/年的统计数值。</li>
+</ul>
+<h2 id="-code21-"><a class="markdownIt-Anchor" href="#-code21-"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sr.resample(&#39;M&#39;).sum() &gt;&gt;&gt;</span><br><span class="line">2017-01-31     465</span><br><span class="line">2017-02-28    1246</span><br><span class="line">2017-03-31    2294</span><br><span class="line">2017-04-30     945</span><br><span class="line">Freq: M, dtype: int64</span><br></pre></td></tr></table></figure></h2>
+<h3 id="pandas-文件处理"><a class="markdownIt-Anchor" href="#pandas-文件处理"></a> pandas 文件处理</h3>
+<p>注意一些方法即可：<br />
+1.<code>pd.read_csv(文件名)</code>：默认分隔符为逗号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">my_csv &#x3D; pd.read_csv(&quot;test.csv&quot;);</span><br><span class="line">print(my_csv)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">  Unnamed: 0  one  two</span><br><span class="line">0          a  1.0    2</span><br><span class="line">1          b  2.0    1</span><br><span class="line">2          c  3.0    3</span><br><span class="line">3          d  NaN    4</span><br></pre></td></tr></table></figure>
+<ul>
+<li>会出现Unnamed，这是因为他把行索引当成了单独的一列。可以用利用参数<code>index_col=0</code>将第0列作为索引。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print(pd.read_csv(&quot;test.csv&quot;, index_col&#x3D;0))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">   one  two</span><br><span class="line">a  1.0    2</span><br><span class="line">b  2.0    1</span><br><span class="line">c  3.0    3</span><br><span class="line">d  NaN    4</span><br></pre></td></tr></table></figure>
+<ul>
+<li>除此之外，<code>index_col</code>也可以传入列名称，将某列设置为索引。</li>
+<li>使用<code>parse_dates = [列表名]</code>，将该列元素解析为datetime对象。</li>
+<li>如果文件没有第一行，<code>header=None, names=[列的名称]</code></li>
+<li>注意在识别中，会令一整列都识别为同一种类型。在csv中，NaN可以被识别为浮点数，但是none或者其他数值会被识别为字符串形式。使用<code>na_values=[]</code>参数来指定列表中的某些数值被识别为NaN。</li>
+</ul>
+<ol start="2">
+<li><code>pd.read_table(文件名)</code>：默认分隔符为制表符</li>
+<li><code>dataFrame.to_csv(文件名)</code>：写入到文件<br />
+参数：
+<ul>
+<li><code>sep</code> 指定的文件分隔符号，默认为逗号</li>
+<li><code>na_rep</code> 缺失值转换的字符串，默认为空字符串</li>
+<li><code>header = False</code> 不输出列名称一行</li>
+<li><code>index = False</code> 不输出行索引一列</li>
+<li><code>cols/columns</code> 指定输出的列，传入列表</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/08/basic%20operation/numpy%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%B2%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/08/basic%20operation/numpy%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%B2%E8%A7%A3/" class="post-title-link" itemprop="url">numpy库的简单讲解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-08 20:34:45" itemprop="dateCreated datePublished" datetime="2021-02-08T20:34:45+08:00">2021-02-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-10 11:54:17" itemprop="dateModified" datetime="2021-03-10T11:54:17+08:00">2021-03-10</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="numpy-n维数组容器"><a class="markdownIt-Anchor" href="#numpy-n维数组容器"></a> Numpy: N维数组容器</h3>
+<p>引入了ndarray-多维数组的概念，可用于储存和处理大型矩阵。</p>
+<h3 id="一些基本操作"><a class="markdownIt-Anchor" href="#一些基本操作"></a> 一些基本操作：</h3>
+<h4 id="导入numpy库"><a class="markdownIt-Anchor" href="#导入numpy库"></a> 导入numpy库：</h4>
+<p><code>import numpy as np</code></p>
+<h4 id="创建ndarray对象"><a class="markdownIt-Anchor" href="#创建ndarray对象"></a> 创建ndarray对象：</h4>
+<ol>
+<li><code>np.array(列表)</code><br />
+输入列表，并返回其ndarray形式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [random.uniform(100.0, 200) for i in range(10)]</span><br><span class="line">a &#x3D; np.array(a)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p><code>np.arange()</code><br />
+参数：<br />
+a. 1个参数a，生成0到a-1的列表<br />
+b. 2个参数a,b，生成a到b-1的列表<br />
+c. 3个参数a,b,c，生成a到b-1的列表，步长为c</p>
+</li>
+<li>
+<p><code>np.linspace(起始值，终结值，元素数量)</code>可以将元素均匀分布</p>
+</li>
+<li>
+<p><code>zeros(),ones(),empty()</code><br />
+参数：<br />
+a. 长度，必需<br />
+b. dtype=“”，非必选<br />
+empty()生成的其元素是任意值，等待被赋值。</p>
+</li>
+</ol>
+<h4 id="ndarray对象的一些基本属性"><a class="markdownIt-Anchor" href="#ndarray对象的一些基本属性"></a> ndarray对象的一些基本属性：</h4>
+<ol>
+<li>shape：尺寸</li>
+<li>dtype：内部元素的数据类型</li>
+<li>T：自身的转置矩阵<br />
+<img src="http://i1.fuimg.com/733078/ec7dde96d174a479.jpg" alt="Markdown" /></li>
+</ol>
+<ul>
+<li>批量运算：<br />
+<img src="http://i1.fuimg.com/733078/ea4fa165e149d011.jpg" alt="Markdown" /></li>
+</ul>
+<h4 id="一些常用的方法"><a class="markdownIt-Anchor" href="#一些常用的方法"></a> 一些常用的方法：</h4>
+<ol>
+<li>
+<p><code>sum()</code>： 返回所有元素的和</p>
+</li>
+<li>
+<p>ndarray数组截取：</p>
+<ul>
+<li><strong>索引截取</strong>：<code>被截取数组[起始索引:结尾索引:步长]</code></li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.arange(20)</span><br><span class="line">c &#x3D; a[0:15:3]</span><br><span class="line">print(c) --&gt; [ 0  3  6  9 12 15]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意：<br />
+不包含结尾索引。<br />
+numpy的截取是一个指针指向原数组，不会重新开辟内存。所以改变截取数组也会改变原数组。可以使用copy()来操作，不影响原数组。</li>
+<li>多维数组的截取：<code>被截取数组[行切片，列切片]</code></li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.arange(15).reshape((3,5))</span><br><span class="line">print(a)</span><br><span class="line">print(a[0:2, 0:2])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[[ 0  1  2  3  4]</span><br><span class="line">[ 5  6  7  8  9]</span><br><span class="line">[10 11 12 13 14]]</span><br><span class="line"></span><br><span class="line">[[0 1]</span><br><span class="line">[5 6]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>布尔型截取</strong>：传入一个相同长度的布尔形式的数组索引，过滤，返回对应值为true的值的数组.<br />
+可以使用批量处理和布尔型截取来筛选数据，注意多个条件使用：并且-&gt;(条件1)&amp;(条件2) ；或-&gt;(条件1)|(条件2)</li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [random.randint(1, 10) for i in range(10)]</span><br><span class="line">a &#x3D; np.array(a)   --&gt; [ 2  1  9  5 10  1  6  9  9  3]</span><br><span class="line">print(a)</span><br><span class="line"># 多个条件使用：1. 并且 (条件1)&amp;(条件2) 2. 或 (条件1)|(条件2)</span><br><span class="line">print(a[(a&gt;5) &amp; (a%2&#x3D;&#x3D;0)]) --&gt;[ 2  1  9  5 10  1  6  9  9  3]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>花式索引</strong>：传入一个索引的列表 (列表套列表)</li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D;np.arange(10)       --&gt; [0 1 2 3 4 5 6 7 8 9]</span><br><span class="line">b &#x3D; a[ [1,3,4,6,7] ]     --&gt; [1 3 4 6 7]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以使用这三种索引方式组合来索引多维数组</li>
+</ul>
+</li>
+<li>
+<p><code>copy()</code>：复制某个数组，对复制数组修改不会影响原数组。</p>
+</li>
+<li>
+<p><code>reshape(size的元祖数量)</code>：改变矩阵尺寸</p>
+</li>
+<li>
+<p><code>np.abs()</code>：返回ndarray每个元素绝对值的数组</p>
+</li>
+<li>
+<p><code>np.sqrt()</code>：返回开方，负数开方为nan</p>
+</li>
+<li>
+<p><code>np.round()/ np.rint()</code>：每个元素四舍五入</p>
+</li>
+<li>
+<p><code>np.trunc()</code>：向0取整</p>
+</li>
+<li>
+<p><code>np.floor() 和 np.ceil()</code>：向下和向上取整</p>
+</li>
+<li>
+<p><code>np.modf()</code>：返回整数和小数部分数组，共返回2个元素</p>
+</li>
+<li>
+<p><code>np.isnan</code>：判断是否为一个数字</p>
+</li>
+<li>
+<p><code>np.inf</code>表示最大的数，通常是被除数为0的结果。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.array([3,4,5,6,7])</span><br><span class="line">b &#x3D; np.array([3,0,0,0,7])</span><br><span class="line">print(a&#x2F;b) --&gt; [ 1. inf inf inf  1.]</span><br></pre></td></tr></table></figure>
+<ol start="13">
+<li><code>np.var()</code>方差 <code>np.std()</code>标准差</li>
+<li><code>np.max() np.min()</code>, <code>np.argmax()</code>返回最大数的下标, <code>np.argmin()</code>返回最小值的下标</li>
+</ol>
+<h3 id="np中的random库"><a class="markdownIt-Anchor" href="#np中的random库"></a> np中的random库</h3>
+<p>作用：可以用于生成随机数组<br />
+参数：前两个参数为随机区间，最后一个为数组的尺存(可以是一个元组)<br />
+方法：</p>
+<ol>
+<li><code>randint(x,y,size)</code> 生成随机整数，[x, y)</li>
+<li><code>rand()</code> 生成0到1的随机数，<code>rand(x)</code>生成生成0到1的x个元素的一维数组，<code>rand(x,y)</code>生成x*y的数组</li>
+<li><code>randn()</code>以给定的形状创建一个数组，数组元素来符合标准正态分布N(0,1)</li>
+<li><code>choice(x,y)</code> 从数组x中随机选择元素，生成y尺寸大小的数组</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/05/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/05/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">分类问题和逻辑回归</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-05 18:36:52" itemprop="dateCreated datePublished" datetime="2021-02-05T18:36:52+08:00">2021-02-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-06 22:26:10" itemprop="dateModified" datetime="2021-04-06T22:26:10+08:00">2021-04-06</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="分类问题-classification-problem"><a class="markdownIt-Anchor" href="#分类问题-classification-problem"></a> 分类问题 Classification problem</h2>
+<p>在分类问题中，我们需要预测的变量y是离散的值，比如：</p>
+<ol>
+<li>判断垃圾邮件</li>
+<li>判断诈骗交易</li>
+<li>判断病症</li>
+</ol>
+<p>逻辑回归算法(Logistic Regression)是目前最广泛使用的一种学习算法。</p>
+<h2 id="简单介绍"><a class="markdownIt-Anchor" href="#简单介绍"></a> 简单介绍</h2>
+<p>首先讨论<strong>二元分类问题</strong>：<br />
+我们将<strong>因变量(dependent variable)</strong> 分为 <strong>负向类(negative class)</strong> 和 <strong>正向类(positive class)</strong> 。因变量则为{0-负向类,1-正向类}。<br />
+假设公式为h<sub>θ</sub>(x)，它的值域是没有限制的，因此我们需要一个逻辑回归算法，使其值域永远在0-1之间。</p>
+<ol>
+<li>h<sub>θ</sub>(x) &gt; 0.5 --&gt; y=1</li>
+<li>h<sub>θ</sub>(x) &lt; 0.5 --&gt; y=0</li>
+</ol>
+<p>因此，选择一个合理的假设公式满足上述条件很重要。</p>
+<h2 id="假设表示-hypothesis-representation"><a class="markdownIt-Anchor" href="#假设表示-hypothesis-representation"></a> 假设表示 Hypothesis Representation</h2>
+<p>根据线性回归模型我们只能预测连续的值，然而对于分类问题，我们需要输出 0 或 1。<br />
+逻辑回归的模型为 <strong>h<sub>θ</sub>(x) = g(θ<sup>T</sup>X)</strong></p>
+<ol>
+<li>X 表示特征向量</li>
+<li>g 表示逻辑函数(logistic function)<br />
+一个常用的逻辑函数为 Sigmoid function， 形为 g(z) = (1+e<sup>-z</sup>)<sup>-1</sup><br />
+<img src="http://i1.fuimg.com/733078/faf75921b0ad1e04.png" alt="Markdown" /></li>
+</ol>
+<h2 id="判定边界-decision-boundary"><a class="markdownIt-Anchor" href="#判定边界-decision-boundary"></a> 判定边界 Decision Boundary</h2>
+<p>根据上面g(z)的图，可知：</p>
+<ol>
+<li>z=0 : g(z)=0.5</li>
+<li>z&gt;0 : g(z)&gt;0.5</li>
+<li>z&lt;0 : g(z)&lt;0.5</li>
+</ol>
+<p>又因为z=θ<sup>T</sup>X：</p>
+<ol>
+<li>θ<sup>T</sup>X&gt;0 --&gt; g(z)&gt;0 --&gt; y=1</li>
+<li>θ<sup>T</sup>X&lt;0 --&gt; g(z)&lt;0 --&gt; y=0</li>
+</ol>
+<h2 id="代价函数-cost-function"><a class="markdownIt-Anchor" href="#代价函数-cost-function"></a> 代价函数 Cost Function</h2>
+<ul>
+<li>
+<p>在线性函数中，我们定义的代价函数是所有模型误差的平方和。但是在逻辑回归算法，该代价函数的算法得到的图像是一个非凸函数，有许多局部最小值，所以不实用。</p>
+</li>
+<li>
+<p>重新定义逻辑回归的代价函数为：J(θ) = 1/m ∑ Cost( h<sub>θ</sub>(x<sup>i</sup>), y<sup>i</sup>)。<br />
+其中，Cost(h<sub>θ</sub>(x<sup>i</sup>), y<sup>i</sup>) =</p>
+</li>
+</ul>
+<ol>
+<li>-log(h<sub>θ</sub>(x))       if y=1</li>
+<li>-log(1 - h<sub>θ</sub>(x))   if y=0</li>
+</ol>
+<p><img src="http://i1.fuimg.com/733078/bfb48430f10bc97c.png" alt="Markdown" /></p>
+<ul>
+<li>这样构建的𝐶𝑜𝑠𝑡(ℎ<sub>𝜃</sub>(𝑥), 𝑦)函数的特点是：</li>
+</ul>
+<ol>
+<li>当实际的 𝑦=1 且 ℎ𝜃(𝑥)也为 1 时误差为 0， 当 𝑦 = 1 但ℎ𝜃(𝑥)不为 1 时误差随着ℎ<sub>𝜃</sub>(𝑥)变小而变大；</li>
+<li>当实际的 𝑦=0 且ℎ<sub>𝜃</sub>(𝑥)也为 0 时，代价为 0，当 𝑦 = 0 但ℎ<sub>𝜃</sub>(𝑥)不为 0 时误差随着 ℎ<sub>𝜃</sub>(𝑥)的变大而变大。</li>
+</ol>
+<ul>
+<li>
+<p>简化代价函数𝐶𝑜𝑠𝑡(ℎ<sub>𝜃</sub>(𝑥), 𝑦)函数：<br />
+𝑦 = 0 --&gt; −𝑦 = 0，𝑦 = 1 --&gt; 1−𝑦 = 0<br />
+𝐶𝑜𝑠𝑡(ℎ<sub>𝜃</sub>(𝑥), 𝑦) = −𝑦 × 𝑙𝑜𝑔(ℎ<sub>𝜃</sub>(𝑥)) − (1 − 𝑦) × 𝑙𝑜𝑔(1 − ℎ<sub>𝜃</sub>(𝑥))<br />
+带入代价函数可以得到：<br />
+𝐽(𝜃) = -1/𝑚 ∑ [𝑦<sup>(𝑖)</sup> log (ℎ<sub>𝜃</sub>(𝑥<sup>(𝑖)</sup>)) + (1 − 𝑦<sup>(𝑖)</sup>) log (1 − ℎ<sub>𝜃</sub>(𝑥<sup>(𝑖)</sup>))]</p>
+</li>
+<li>
+<p>梯度下降算法来求得能使代价函数最小的参数：<br />
+𝜃<sub>j</sub> := 𝜃<sub>j</sub> − 𝛼 d/d𝜃<sub>𝑗</sub> × 𝐽(𝜃)</p>
+</li>
+<li>
+<p>对J(0)求导后得到：<br />
+𝜃<sub>j</sub> := 𝜃<sub>𝑗</sub> − 𝛼 × 1/𝑚 ∑ (ℎ<sub>𝜃</sub>(x<sup>(𝑖)</sup> − y<sup>(𝑖)</sup> ) * x<sup>(𝑖)</sup><sub>𝑗</sub></p>
+</li>
+<li>
+<p>注意：</p>
+</li>
+</ul>
+<ol>
+<li>此时也需要同时更新所有的参数 𝜃。</li>
+<li>在运行梯度下降算法之前，进行特征缩放依旧是非常必要的。</li>
+<li>还有一些常被用来令代价函数最小的算法，这些算法更加复杂和优越，而且通常不需要人工选择学习率，通常比梯度下降算法要更加快速。这些算法有：共轭梯度(Conjugate Gradient)，局部优化法(Broyden fletcher goldfarb shann,BFGS)和有限内存局部优化法(LBFGS)。<br />
+fminunc 是 matlab 和 octave中都带的一个最小值优化函数，我们可以直接使用。<br />
+<img src="http://i2.tiimg.com/733078/61d030dbf3abc4ba.png" alt="Markdown" /></li>
+</ol>
+<h2 id="简化的成本函数和梯度下降"><a class="markdownIt-Anchor" href="#简化的成本函数和梯度下降"></a> 简化的成本函数和梯度下降：</h2>
+<ul>
+<li>
+<p>通过上文，我们得到更新参数的公式为：<br />
+𝜃<sub>j</sub> := 𝜃<sub>𝑗</sub> − 𝛼 × 1/𝑚 ∑ (ℎ<sub>𝜃</sub>(x<sup>(𝑖)</sup> − y<sup>(𝑖)</sup> ) * x<sup>(𝑖)</sup><sub>𝑗</sub><br />
+我们的目标是求出使代价J(𝜃)最小的参数𝜃。</p>
+</li>
+<li>
+<p>着眼于后面的公式：∑ (ℎ<sub>𝜃</sub>(x<sup>(𝑖)</sup> − y<sup>(𝑖)</sup> ) * x<sup>(𝑖)</sup><sub>𝑗</sub><br />
+其实就是在i=1到m上求和</p>
+</li>
+<li>
+<p>则单个看来ℎ<sub>𝜃</sub>(x<sup>(𝑖)</sup> − y<sup>(𝑖)</sup> ) * x<sup>(𝑖)</sup><sub>𝑗</sub><br />
+就是预测误差乘x<sup>(𝑖)</sup><sub>𝑗</sub></p>
+</li>
+<li>
+<p>这样看，更新𝜃的公式和原来梯度下降法是一个公式，但是逻辑回归的假设函数和线性回归的假设函数是不同的，所以两者的梯度下降完全不同。</p>
+</li>
+<li>
+<p>操作的注意事项：</p>
+</li>
+</ul>
+<ol>
+<li>推荐用向量化的方式，来同时更新这n个参数。</li>
+<li>特征需要缩放</li>
+</ol>
+<h2 id="优化"><a class="markdownIt-Anchor" href="#优化"></a> 优化：</h2>
+<p>首先明确：在梯度下降法中，每次计算的是𝐽(𝜃)和𝐽=0…n时的偏导数项</p>
+<h2 id="多分类问题一对多问题-multi-class-classification_-one-vs-all"><a class="markdownIt-Anchor" href="#多分类问题一对多问题-multi-class-classification_-one-vs-all"></a> 多分类问题/一对多问题 Multi class Classification_ One-vs-all：</h2>
+<ul>
+<li>举例：
+<ol>
+<li>自动将邮件归类到不同的文件夹中，或者增加不同的标签</li>
+<li>判断一个病人的的多种病症</li>
+</ol>
+</li>
+</ul>
+<p><img src="http://i1.fuimg.com/733078/289b167f17248823.png" alt="Markdown" /></p>
+<ul>
+<li>
+<p>训练方法：<br />
+将上图作为一个例子：在训练类别1时，将其他类别全部设置成负向类<br />
+<img src="http://i1.fuimg.com/733078/09d8a1faf81a9b94.png" alt="Markdown" /></p>
+</li>
+<li>
+<p>模型的使用：<br />
+为了做出预测，我们给出输入一个新的 𝑥 值，用这个做预测。我们要做的就是在我们三个分类器里面输入 𝑥，然后我们选择一个让 ℎ<sub>𝜃</sub><sup>(𝑖)</sup>(𝑥)最大的𝑖，即max<sub>i</sub> ℎ<sub>𝜃</sub><sup>(𝑖)</sup>(𝑥)。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/04/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/04/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/" class="post-title-link" itemprop="url">正规方程 Normal Equation</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-04 21:34:46" itemprop="dateCreated datePublished" datetime="2021-02-04T21:34:46+08:00">2021-02-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-06 22:26:10" itemprop="dateModified" datetime="2021-04-06T22:26:10+08:00">2021-04-06</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>对于某些线性回归问题，正规方程可能是更好的解决方法。</p>
+<h3 id="正规方程-normal-equation"><a class="markdownIt-Anchor" href="#正规方程-normal-equation"></a> 正规方程 Normal Equation</h3>
+<ul>
+<li>直接求导使假设公式导数为0时，即代价函数最小值时的参数。</li>
+<li>方法：假设训练集特征矩阵为X(含x<sub>0</sub>=1)，且训练集结果为向量y则利用正规方程求出向量θ=(X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y。</li>
+<li>答案的推导方式如下：<br />
+J(θ) = 1/2m * ∑(h<sub>θ</sub>x - y)<sup>2</sup><br />
+h<sub>θ</sub>(x) = θ<sub>0</sub>x<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub><br />
+转化为向量表达形式：<br />
+J(θ) = 1/2 * (Xθ-y)<sup>2</sup><br />
+h<sub>θ</sub>(x) = θ<sup>T</sup>X<br />
+其中：X为m*n的矩阵(m为样本数量，n为特征数量)，θ为n*1的矩阵，y为m*1的矩阵。<br />
+对J(θ)进行变换：<br />
+<img src="http://i1.fuimg.com/733078/dbe5fdc00218a958.png" alt="Markdown" /><br />
+接下来对J(θ)偏导：<br />
+用到求导法则 <strong>dAB/dB = A<sup>T</sup></strong> 和 <strong>dX<sup>T</sup>*AX/dX = 2AX</strong><br />
+得到<img src="http://i1.fuimg.com/733078/21528b3ec5615718.png" alt="Markdown" /><br />
+令dJ(θ)/dθ = 0, 就会得到结果θ=(X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y</li>
+</ul>
+<hr />
+<ul>
+<li>这个方法也称为最小二乘法建立线性回归方程，有篇博客导出答案的方式不同，但是写的很易理解，此处引用: <code>https://blog.csdn.net/u010687164/article/details/86160221</code><br />
+截取结果为<img src="http://i1.fuimg.com/733078/cb74a06ca058b911.png" alt="Markdown" /></li>
+</ul>
+<hr />
+<ul>
+<li>在 Octave 中，正规方程写作：<code>pinv(X'*X)*X'*y</code></li>
+</ul>
+<hr />
+<ul>
+<li>
+<p>注意：对于那些不可逆的矩阵（通常是因为特征之间不独立，如同时包含英尺为单位的尺<br />
+寸和米为单位的尺寸两个特征，也有可能是特征数量大于训练集的数量），正规方程方法是<br />
+不能用的。</p>
+</li>
+<li>
+<p>优势：</p>
+<ol>
+<li>正规方程无需选择学习率</li>
+<li>可以一次性运算得出</li>
+</ol>
+</li>
+<li>
+<p>劣势：</p>
+<ol>
+<li>需要计算(X<sup>T</sup>)<sup>-1</sup>，矩阵逆运算的算法复杂度为O(n<sup>3</sup>)所以不适用于特征数量n比较大的情况</li>
+<li>不适合逻辑回归模型</li>
+</ol>
+</li>
+<li>
+<p>正规方程的不可逆性质：<br />
+其实，奇异矩阵是不可逆的，但在Octave中，pinv()函数仍旧可以计算。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/04/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/04/machine%20learninng/%E5%90%B4%E6%81%A9%E8%BE%BE/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">linear regression with multiple variables 多元/多变量线性回归</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-04 19:16:34" itemprop="dateCreated datePublished" datetime="2021-02-04T19:16:34+08:00">2021-02-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-06 22:26:10" itemprop="dateModified" datetime="2021-04-06T22:26:10+08:00">2021-04-06</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>学习了单个变量的线性模型之后，现在增加更多的特征。</p>
+<h3 id="新的注释"><a class="markdownIt-Anchor" href="#新的注释"></a> 新的注释</h3>
+<ul>
+<li>n: 特征数量</li>
+<li>x<sup>(i)</sup>: 第i个训练实例，为特征矩阵的第i行，是一个向量</li>
+<li>x<sup>(i)</sup><sub>j</sub>: 表示特征矩阵第i行的第j个特征</li>
+</ul>
+<h3 id="假设-hypnosis"><a class="markdownIt-Anchor" href="#假设-hypnosis"></a> 假设 hypnosis</h3>
+<p>h<sub>θ</sub>(x) = θ<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub>，在这个假设中，参数是一个n+1维的向量: [θ<sub>0</sub>, θ<sub>1</sub> …θ<sub>n</sub>]，x则为第n行的特征向量。</p>
+<p>为了简化假设模型，引入x<sub>0</sub>=1，<br />
+则公式简化为h<sub>θ</sub>(x) = θ<sub>0</sub>x<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub>，<br />
+此时参数和单个训练实例都是n+1维的向量，二特征矩阵维度维m*(n+1)。公式可以简化为<strong>h<sub>θ</sub>=θ<sup>T</sup>x</strong>，T表示转制。</p>
+<h3 id="代价函数-cost-function"><a class="markdownIt-Anchor" href="#代价函数-cost-function"></a> 代价函数 cost function</h3>
+<p>与单变量线性回归类似，代价函数是所有建模误差的平方和：<br />
+J(θ<sub>0</sub>, θ<sub>1</sub> … θ<sub>n</sub>) = 1/2m * ∑(h<sub>θ</sub>x - y)<sup>2</sup></p>
+<h3 id="梯度下降算法-gradient-descent-algorithm"><a class="markdownIt-Anchor" href="#梯度下降算法-gradient-descent-algorithm"></a> 梯度下降算法 gradient descent algorithm</h3>
+<p>θ<sub>j</sub> := θ<sub>j</sub> - α*d/dθ<sub>j</sub>*J(θ<sub>0</sub>, θ<sub>1</sub> … θ<sub>n</sub>)<br />
+即：θ<sub>j</sub> := θ<sub>j</sub> - α*d/dθ<sub>j</sub>* 1/2m *∑(h<sub>θ</sub>x - y)<sup>2</sup><br />
+即：θ<sub>j</sub> := θ<sub>j</sub> - α*d/dθ<sub>j</sub>* 1/2m *∑(θ<sub>0</sub>x<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub>-y)<sup>2</sup><br />
+去除求导符号后：θ<sub>j</sub> := θ<sub>j</sub> - α* 1/m *∑( (θ<sub>0</sub>x<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+…+θ<sub>n</sub>x<sub>n</sub>-y)*x<sub>j</sub> )</p>
+<h3 id="实践注意事项"><a class="markdownIt-Anchor" href="#实践注意事项"></a> 实践注意事项</h3>
+<h4 id="特征缩放-feature-scaling"><a class="markdownIt-Anchor" href="#特征缩放-feature-scaling"></a> 特征缩放 feature Scaling</h4>
+<p>在计算多维度问题时，我们要保证这些特征都具有相近的尺度，这帮助算法更快地收敛。<br />
+解决方法： 尽量将特征的尺度缩放到[-1,1]之间。</p>
+<h4 id="学习率-learning-rate"><a class="markdownIt-Anchor" href="#学习率-learning-rate"></a> 学习率 learning rate</h4>
+<p>梯度下降算法的迭代收到学习率的影响<br />
+如果学习率α过小，则收敛次数会非常高<br />
+如果学习率α过大，则可能会越过局部最小值导致无法收敛<br />
+常见的学习率有：0.01，0.03，0.1，0.3，1，3，10</p>
+<h3 id="多项式回归-polynomial-regression"><a class="markdownIt-Anchor" href="#多项式回归-polynomial-regression"></a> 多项式回归 Polynomial Regression</h3>
+<p>线性回归不一定适合所有的数据，有时我们需要曲线来模拟我们的数据，即二次方程或者其他多项式方程。<br />
+通常需要先观察数据，然后决定准备尝试怎样的模型。<br />
+特征缩放对多项式回归模型很重要。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -744,290 +1621,8 @@ b li</li>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/02/basic%20operation/%E4%B9%A6%E5%86%99%E5%8D%9A%E5%AE%A2%EF%BC%8C%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/02/basic%20operation/%E4%B9%A6%E5%86%99%E5%8D%9A%E5%AE%A2%EF%BC%8C%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE/" class="post-title-link" itemprop="url">书写博客，修改博客的分类及标签</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-02 20:42:46" itemprop="dateCreated datePublished" datetime="2021-02-02T20:42:46+08:00">2021-02-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-09 13:32:34" itemprop="dateModified" datetime="2021-03-09T13:32:34+08:00">2021-03-09</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/online/" itemprop="url" rel="index"><span itemprop="name">online</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="如何定义文档内容样式"><a class="markdownIt-Anchor" href="#如何定义文档内容样式"></a> 如何定义文档内容样式</h1>
-<p>– 在hexo主页下文档document栏front-matter部分，介绍了一些基本的参数，注意—开始—结束。</p>
-<h2 id="next格式下-更改标签页和分类页"><a class="markdownIt-Anchor" href="#next格式下-更改标签页和分类页"></a> next格式下 更改标签页和分类页</h2>
-<p>在themes/next/_config.yml下找到menu，可以开启/隐藏目录页。<br />
-home：主页<br />
-tag：标签页<br />
-categories：分类页</p>
-<h2 id="创建标签页"><a class="markdownIt-Anchor" href="#创建标签页"></a> 创建标签页</h2>
-<p><code>hexo n page tags</code></p>
-<h2 id="创建分类页"><a class="markdownIt-Anchor" href="#创建分类页"></a> 创建分类页</h2>
-<p><code>hexo n page categories</code></p>
-<h2 id="设置主页阅读全文"><a class="markdownIt-Anchor" href="#设置主页阅读全文"></a> ? 设置主页阅读全文</h2>
-<p>在themes/next/_config.yml<br />
-excerpt_description: true</p>
-<h2 id="设置文章内链接样式"><a class="markdownIt-Anchor" href="#设置文章内链接样式"></a> ? 设置文章内链接样式</h2>
-<p>打开文件 <code>themes/next/source/css/_common/components/post/post-body.styl</code><br />
-新版本该文件全部放入.post-body下，在最后面添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.post-body p a&#123;</span><br><span class="line">    color:red;</span><br><span class="line">    border-bottom:none;</span><br><span class="line">    &amp;:hover&#123;</span><br><span class="line">      color:#8C8C8C；</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是这样改成功不了<br />
-在主题_config.yml中取消#<br />
-<code>#style: source/_data/custom.styl</code><br />
-然后新建<code>source/_data/custom.styl</code>，在其中插入</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/02/basic%20operation/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%8E%A8%E8%8D%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/02/basic%20operation/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">博客主题的安装与推荐</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-02 19:56:10" itemprop="dateCreated datePublished" datetime="2021-02-02T19:56:10+08:00">2021-02-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-09 13:32:16" itemprop="dateModified" datetime="2021-03-09T13:32:16+08:00">2021-03-09</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2>
-<ol>
-<li>
-<p>在hexo官网下的Themes部分选择喜欢的目标样式，选择后点击名称，跳转到github。</p>
-</li>
-<li>
-<p>根据github中文档中的操作信息进行操作。<br />
-以Cactus为例（ github网址；<a target="_blank" rel="noopener" href="https://github.com/probberechts/hexo-theme-cactus%EF%BC%89">https://github.com/probberechts/hexo-theme-cactus）</a><br />
-2.1 命令行，hexo根目录下 ：<br />
-$ git clone <a target="_blank" rel="noopener" href="https://github.com/probberechts/hexo-theme-cactus.git">https://github.com/probberechts/hexo-theme-cactus.git</a> themes/cactus<br />
-2.2 clone操作完成后，在根目录下找到config.yml文件，并修改文件内的参数theme：<br />
-vim _config.yml<br />
-找到 theme: yilia<br />
-修改为 theme: cactus<br />
-2.3 然后 hexo s 启动博客来查看</p>
-</li>
-<li>
-<p>可以参考github主页上提供的方法来修改博客主题的内容参数。</p>
-</li>
-</ol>
-<h2 id="更改-以next为例"><a class="markdownIt-Anchor" href="#更改-以next为例"></a> 更改， 以next为例</h2>
-<p>进入主题的page文件：themes/next/config.vml<br />
-在 # Schemes下设置样式</p>
-<h2 id="更改头像"><a class="markdownIt-Anchor" href="#更改头像"></a> 更改头像</h2>
-<p>进入主题的page文件：themes/next/config.vml<br />
-在 # Avatar 下：<br />
-url设置路径头像，需要是网络路径。推荐：极简图床</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/02/basic%20operation/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/02/basic%20operation/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-02 15:59:34" itemprop="dateCreated datePublished" datetime="2021-02-02T15:59:34+08:00">2021-02-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-09 13:32:35" itemprop="dateModified" datetime="2021-03-09T13:32:35+08:00">2021-03-09</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

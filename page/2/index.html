@@ -196,7 +196,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -243,6 +243,895 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/17/inclass/INT202/INT202-MasterMethod/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/17/inclass/INT202/INT202-MasterMethod/" class="post-title-link" itemprop="url">INT202-MasterMethod</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-17 23:55:09" itemprop="dateCreated datePublished" datetime="2021-04-17T23:55:09+08:00">2021-04-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-18 12:02:12" itemprop="dateModified" datetime="2021-04-18T12:02:12+08:00">2021-04-18</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="the-master-method-主方法"><a class="markdownIt-Anchor" href="#the-master-method-主方法"></a> The Master Method 主方法</h2>
+<p>主方法是表示广泛的递归方程渐进特征的通用方法。</p>
+<h3 id="形式"><a class="markdownIt-Anchor" href="#形式"></a> 形式</h3>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1.4226377952755906em"/><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>c</mi><mspace width="1.4226377952755906em"/></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>n</mi><mo>&lt;</mo><mi>d</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>a</mi><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mi mathvariant="normal">/</mi><mi>b</mi><mo stretchy="false">)</mo><mo>+</mo><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>o</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>w</mi><mi>i</mi><mi>s</mi><mi>e</mi></mrow></mstyle></mtd></mtr></mtable></mrow><mspace linebreak="newline"></mspace><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mspace width="1.4226377952755906em"/><mi>d</mi><mo>&gt;</mo><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mi>a</mi><mo>&gt;</mo><mn>0</mn><mo separator="true">,</mo><mi>c</mi><mo>&gt;</mo><mn>0</mn><mo separator="true">,</mo><mi>b</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\hspace{5mm} T(n) = \begin{cases}
+
+c \hspace{5mm} &amp; {n&lt;d} \\
+aT(n/b)+f(n)  &amp;  otherwise
+
+\end{cases}\\
+
+where \hspace{5mm}  d&gt;=1, a&gt;0, c&gt;0, b&gt;1
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mspace" style="margin-right:1.4226377952755906em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:1.4226377952755906em;"></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord">/</span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">d</span></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:1.4226377952755906em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></p>
+<ul>
+<li>分治法将问题T分为a个子问题，每个子问题的规模最多为n/b，递归求解每个子问题，然后将子问题的解归并成为整个问题的解。</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>表示把问题划分成为子问题并且归并为原问题的解所需要的时间。</li>
+</ul>
+<h3 id="解法"><a class="markdownIt-Anchor" href="#解法"></a> 解法</h3>
+<ul>
+<li>通过将f(n)与特殊函数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mi>b</mi></msub><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">n^{log_{b}a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">o</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span><span class="mord mathdefault mtight">a</span></span></span></span></span></span></span></span></span></span></span></span>进行比较，然后得出结果，一共有三种情况：</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/18/Y8Qq95TsDZkXNcJ.jpg" alt="" /></p>
+<ul>
+<li>解法：先求特殊函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mi>b</mi></msub><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">n^{log_{b}a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">o</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span><span class="mord mathdefault mtight">a</span></span></span></span></span></span></span></span></span></span></span></span>，然后和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>做比较判断属于哪一种情况，最后套公式。</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/18/nj2Q9spaZU5N6xH.jpg" alt="" /></p>
+<h2 id="矩阵相乘"><a class="markdownIt-Anchor" href="#矩阵相乘"></a> 矩阵相乘</h2>
+<ul>
+<li>当两个(2*2)的矩阵相乘时，需要计算<strong>8次</strong>元素相乘。</li>
+<li>将这些元素看成子矩阵时，这个乘法就变成了分治算法：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi>b</mi><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">T(n) = 8T(n/2) + bn^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord">/</span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+<h3 id="strassens-algorithm"><a class="markdownIt-Anchor" href="#strassens-algorithm"></a> Strassen’s algorithm</h3>
+<p>这样的2*2矩阵相乘，只需要七个子矩阵的乘法即可得到答案。<br />
+<img src="https://i.loli.net/2021/04/18/CyhkzedrmSo42cU.jpg" alt="" /><br />
+<img src="https://i.loli.net/2021/04/18/i32HGymLp8SXxVr.jpg" alt="" /><br />
+<img src="https://i.loli.net/2021/04/18/MAiNpnQr2P5qulR.jpg" alt="" /></p>
+<h3 id="counting-inversion"><a class="markdownIt-Anchor" href="#counting-inversion"></a> Counting inversion</h3>
+<ul>
+<li>对于一行数字：a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub> … a<sub>n</sub><br />
+一次颠倒 inversion 表示：i&lt; j, 但是 a<sub>i</sub> &gt; a<sub>j</sub></li>
+<li>解法：一种方法是，每两个元素之间都进行比较，比较次数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{n(n-1)}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，时间复杂度为O(n<sup>2</sup>)<br />
+可以用分治法求解，时间复杂度降为O(nlog n)。</li>
+<li>分治求法：不断将列表划分为长度相同/差1的两个列表，然后判断两个子列表的颠倒次数，然后合并。</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/18/8sgytJBrVvD4oGw.png" alt="" /></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/17/machine%20learninng/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/17/machine%20learninng/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">循环神经网络</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-17 16:29:00" itemprop="dateCreated datePublished" datetime="2021-04-17T16:29:00+08:00">2021-04-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-20 23:27:38" itemprop="dateModified" datetime="2021-04-20T23:27:38+08:00">2021-04-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>循环神经网络 Recurrent Neural Network / RNN<br />
+是一种具有记忆力的网络，允许信息长久地保存在神经网络中。<br />
+适用于数据具有前后依赖性。</p>
+<h2 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h2>
+<ul>
+<li>先前的神经网络，层与层之间相互连接，但是每层上的各个节点是无连接的。</li>
+<li>循环神经网络的隐藏层的值不仅仅取决于当前这次的输入，还取决于上一次隐藏层的值。<br />
+<img src="https://i.loli.net/2021/04/17/BHOdJxYNg39Kq8a.png" alt="" /></li>
+<li>我们将当前时间记为t，上一步时间则为t-1。输入记为x，隐藏层为s，输出为o。则从图上可以看到，s<sub>t</sub>同时受到x和s<sub>t-1</sub>的影响。公式表示为：</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>o</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>V</mi><mo>∗</mo><msub><mi>s</mi><mi>t</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>s</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>U</mi><mo>∗</mo><msub><mi>x</mi><mi>t</mi></msub><mo>+</mo><mi>W</mi><mo>∗</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+o_t &amp;= V * s_t\\
+s_t &amp;= U * x_t + W * s_{t-1}
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0000000000000004em;vertical-align:-1.2500000000000002em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h2 id="长短期记忆网络-long-short-term-memory-lstm"><a class="markdownIt-Anchor" href="#长短期记忆网络-long-short-term-memory-lstm"></a> 长短期记忆网络 Long Short Term Memory / LSTM</h2>
+<ul>
+<li>对于实际问题来说，有时需要更加久远的历史信息，有时仅需要临近的历史信息。</li>
+<li>传统的神经网路的每一个隐藏单元都只是执行一个简单的激活函数的操作，但是LSTM中<strong>每个模块内有四层结构</strong>：3个sigmoid层和1个tanh层。这四层结构构成了三种<strong>门单元</strong>，用于信息选择性通过。</li>
+<li>这三层门单元分别是<strong>遗忘门</strong>，<strong>输入门</strong>和<strong>输出门</strong>。</li>
+<li>简单的循环神经网络只需要传递一个隐藏状态 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">h_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，而长短期记忆网络还需要传递候选状态 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">c_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，和候选内部状态 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mover accent="true"><mi>c</mi><mo>^</mo></mover><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\hat{c}_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;">^</span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</li>
+</ul>
+<h3 id="遗忘门"><a class="markdownIt-Anchor" href="#遗忘门"></a> 遗忘门</h3>
+<p><img src="https://i.loli.net/2021/04/17/KYEfCt2V4mdU7hI.png" alt="" /></p>
+<ul>
+<li>一个sigmoid函数。根据<strong>当前的输入</strong>和<strong>上一时刻的隐藏输出</strong>来决定内部状态有多少被遗忘。</li>
+<li>数学原理：把t-1时的长期记忆输入<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">c_{t-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.638891em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>乘上一个遗忘因子<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">f_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。遗忘因子是由短期记忆<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">h_{t-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.902771em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>以及事件信息<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>来计算。</li>
+<li><strong>遗忘因子</strong>计算公式：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>t</mi></msub><mo>=</mo><mi>σ</mi><mo stretchy="false">(</mo><msub><mi>W</mi><mi>f</mi></msub><mo>∗</mo><mo stretchy="false">[</mo><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>t</mi></msub><mo stretchy="false">]</mo><mo>+</mo><msub><mi>b</mi><mi>f</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f_t = \sigma(W_f * [h_{t-1}, x_t] + b_f)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="输入门"><a class="markdownIt-Anchor" href="#输入门"></a> 输入门</h3>
+<p><img src="https://i.loli.net/2021/04/17/7MaGKPunZkOijfx.png" alt="" /></p>
+<ul>
+<li>一个sigmoid函数和一个tanh函数。根据当前的输入和上一时刻的隐藏输出决定<strong>什么样的新信息</strong>被存放在细胞状态。针对遗忘门中丢弃的属性信息，在本单元模块找到相应的新的属性信息，添加进去，以补充丢弃的属性信息。</li>
+<li>两个函数的作用：
+<ol>
+<li>sigmoid层，决定什么值需要更新</li>
+<li>tanh层，创建一个新的候选值向量，生成候选记忆</li>
+</ol>
+</li>
+<li>数学原理：根据遗忘因子和上一个隐藏层传递的值得到遗忘之后的保留值；根据上次输出和本次输入得到遗忘的补充值。</li>
+<li>计算公式：</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>i</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>σ</mi><mo stretchy="false">(</mo><msub><mi>W</mi><mi>t</mi></msub><mo>∗</mo><mo stretchy="false">[</mo><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>t</mi></msub><mo stretchy="false">]</mo><mo>+</mo><msub><mi>b</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mover accent="true"><mi>c</mi><mo>^</mo></mover><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>t</mi><mi>a</mi><mi>n</mi><mi>h</mi><mo stretchy="false">(</mo><msub><mi>W</mi><mi>c</mi></msub><mo>∗</mo><mo stretchy="false">[</mo><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>t</mi></msub><mo stretchy="false">]</mo><mo>+</mo><msub><mi>b</mi><mi>c</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>c</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><msub><mi>f</mi><mi>t</mi></msub><mo>∗</mo><msub><mi>c</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>i</mi><mi>t</mi></msub><mo>∗</mo><msub><mover accent="true"><mi>c</mi><mo>^</mo></mover><mi>t</mi></msub></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+i_t &amp;= \sigma( W_t*[h_{t-1}, x_t]+b_i )\\
+\hat{c}_t &amp;= tanh( W_c*[h_{t-1}, x_t]+b_c)\\
+c_t &amp;= f_t*c_{t-1} + i_t*\hat{c}_t
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.500000000000002em;vertical-align:-2.000000000000001em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5000000000000004em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;">^</span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.6599999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.000000000000001em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5000000000000004em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-1.6599999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;">^</span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.000000000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="输出门"><a class="markdownIt-Anchor" href="#输出门"></a> 输出门</h3>
+<p><img src="https://i.loli.net/2021/04/17/8CERardikXpT6P5.png" alt="" /></p>
+<ul>
+<li>一个sigmoid函数。根据当前候选状态，输入和上一时刻的隐藏输出来决定该时刻的隐藏输出。<br />
+首先我们使用一个Sigmiod函数来去确定细胞状态的哪部分需要输出，然后把细胞状态通过tanh层处理，两者相乘得到最终我们想要输出的信息。</li>
+<li>数学原理：通过一个Sigmoid函数得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>o</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">o_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>o</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">o_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>a</mi><mi>n</mi><mi>h</mi><mo stretchy="false">(</mo><msub><mi>c</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">tanh(c_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>相乘得到最终的输出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">h_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</li>
+<li>计算公式：</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>o</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>σ</mi><mo stretchy="false">(</mo><msub><mi>W</mi><mi>o</mi></msub><mo stretchy="false">[</mo><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>t</mi></msub><mo stretchy="false">]</mo><mo>+</mo><msub><mi>b</mi><mi>o</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>h</mi><mi>t</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><msub><mi>o</mi><mi>t</mi></msub><mo>∗</mo><mi>t</mi><mi>a</mi><mi>n</mi><mi>h</mi><mo stretchy="false">(</mo><msub><mi>c</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+o_t &amp;= \sigma( W_o[h_{t-1}, x_t] + b_o )\\
+h_t &amp;= o_t* tanh( c_t )
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0000000000000004em;vertical-align:-1.2500000000000002em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="优势"><a class="markdownIt-Anchor" href="#优势"></a> 优势</h3>
+<p>LSTM有进有出且当前的cell informaton是通过input gate控制之后叠加的，而RNN是叠乘，因此LSTM可以防止梯度消失或者爆炸，会比RNN好一点。</p>
+<h2 id="门控制循环单元-gated-recurrent-unit-gru"><a class="markdownIt-Anchor" href="#门控制循环单元-gated-recurrent-unit-gru"></a> 门控制循环单元 Gated Recurrent Unit / GRU</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38088359/article/details/83960108?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&amp;dist_request_id=1331978.12945.16186698740003693&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control">推荐博客链接</a></p>
+<ul>
+<li>也是循环神经网络的一种，思想与LSTM一致：通过内部模块来控制信息的流动，所以可以看作LSTM的一个变体。</li>
+<li>利用<strong>更新门</strong>替代输入门和遗忘门，通过<strong>重置门</strong>控制当前时刻的候选状态的计算是否依赖于上一个时刻。<br />
+<strong>重置门有助于捕捉时间序列里短期的依赖关系。更新门有助于捕捉时间序列里长期的依赖关系。</strong></li>
+<li>只需要传递<strong>隐藏状态</strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">h_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和<strong>候选隐藏状态</strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mover accent="true"><mi>t</mi><mo>^</mo></mover><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\hat{t}_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0285199999999999em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.87852em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">t</span></span></span><span style="top:-3.18408em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.16666em;">^</span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/17/inclass/INT202/INT202-SortingAlgorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/17/inclass/INT202/INT202-SortingAlgorithm/" class="post-title-link" itemprop="url">INT202-SortingAlgorithm</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-17 01:20:02" itemprop="dateCreated datePublished" datetime="2021-04-17T01:20:02+08:00">2021-04-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-20 21:39:55" itemprop="dateModified" datetime="2021-04-20T21:39:55+08:00">2021-04-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="pq排序"><a class="markdownIt-Anchor" href="#pq排序"></a> PQ排序</h1>
+<h2 id="pq排序-priority-queue"><a class="markdownIt-Anchor" href="#pq排序-priority-queue"></a> PQ排序 Priority Queue</h2>
+<p>集合中的每个元素都有一个相关的键，该键决定了从集合拿出元素的优先级。</p>
+<h3 id="基本方法"><a class="markdownIt-Anchor" href="#基本方法"></a> 基本方法</h3>
+<ol>
+<li>insertItem(k, e): 将键值对为（k, e）的元素插入PQ</li>
+<li>removeMin(): 删除最小的元素</li>
+<li>minElement(): 返回最小的元素</li>
+<li>minKey(): 返回最小元素的键</li>
+</ol>
+<h4 id="时间复杂度"><a class="markdownIt-Anchor" href="#时间复杂度"></a> 时间复杂度</h4>
+<ul>
+<li>
+<p>insertItem(k, e)：O(1)<br />
+insertItem(k, e)一种操作方式是insertLast(k, e)。因为有k来决定该元素的次序，所以在插入时不用考虑其位置。</p>
+</li>
+<li>
+<p>其余的三个操作都需要检查序列中的所有元素，才能找到最小的元素，所以余下三个操作时间复杂度都为O(n)</p>
+</li>
+</ul>
+<h3 id="sorting-algorithm"><a class="markdownIt-Anchor" href="#sorting-algorithm"></a> sorting algorithm</h3>
+<p>设集合C有n个元素</p>
+<ol>
+<li>利用n个insertItem操作序列，将C中的元素放入一个初始为空的优先队列中去</li>
+<li>利用n个removeMin操作序列，按照非降序从P中提取元素并且放入C中</li>
+</ol>
+<p>时间复杂度为O(n^2)</p>
+<hr />
+<h2 id="堆数据结构-heap-data-structure"><a class="markdownIt-Anchor" href="#堆数据结构-heap-data-structure"></a> 堆数据结构 Heap Data Structure</h2>
+<ol>
+<li>将数据项存储在一棵二叉树的内部节点中，外部节点仅仅作为占位符。</li>
+<li>Heap-Order 堆序性质：在内部节点中，子节点<strong>大于</strong>父节点。</li>
+</ol>
+<h3 id="表示方法"><a class="markdownIt-Anchor" href="#表示方法"></a> 表示方法</h3>
+<ul>
+<li>可以使用数组 Array 来表示<strong>堆序性质的完全二叉树 heap-order complete binary tree</strong>，索引从1开始，即根位于索引为1的位置。</li>
+<li>对于任何位置在i的节点：
+<ol>
+<li>其左子节点在数组中的索引为 2*i</li>
+<li>其右子节点在数组中的索引为 2*i+1</li>
+<li>其父节点在数组中的索引为 i/2 （向下取整）</li>
+</ol>
+</li>
+</ul>
+<h2 id="利用堆数据结构实现pq排序"><a class="markdownIt-Anchor" href="#利用堆数据结构实现pq排序"></a> 利用堆数据结构实现PQ排序</h2>
+<h3 id="组成"><a class="markdownIt-Anchor" href="#组成"></a> 组成</h3>
+<ol>
+<li>heap：一个完全二叉树<strong>T</strong>，里面的键满足了堆序性质，并且存放在一个数组中。</li>
+<li>last：<strong>T</strong>中最后一个节点的引用。</li>
+<li>comp：一个比较器，决定了关键字之间的全序关系。并且维持保证将最小元素储存在T的根节点。</li>
+</ol>
+<h3 id="定理"><a class="markdownIt-Anchor" href="#定理"></a> 定理</h3>
+<p>一个存储n个关键字的完全二叉树的高度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>=</mo><mo stretchy="false">⌈</mo><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">h = \lceil{log(n+1)}\rceil</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span></span><span class="mclose">⌉</span></span></span></span><br />
+<img src="https://i.loli.net/2021/04/17/jRy7u3v5OBkds9A.jpg" alt="" /></p>
+<h3 id="用向量表示堆"><a class="markdownIt-Anchor" href="#用向量表示堆"></a> 用向量表示堆</h3>
+<p><img src="https://i.loli.net/2021/04/17/476ETezkVZahQdl.jpg" alt="" /></p>
+<h3 id="插入操作-insertitem"><a class="markdownIt-Anchor" href="#插入操作-insertitem"></a> 插入操作 insertItem</h3>
+<ol>
+<li>找到外部节点z</li>
+<li>将数据项k插入z</li>
+<li>重新存储堆数据结构，需要使用<strong>向上冒泡</strong>的方式</li>
+</ol>
+<h4 id="堆向上冒泡-up-heap-bubbling"><a class="markdownIt-Anchor" href="#堆向上冒泡-up-heap-bubbling"></a> 堆向上冒泡 Up-heap bubbling</h4>
+<ul>
+<li>将插入后的节点和其父节点进行比较，如果小于父节点数据，则与父节点的键值对交换位置。这个操作会不断重复。</li>
+<li>最坏的情况下需要一路传到根节点，所以时间复杂度和高度有关，为O(log n)</li>
+</ul>
+<h3 id="删除操作-removemin"><a class="markdownIt-Anchor" href="#删除操作-removemin"></a> 删除操作 removeMin</h3>
+<p>具有最小关键字的元素存储在堆T的根r中，所以不能简单地直接删除。</p>
+<ol>
+<li>交换根的元素与最后一个节点w的元素</li>
+<li>将最后一个节点删除，保留一个叶节点占位符号</li>
+<li>进行<strong>堆向下冒泡</strong>处理</li>
+</ol>
+<h4 id="堆向下冒泡-down-heap-bubbling"><a class="markdownIt-Anchor" href="#堆向下冒泡-down-heap-bubbling"></a> 堆向下冒泡 Down-heap bubbling</h4>
+<p>交换操作后，根节点会变得很大，需要向下与其子节点进行交换。<br />
+直到交换后符合子节点大于或等于父节点的要求。</p>
+<ul>
+<li>时间复杂度和高度有关，为O(log n)</li>
+</ul>
+<h3 id="堆排序-heap-sorting"><a class="markdownIt-Anchor" href="#堆排序-heap-sorting"></a> 堆排序 Heap sorting</h3>
+<p>假设有n个元素存储在堆中：</p>
+<ul>
+<li>空间复杂度：O(n)</li>
+<li>方法 insertItem, removeMin 的时间复杂度为O(log n)</li>
+<li>方法 size, isEmpty, minKey, minElement 的时间复杂度为O(1)</li>
+<li>方法 sort 的时间复杂度为O(n logn)</li>
+</ul>
+<h1 id="divide-and-conquer-分治法"><a class="markdownIt-Anchor" href="#divide-and-conquer-分治法"></a> Divide-and-Conquer 分治法</h1>
+<h2 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h2>
+<ol>
+<li>Divide 划分：如果输入元素数量小于某一个<strong>阀值threshold</strong>，则直接求解这个小问题，并返回解，否则将数据集合分成2或3个<strong>不相交disjoint</strong>集合。</li>
+<li>Recur 递归：递归求解子集合关联问题。</li>
+<li>Conquer 归并：取子集合的解，并合并成为原问题的解。</li>
+</ol>
+<h2 id="mergesort"><a class="markdownIt-Anchor" href="#mergesort"></a> MergeSort</h2>
+<p><img src="https://i.loli.net/2021/04/17/rzwmlQ9eAZBpd7K.jpg" alt="" /></p>
+<h2 id="归并排序树-merge-sort-tree"><a class="markdownIt-Anchor" href="#归并排序树-merge-sort-tree"></a> 归并排序树 merge-sort tree</h2>
+<ul>
+<li>我们可以用一个二叉树T来表示该算法的执行过程。这个二叉树被称为<strong>归并排序树 merge-sort tree</strong>。</li>
+<li>T中的每个节点都表示了归并排序的一次<strong>递归调用</strong></li>
+<li>T的高度约为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">⌈</mo><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi></mrow><mo stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">\lceil{log n}\rceil</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span></span><span class="mclose">⌉</span></span></span></span></li>
+</ul>
+<h2 id="时间复杂度-2"><a class="markdownIt-Anchor" href="#时间复杂度-2"></a> 时间复杂度</h2>
+<ul>
+<li>归并排序树T上的每一个内部节点v都需要进行划分和归并操作，这两个操作的运行时间与该节点上的序列尺寸成正比。归并排序的时间等于T中所有节点花费时间的总和。</li>
+<li>设节点v的深度为i，则该节点的序列的大小为n/2<sup>i，则该节点上花费的时间为O(n/(2</sup>i))，每层有2^i个节点，则每层花费的总时间为 O((2^i) * n/(2^i))=O(n)。一共有logn层，所以归并排序的时间复杂度为O(nlogn)</li>
+</ul>
+<h1 id="quick-sort-快速排序"><a class="markdownIt-Anchor" href="#quick-sort-快速排序"></a> Quick Sort 快速排序</h1>
+<ul>
+<li>步骤</li>
+</ul>
+<ol>
+<li>Divide 划分：随机选择一个元素x(该元素习惯被称<strong>枢纽元素 pivot</strong>，通常选择集合S中的最右边的元素)，并且将集合S分成三个序列：
+<ul>
+<li>L：小于x的元素集合</li>
+<li>E：等于x的元素集合</li>
+<li>G：大于x的元素集合</li>
+</ul>
+</li>
+<li>Recur 递归：对L，G集合进行递归操作</li>
+<li>Conquer 归并：依次从L，E和G集合中向S插入元素</li>
+</ol>
+<ul>
+<li>同样可以用二叉树来表示</li>
+<li>运行时间：T中节点v上的运行时间与其输入大小s(v)成正比。因为集合E的存在，v的子节点的输入大小之和最多为s(v)-1。</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/17/pXGDcQPVx6E8hKl.jpg" alt="" /></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/16/inclass/INT202/INT202-AVLTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/16/inclass/INT202/INT202-AVLTree/" class="post-title-link" itemprop="url">INT202 AVL树和深度有界查找树</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-16 20:05:02" itemprop="dateCreated datePublished" datetime="2021-04-16T20:05:02+08:00">2021-04-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-20 21:48:14" itemprop="dateModified" datetime="2021-04-20T21:48:14+08:00">2021-04-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="avl-tree"><a class="markdownIt-Anchor" href="#avl-tree"></a> AVL Tree</h1>
+<h2 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h2>
+<ul>
+<li><strong>高度平衡规则 height-balance property</strong>：对于树T的每个内部节点v，v的字节点的高度最多相差1。</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/16/DxskpIMz9wZQ5PW.jpg" alt="" /></p>
+<ul>
+<li><strong>定理</strong>：一颗存储n个数据节点的AVL树的高度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span><br />
+证明：假设某棵树的<strong>最少的内部节点数量</strong>为n(h)，高度为h，则有n(1)=1，n(2)=2。<br />
+则对于h&gt;2，n(h)=1+n(h-1)+n(h-2)&gt;2n(h-2)<br />
+所以每当h增加2，原式至少加倍。则有n(h)&gt;2^{i}n(h-2i)<br />
+因为已知n(1)与n(2)，选择h-2i&gt;=1，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>=</mo><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i=\lceil{h/2}\rceil-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mord mathdefault">h</span><span class="mord">/</span><span class="mord">2</span></span><span class="mclose">⌉</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>:</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&gt;</mo><msup><mn>2</mn><mrow><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>−</mo><mn>1</mn></mrow></msup><mo>∗</mo><mi>n</mi><mo stretchy="false">(</mo><mi>h</mi><mo>−</mo><mn>2</mn><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&gt;</mo><mo>=</mo><msup><mn>2</mn><mrow><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>−</mo><mn>1</mn></mrow></msup><mo>∗</mo><mi>n</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&gt;</mo><mo>=</mo><msup><mn>2</mn><mrow><mo stretchy="false">⌈</mo><mrow><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><mo stretchy="false">⌉</mo><mo>−</mo><mn>1</mn></mrow></msup></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&gt;</mo><mi>h</mi><mi mathvariant="normal">/</mi><mn>2</mn><mo>−</mo><mn>1</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mi>h</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>&lt;</mo><mn>2</mn><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo><mo>+</mo><mn>2</mn></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+n(h) &amp;&gt; 2^{\lceil {h/2} \rceil-1}*n(h-2\lceil{h/2}\rceil+2)\\
+     &amp;&gt;= 2^{\lceil {h/2} \rceil-1}*n(1)\\
+     &amp;&gt;= 2^{\lceil {h/2} \rceil-1}\\
+\\
+logn(h) &amp;&gt; h/2 - 1\\
+h &amp;&lt; 2logn(h)+2\\
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:9.294em;vertical-align:-4.397000000000001em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.897em;"><span style="top:-6.9590000000000005em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mclose">)</span></span></span><span style="top:-5.361em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-3.762999999999999em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-2.262999999999999em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-0.7629999999999995em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mclose">)</span></span></span><span style="top:0.7370000000000001em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">h</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.397em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.897em;"><span style="top:-6.9590000000000005em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">⌈</span><span class="mord mtight"><span class="mord mathdefault mtight">h</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span><span class="mclose mtight">⌉</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mopen">⌈</span><span class="mord"><span class="mord mathdefault">h</span><span class="mord">/</span><span class="mord">2</span></span><span class="mclose">⌉</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span><span style="top:-5.361em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">⌈</span><span class="mord mtight"><span class="mord mathdefault mtight">h</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span><span class="mclose mtight">⌉</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span><span style="top:-3.762999999999999em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">⌈</span><span class="mord mtight"><span class="mord mathdefault mtight">h</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span><span class="mclose mtight">⌉</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span><span style="top:-0.762999999999999em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">h</span><span class="mord">/</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span><span style="top:0.737000000000001em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.397000000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>所以存储n个关键字的AVL树的高度最多为 2logn(h)+2。</p>
+<h2 id="插入操作"><a class="markdownIt-Anchor" href="#插入操作"></a> 插入操作</h2>
+<ul>
+<li>当插入一个外部节点w，可能会使节点变为<strong>不平衡的unbalanced</strong>。</li>
+<li><strong>操作</strong>：<br />
+从点w向上找到第一个非平衡点z<br />
+令y表示z的子节点，z的祖先节点；<br />
+令x表示y的子节点，x可能是w点或者w点的祖先节点。<br />
+然后通过<strong>三节点重构法 tri-node restructuring</strong>重构根为z的子树：</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/16/ORCyKHEkWxFnuv8.jpg" alt="" /><br />
+<img src="https://i.loli.net/2021/04/16/QOcr5gvhP6pfGjZ.jpg" alt="" /></p>
+<ul>
+<li>常常称这种方法为<strong>旋转rotation</strong>：<br />
+<img src="https://i.loli.net/2021/04/16/mJZ4WRa8ir9xgYB.jpg" alt="" /></li>
+</ul>
+<h2 id="删除操作"><a class="markdownIt-Anchor" href="#删除操作"></a> 删除操作</h2>
+<ul>
+<li>首先模仿普通的二叉树上的操作，如果违反了高度平衡性质。则从先前被删除节点的父节点w到根路径上找不平衡的节点进行重构。<br />
+单次重构可能不能使树恢复平衡，这时需要继续向上找节点重构，直到根。<br />
+<img src="https://i.loli.net/2021/04/16/Nnk3W47ydqFAXzS.jpg" alt="" /></li>
+</ul>
+<h2 id="性能"><a class="markdownIt-Anchor" href="#性能"></a> 性能</h2>
+<ul>
+<li>单次重构 restructure：O(1)</li>
+<li>搜索 Search：O(log n)</li>
+</ul>
+<p>因为插入和删除都是由一次搜索和一次或者多次重构组成的，所以：</p>
+<ul>
+<li>插入 Insertion：O(log n)</li>
+<li>删除 Removal：O(log n)</li>
+</ul>
+<h1 id="multi-way-search-tree-多路搜索树"><a class="markdownIt-Anchor" href="#multi-way-search-tree-多路搜索树"></a> Multi-Way Search Tree 多路搜索树</h1>
+<p>深度有界查找树：树的查找操作往往和其深度有关系。有些树会定义一个深度函数使得每个外部节点的（伪）深度相同。如此，该树的查找和更新操作的时间复杂度为O(log n)。</p>
+<h2 id="定义-2"><a class="markdownIt-Anchor" href="#定义-2"></a> 定义</h2>
+<ol>
+<li>是一棵有序树</li>
+<li>树中的内部节点有<strong>最少两个</strong>子节点</li>
+<li>并且每个节点存储了一个<strong>集合</strong>，集合元素为形如 <strong>(k<sub>i</sub>,o<sub>i</sub>)<strong>的键值对。<br />
+每个节点的集合大小为</strong>该子节点数量-1</strong></li>
+<li>每个节点v存储了键k<sub>1</sub>, k<sub>2</sub>, … k<sub>d-1</sub>，子节点为 v<sub>1</sub>, v<sub>2</sub>, … v<sub>d</sub>：
+<ul>
+<li>v1 &lt; k1</li>
+<li>k<sub>i-1</sub> &lt; v<sub>i</sub> &lt; k<sub>i</sub></li>
+<li>v<sub>d</sub> &gt; k<sub>d</sub></li>
+</ul>
+</li>
+<li>外部节点即叶子节点不存储数据项，只作为占位符。</li>
+</ol>
+<ul>
+<li>一棵二叉树是一个特殊的多路查找树。</li>
+</ul>
+<h2 id="查找操作"><a class="markdownIt-Anchor" href="#查找操作"></a> 查找操作</h2>
+<p><img src="https://i.loli.net/2021/04/16/PQDwRkrzT47b3En.jpg" alt="" /></p>
+<h1 id="24树"><a class="markdownIt-Anchor" href="#24树"></a> (2,4)树</h1>
+<h2 id="定义-3"><a class="markdownIt-Anchor" href="#定义-3"></a> 定义</h2>
+<ul>
+<li>大小性质：每个节点最多有4个子节点</li>
+<li>深度性质：所有外部节点的深度相同</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/16/DboF8xMasH7cRwm.jpg" alt="" /></p>
+<h2 id="插入操作-2"><a class="markdownIt-Anchor" href="#插入操作-2"></a> 插入操作</h2>
+<p>从根节点向下查找，如果待插入节点未出现，则应该查找停止在叶节点z处。<br />
+设v是z的父节点，把数据项插入在节点v处，并且给v添加一个新的子节点w，该w为z左边的外部节点。<br />
+这时可能会出现<strong>上溢overflow</strong>现象：插入之后子节点数变为5，此时需要<strong>分裂split</strong>操作。</p>
+<ul>
+<li>时间复杂度：O(log n)</li>
+</ul>
+<h3 id="分裂操作"><a class="markdownIt-Anchor" href="#分裂操作"></a> 分裂操作</h3>
+<p><strong>简单来说，将第三个数据项向上抛给父节点。</strong><br />
+<img src="https://i.loli.net/2021/04/16/NYa8wkrM5Xeisop.jpg" alt="" /></p>
+<ul>
+<li>时间复杂度：O(1)</li>
+<li>分裂操作完成后，v的父节点u会出现新的上溢，则需要继续向上分裂传播。</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/16/CEc63PyvDWz1J8x.jpg" alt="" /></p>
+<h2 id="删除操作-2"><a class="markdownIt-Anchor" href="#删除操作-2"></a> 删除操作</h2>
+<ul>
+<li>首先从上到下找到待删除节点<br />
+<strong>简单来说，就是使用下一个比该元素大的替换掉</strong></li>
+</ul>
+<ol>
+<li>如果该节点在倒数第二层，则直接删除，并且删除其右子叶节点。</li>
+<li>如果该节点在内部，假设其存储在节点z的第i个数据项(k<sub>i</sub>, x<sub>i</sub>)中，将数据项(k<sub>i</sub>, x<sub>i</sub>)与z的第i个子节点的<strong>最左</strong>内部节点v交换。如果交换后数据项满足1）则删除，否则重复该操作。<br />
+<img src="https://i.loli.net/2021/04/16/Oht8A3gqsbLIpxy.jpg" alt="" /></li>
+</ol>
+<h3 id="下溢-underflow"><a class="markdownIt-Anchor" href="#下溢-underflow"></a> 下溢 underflow**</h3>
+<p>在删除数据项后，原本的 2-nodes节点v（有两个子节点），会成为一个没有数据项仅有一个子节点的1-node节点。</p>
+<ul>
+<li>为了修正<strong>下溢情况</strong><br />
+1）如果v的临近节点存在一个3-nodes或者4-node的兄弟节点w，进行<strong>转移transfer</strong>操作：<br />
+<strong>简单来说，就是从父节点中拿一个节点，然后兄弟节点还回去。（自己的债兄弟替你还。</strong><br />
+            将w与v的父节点数据值转移到v中<br />
+           将w靠近v的数据项转移到父节点对应位置中<br />
+<img src="https://i.loli.net/2021/04/17/PHT6Len72R9jkvG.jpg" alt="" /><br />
+2）如果v只有一个临近节点或者v的两个临近节点都是2-nodes节点，进行<strong>合并 fusion</strong>操作：<br />
+<strong>简单来说，就是兄弟俩都不富裕，从父亲那里拿一个元素，兄弟二人合并。</strong><br />
+           将已经进行删除操作的空节点与临近节点进行合并，即只保留临近节点<br />
+           从父节点中转移一个数据项填充到合并后的节点中</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/17/TxV6t9cskNypoMQ.jpg" alt="" /></p>
+<p><img src="https://i.loli.net/2021/04/17/wOo8Au6xfNlPEZp.jpg" alt="" /></p>
+<p><img src="https://i.loli.net/2021/04/17/mn1wqPkSFM3Azha.jpg" alt="" /></p>
+<h1 id="时间复杂度总结"><a class="markdownIt-Anchor" href="#时间复杂度总结"></a> 时间复杂度总结</h1>
+<p>对于findElement，insertElement，removeElement操作</p>
+<ul>
+<li>BST：所有的操作都是O(h)，h为其高度</li>
+<li>AVL Tree，(2,4) Tree：所有的操作都是O(log n)，n为节点数</li>
+</ul>
+<h2 id="黑红树-p113"><a class="markdownIt-Anchor" href="#黑红树-p113"></a> 黑红树 P113</h2>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/16/machine%20learninng/NLP/NLP%E6%9C%AF%E8%AF%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/16/machine%20learninng/NLP/NLP%E6%9C%AF%E8%AF%AD/" class="post-title-link" itemprop="url">NLP术语</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-16 16:17:58" itemprop="dateCreated datePublished" datetime="2021-04-16T16:17:58+08:00">2021-04-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-22 11:49:12" itemprop="dateModified" datetime="2021-04-22T11:49:12+08:00">2021-04-22</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一些术语"><a class="markdownIt-Anchor" href="#一些术语"></a> 一些术语</h2>
+<p>BS ｜ This ｜ is ｜ a ｜ simple ｜ sentence ｜ ES</p>
+<ul>
+<li>Words：单词</li>
+<li>Words Segmentation：分词</li>
+<li>Morphology：同一词的不同形式</li>
+<li>Part-of-Speech Tagging：词性标注，将词根据句法分析标注为各自的词性</li>
+<li>Syntax：句法分析</li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/16/VB5GTeRuK7Jg8LF.jpg" alt="" /></p>
+<ul>
+<li>
+<p>Semantics：语意</p>
+</li>
+<li>
+<p>Vector Space：向量空间</p>
+</li>
+<li>
+<p>Norm of Vector：向量的模。有不同方式的定义方法：L-0 to L-infinity Norms</p>
+</li>
+<li>
+<p>Matrix：矩阵，向量的向量。</p>
+</li>
+<li>
+<p>Tensor：张量</p>
+</li>
+<li>
+<p>Determinant：行列式。可以看作向量所夹的平面/空间的量。</p>
+</li>
+<li>
+<p>Eigenvector and Eigenvalue：特征向量和特征值</p>
+</li>
+<li>
+<p>Convex Set and Function：凸集合和凸函数</p>
+</li>
+</ul>
+<h3 id="结构化"><a class="markdownIt-Anchor" href="#结构化"></a> 结构化</h3>
+<p>信息具有明确的结构关系</p>
+<ul>
+<li>编程语言是结构化的</li>
+<li>自然语言是非结构化的</li>
+</ul>
+<h3 id="歧义性"><a class="markdownIt-Anchor" href="#歧义性"></a> 歧义性</h3>
+<p>同一词汇根据语境不同而表现为特定的语义</p>
+<h2 id="自然语言的任务层次"><a class="markdownIt-Anchor" href="#自然语言的任务层次"></a> 自然语言的任务层次</h2>
+<h3 id="词法分析"><a class="markdownIt-Anchor" href="#词法分析"></a> 词法分析</h3>
+<p>词法分析时后续高级任务的基础，包含三个任务：</p>
+<ul>
+<li>中文分词：将文本分隔为有意义的词语</li>
+<li>词性标注：确定每个词语的类别和浅层的其以消除</li>
+<li>命名实体识别：识别专有名词</li>
+</ul>
+<h3 id="信息抽取"><a class="markdownIt-Anchor" href="#信息抽取"></a> 信息抽取</h3>
+<p>词法分析后，我们得到了一个有意义的单词列表，并且每个单词附带了自己的词性和其他标签。<br />
+根据杂乱的单词标签，我们可以利用统计学的知识抽取出有用的信息。</p>
+<h3 id="文本分类和文本聚类"><a class="markdownIt-Anchor" href="#文本分类和文本聚类"></a> 文本分类和文本聚类</h3>
+<ul>
+<li>文本分类：整理称为同一类别</li>
+<li>文本聚类：不关系具体的类别，只是将相似的文本归档在一起</li>
+</ul>
+<h3 id="句法分析"><a class="markdownIt-Anchor" href="#句法分析"></a> 句法分析</h3>
+<p>词法分析只能得到零散的词回信息。句法分析可以得到句子的主谓宾结构，从而得到这句话的意图。<br />
+经常用于搜索引擎，问答系统和机器翻译。</p>
+<h3 id="语义分析和篇章分析"><a class="markdownIt-Anchor" href="#语义分析和篇章分析"></a> 语义分析和篇章分析</h3>
+<p>和语法分析相对，句法分析偏重于分析语义，主要包含三个部分：</p>
+<ul>
+<li>词义消歧：确定一个词在具体语境中的含义</li>
+<li>语义角色标注：标注句子中的谓语与其他成分的关系</li>
+<li>语义依存分析：分析词语之间的语义关系</li>
+</ul>
+<h3 id="其他的整合性质高级任务"><a class="markdownIt-Anchor" href="#其他的整合性质高级任务"></a> 其他的整合性质高级任务</h3>
+<ul>
+<li>自动问答</li>
+<li>自动摘要：为一篇长文档生成简短的摘要</li>
+<li>机器翻译：讲一句话从一种语言翻译到另一种语言</li>
+</ul>
+<h3 id="语料库"><a class="markdownIt-Anchor" href="#语料库"></a> 语料库</h3>
+<ul>
+<li>中文分词语料库</li>
+<li>词性标注语料库</li>
+<li>命名实体识别语料库</li>
+<li>句法分析语料库<br />
+汉语中常用的句法分析语料库有CTB（Chinese Tree-bank 中文树库）</li>
+<li>文本分类语料库</li>
+</ul>
+<h2 id="开源工具"><a class="markdownIt-Anchor" href="#开源工具"></a> 开源工具</h2>
+<p>HanLP</p>
+<h1 id="这个bug我一定要tmd的记下来"><a class="markdownIt-Anchor" href="#这个bug我一定要tmd的记下来"></a> 这个bug我一定要tmd的记下来：</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File &quot;&#x2F;Users&#x2F;liuyilin&#x2F;Library&#x2F;Python&#x2F;3.7&#x2F;lib&#x2F;python&#x2F;site-packages&#x2F;jpype&#x2F;_core.py&quot;, line 224, in startJVM</span><br><span class="line">    ignoreUnrecognized, convertStrings, interrupt)</span><br><span class="line">FileNotFoundError: [Errno 2] JVM DLL not found:</span><br></pre></td></tr></table></figure>
+<p>旧版本解决方案：<a target="_blank" rel="noopener" href="https://blog.bbzhh.com/index.php/archives/74.html">https://blog.bbzhh.com/index.php/archives/74.html</a><br />
+但是对我不适用</p>
+<ol>
+<li>方法一：原本vm文件夹下面有两个jdk，删除一个后成功。</li>
+<li>方法二：core文件下看到有选择java路径</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">_jpype.startup(jvmpath, tuple(args),</span><br><span class="line">                ignoreUnrecognized, convertStrings, interrupt)</span><br><span class="line">initializeResources()</span><br></pre></td></tr></table></figure>
+<p>累了，直接暴力赋值了：直接在上方插入jvmpath地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    # print(&quot;jvmpath: &quot;+jvmpath)</span><br><span class="line">    jvmpath&#x3D;&quot;&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;jdk-15.0.1.jdk&#x2F;Contents&#x2F;MacOS&#x2F;libjli.dylib&quot;</span><br><span class="line">    _jpype.startup(jvmpath, tuple(args),</span><br><span class="line">                    ignoreUnrecognized, convertStrings, interrupt)</span><br><span class="line">    initializeResources()</span><br></pre></td></tr></table></figure>
+<p>文件名<code>/Library/Java/JavaVirtualMachines/jdk-15.0.1.jdk/Contents/MacOS/libjli.dylib</code>可能windows的dll文件到mac下变成了dylib文件了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/15/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/SpringMVC%E6%95%B4%E5%90%88SSM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/15/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/SpringMVC%E6%95%B4%E5%90%88SSM/" class="post-title-link" itemprop="url">SpringMVC整合SSM</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-15 21:44:25 / Modified: 21:45:02" itemprop="dateCreated datePublished" datetime="2021-04-15T21:44:25+08:00">2021-04-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="需求分析"><a class="markdownIt-Anchor" href="#需求分析"></a> 需求分析</h2>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -687,685 +1576,8 @@ Restful风格使用<code>/</code>分割参数：<code>http://www.vodxc.com/AQP/l
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/14/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/SpringMVC%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%92%8C%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/14/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/SpringMVC%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%92%8C%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">SpringMVC注解开发</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-14 17:53:03" itemprop="dateCreated datePublished" datetime="2021-04-14T17:53:03+08:00">2021-04-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-15 12:10:38" itemprop="dateModified" datetime="2021-04-15T12:10:38+08:00">2021-04-15</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="spring注解开发"><a class="markdownIt-Anchor" href="#spring注解开发"></a> Spring注解开发</h2>
-<ul>
-<li>使用SpringMVC必须配置的三大件：处理器映射器，处理器适配器和视图解析器。</li>
-<li>而SpringMVC在使用注解开发时，无需在Springmvc-servlet.xml文件中设置处理器映射器<code>BeanNameUrlHandlerMapping</code>和处理器适配器<code>SimpleControllerHandlerAdapter</code>.</li>
-<li>我们使用@Controller来标记controller文件，并且使用<code>@RequestMapping</code>来完成映射关系。</li>
-</ul>
-<h3 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现：</h3>
-<ol>
-<li>springmvc-servlet.xml</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">       xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">       xmlns:context&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&quot;</span><br><span class="line">       xmlns:mvc&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;mvc&quot;</span><br><span class="line">       xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">       http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">       http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context</span><br><span class="line">       https:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-context.xsd</span><br><span class="line">       http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;mvc</span><br><span class="line">       https:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;mvc&#x2F;spring-mvc.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 自动扫描包，让指定包下的注解生效,由IOC容器统一管理 --&gt;</span><br><span class="line">    &lt;context:component-scan base-package&#x3D;&quot;com.lyl.controller&quot;&#x2F;&gt;</span><br><span class="line">    &lt;!-- 让Spring MVC不处理静态资源 --&gt;</span><br><span class="line">    &lt;mvc:default-servlet-handler&#x2F;&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">    支持mvc注解驱动</span><br><span class="line">        在spring中一般采用@RequestMapping注解来完成映射关系</span><br><span class="line">        要想使@RequestMapping注解生效</span><br><span class="line">        必须向上下文中注册DefaultAnnotationHandlerMapping</span><br><span class="line">        和一个AnnotationMethodHandlerAdapter实例</span><br><span class="line">        这两个实例分别在类级别和方法级别处理。</span><br><span class="line">        而annotation-driven配置帮助我们自动完成上述两个实例的注入。</span><br><span class="line">     --&gt;</span><br><span class="line">    &lt;mvc:annotation-driven &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 视图解析器 --&gt;</span><br><span class="line">    &lt;bean class&#x3D;&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span><br><span class="line">          id&#x3D;&quot;internalResourceViewResolver&quot;&gt;</span><br><span class="line">        &lt;!-- 前缀 --&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;prefix&quot; value&#x3D;&quot;&#x2F;WEB-INF&#x2F;jsp&#x2F;&quot; &#x2F;&gt;</span><br><span class="line">        &lt;!-- 后缀 --&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;suffix&quot; value&#x3D;&quot;.jsp&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>
-<p><code>&lt;mvc:default-servlet-handler/&gt;</code>会在Spring MVC上下文中定义一个<code>DefaultServletHttpRequestHandler</code>，像一个检查员，对进入DispatcherServlet的URL进行筛查，如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，如果不是静态资源的请求，才由DispatcherServlet继续处理。</p>
-<ol start="2">
-<li>Controller</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(&quot;&#x2F;hello&quot;)</span><br><span class="line">	public String hello(Model moudle)&#123;</span><br><span class="line">		&#x2F;&#x2F; 封装数据</span><br><span class="line">		moudle.addAttribute(&quot;msg&quot;,&quot;Hello SpringMVC&quot;);</span><br><span class="line"></span><br><span class="line">		return &quot;hello&quot;;  &#x2F;&#x2F;被视图解析器处理</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/13/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/springMVC%E7%AE%80%E4%BB%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/13/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringMVC/springMVC%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">SpringMVC 简介</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-13 22:25:01" itemprop="dateCreated datePublished" datetime="2021-04-13T22:25:01+08:00">2021-04-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-15 11:54:05" itemprop="dateModified" datetime="2021-04-15T11:54:05+08:00">2021-04-15</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h3>
-<p>传统方式，用户的操作需要很多不同的servlet去相应。SpringMvc在用户和servlet之间提供了新的一层，提供调度，处理请求，适配URL和跳转页面等功能。<br />
-Spring的Web框架围绕DispatcherServlet来设计。DispatcherServlet的作用是将请求分发到不同的Controller。<br />
-<img src="https://i.loli.net/2021/04/13/4G239emdIOwokpb.jpg" alt="" /></p>
-<ul>
-<li>前端控制器：Dispatcher Servlet<br />
-原先所有的请求都需要经过<code>web.xml</code>文件，我们配置了一个<code>springmvc-servlet</code>组件拦截并且跳转到<code>springmvc-servlet.xml</code>文件处理这些请求。根据<code>springmvc-servlet</code>的设定，跳转到对应的<code>controller</code>处理并且返回相应的静态资源。</li>
-</ul>
-<h3 id="过程"><a class="markdownIt-Anchor" href="#过程"></a> 过程</h3>
-<p><img src="https://i.loli.net/2021/04/13/JYBFiKPNLyMkpxS.jpg" alt="" /></p>
-<ol>
-<li>xml文件中注册Dispatcher-servlet表示前端控制器，使整个SpringMvc的控制中心，拦截用户发送的前端请求。<br />
-这里注册Dispatcher-servlet时，会使用<code>&lt;param-value&gt;</code>标签来设置其配置文件的地址。<br />
-请求url为<code>服务器域名/服务器上的web站点/控制器</code></li>
-<li>Handler-Mapping为处理器映射，由DispatcherServlet调用Handler-Mapping在Dispatcher-servlet配置文件中根据url查找handler。。</li>
-<li>Handler-Execution表示具体的Handler，主要目的是根据url查找对应的控制器地址。</li>
-<li>Handler-Execution会将解析之后的Controller映射返回给Dispatcher-Servlet</li>
-</ol>
-<hr />
-<ol start="5">
-<li>Handler-Adapter表示处理器适配器，会按照特定的规则去执行Handler</li>
-<li>Handler指定具体的Controller执行</li>
-<li>Controller将具体的执行信息返回给Handler-Adapter，比如ModelAndView。<br />
-在Controller中可以与服务层进行数据交互，比如得到数据库的信息。</li>
-<li>Handler-Adapter将视图逻辑名或者模型传递给Dispatcher-Servlet</li>
-</ol>
-<hr />
-<ol start="9">
-<li>Dispatcher-Servlet调用视图解析器(ViewResolver)来解析Handler-Adapter传递的逻辑视图名</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean class&#x3D;&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot; id&#x3D;&quot;internalResourceViewResolver&quot;&gt;</span><br><span class="line">    &lt;!--前缀--&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;prefix&quot; value&#x3D;&quot;&#x2F;WEB-INF&#x2F;jsp&#x2F;&quot;&#x2F;&gt;</span><br><span class="line">    &lt;!--后缀--&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;suffix&quot; value&#x3D;&quot;.jsp&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
-<pre><code>视图解析器的功能：
-1. 获取了数据
-2. 解析视图名称
-3. 拼接视图名称
-4. 根据拼接值找到对应的视图
-</code></pre>
-<ol start="10">
-<li>视图解析器将解析的逻辑视图名称传递给Dispatcher-Servlet</li>
-<li>Dispatcher-Servlet根据视图解析器解析出来的视图结果，调用具体的视图</li>
-<li>将视图呈现给用户</li>
-</ol>
-<h3 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h3>
-<ol>
-<li>web.xml文件中设置Dispatcher-Servlet：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app xmlns&#x3D;&quot;http:&#x2F;&#x2F;xmlns.jcp.org&#x2F;xml&#x2F;ns&#x2F;javaee&quot;</span><br><span class="line">         xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;xmlns.jcp.org&#x2F;xml&#x2F;ns&#x2F;javaee http:&#x2F;&#x2F;xmlns.jcp.org&#x2F;xml&#x2F;ns&#x2F;javaee&#x2F;web-app_4_0.xsd&quot;</span><br><span class="line">         version&#x3D;&quot;4.0&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;!--注册DispatcherServlet--&gt;</span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;springmvc&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">        &lt;init-param&gt;</span><br><span class="line">            &lt;!--关联配置文件--&gt;</span><br><span class="line">            &lt;param-name&gt;contextConfigLocation&lt;&#x2F;param-name&gt;</span><br><span class="line">            &lt;param-value&gt;classpath:springmvc-servlet.xml&lt;&#x2F;param-value&gt;</span><br><span class="line">        &lt;&#x2F;init-param&gt;</span><br><span class="line">        &lt;load-on-startup&gt;1&lt;&#x2F;load-on-startup&gt;</span><br><span class="line">    &lt;&#x2F;servlet&gt;</span><br><span class="line"></span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;springmvc&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;&#x2F;&lt;&#x2F;url-pattern&gt;</span><br><span class="line">    &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--</span><br><span class="line">        原先所有的请求都需要经过web.xml文件，我们配置了上面的配置</span><br><span class="line">        配置了一个springmvc-servlet.xml文件拦截这些请求</span><br><span class="line">        看到springmvc-servlet.xml文件</span><br><span class="line">    --&gt;</span><br><span class="line">&lt;&#x2F;web-app&gt;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>springmvc-servlet中</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--url处理器--&gt;</span><br><span class="line">&lt;bean class&#x3D;&quot;org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping&quot;&#x2F;&gt;</span><br><span class="line">&lt;!--url适配器--&gt;</span><br><span class="line">&lt;bean class&#x3D;&quot;org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean class&#x3D;&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot; id&#x3D;&quot;internalResourceViewResolver&quot;&gt;</span><br><span class="line">    &lt;!--前缀--&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;prefix&quot; value&#x3D;&quot;&#x2F;WEB-INF&#x2F;jsp&#x2F;&quot;&#x2F;&gt;</span><br><span class="line">    &lt;!--后缀--&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;suffix&quot; value&#x3D;&quot;.jsp&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--从spring中跳转到controller，而不是web.xml--&gt;</span><br><span class="line">&lt;bean id&#x3D;&quot;&#x2F;hello&quot; class&#x3D;&quot;com.lyl.controller.HelloController&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
-<pre><code>- 接收到url中的hello，然后转到Controller处理。
-- 前后缀用于设置跳转页面。
-</code></pre>
-<ol start="3">
-<li>Controller中</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注意：这里我们先导入Controller接口</span><br><span class="line">public class HelloController implements Controller &#123;</span><br><span class="line"></span><br><span class="line">	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception &#123;</span><br><span class="line">		&#x2F;&#x2F;ModelAndView 模型和视图</span><br><span class="line">		ModelAndView mv &#x3D; new ModelAndView();</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;封装对象，放在ModelAndView中。Model</span><br><span class="line">		&#x2F;&#x2F;代替session或者request</span><br><span class="line">		&#x2F;&#x2F;模型存储数据</span><br><span class="line">		mv.addObject(&quot;msg&quot;,&quot;HelloSpringMVC!&quot;);</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;封装要跳转的视图，放在ModelAndView中</span><br><span class="line">		&#x2F;&#x2F;直接设置视图的名称，会经过xml文件中的视图解析器，拼接上对应的前后缀直接跳转</span><br><span class="line">		mv.setViewName(&quot;hello&quot;); &#x2F;&#x2F;: &#x2F;WEB-INF&#x2F;jsp&#x2F;hello.jsp</span><br><span class="line">		return mv;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里的hello会和springmvc-servlet设置的前后缀连接然后跳转到指定的静态资源文件。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/13/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringBoot/EnableAutoConfiguration/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/13/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringBoot/EnableAutoConfiguration/" class="post-title-link" itemprop="url">EnableAutoConfiguration</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-13 16:55:14 / Modified: 21:35:57" itemprop="dateCreated datePublished" datetime="2021-04-13T16:55:14+08:00">2021-04-13</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>@SpringBootApplication</code>注解是由<code>@SpringBootConfiguration</code>，<code>@EnableAutoConfiguration</code>和<code>@ComponentScan</code>三个注解组成的。<br />
-<code>@SpringBootConfiguration</code>表示当前是一个配置类。<br />
-<code>@ComponentScan</code>指定包扫描。</p>
-<h3 id="enableautoconfiguration"><a class="markdownIt-Anchor" href="#enableautoconfiguration"></a> EnableAutoConfiguration</h3>
-<p>由<code>@AutoConfigurationPackage</code>和<code>@Import()</code>两个注解组成。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@AutoConfigurationPackage</span><br><span class="line">@Import(AutoConfigurationImportSelector.class)</span><br><span class="line">public @interface EnableAutoConfiguration</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>@AutoConfigurationPackage</code>指定默认包规则</li>
-<li><code>@Import</code></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/12/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringBoot/SpringBoot%E5%BA%95%E5%B1%82%E6%B3%A8%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/12/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/SpringBoot/SpringBoot%E5%BA%95%E5%B1%82%E6%B3%A8%E8%A7%A3/" class="post-title-link" itemprop="url">SpringBoot底层注解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-12 21:05:35 / Modified: 23:00:02" itemprop="dateCreated datePublished" datetime="2021-04-12T21:05:35+08:00">2021-04-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="组件添加"><a class="markdownIt-Anchor" href="#组件添加"></a> 组件添加</h2>
-<h3 id="方法一-configuration"><a class="markdownIt-Anchor" href="#方法一-configuration"></a> 方法一 @Configuration</h3>
-<ol>
-<li>新建config类，在类上标注注解<code>@Configuration</code></li>
-<li>在类的内部使用<code>@Bean</code>注解标注的方法注册组件。<br />
-其中方法名为组件id，返回类型为组件的类型，返回值为组件实例。<br />
-<code>@Bean</code>可以变成<code>@Bean(String)</code>来设置组件的id。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Configuration &#x2F;&#x2F;这是一个配置类 &#x3D; 配置文件</span><br><span class="line">public class MyConfig &#123;</span><br><span class="line"></span><br><span class="line">	@Bean &#x2F;&#x2F;以方法名作为组件id，返回组件类型，返回的值就是组件在容器中的实例</span><br><span class="line">	public Person person()&#123;</span><br><span class="line">		return new Person(&quot;张三&quot;, 18);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	@Bean(&quot;tom&quot;) &#x2F;&#x2F;也可以自定义组件名称</span><br><span class="line">	public Pet tomcatPet()&#123;</span><br><span class="line">		return new Pet(&quot;Tomcat&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>@Configuration</code>的<code>proxyBeanMethod</code>默认为true表示全/单例模式。设置<code>@SpringBootApplication(proxyBeanMethod=false)</code>可以设置为轻量/多例模式。<br />
-全模式下，程序会自动检查是否存在组件实例，然后返回该实例，占用了时间。一般单单注册组件都会调成false。<br />
-3. 然后在<code>@SpringBootApplication</code>类中，得到容器，再使用<code>getBean()</code>方法得到组件实例即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">public class HelloWorldApplication &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; 返回IOC容器</span><br><span class="line">		ConfigurableApplicationContext run &#x3D;  SpringApplication.run(HelloWorldApplication.class, args);</span><br><span class="line">		&#x2F;&#x2F; 从容器中获取组件</span><br><span class="line">		Pet pet &#x3D; run.getBean(&quot;tom&quot;, Pet.class);</span><br><span class="line">		Pet pet1 &#x3D; run.getBean(&quot;tom&quot;, Pet.class);</span><br><span class="line">		System.out.println(pet &#x3D;&#x3D; pet1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="方法二"><a class="markdownIt-Anchor" href="#方法二"></a> 方法二</h3>
-<p>标注@Component，@Service等来自定义配置类</p>
-<h3 id="方法三-import"><a class="markdownIt-Anchor" href="#方法三-import"></a> 方法三 @Import()</h3>
-<p>给config类上面添加<code>@Import(类名)</code>注解，表示在容器中自动创建括号内实例的无参构造组件</p>
-<h3 id="方法四-conditional"><a class="markdownIt-Anchor" href="#方法四-conditional"></a> 方法四 @Conditional</h3>
-<ul>
-<li>条件装配，只有满足Conditional指定的条件时，才进行组件注入。</li>
-<li>放在config类中定义的<code>@bean</code>方法下。或者直接放置在config类上。</li>
-<li><code>@Conditional</code>是个主类，下面有很多子类：<code>@ConditionalOnBean(name = &quot;tom&quot;)</code></li>
-</ul>
-<h2 id="导入资源-importresource"><a class="markdownIt-Anchor" href="#导入资源-importresource"></a> 导入资源 @ImportResource</h2>
-<p>在任意配置类上面加上<code>@ImportResource(&quot;xml配置文件路径&quot;)</code>，即可成功导入引用配置文件</p>
-<h2 id="配置绑定"><a class="markdownIt-Anchor" href="#配置绑定"></a> 配置绑定</h2>
-<p>在properties文件中可以设定容器组件实例的属性值。</p>
-<h3 id="方法一-configurationproperties"><a class="markdownIt-Anchor" href="#方法一-configurationproperties"></a> 方法一 @ConfigurationProperties</h3>
-<ol>
-<li>首先导入依赖：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-configuration-processor&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;optional&gt;true&lt;&#x2F;optional&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>然后注册组件类到容器中。只有在容器中的组件，才会拥有SpringBoot中的功能。</li>
-<li>在properties文件中设置需要配置的实例属性值，这里前缀可以用别名，但是属性名称必须相同</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">onePerson.name &#x3D; &quot;xyc&quot;</span><br><span class="line">onePerson.age &#x3D; 20</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>然后给组件类设置注解，prefix属性表示在properties文件中该类的别名。<br />
-同时，注解一定要有相对应属性的set方法。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@ConfigurationProperties(prefix&#x3D;&quot;oneperson&quot;)</span><br><span class="line">@Component</span><br><span class="line">public class Person &#123;</span><br><span class="line">	private String name;</span><br><span class="line">	private int age;</span><br><span class="line"></span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name &#x3D; name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setAge(int name) &#123;</span><br><span class="line">		this.age &#x3D; name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>在controller中测试</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">Person person;</span><br><span class="line"></span><br><span class="line">@RequestMapping(&quot;&#x2F;person&quot;)</span><br><span class="line">public String person()&#123;</span><br><span class="line">    return person.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>@Autowired</code>自动装配，就可以不通过调用bean的方法得到了。</p>
-<h3 id="方法二-enableconfigurationproperties"><a class="markdownIt-Anchor" href="#方法二-enableconfigurationproperties"></a> 方法二 @EnableConfigurationProperties</h3>
-<p>在config文件中，加入<code>@EnableConfigurationProperties(类名)</code>来设置开启配置绑定<br />
-功能：<br />
-1. 开启属性配置功能<br />
-2. 把该组件自动注入到容器中<br />
-然后配置properties和<code>@ConfigurationProperties()</code>即可</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/12/%E6%A2%AF%E5%BA%A6%E5%BC%A5%E6%95%A3%E5%92%8C%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/12/%E6%A2%AF%E5%BA%A6%E5%BC%A5%E6%95%A3%E5%92%8C%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/" class="post-title-link" itemprop="url">梯度弥散和梯度下降</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-12 14:59:05" itemprop="dateCreated datePublished" datetime="2021-04-12T14:59:05+08:00">2021-04-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">卷积神经网络</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-12 14:07:31" itemprop="dateCreated datePublished" datetime="2021-04-12T14:07:31+08:00">2021-04-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-17 16:17:33" itemprop="dateModified" datetime="2021-04-17T16:17:33+08:00">2021-04-17</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>卷积神经网络一般由一个或者多个卷积层，池化层和全连接层组成。</p>
-<h1 id="组成"><a class="markdownIt-Anchor" href="#组成"></a> 组成</h1>
-<h2 id="卷积层-convolution-layer"><a class="markdownIt-Anchor" href="#卷积层-convolution-layer"></a> 卷积层 Convolution Layer</h2>
-<ul>
-<li>作用：使用卷积操作来提取特征，同时发掘数据的局部关联性质和空间不变性质。</li>
-<li>卷积层由一些可优化的<strong>滤波器</strong>组成。尺寸上，每个滤波器都比较小但是通道数和输入数据相同。<br />
-滤波器每滑动一次都会计算出当前覆盖区域的<strong>内积</strong>，所以在滑过整个图片后会生成一个二维的<strong>特征图 Feature Map</strong>。</li>
-<li>滤波器每当看到它期望的视觉特征就会被激活。</li>
-<li>一般而言，从前向后不同的卷积层提取的特征会逐渐复杂化。实际上这与人类大脑处理信息的模式是一致的。</li>
-</ul>
-<h3 id="滤波器-filter"><a class="markdownIt-Anchor" href="#滤波器-filter"></a> 滤波器 Filter</h3>
-<ul>
-<li>即一组固定的权重，也称<strong>卷积核Kernel</strong>。</li>
-<li>操作：</li>
-</ul>
-<ol>
-<li>在图像的某个位置上覆盖滤波器；</li>
-<li>将滤波器中的值与图像中的对应像素的值相乘；</li>
-<li>把上面的乘积加起来，得到的和是输出图像中目标像素的值；</li>
-<li>对图像的所有位置重复此操作</li>
-</ol>
-<ul>
-<li>滤波器的通道数应该与输入数据体的通道数保持一致。比如如果输入一张32*32的灰度图像时，对应的滤波器深度应该为1；而输入一张大小为32*32*3的彩色图片时，对应的滤波器深度应该为3，表示颜色通道数为3。</li>
-<li>某种程度上来说，构建卷积神经网络的任务就是找出最优的滤波器，使这些滤波器对特定的特征有更高的激活值，从而完成特定的任务，比如分类，检测目标等。</li>
-<li>二维和三维卷积本质上一致</li>
-</ul>
-<h3 id="一些超参数"><a class="markdownIt-Anchor" href="#一些超参数"></a> 一些超参数</h3>
-<ul>
-<li>通道 Channel或深度 Depth</li>
-<li>步长 Stride：每次滤波器平移的距离。步长可以决定输出数据体的尺寸。</li>
-<li>填充 Padding：在输入数据体边缘填充特定元素。最常用的元素是0，即零填充。</li>
-<li>填充的尺寸：可以控制输出数据体的尺寸，常用于保证输入输出尺寸相同。</li>
-</ul>
-<p>设数据尺寸W*W，卷积层滤波器尺寸F，步长S和零填充的数量P。则输出数据体的宽度和高度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>W</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>2</mn><mi>P</mi></mrow><mi>S</mi></mfrac><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{W-F+2P}{S} + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.217331em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.872331em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">W</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span><span class="mbin mtight">+</span><span class="mord mtight">2</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
-<ul>
-<li>这些超参数之间是相互限制的，来保证输入和输出数据尺寸为相同的整数。</li>
-</ul>
-<h2 id="relu激活函数"><a class="markdownIt-Anchor" href="#relu激活函数"></a> ReLu激活函数</h2>
-<ul>
-<li>传统的sigmoid函数存在<strong>梯度弥散</strong>的问题，而ReLu函数在x&gt;0时的梯度为1，所以可以避免这个问题。</li>
-<li>稀疏激活性：ReLu函数在负半区的导数值为0。这就意味着，一旦神经元的激活值进入负半区，它就不会经历训练。</li>
-<li>计算速度快</li>
-</ul>
-<h2 id="池化层-pooling-layer"><a class="markdownIt-Anchor" href="#池化层-pooling-layer"></a> 池化层 Pooling Layer</h2>
-<p><img src="https://i.loli.net/2021/04/12/2ElXc1AxdIoDgzZ.png" alt="" /></p>
-<ul>
-<li>一般会在连续的卷积层之间周期性地插入一个池化层，在该层处理输入数据的准则被称为<strong>池化函数</strong>。</li>
-<li>池化层的作用：
-<ol>
-<li>用于降低数据体的空间尺寸，以减少参数数量和计算资源</li>
-<li>Translation Invariance：当数据中像素在邻域发生微小位移时，池化层的输出是不变的，用于防止过拟合。</li>
-</ol>
-</li>
-</ul>
-<h3 id="池化函数"><a class="markdownIt-Anchor" href="#池化函数"></a> 池化函数</h3>
-<ul>
-<li>在某一个输出位置上，计算并且输出数据中相邻部分的某种<strong>统计特征</strong>。</li>
-<li>分类：
-<ol>
-<li>最大池化</li>
-<li>平均池化</li>
-<li>L2范式池化</li>
-</ol>
-</li>
-</ul>
-<h2 id="softmax分类层"><a class="markdownIt-Anchor" href="#softmax分类层"></a> Softmax分类层</h2>
-<h3 id="softmax函数"><a class="markdownIt-Anchor" href="#softmax函数"></a> Softmax函数</h3>
-<p>得分集合S中有j个元素，第i个元素的Softmax值为：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mi>S</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mfrac><msup><mi>e</mi><msub><mi>S</mi><mi>i</mi></msub></msup><mrow><mo>∑</mo><msup><mi>e</mi><msub><mi>S</mi><mi>j</mi></msub></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">y_i = Softmax(S_i)= \frac{e^{S_i}}{\sum{e^{S_j}}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">t</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.6940419999999998em;vertical-align:-0.656677em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0373649999999999em;"><span style="top:-2.5183299999999997em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9595285714285715em;"><span style="top:-2.9714357142857146em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.05764em;margin-right:0.1em;"><span class="pstrut" style="height:2.65952em;"></span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5091600000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9190928571428572em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.05764em;margin-right:0.1em;"><span class="pstrut" style="height:2.65952em;"></span><span class="mord mathdefault mtight">i</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.31472em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.656677em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><br />
-这样可以保证某样本中元素的概率和为1</p>
-<h3 id="交叉熵损失函数"><a class="markdownIt-Anchor" href="#交叉熵损失函数"></a> 交叉熵损失函数</h3>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/b1055077005/article/details/100152102">https://blog.csdn.net/b1055077005/article/details/100152102</a></li>
-<li>公式：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>r</mi><mi>o</mi><mi>s</mi><mi>s</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>y</mi><mo stretchy="false">(</mo><mi>l</mi><mi>a</mi><mi>b</mi><mi>e</mi><mi>l</mi><mo separator="true">,</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>C</mi></msubsup><mrow><mrow><mi>l</mi><mi>a</mi><mi>b</mi><mi>e</mi><msub><mi>l</mi><mi>i</mi></msub></mrow><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mfrac><msup><mi>e</mi><msub><mi>S</mi><mi>i</mi></msub></msup><mrow><msub><mo>∑</mo><mi>j</mi></msub><msup><mi>e</mi><msub><mi>S</mi><mi>j</mi></msub></msup></mrow></mfrac><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">crossentropy( label, S_i )= - \sum_{i=1}^C{ {label_i}log(\frac{e^{S_i}}{\sum_j{e^{S_j}}}) }</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">b</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.841262em;vertical-align:-0.803897em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">b</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0373649999999999em;"><span style="top:-2.5183299999999997em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.14964714285714287em;"><span style="top:-2.1785614285714283em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.46032428571428574em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9595285714285715em;"><span style="top:-2.9714357142857146em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.05764em;margin-right:0.1em;"><span class="pstrut" style="height:2.65952em;"></span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5091600000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9190928571428572em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.05764em;margin-right:0.1em;"><span class="pstrut" style="height:2.65952em;"></span><span class="mord mathdefault mtight">i</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.31472em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.803897em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span>，注意该公式是对于softmax激活函数的交叉熵损失函数，而sigmoid损失函数还有另一种不同的交叉熵损失函数。</li>
-<li>样本正确类别的SoftMax越大，其损失函数数值越小。</li>
-</ul>
-<p><img src="https://i.loli.net/2021/04/12/i8ZbJB2KajpPrWL.png" alt="" /></p>
-<h1 id="卷积神经网络的特点"><a class="markdownIt-Anchor" href="#卷积神经网络的特点"></a> 卷积神经网络的特点</h1>
-<p>和全连接神经网络相比，卷积神经网络有两个改进：<strong>参数共享</strong>和<strong>局部连接</strong>。</p>
-<h2 id="参数共享"><a class="markdownIt-Anchor" href="#参数共享"></a> 参数共享</h2>
-<ul>
-<li>滤波器上面的权重参数会重复作用于它滑动过程中的每一个位置。</li>
-<li>这样所有位置都只需要学习一个共同的参数合集。</li>
-<li>根据某个数据集合训练出的卷积核，往往也被用于另一类似数据集合。比如得到图像的轮廓，这是因为图像结构具有平移不变性。</li>
-</ul>
-<h2 id="局部连接稀疏连接"><a class="markdownIt-Anchor" href="#局部连接稀疏连接"></a> 局部连接/稀疏连接</h2>
-<ul>
-<li>在计算机视觉中，图像中的某一块区域中，像素之间的相关性与像素之间的距离同样相关，距离较近的像素间相关性强，距离较远则相关性就比较弱，由此可见局部相关性理论也适用于计算机视觉的图像处理领域。</li>
-<li>某一<strong>输出层（feature map）<strong>中一个元素点（这里我们还是称之为像素点）对应的输入层区域的大小，被称作</strong>感受视野（receptive field）</strong>。视野大小等于滤波器的大小。</li>
-<li>在高维度输入时，实现全连接是不现实的。可以让每个神经元只连接输入数据的一个局部区域，即每个位置的输出仅仅依赖于输入数据的一个特定区域。</li>
-</ul>
-<h1 id="经典神经网路的架构"><a class="markdownIt-Anchor" href="#经典神经网路的架构"></a> 经典神经网路的架构</h1>
-<h2 id="lenet5"><a class="markdownIt-Anchor" href="#lenet5"></a> LeNet5</h2>
-<p><a target="_blank" rel="noopener" href="https://cuijiahua.com/blog/2018/01/dl_3.html">https://cuijiahua.com/blog/2018/01/dl_3.html</a><br />
-<img src="https://i.loli.net/2021/04/12/xfVZz3uyQGeOBAa.png" alt="" /><br />
-<img src="https://i.loli.net/2021/04/12/UOpgXujZ1yveSBw.png" alt="" /></p>
-<ul>
-<li>Input输入层，本层不算LeNet-5的网络结构</li>
-<li>C1层-卷积层<br />
-输入尺寸：32*32<br />
-卷积核大小：5*5<br />
-卷积核种类：6<br />
-输出featuremap大小：28*28<br />
-可训练参数：（5*5+1） * 6（每个滤波器5*5=25个unit参数和一个bias参数，一共6个滤波器）</li>
-<li>S2层-池化层（下采样层）<br />
-使用 2*2核 进行池化，于是得到了S2，6个14*14的 特征图（28/2=14）。S2这个pooling层是对C1中的2*2区域内的像素求和乘以一个权值系数再加上一个偏置，然后将这个结果再做一次映射。<br />
-采样区域：2*2<br />
-采样方式：4个输入相加，乘以一个可训练参数，再加上一个可训练偏置。结果通过sigmoid<br />
-采样种类：6</li>
-<li>C3层-卷积层<br />
-卷积核大小：5*5<br />
-卷积核种类：16<br />
-输出featureMap大小：10*10 (14-5+1)=10
-<ul>
-<li>这里是通过对S2的6个特征图特殊组合计算得到的16个特征图</li>
-<li>存在的一个方式是：C3的前6个特征图以S2中3个相邻的特征图子集为输入。接下来6个特征图以S2中4个相邻特征图子集为输入。然后的3个以不相邻的4个特征图子集为输入。最后一个将S2中所有特征图为输入。</li>
-<li>则：可训练参数：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn><mo>∗</mo><mo stretchy="false">(</mo><mn>3</mn><mo>∗</mo><mn>5</mn><mo>∗</mo><mn>5</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>6</mn><mo>∗</mo><mo stretchy="false">(</mo><mn>4</mn><mo>∗</mo><mn>5</mn><mo>∗</mo><mn>5</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>3</mn><mo>∗</mo><mo stretchy="false">(</mo><mn>4</mn><mo>∗</mo><mn>5</mn><mo>∗</mo><mn>5</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo>∗</mo><mo stretchy="false">(</mo><mn>6</mn><mo>∗</mo><mn>5</mn><mo>∗</mo><mn>5</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1516</mn></mrow><annotation encoding="application/x-tex">6*(3*5*5+1)+6*(4*5*5+1)+3*(4*5*5+1)+1*(6*5*5+1)=1516</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord">1</span><span class="mord">6</span></span></span></span></li>
-</ul>
-</li>
-<li>S4层-池化层（下采样层）<br />
-采样方式：4个输入相加，乘以一个可训练参数，再加上一个可训练偏置。结果通过sigmoid<br />
-采样种类：16<br />
-输出featureMap大小：5*5（10/2）<br />
-神经元数量：5*5*16=400</li>
-<li>C5层-卷积层<br />
-卷积核大小：5*5<br />
-卷积核种类：120 是自己设定的<br />
-输出featureMap大小：1*1（5-5+1）</li>
-<li>F6层-全连接层<br />
-输入：c5 120维向量<br />
-计算方式：计算输入向量和权重向量之间的点积，再加上一个偏置，结果通过sigmoid函数输出。<br />
-可训练参数:84*(120+1)=10164<br />
-F6层有84个节点，对应于一个7x12的比特图，-1表示白色，1表示黑色，这样每个符号的比特图的黑白色就对应于一个编码</li>
-<li>Output层-全连接层<br />
-<img src="https://i.loli.net/2021/04/17/7GRv6cmbkplFa3Y.png" alt="" /></li>
-</ul>
-<h2 id="alexnet"><a class="markdownIt-Anchor" href="#alexnet"></a> AlexNet</h2>
-<h2 id="vgg"><a class="markdownIt-Anchor" href="#vgg"></a> VGG</h2>
-<h2 id="googlenet"><a class="markdownIt-Anchor" href="#googlenet"></a> GoogLeNet</h2>
-<h2 id="resnet"><a class="markdownIt-Anchor" href="#resnet"></a> ResNet</h2>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

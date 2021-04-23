@@ -196,7 +196,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -243,6 +243,623 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/11/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/servlet%E5%88%9B%E5%BB%BA%E5%AE%9E%E7%8E%B0%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/11/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/servlet%E5%88%9B%E5%BB%BA%E5%AE%9E%E7%8E%B0%E7%B1%BB/" class="post-title-link" itemprop="url">servlet创建实现类</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-11 12:13:08 / Modified: 12:15:35" itemprop="dateCreated datePublished" datetime="2021-03-11T12:13:08+08:00">2021-03-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="servlet接口实现类的开发步骤"><a class="markdownIt-Anchor" href="#servlet接口实现类的开发步骤"></a> Servlet接口实现类的开发步骤</h2>
+<h3 id="创建一个java继承httpservlet子类使之成为一个servlet接口实现类"><a class="markdownIt-Anchor" href="#创建一个java继承httpservlet子类使之成为一个servlet接口实现类"></a> 创建一个JAVA继承HttpServlet子类，使之成为一个Servlet接口实现类</h3>
+<ul>
+<li>HttpServlet继承了GenericServlet抽象类，而GenericServlet实现了Servlet, ServletConfig, Serializable这三个接口。<br />
+<code>public class OneServlet extends HttpServlet &#123;&#125;</code></li>
+<li>抽象类GenericServlet的作用：
+<ul>
+<li>降低接口实现类对接口实现的难度</li>
+<li>将接口中不需要使用的方法在抽象类中完成</li>
+<li>这接口实现类只需要对接口需要的方法进行重写即可</li>
+</ul>
+</li>
+<li>Servlet 接口中：
+<ul>
+<li>init，getServletConfig，getServletInfo，destroy方法对Servlet接口实现类没用</li>
+<li>只有service方法被重写：</li>
+</ul>
+</li>
+<li>Tomcat根据Servlet规范调用Servlet接口实现类规则：
+<ul>
+<li>Tomcat有权创建Servlet接口实现类实例对象<br />
+Servlet oneServlet = new OneServlet();</li>
+<li>Tomcat根据实例对象调用Service方法处理请求<br />
+oneServlet.service();</li>
+</ul>
+</li>
+</ul>
+<h3 id="重写httpservlet父亲类两个方法doget或者dopost"><a class="markdownIt-Anchor" href="#重写httpservlet父亲类两个方法doget或者dopost"></a> 重写HttpServlet父亲类两个方法：doGet或者doPost</h3>
+<ul>
+<li>使用get方式访问使用doGet，post方式请求使用doPost</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException&#123;</span><br><span class="line">    &#x2F;&#x2F; get方式</span><br><span class="line">    System.out.println(&quot;get被调用&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException&#123;</span><br><span class="line">    &#x2F;&#x2F; post方式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>HttpServlet中的service()方法已经被重写，可以根据请求方式决定如何调用，所以只需要重写doGet和doPost</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">service(method, ...)&#123;</span><br><span class="line">    if method&#x3D;&#x3D;&quot;GeT&quot; doGet()</span><br><span class="line">    else if method&#x3D;&#x3D;&quot;Post&quot; doPost()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="将servlet接口的实现类信息注册到tomcat服务器中"><a class="markdownIt-Anchor" href="#将servlet接口的实现类信息注册到tomcat服务器中"></a> 将Servlet接口的实现类信息注册到Tomcat服务器中</h3>
+<p>在网站中会存在很多java类，有些是普通java类，有些是动态资源文件。</p>
+<ol>
+<li>将Servlet接口实现类路径地址交给Tomcat<br />
+在网站》web文件夹》web-inf》web.xml填写信息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt; ServletName &lt;&#x2F;servlet-name&gt;  &#x2F;&#x2F;声明一个变量servlet接口实现类类路径</span><br><span class="line">    &lt;servlet-class&gt; controller&#x2F;OneServlet.java &lt;&#x2F;servlet-class&gt;  &#x2F;&#x2F;声明servlet接口的相对地址</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br></pre></td></tr></table></figure>
+<p>Tomcat会自动声明 <code>String ServletName = &quot;controller/OneServlet.java&quot;;</code><br />
+2. 为了降低用户访问Servlet接口实现类的难度，需要设置请求别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt; name &lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt; &#x2F;one &lt;&#x2F;url-pattern&gt;   &#x2F;&#x2F; 设置简短的请求别名，以&quot;&#x2F;&quot;开头</span><br><span class="line">&lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="应用"><a class="markdownIt-Anchor" href="#应用"></a> 应用</h3>
+<p>如果浏览器向tTomcat索要OneServlet时，地址应该写<code>http://localhost:8080/myWeb/one</code></p>
+<h2 id="servlet生命周期"><a class="markdownIt-Anchor" href="#servlet生命周期"></a> Servlet生命周期</h2>
+<ol>
+<li>网站中所有Servlet接口实现类的实例对象，只能由Web服务器负责创建。开发人员无法手动创建。</li>
+<li>在默认情况下，当Wen服务器接收到对于当前servlet接口实现类第一次请求时，会自动创建这个Servlet接口实现类的实力例对象。</li>
+<li>在手动配置情况下，可以使用<code>&lt;load-on-startup&gt; 标签</code>令Web服务器启动时，就自动创建某个Servlet接口实现类的实力对象。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt; ServletName &lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt; controller&#x2F;OneServlet.java &lt;&#x2F;servlet-class&gt;</span><br><span class="line">    &lt;load-on-startup&gt; 30 &lt;&#x2F;load-on-startup&gt; &#x2F;&#x2F; &gt;0时自动启动</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在web服务器运行期间， 一个servlet接口实现类只能被创建出一个实例对象</li>
+<li>在web服务器关闭时，会自动销毁servlet对象</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/10/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/servlet%E8%A7%84%E8%8C%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/10/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/servlet%E8%A7%84%E8%8C%83/" class="post-title-link" itemprop="url">Servlet</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-10 11:54:53" itemprop="dateCreated datePublished" datetime="2021-03-10T11:54:53+08:00">2021-03-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-11 12:12:33" itemprop="dateModified" datetime="2021-03-11T12:12:33+08:00">2021-03-11</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="servlet-servlet容器-和-web服务器等概念"><a class="markdownIt-Anchor" href="#servlet-servlet容器-和-web服务器等概念"></a> Servlet, Servlet容器 和 Web服务器等概念</h3>
+<p>来源：<code>http：//blog.csdn.net/iAm333</code></p>
+<h4 id="web技术"><a class="markdownIt-Anchor" href="#web技术"></a> web技术</h4>
+<p>早期web用于浏览静态页面，但是随着需求增多，用户需要更多的交互操作。<br />
+Java Servlet是一个基于Java技术的web组件，运行在服务器端，由Servlet容器所管理，用于生成动态内容。<br />
+Servlet是一个平台独立的Java类，编写一个Servlet其实就是编写一个java类。<br />
+Servlet被编译成独立的字节码然后传输到支持Java技术的Web服务器中运行。<br />
+Servlet容器也称Servlet引擎，是Web服务器的一部分，用于在发送的请求与响应之上提供网络服务。<br />
+Servlet不可以独立运行，只能够部署到Servlet容器中，由容器实现实力化和调用方法。</p>
+<ul>
+<li>流程：用户通过单机链接或者输入URL后，web服务器将请求交给Servlet容器，Servlet容器实例化Servlet并且调用相应的方法来处理请求，产生一个响应结果。这个响应结果由Servlet容器返回给Web服务器，Web服务器包装这个响应，以Http响应的形式恢传递给浏览器并展示。</li>
+</ul>
+<h4 id="servlet容器"><a class="markdownIt-Anchor" href="#servlet容器"></a> Servlet容器</h4>
+<ul>
+<li>通过提供对应的方法，链接web服务器和Servlet</li>
+<li>分类：
+<ol>
+<li>独立Servlet容器</li>
+<li>进程内的Servlet容器：<br />
+Servlet容器由Web服务器插件和Java容器两部分组成。Web服务插件在某个Web服务器内部地址空间中开启一个java虚拟机，使java容器可以在这个java虚拟机中加载并且运行Servlet。当获得调用Servlet的请求时，Servlet服务器插件取得控制并且传递给java容器，然后java容器将请求交给Servlet处理。</li>
+<li>进程外的Servlet容器：<br />
+Servlet容器存在于Web服务器之外，他也是由Web服务器插件和Java容器两部分组成，两者使用ipc机制通信。当一个调用Servlet请求传达时，web服务器插件得到请求并且传给java容器。</li>
+</ol>
+</li>
+</ul>
+<h4 id="tomcat"><a class="markdownIt-Anchor" href="#tomcat"></a> Tomcat</h4>
+<ul>
+<li>Servlet容器的一种</li>
+<li>流程：
+<ol>
+<li>客户端(浏览器)发送请求给Web服务器</li>
+<li>Web服务器收到请求后，传递给Servlet容器</li>
+<li>Servlet容器加载Servlet，产生Servlet实例后，创建实例处理请求</li>
+<li>Servlet实例处理并且返回结果给客户端，容器负责确保相应的正确输出，同时将控制返回给web服务器</li>
+</ol>
+</li>
+</ul>
+<p>来自于JAVAEE规范中的一种</p>
+<ul>
+<li>
+<p>作用：</p>
+<ol>
+<li>指定了动态资源文件开发步骤</li>
+<li>指定了Http服务器调用动态资源文件规则</li>
+<li>指定Http服务器管理动态资源文件实例对象规范</li>
+</ol>
+</li>
+<li>
+<p>Servlet接口实现类</p>
+<ol>
+<li>来自于Servlet规范下的一个接口，存在于Http服务器提供的jar包中。</li>
+<li>Tomcat服务器下lib文件有一个Servlet-api.jar存放Servlet接口。</li>
+<li>Servlet规范中认为能调用的资源文件必须是一个Servlet接口实现类。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/09/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/09/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">Tomcat服务器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-09 19:55:04" itemprop="dateCreated datePublished" datetime="2021-03-09T19:55:04+08:00">2021-03-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-11 14:48:37" itemprop="dateModified" datetime="2021-03-11T14:48:37+08:00">2021-03-11</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="http服务器"><a class="markdownIt-Anchor" href="#http服务器"></a> HTTP服务器</h3>
+<ul>
+<li>服务器的一种，行为与HTTP协议相关。</li>
+<li>可以接收来自于浏览器发送的Http请求协议包，并且自动对Http请求协议包内容进行解析。</li>
+<li>解析后自动定位到被访问的文件，并且写入Http响应协议包中。</li>
+<li>最后负责将Http响应协议包推送回发起请求的浏览器上。</li>
+</ul>
+<h3 id="tomcat服务器"><a class="markdownIt-Anchor" href="#tomcat服务器"></a> Tomcat服务器</h3>
+<h4 id="一些配置运行问题"><a class="markdownIt-Anchor" href="#一些配置运行问题"></a> 一些配置运行问题</h4>
+<ol>
+<li>bin目录下，<code>sudo sh startup.sh</code>，可以开启tomcat服务器</li>
+<li>打开l<code>ocolhost:8080/</code>后，发现404，有可能是端口被占用</li>
+<li><code>sudo lsof -i :8080</code> 查看当前正在占用的进程</li>
+<li><code>sudo kill -9 838</code> 关闭在占用的进程，后面放置pid</li>
+<li>bin目录下,<code>sudo sh shutdown.sh</code>，可以关闭tomcat服务器</li>
+</ol>
+<h4 id="七个工作文件夹"><a class="markdownIt-Anchor" href="#七个工作文件夹"></a> 七个工作文件夹：</h4>
+<ol>
+<li>bin：管理命令中心</li>
+<li>conf：核心配置文件位置</li>
+<li>lib：tomcat运行时需要的jar包</li>
+<li>logs：日志，提供给运维工程师</li>
+<li>temp：临时的文件</li>
+<li>webapps：相关的资源文件</li>
+<li>work：工作空间</li>
+</ol>
+<h3 id="模拟第一次互联网通信"><a class="markdownIt-Anchor" href="#模拟第一次互联网通信"></a> 模拟第一次互联网通信</h3>
+<ul>
+<li>网站：放置可以被http服务器调用的静态和动态文件的文件夹</li>
+<li>在IDEA中管理Tomcat的步骤：
+<ol>
+<li>idea中</li>
+<li>把一个静态资源添加到网站中去</li>
+<li>启动Tomcat</li>
+</ol>
+</li>
+</ul>
+<h3 id="第一个网站"><a class="markdownIt-Anchor" href="#第一个网站"></a> 第一个网站</h3>
+<ol>
+<li>建立<br />
+new module/ java enterprise 然后根据指令建立<br />
+注意勾选 web Profile（8.0.1）</li>
+<li>建立成功后，会自动新建两个文件夹src和web。<br />
+这里遇到了问题，没有web文件夹。右击module/add framework support也找不到web文件夹的选项，则File-&gt;Project Structure-&gt;artifacts删除web。然后再右击创建。</li>
+</ol>
+<ul>
+<li>src文件夹：放置动态资源java文件</li>
+<li>web文件夹：存放静态资源文件，和需要的jar包，和配置文件<br />
+jar包需要在web文件夹手动新建文件夹lib，然后将jar包放进去。</li>
+</ul>
+<ol start="3">
+<li>run-&gt;Deployment将网站交给tomcat，+号选择artifact然后选择网站。可以在下方Application context设置网站别名</li>
+<li>每一次更新后，都需要重启tomcat太麻烦，可以在configuration中设置修改后，自动提交给deployment，然后以debug形式启动。<br />
+<img src="https://i.loli.net/2021/03/11/BcnC9VsR3oHZjt5.png" alt="" /></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/09/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/HTTP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/09/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/HTTP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="post-title-link" itemprop="url">HTTP网络协议</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-09 19:24:28" itemprop="dateCreated datePublished" datetime="2021-03-09T19:24:28+08:00">2021-03-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-11 21:16:04" itemprop="dateModified" datetime="2021-03-11T21:16:04+08:00">2021-03-11</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="网络协议包"><a class="markdownIt-Anchor" href="#网络协议包"></a> 网络协议包</h4>
+<ul>
+<li>前提：网络中传递的信息都是以二进制的形式存在的。接收方(浏览器/服务器)在接收到信息后，需要将(二进制)数据编译成文字图片视频等。</li>
+<li>定义：网络协议包是一组有规律的二进制数据，在固定的空间内存放特定的信息。</li>
+<li>优点：降低了对接受二进制数据编译的难度。</li>
+</ul>
+<h4 id="http网络协议包"><a class="markdownIt-Anchor" href="#http网络协议包"></a> HTTP网络协议包</h4>
+<ul>
+<li>基于B/S结构下互联网通信过程中，所有在网络中传递的信息都是保存在HTTP网络协议包中的。</li>
+<li>分类：
+<ul>
+<li>HTTP请求协议包</li>
+<li>HTTP响应协议包</li>
+</ul>
+</li>
+</ul>
+<h5 id="http请求协议包"><a class="markdownIt-Anchor" href="#http请求协议包"></a> HTTP请求协议包</h5>
+<ul>
+<li>
+<p>流程：</p>
+<ul>
+<li>在浏览器准备发送请求时，负责创建一个http请求协议包</li>
+<li>浏览器将请求信息以二进制的形式保存在HTTP请求协议包各个空间</li>
+</ul>
+</li>
+<li>
+<p>内部空间:自上而下分为4个空间：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">请求行：</span><br><span class="line">    [   url：请求地址</span><br><span class="line">        method：请求方式  ]</span><br><span class="line"></span><br><span class="line">请求头：</span><br><span class="line">    [   请求参数信息（get) ]</span><br><span class="line"></span><br><span class="line">空白行：</span><br><span class="line">    [   (起到隔离作用)  ]</span><br><span class="line"></span><br><span class="line">请求体：</span><br><span class="line">    [   请求参数信息 (post) ]</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/03/09/mOwMclyWziFKdgb.jpg" alt="" /></p>
+<h5 id="http响应协议包"><a class="markdownIt-Anchor" href="#http响应协议包"></a> HTTP响应协议包</h5>
+<ul>
+<li>
+<p>流程</p>
+<ul>
+<li>HTTP服务器在定位到被访问的资源文件之后，负责创建一个HTTP响应协议包。</li>
+<li>HTTP服务器会将定位文件或者内容以二进制的形式写入到Http响应协议包的各个空间中。</li>
+<li>HTTP服务器将响应协议包推送回发送请求的浏览器上。</li>
+</ul>
+</li>
+<li>
+<p>内部空间：也是4个空间</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">状态行空间： [   HTTP状态码  ]</span><br><span class="line"></span><br><span class="line">响应头：    [   content-type：指定浏览器采用对应编译器对响应体中二进制信息的编译方式  ]</span><br><span class="line"></span><br><span class="line">空白行：    [   无内容，隔离作用   ]</span><br><span class="line"></span><br><span class="line">响应体：    [   被访问静态资源文件内容</span><br><span class="line">              &#x2F;被访问的静态资源文件命令</span><br><span class="line">              &#x2F;被访问动态资源文件运行结果  ]</span><br></pre></td></tr></table></figure>
+<h4 id="请求对象request和响应对象response生命周期"><a class="markdownIt-Anchor" href="#请求对象request和响应对象response生命周期"></a> 请求对象request和响应对象response生命周期</h4>
+<ul>
+<li>在Http服务器接收到浏览器发送的<strong>Http请求协议包</strong>之后，自动为当前的请求协议包生成<strong>一个请求对象</strong>和<strong>一个响应对象</strong></li>
+<li>在Http服务器调用doGet/doPost方法时，负责将<strong>请求对象request</strong>和<strong>响应对象response</strong>作为实参传递到方法中，确保方法的正确实行</li>
+<li>方法结束后，Tomcat负责<strong>销毁</strong>请求关联的<strong>请求对象request</strong>和<strong>响应对象response</strong><br />
+<em><strong>两者生命周期贯穿一次请求的处理过程中</strong></em><br />
+<img src="https://i.loli.net/2021/03/11/4EactLkGbPJm9j8.jpg" alt="" /></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/09/inclass/JAVAOOP/week-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/09/inclass/JAVAOOP/week-2/" class="post-title-link" itemprop="url">week-2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-09 13:35:33" itemprop="dateCreated datePublished" datetime="2021-03-09T13:35:33+08:00">2021-03-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-19 23:57:13" itemprop="dateModified" datetime="2021-04-19T23:57:13+08:00">2021-04-19</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="static-and-dynamic-checking"><a class="markdownIt-Anchor" href="#static-and-dynamic-checking"></a> static and dynamic checking</h3>
+<h3 id="public-and-static"><a class="markdownIt-Anchor" href="#public-and-static"></a> Public and Static</h3>
+<p>Public：任何代码都可以引用这个方法<br />
+static：只允许同类下的代码段使用</p>
+<h3 id="javadoc-comments"><a class="markdownIt-Anchor" href="#javadoc-comments"></a> Javadoc Comments</h3>
+<ul>
+<li>原因：只通过方法的参数和返回值乐行得到方法的信息是不足的，我们使用Javadoc comments来编辑出更多信息。</li>
+<li>例子：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Compute a hail sequence</span><br><span class="line"> * For example, hailstone(5) &#x3D; [5 16 8 4 2 1]</span><br><span class="line"> * @param n starting for sequence. Assumes n &gt; 0</span><br><span class="line"> * @return hailstone sequence starting at n and ending with 1</span><br><span class="line">**&#x2F;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>位置：在方法/类结束后插入</li>
+<li>元素：
+<ol>
+<li><strong>@param</strong>表示参数，并且举出例子</li>
+<li><strong>@return</strong>表示返回值，举出根据参数例子的返回值</li>
+</ol>
+</li>
+</ul>
+<h3 id="snapshot-diagrams"><a class="markdownIt-Anchor" href="#snapshot-diagrams"></a> Snapshot Diagrams</h3>
+<ul>
+<li>描述程序运行时的内部状态</li>
+<li>assign a variable: to a different value<br />
+<img src="https://i.loli.net/2021/03/09/fBCNjHoPqwRgVW4.png" alt="" /></li>
+<li>mutate the mutable value：list<br />
+<img src="https://i.loli.net/2021/03/09/kCvuj2IPKeTAlZw.png" alt="" /></li>
+<li>immutable value：string<br />
+values never change<br />
+<img src="https://i.loli.net/2021/03/09/j2qszGQgc9NM53e.png" alt="" /></li>
+<li>make a reference immutable: <code>final</code>– <strong>a double arrow</strong><br />
+<img src="https://i.loli.net/2021/03/09/SHIqbuyXM6sr79G.png" alt="" />
+<ul>
+<li>final can be used on both parameters and local variables</li>
+<li>final can be used on variables of any type</li>
+</ul>
+</li>
+</ul>
+<h3 id="map"><a class="markdownIt-Anchor" href="#map"></a> map</h3>
+<p><img src="https://i.loli.net/2021/03/09/3e4h8giZaT2czJt.png" alt="" /></p>
+<ul>
+<li>方法：
+<ol>
+<li>map.put(key, value)</li>
+<li>map.get(key) ==&gt; value</li>
+<li>map.containsKey(key) ==&gt; boolean</li>
+<li>map.remove(key) ==&gt; boolean</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1060,745 +1677,8 @@ LIMIT   起始行位置，从改行开始向下截取行数</li>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/04/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E6%95%B0%E6%8D%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%8B%E7%BB%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/04/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E6%95%B0%E6%8D%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">mysql数据服务器介绍</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-04 23:29:24" itemprop="dateCreated datePublished" datetime="2021-03-04T23:29:24+08:00">2021-03-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-09 13:33:33" itemprop="dateModified" datetime="2021-03-09T13:33:33+08:00">2021-03-09</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="服务器介绍"><a class="markdownIt-Anchor" href="#服务器介绍"></a> 服务器介绍</h3>
-<ol>
-<li>服务器是一种软件，不是硬件。</li>
-<li>不同服务器负责调用不同的文件类型。</li>
-</ol>
-<h3 id="表文件数据库和数据库服务器"><a class="markdownIt-Anchor" href="#表文件数据库和数据库服务器"></a> 表文件，数据库和数据库服务器</h3>
-<ul>
-<li>
-<p>表文件</p>
-<ul>
-<li>简介：
-<ol>
-<li>以&quot;.frm&quot;结尾的一种文件</li>
-<li>存在于服务端计算机硬盘上</li>
-<li>以数据形式进行数据存储的文件</li>
-</ol>
-</li>
-<li>结构：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            student.frm</span><br><span class="line">标题行  sid  sname  sex   age   home</span><br><span class="line">数据行  10   lyl    man   20   jiangsu</span><br><span class="line">       20   lz    woman  10   jiangsu</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li>
-<p>数据库：存放表文件的文件夹</p>
-</li>
-<li>
-<p>数据库服务器：</p>
-<ol>
-<li>一种专门对表文件进行调用和管理的软件</li>
-<li>用户通过数据库服务器对数据库进行操作</li>
-</ol>
-</li>
-</ul>
-<h3 id="sql命令"><a class="markdownIt-Anchor" href="#sql命令"></a> SQL命令</h3>
-<ul>
-<li>全称：Structured Query Language 结构化查询编程语言</li>
-<li>作用：用户通过SQL命令向数据库服务器发送请求，用于对表文件进行调用管理</li>
-<li>特点：包含主谓宾</li>
-</ul>
-<h3 id="数据库服务器分类"><a class="markdownIt-Anchor" href="#数据库服务器分类"></a> 数据库服务器分类</h3>
-<ol>
-<li>关系型数据库服务器<br />
-a. 管理的表文件有隶属关系，可以完整地描述一段数据<br />
-b. 在查询时，所涉及的数据比较多，因此查询的速度有所下降<br />
-c. 分类：甲骨文公司的Oracle和Mysql，微软公司的SqlServer</li>
-<li>非关系型数据库服务器<br />
-a. 表文件都是独立的，无法描述一段完整的数据<br />
-b. 查询的大数据比较少，查询速度快</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/04/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JDBC/html%E7%AE%80%E4%BB%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/04/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JDBC/html%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">html简介</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-04 11:10:56" itemprop="dateCreated datePublished" datetime="2021-03-04T11:10:56+08:00">2021-03-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-09 13:33:57" itemprop="dateModified" datetime="2021-03-09T13:33:57+08:00">2021-03-09</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="基本标签命令"><a class="markdownIt-Anchor" href="#基本标签命令"></a> 基本标签命令</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt; 包含了两个子标签</span><br><span class="line"></span><br><span class="line">    &lt;head&gt; 设置基础参数信息</span><br><span class="line">        &lt;meta charset&#x3D;&quot;utf-8&quot;&#x2F;&gt; 字符集编译方法</span><br><span class="line">    &lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt; 负责通知浏览器将质地ing内容以指定方式展示在窗口中</span><br><span class="line">        &lt;p&gt;段落标签&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;h1&gt;&lt;&#x2F;h1&gt; 标题标签</span><br><span class="line"></span><br><span class="line">        &lt;ol&gt; 有序列表</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">        &lt;&#x2F;ol&gt;</span><br><span class="line"></span><br><span class="line">        &lt;ul&gt; 无序列表</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">        &lt;table border&#x3D;&quot;2&quot;边框大小  align&#x3D;&quot;center&quot;对齐方式&gt; 表格</span><br><span class="line">            &lt;tr&gt; 第一行</span><br><span class="line">                &lt;td&gt; 第一格</span><br><span class="line">                &lt;&#x2F;td&gt;</span><br><span class="line">                &lt;td&gt; 第二格</span><br><span class="line">                &lt;&#x2F;td&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line"></span><br><span class="line">            &lt;tr&gt; 第二行</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;table&gt;</span><br><span class="line">    &lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="控制浏览器请求地址"><a class="markdownIt-Anchor" href="#控制浏览器请求地址"></a> 控制浏览器请求地址</h3>
-<ol>
-<li>超链接标签命令<br />
-a. 格式：<code>&lt;a href=&quot;请求地址&quot;&gt;提示命令&lt;/a&gt;</code><br />
-b. 工作原理：单机时按照href的属性去发送请求</li>
-<li>表单标签命令<br />
-a. 格式：<br />
-<form action="请求地址"><br />
-<input type="submit"> <!--提交按钮--><br />
-</form><br />
-b. 在点击提交按钮时，表单命令标签被触发执行。执行时浏览器按照action属性地址发送请求。</li>
-</ol>
-<h3 id="控制浏览器发送请求的方式"><a class="markdownIt-Anchor" href="#控制浏览器发送请求的方式"></a> 控制浏览器发送请求的方式</h3>
-<ol>
-<li>请求方式：决定了浏览器发送请求时的行为特征</li>
-<li>浏览器可以选择的请求方式有7种类，目前只考虑<strong>post</strong>和<strong>get</strong>两种方式</li>
-</ol>
-<ul>
-<li>GET请求方式：<br />
-a. 浏览器发送请求时，携带的<strong>请求参数数量</strong>不超过4k<br />
-b. 浏览器发送请求时，必须在浏览器地址栏上将请求参数信息展示出来<br />
-c. 必须将请求参数信息保存在HTTP请求协议包中的<strong>请求头</strong>中<br />
-d. 浏览器在接收到服务器返回的数据之后，必须将资源文件内容保存在浏览器的缓存中</li>
-<li>POST请求方式：<br />
-a. 浏览器发送请求时，可以携带任意数量的<strong>请求参数</strong><br />
-b. 浏览器发送请求时，必须在地址栏上隐藏参数信息<br />
-c. 浏览器发送请求时，必须将请求参数信息保存在HTTP请求协议包中的<strong>请求体</strong>中<br />
-d. 浏览器在接收到服务器返回的数据之后，///将资源文件内容删除</li>
-</ul>
-<ol start="3">
-<li>控制浏览器发送请求的方式</li>
-</ol>
-<ul>
-<li>
-<p>控制发送请求时采用GET请求方式：</p>
-<ol>
-<li>超链接标签命令在执行时，要求浏览器必须采用GET方式发送请求</li>
-<li>表单标签存放在一个method属性中，通过这个属性可以要求对应的请求方式发送请求。默认请求方式为get。<br />
-<code>form action=&quot;ask&quot; method=&quot;get&quot;</code><br />
-<code>form action=&quot;ask&quot; method=&quot;post&quot;</code></li>
-</ol>
-</li>
-<li>
-<p>控制发送请求时采用POST请求方式：</p>
-<ol>
-<li>只能够通过form表单标签，设置method的方式。</li>
-<li>考虑到post请求可以将病毒命令发送到服务器上，因此绝大多数门户级网站拒绝接受post请求。</li>
-<li>必须使用post：文件上传，登录验证(隐藏个人信息)，索要实时变化的数据(股票，剩余门票)。</li>
-</ol>
-</li>
-</ul>
-<h3 id="浏览器携带请求参数"><a class="markdownIt-Anchor" href="#浏览器携带请求参数"></a> 浏览器携带请求参数</h3>
-<ul>
-<li>例子：用户请求学生信息，后端会建立一个该学生的类，然后调用方法得到结果并返回。这表示，浏览器发送请求时需要携带调用方法需要的实参。<br />
-eg. <code>http://www.baidu.com?n1=100&amp;n2=200</code></li>
-<li>请求参数的格式： 请求地址?请求参数1=值1&amp;请求参数2=值2</li>
-<li>浏览器发送请求时，携带的接受参数来源：
-<ol>
-<li>通过超链接标签命令指定请求参数：<br />
-eg. <code>&lt;a href=&quot;http://www.baidu.com?userName=mike&amp;password=123&gt;百度&lt;/a&gt;</code><br />
-缺点：请求<strong>参数相对固定</strong>，不够灵活</li>
-<li>通过表单域标签命令指定请求参数</li>
-</ol>
-</li>
-</ul>
-<h4 id="通过表单域标签命令指定请求参数"><a class="markdownIt-Anchor" href="#通过表单域标签命令指定请求参数"></a> 通过表单域标签命令指定请求参数</h4>
-<ul>
-<li>是一组声明在form标签内部的标签命令</li>
-<li>提示用户填写对应的<strong>请求参数内容</strong>，用于提供相对灵活的请求参数内容</li>
-<li>所有的表单域标签都有两个属性：name和value，类似字典。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot; value&#x3D;&quot;mike&quot;&#x2F;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;submit&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
-<p>当用户单击submit之后，浏览器发送信息 <a target="_blank" rel="noopener" href="http://www.baidu.com?userName=mike">http://www.baidu.com?userName=mike</a><br />
-即会在末尾生成<strong>name=value</strong>，使用 <strong>&amp;</strong> 连接</p>
-<ul>
-<li>表单域标签分类:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input &#x2F;&gt;</span><br><span class="line">&lt;select&gt;&lt;&#x2F;select&gt;</span><br><span class="line">&lt;textarea&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>表单域标签value属性默认值：
-<ol>
-<li>大多数表单域标签的value属性默认值是空字符串</li>
-<li>radio和checkbox的默认值为on</li>
-</ol>
-</li>
-<li>表单域标签作为请求参数的条件：
-<ol>
-<li>声明在form标签内部</li>
-<li>声明name属性</li>
-<li>对于radio和checkbox标签，只有在被选中的情况下才可以作为请求参数</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">密码：&lt;input type&#x3D;&quot;password&quot;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">\&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;&gt;</span><br><span class="line">    姓名：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">    年龄：&lt;input type&#x3D;&quot;text&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
-<p>上面只显示姓名。</p>
-<ul>
-<li>可以在标签中使用 disabled 设置标签不可选中，该表单标签永远不能作为请求参数</li>
-<li>可以在标签中使用 readOnly 设置只读，不会影响作为请求参数</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E4%BA%92%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E4%BA%92%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1/" class="post-title-link" itemprop="url">互联网通信</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-03 23:39:39" itemprop="dateCreated datePublished" datetime="2021-03-03T23:39:39+08:00">2021-03-03</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-16 17:03:44" itemprop="dateModified" datetime="2021-03-16T17:03:44+08:00">2021-03-16</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="浏览器通信"><a class="markdownIt-Anchor" href="#浏览器通信"></a> 浏览器通信</h3>
-<p>Http服务器下对于共享资源文件分类：</p>
-<ol>
-<li>静态资源文件：<br />
-a. 文件内容固定，比如文档，图片，视频。<br />
-b. 如果文件中存放的是命令，则这些命令只能在浏览器中编译与执行。<br />
-c. 静态文件被索要时，Http服务器直接通过<strong>输出流</strong>将静态文件中的内容或者命令以<strong>二进制形式</strong>推送给发起请求浏览器。</li>
-<li>动态资源文件：<br />
-a.文件中存放命令，并且命令不能够在浏览器中编译与执行，只能在服务端计算机编译执行 (.class)<br />
-b. 动态文件被索要时，http服务器自动使用new函数创建当前的class文件的实例对象，通过调用对象的方法来处理请求。通过<strong>输出流</strong>将运行结果返回请求浏览器。</li>
-</ol>
-<p><img src="https://i.loli.net/2021/03/04/dCGtvIoKLqgJE2B.png" alt="互联网通信1" /><br />
-<img src="https://i.loli.net/2021/03/09/6QboE5Y4FOy8L92.png" alt="新版本通信图" /><br />
-<img src="https://i.loli.net/2021/03/16/1ctEGDh4el3X2wV.png" alt="" /></p>
-<h3 id="后端开发人员的职责"><a class="markdownIt-Anchor" href="#后端开发人员的职责"></a> 后端开发人员的职责</h3>
-<p>控制浏览器请求行为：</p>
-<ol>
-<li>发送的请求地址</li>
-<li>发送请求的方式</li>
-<li>发送请求携带的参数<br />
-<img src="https://i.loli.net/2021/03/04/HDjyScWtAe8Mh4C.png" alt="开发职责" /></li>
-</ol>
-<h3 id="一次请求过程"><a class="markdownIt-Anchor" href="#一次请求过程"></a> 一次请求过程</h3>
-<p><img src="https://i.loli.net/2021/03/12/TR5UQ26h4jbn8HB.jpg" alt="" /></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E5%88%9D%E6%AD%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/03/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mysq%20info/mysql%E5%88%9D%E6%AD%A5/" class="post-title-link" itemprop="url">mysql表文件管理命令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-03 22:44:21" itemprop="dateCreated datePublished" datetime="2021-03-03T22:44:21+08:00">2021-03-03</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-24 13:12:34" itemprop="dateModified" datetime="2021-03-24T13:12:34+08:00">2021-03-24</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="打开与退出"><a class="markdownIt-Anchor" href="#打开与退出"></a> 打开与退出</h3>
-<p>命令行：输入 <code>mysql -u root -p</code>，还可以选添 <code>-P 3306</code> 来设置端口号<br />
-进入后：<code>quit</code>退出</p>
-<h3 id="数据库管理命令"><a class="markdownIt-Anchor" href="#数据库管理命令"></a> 数据库管理命令</h3>
-<ul>
-<li>所有的表文件都存放在data文件夹中</li>
-<li>查看所有数据库名：<code>show databases;</code></li>
-<li>information_schema 存放在内存中，每次都会自动销毁</li>
-<li>创建一个数据库：
-<ol>
-<li><code>create database 数据库名;</code></li>
-<li>目录下手动新建文件夹也可以</li>
-</ol>
-</li>
-<li>删除一个数据库：<code>drop database 数据库名;</code></li>
-</ul>
-<h3 id="表文件管理命令"><a class="markdownIt-Anchor" href="#表文件管理命令"></a> 表文件管理命令</h3>
-<ul>
-<li>查看指定的数据库下所有的表文件名：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">USE 数据库名;</span><br><span class="line">show tables;</span><br></pre></td></tr></table></figure>
-</li>
-<li>在指定数据库下创建表文件：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名;</span><br><span class="line">create table 表文件名(</span><br><span class="line">    字段名 数据类型名,</span><br><span class="line">    字段名 数据类型名  &lt;--最后一个字段不要加&quot;,&quot;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database bjpowernode;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; use bjpowernode;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; create table stu(</span><br><span class="line">    -&gt; sid int,</span><br><span class="line">    -&gt; sname varchar(10),</span><br><span class="line">    -&gt; age int</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure>
-在这里面，字符串类型使用 <strong>varchar(5)</strong>，括号内放置最大字符长度。
-<ul>
-<li>数据类型：
-<ol>
-<li>char() 固定长度字符串</li>
-<li>varchar() 可变长度字符串</li>
-<li>YEAR: YYYY</li>
-<li>TIME: HH:MM:SS</li>
-<li>DATE: YYYY-MM-DD</li>
-<li>DATETIME: YYYY-MM-DD HH:MM:SS</li>
-<li>TIMESTAMP: YYYY-MM-DD HH:MM:SS 描述的时间在不同时区索引出来可能是不同的，动态计算出对应时区时间。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>删除表文件： <code>drop table 表文件名;</code></li>
-<li>查看表文件中相关的字段信息： <code>show create table 表文件名称;</code></li>
-<li>为表文件添加字段： <code>alter table 表文件名 add 新字段名 数据类型名称;</code></li>
-<li>删除表文件字段： <code>alter table 表文件名 drop 字段名;</code></li>
-</ul>
-<h3 id="mysql约束"><a class="markdownIt-Anchor" href="#mysql约束"></a> mysql约束</h3>
-<ol>
-<li>非空约束：管理的字段不能存储null值。<code>sname VARCHAR(10) not null</code></li>
-<li>唯一性约束：存储的字段值不能有重复值，但是可以存储null。<code>email varchar(20) UNIQUE</code></li>
-<li>主键约束 <code>sid int PRIMARY KEY</code></li>
-<li>外键约束：要求外键字段值应该来源于关联表的主键的值，但是可以存储null值。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 多方表 </span><br><span class="line">ADD CONSTRAINT 外键约束对象名 FOREIGN KEY(外键字段名)</span><br><span class="line">REFERENCE 一方表(主键字段)</span><br></pre></td></tr></table></figure>
-<h3 id="表文件数据行管理命令"><a class="markdownIt-Anchor" href="#表文件数据行管理命令"></a> 表文件数据行管理命令</h3>
-<ul>
-<li>插入命令：要求mysql服务器向指定的表文件中添加数据行</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into 表文件名 (字段名1,字段名2,字段名3)</span><br><span class="line">values(值1,值2,值3);        &lt;-字符串的值使用单引号扩起来</span><br></pre></td></tr></table></figure>
-<ul>
-<li>高级插入命：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insert into 表文件名(字段1,字段2,字段3)</span><br><span class="line">values</span><br><span class="line">(值1,值2,值3),</span><br><span class="line">(值1,值2,值3),</span><br><span class="line">(值1,值2,值3);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>简化版本插入命令：<code>insert into 表文件名 values(值1,值2,值3);</code><br />
-如果插入数据时，每一个字段都可以赋值，此时插入命令不需要指定字段名，数据顺序此时要与表文件字段顺序相同</li>
-<li>查询命令：<code>select * from 表文件名;</code>要求mysql服务器将指定的表文件数据行展示</li>
-<li>删除命令：
-<ol>
-<li><code>delete from 表文件名;</code>删除所有数据</li>
-<li><code>delete from 表文件名 where 判断条件;</code>删除满足条件的数据行数据。判断数据一般放置关系条件或者逻辑条件。(等于使用单等号=)</li>
-</ol>
-</li>
-<li>更新命令：要求mysql服务器将指定的表文件数据进行更新
-<ol>
-<li>对所有数据行<code>update 表文件名 set 字段名1=值,字段名2=值;</code></li>
-</ol>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update stu set age&#x3D;age+3;</span><br><span class="line">Query OK, 2 rows affected (0.00 sec)</span><br><span class="line">Rows matched: 2  Changed: 2  Warnings: 0</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>对指定数据行<code>update 表文件名 set 字段名1=值,字段名2=值 where 判断条件;</code>使用where来选择</li>
-</ol>
-</li>
-<li>数据行复制命令：<code>insert into B select * from A</code>可以将表A中的数据行复制到表B(要求表A与表B字段结构完全一致)</li>
-<li>表文件备份命令：<code>create table B select * from A</code>将表A进行一次备份，备份生成表B</li>
-</ul>
-<h3 id="mysql索引index"><a class="markdownIt-Anchor" href="#mysql索引index"></a> mysql索引(index)</h3>
-<ol>
-<li>查询速度问题： 由于表文件存放的数据行有可能会很多，WHERE命令会遍历所有的数据行。所以，时间越久，数据行越大，WHERE命令消耗的时间就越长。</li>
-<li>索引作用： 在表文件数据行增加时，不会大幅度降低查询语句执行的效率。</li>
-<li>工作原理：<br />
-数据1: [100, 80, 45, 50, 90, 200, 17]<br />
-数据2: [17, 45, 50, 80, 90, 100, 200]<br />
-从数据2得到最小值的消耗更小<br />
-所以：应该先对字段内容进行一次排序，然后再WHERE命令进行定位时，根据排序顺序定位最小值，来提升查询顺序。</li>
-<li>索引命令：
-<ul>
-<li>添加索引：<code>CREATE INDEX 索引名 ON 表名(字段)</code></li>
-<li>查看索引：<code>SHOW INDEX FROM 表明</code><br />
-这时会看到三个索引，因为服务器会默认为<strong>主键约束</strong>，<strong>外键约束</strong>，<strong>唯一性约束</strong>绑定索引。</li>
-<li>删除索引：<code>DROP INDEX 索引名 ON 表名</code>、</li>
-</ul>
-</li>
-</ol>
-<h3 id="mql执行计划explain"><a class="markdownIt-Anchor" href="#mql执行计划explain"></a> mql执行计划(explain)</h3>
-<ol>
-<li>命令格式：explain 查询命令</li>
-<li>命令作用：展示当前查询得到的结果是否通过索引来进行定位</li>
-<li>例子：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM emp WHERE ename&#x3D;&#39;smith&#39;</span><br><span class="line">--&gt; EXPLAIN SELECT * FROM emp WHERE ename&#x3D;&#39;smith&#39;</span><br><span class="line">--&gt; type: ref(索引查询) rows:1(查询次数)</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>判断：type属性表示执行效率。<br />
-<strong>all</strong>(对所有数据行进行遍历)<br />
-<strong>type</strong>(WHERE对所有数据行进行遍历，SELECT从索引中抓取)<br />
-<strong>range</strong>(WHERE直接通过索引来查询，但是不稳定，因为字段变化时会导致失效)<br />
-<strong>ref</strong>(WHERE直接通过索引来查询，一次只得到一行数据 --&gt; 该行数据没有重复)<br />
-<strong>const</strong>(通过主键索引来进行定位)</li>
-</ol>
-<p><strong>mysql如果发现通过索引得到数据行数&gt;1/3是，会自动放弃索引查询，type依然是all</strong></p>
-<h3 id="视图"><a class="markdownIt-Anchor" href="#视图"></a> 视图</h3>
-<ol>
-<li>定义：Mysql对象，用于存储查询语句。</li>
-<li>目的：提高查询语句使用效率，可复用性。</li>
-<li>命令：<code>CREATE VIEW 视图对象名 AS 查询语句</code></li>
-<li>调用：<code>SELECT * FROM 视图对象名</code>，还可以通过视图对象关联表文件数据行进行插入，删除，更新操作。</li>
-<li>作用：<strong>隐藏业务中涉及表关系，开发人员通过视图进行操作时不会知道具体操作的表，提高了安全性。</strong></li>
-</ol>
-<h3 id="存储引擎"><a class="markdownIt-Anchor" href="#存储引擎"></a> 存储引擎</h3>
-<ol>
-<li>定义：是mysql服务器对表文件内容的管理方式，目前主要采用INNODB，Myisam.</li>
-<li>管理命令：
-<ul>
-<li>查看支持存储引擎种类：<code>show engines</code>，默认使用innodb引擎</li>
-<li>修改引擎，<code>my.cnf文件</code>，在<code>/etc</code>配置文件夹下，<code>default-storage-engine=INNODB</code></li>
-<li>设置表文件呢依赖的存储引擎：<code>alter TABLE 表名 ENGINE=存储引擎</code></li>
-</ul>
-</li>
-<li>存储引擎特征：
-<ul>
-<li>Myisam：
-<ul>
-<li>修改表时，不会备份。提高效率，操作后无法取消本操作。</li>
-<li>使用三个表存储信息：<strong>test1.frm</strong>储存表文件字段信息，<strong>test1.myd</strong>储存表文件数据行信息，<strong>test1.myi</strong>存储表文件字段关联的索引信息。</li>
-</ul>
-</li>
-<li>INNODB：
-<ul>
-<li>对表内容修改时，首先进行一次备份，因此效率较慢。</li>
-<li>但是执行完毕后，可以使用备份取消当前操作，增加安全性。</li>
-<li>使用一个文件<strong>test1.frm</strong>存储所有信息。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="事物transaction"><a class="markdownIt-Anchor" href="#事物transaction"></a> 事物(transaction)</h3>
-<ol>
-<li>介绍：用于对当前表文件备份进行管理。</li>
-<li>命令格式：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">start transaction #通过服务器提供一个事物对象来管理备份接下来的操作</span><br><span class="line">delete from emp where deptno&#x3D;30 #生成emp.bak</span><br><span class="line">delete from dept where deptno&#x3D;30 #生成emp.bak</span><br><span class="line">ROLLBACK #取消本次操作</span><br><span class="line">COMMIT #提交操作：将本次操作的所有备份信息删除</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/02/basic%20operation/py2neo%E4%BB%8B%E7%BB%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/02/basic%20operation/py2neo%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">py2neo介绍</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-02 18:41:24" itemprop="dateCreated datePublished" datetime="2021-03-02T18:41:24+08:00">2021-03-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-08 21:14:15" itemprop="dateModified" datetime="2021-04-08T21:14:15+08:00">2021-04-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="导入包"><a class="markdownIt-Anchor" href="#导入包"></a> 导入包</h3>
-<p><code>from py2neo import Graph, Node, Relationship</code></p>
-<h3 id="建立连接"><a class="markdownIt-Anchor" href="#建立连接"></a> 建立连接</h3>
-<ul>
-<li>与网站建立连接：py2neo.graph 函数，参数为用户名以及密码，会返回一个链接对象<br />
-<code>link = Graph(&quot;http://localhost:7474&quot;,auth=(&quot;neo4j&quot;,&quot;password&quot;))</code></li>
-</ul>
-<h3 id="清空原数据"><a class="markdownIt-Anchor" href="#清空原数据"></a> 清空原数据</h3>
-<p><code>graph.delete_all()</code></p>
-<p><strong>Node和Relationship在这个驱动中都继承了PropertyDict这个类，而这个类继承类python里面的dict,所以操作和python本身的dict一模一样</strong></p>
-<h3 id="节点操作"><a class="markdownIt-Anchor" href="#节点操作"></a> 节点操作</h3>
-<ul>
-<li>新建节点：py2neo.Node 函数，参数为标签和数据，返回一个节点对象<br />
-<code>a = Node(&quot;Person&quot;, name=&quot;Alice&quot;)</code></li>
-<li>放置节点：py2neo.graph.create 函数<br />
-<code>graph.create(buy_node)</code></li>
-</ul>
-<p>一些额外操作：</p>
-<ul>
-<li>获取node的属性：<code>x=node[key]</code></li>
-<li>设置node的属性：<code>node[key] = value</code></li>
-<li>删除node的属性：<code>del node[key]</code></li>
-<li>返回node里面property的个数：<code>len(node)</code></li>
-<li>返回所有和这个节点有关的label：<code>node.labels</code></li>
-<li>删除某个label：<code>node.labels.remove(labelname)</code></li>
-<li>将node的所有property以dictionary的形式返回：<code>dic(node)</code></li>
-</ul>
-<h3 id="关系操作"><a class="markdownIt-Anchor" href="#关系操作"></a> 关系操作</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ab &#x3D; Relationship(a, &quot;KNOWS&quot;, b)</span><br><span class="line">graph.create(ab)</span><br></pre></td></tr></table></figure>
-<p>关系同样也有类似的操作：</p>
-<ul>
-<li>创建relationship：<code>Relationship(start_node, type, end_node, properties)</code></li>
-<li>返回Relationship的property：<code>Relationship[key]</code></li>
-<li>删除某个property：<code>del Relationship[key]</code></li>
-<li>将property以字典形式返回：<code>dict(relationship)</code></li>
-</ul>
-<h3 id="查询query"><a class="markdownIt-Anchor" href="#查询query"></a> 查询Query</h3>
-<ol>
-<li>可以在nodes中调用match来找点</li>
-<li>或者使用py2neo.matching包里面的NodeMatcher(graph)函数构建一个matcher再查询</li>
-</ol>
-<p>py2neo提供了专门的查询模块：NodeMatcher和RelationshipMatcher</p>
-<ul>
-<li>创建matcher，返回的结果仍然是NodeMatcher对象或RelationshipMatcher对象</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph &#x3D; Graph()</span><br><span class="line">matcher_1 &#x3D; NodeMatcher(graph)</span><br><span class="line">matcher_2 &#x3D; NodeMatcher(graph)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用 <strong>matcher.match()</strong> 进行查询,，可继续使用where()，first()，order_by()等进行操作。</li>
-<li>where中可以选择属性名进行查找，或者使用名称进行查找</li>
-</ul>
-<ol>
-<li>属性名：<code>where(year=2017)</code></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node &#x3D; matcher_1.match(&quot;Paper&quot;,ID&#x3D;&#39;09076&#39;).where(year&#x3D;2017)  # 匹配指定ID和year的Paper结点</span><br><span class="line">relation &#x3D; matcher_2.match(r_type&#x3D;&quot;Cited&quot;).limit(50)</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>名称：<code>where(&quot;_.name=&quot; + &quot;'&quot; + *名称 + &quot;'&quot;))</code><br />
-match后返回的结果仍然能是Matcher对象，可以用first()函数得到首个实体或者使用list(Matcher)将其转换为列表。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

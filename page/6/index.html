@@ -196,7 +196,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -243,6 +243,554 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mybatis/Mybatis%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/mybatis/Mybatis%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="post-title-link" itemprop="url">Mybatis 基本操作增删改查</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-25 14:47:18" itemprop="dateCreated datePublished" datetime="2021-03-25T14:47:18+08:00">2021-03-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-05 21:23:45" itemprop="dateModified" datetime="2021-04-05T21:23:45+08:00">2021-04-05</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="基本操作"><a class="markdownIt-Anchor" href="#基本操作"></a> 基本操作</h2>
+<h3 id="查询操作"><a class="markdownIt-Anchor" href="#查询操作"></a> 查询操作</h3>
+<ol>
+<li>在dao中的Mapper映射接口中，补充相应的抽象方法。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; File: src&#x2F;main&#x2F;java&#x2F;com&#x2F;lyl&#x2F;dao&#x2F;UserMapper.java</span><br><span class="line"></span><br><span class="line">public interface UserMapper &#123;</span><br><span class="line">	&#x2F;&#x2F; 根据id查询用户</span><br><span class="line">	User getUserById(int id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>补充<code>UserMapper.xml</code>中相应的映射</li>
+</ol>
+<ul>
+<li><code>parameterType</code>表示接口方法中传入的参数类型</li>
+<li>需要使用<code>#&#123;&#125;</code>来表示方法传入的参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id&#x3D;&quot;getUserById&quot; parameterType&#x3D;&quot;int&quot; resultType&#x3D;&quot;com.lyl.pojo.User&quot;&gt;</span><br><span class="line">    select * from mybatis.user where id &#x3D; #&#123;id&#125;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在Test文件中补充方法<br />
+userMapper就是对象，可以直接调用对应的方法</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void getUserById()&#123;</span><br><span class="line">    SqlSession sqlSession &#x3D; MybatisUtil.getSqlSession();</span><br><span class="line"></span><br><span class="line">    UserMapper userMapper &#x3D; sqlSession.getMapper(UserMapper.class);</span><br><span class="line">    User user &#x3D; userMapper.getUserById(1);</span><br><span class="line">    System.out.println(user);</span><br><span class="line"></span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="插入操作"><a class="markdownIt-Anchor" href="#插入操作"></a> 插入操作</h3>
+<ol>
+<li>File: src/main/java/com/lyl/dao/UserMapper.java</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 插入用户，参数为实体类</span><br><span class="line">int addUser(User user);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>src/main/resources/UserMapper.xml <strong>注意：使用insert标签，无需设置resultType，实体类对象中的属性可以直接获取。</strong></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id&#x3D;&quot;addUser&quot; parameterType&#x3D;&quot;com.lyl.pojo.User&quot;&gt;</span><br><span class="line">    insert into mybatis.user(id, name, pwd)</span><br><span class="line">    values ( #&#123;id&#125;, #&#123;name&#125;, #&#123;pwd&#125; );</span><br><span class="line">&lt;&#x2F;insert&gt;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>src/test/java/com/lyl/dao/UserDaoTest.java</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void addUser()&#123;</span><br><span class="line">    SqlSession sqlSession &#x3D; MybatisUtil.getSqlSession();</span><br><span class="line"></span><br><span class="line">    UserMapper userMapper &#x3D; sqlSession.getMapper(UserMapper.class);</span><br><span class="line">    try &#123;</span><br><span class="line">        int result &#x3D; userMapper.addUser(new User(3, &quot;haha&quot;, &quot;123&quot;));</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        sqlSession.rollback();</span><br><span class="line">    &#125;</span><br><span class="line">    sqlSession.commit();</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="注意事务"><a class="markdownIt-Anchor" href="#注意事务"></a> 注意：事务</h4>
+<p>虽然结果成功，但是数据库不会更新。<br />
+因为增删改需要<strong>提交事务</strong>。</p>
+<ul>
+<li>关于事务，jdbc是自动开启提交(AutoCommit)的，需要设置<code>con.setAutoCommit(flase);</code>来关闭自动提交以开始事务，然后通过<code>con.commit();</code>或<code>con.rollback();</code>，提交或者回滚。</li>
+<li>但是MyBatis是关闭自动提交，即默认开启事务的，所以需要在操作结束后，提交<code>SqlSession.commit();</code>或者回滚事务<code>SqlSession.rollback();</code>。</li>
+</ul>
+<h4 id="crud"><a class="markdownIt-Anchor" href="#crud"></a> CRUD</h4>
+<p>我们可以在创建工具类时自动提交事务。<br />
+在util文件中的openSession接口里，存在<code>SqlSession openSession(boolean var1)</code>方法。<br />
+<code>DefaultSqlSessionFactory.class</code>为其接口实现类，里面的<code>public SqlSession openSession(boolean autoCommit)</code>方法设置了是否自动提交。默认为false。<br />
+所以可以在util文件中设置openSession的参数为true，来实现自动提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static SqlSession getSqlSession()&#123;</span><br><span class="line">    return sqlSessionFactory.openSession(true);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="修改用户"><a class="markdownIt-Anchor" href="#修改用户"></a> 修改用户</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;update id&#x3D;&quot;updateUser&quot; parameterType&#x3D;&quot;com.lyl.pojo.User&quot;&gt;</span><br><span class="line">    update mybatis.user</span><br><span class="line">    set name &#x3D; #&#123;name&#125;, pwd&#x3D;#&#123;pwd&#125;</span><br><span class="line">    where id &#x3D; #&#123;id&#125;;</span><br><span class="line">&lt;&#x2F;update&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="删除员工"><a class="markdownIt-Anchor" href="#删除员工"></a> 删除员工</h3>
+<delete id="deleteUser" parameterType="int">
+    delete from mybatis.user where id = #{id}
+</delete>
+<h2 id="常见错误"><a class="markdownIt-Anchor" href="#常见错误"></a> 常见错误</h2>
+<ol>
+<li>Mapper的namespace必须绑定正确的对应接口路径。</li>
+<li>Mapper.xml文件存在乱码问题</li>
+<li><code>org.apache.ibatis.binding.BindingException: Type interface com.lyl.dao.UserMapper is not known to the MapperRegistry.</code><br />
+mapper标签中的namespace一定要绑定正确 <code>&lt;mapper namespace=&quot;com.lyl.dao.UserMapper&quot;&gt;</code>，不用加java后缀</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/23/tensorflow/broadcasting/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/23/tensorflow/broadcasting/" class="post-title-link" itemprop="url">broadcast和tile</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-23 14:47:25 / Modified: 19:22:24" itemprop="dateCreated datePublished" datetime="2021-03-23T14:47:25+08:00">2021-03-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ul>
+<li>例子<br />
+如果tenor A与B的dimension不一致，在进行操作时，我们需要为之添加维度来支持两个tensor的计算操作。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a [ 4 ,  16,  16, 32]</span><br><span class="line">b [(1), (1), (1), 32]</span><br><span class="line">将b扩张来支持数学运算</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/03/23/cWYkCjvm61rtSxV.jpg" alt="" /><br />
+<strong>注意</strong>：因为这个操作是默认使用右对齐来操作，所以[4,1]和[1,3]可以进行操作，但是[4]与[1,3]不可以。因为[1,4]与[1,3]无法相加。</p>
+<ul>
+<li>判断方式：</li>
+</ul>
+<ol>
+<li>均有维度</li>
+<li>右对齐</li>
+<li>从末尾开始遍历，要么相等，要么有一方为一或者不存在，这时插入和另一方相等的</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/23/tensorflow/Tensorflow%E7%BB%B4%E5%BA%A6%E5%8F%98%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/23/tensorflow/Tensorflow%E7%BB%B4%E5%BA%A6%E5%8F%98%E6%8D%A2/" class="post-title-link" itemprop="url">tensorflow维度变换</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-23 14:01:06 / Modified: 14:43:45" itemprop="dateCreated datePublished" datetime="2021-03-23T14:01:06+08:00">2021-03-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ul>
+<li>图片的内存保存顺序：</li>
+</ul>
+<ol>
+<li>[ batch, height, width ] 更加关注细节</li>
+<li>[ batch, height * width ] 作为一个整体去使用</li>
+<li>[ batch, 2, height/2 * width ] 将图片看作上下两个部分</li>
+<li>[ batch, height, width, channel ] 增加一个通道表示</li>
+</ol>
+<ul>
+<li>修改维度</li>
+</ul>
+<ol>
+<li>小变大</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; tf.random.normal([4, 28, 28, 3])</span><br><span class="line">tf.reshape(a, [4, 784, 3])</span><br></pre></td></tr></table></figure>
+<p>即将中间的28*28改成了一个整体784，失去了二维的信息<br />
+注意，上面的784可以写成 <strong>-1</strong>，系统会自动计算出来。某一个tensor只能有一个-1来保证和确定。<br />
+2. 大变小<br />
+在恢复时，我们需要小的尺寸信息。比如784在变小时，需要知道height=width=28</p>
+<ul>
+<li>转置<br />
+<code>tf.transpose()</code>函数，不会修改原来的矩阵，会返回一个新的转置矩阵。参数perm表示该位置放原先的哪一个维度。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; tf.random.normal( [4,3,2,1] )</span><br><span class="line">tf.transpose(a).shape  &#x2F;&#x2F; [1,2,3,4]</span><br><span class="line">tf.transpose(a, perm&#x3D;[0,1,3,2]).shape  &#x2F;&#x2F; [4,3,1,2]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>展开减少维度</li>
+</ul>
+<ol>
+<li>展开维度：使用<code>expand_dims()</code>函数<br />
+在axis参数表示的后面增加维度</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; tf.random.normal([4,35,8])</span><br><span class="line">tf.expand_dims( a, axis&#x3D;0 ).shape   &#x2F;&#x2F;[1,4,35,8]</span><br><span class="line">tf.expand_dims( a, axis&#x3D;3 ).shape   &#x2F;&#x2F;[4,35,8,1]</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>减少维度：主要用于减少shape=1的维度dim</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.squeeze(tf.zeros([1,2,1,1,3])).shape &#x2F;&#x2F;[2,3]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/23/tensorflow/%E5%88%9B%E5%BB%BATensor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/23/tensorflow/%E5%88%9B%E5%BB%BATensor/" class="post-title-link" itemprop="url">创建Tensor</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-23 13:23:24 / Modified: 14:00:45" itemprop="dateCreated datePublished" datetime="2021-03-23T13:23:24+08:00">2021-03-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ul>
+<li>新建Tensor数组</li>
+</ul>
+<ol>
+<li>numpy数据直接得到：<code>tf.convert_to_numpy( np.ones([2,3]) )</code></li>
+<li>从list得到： <code>tf.convert_to_numpy( [2,3] )</code></li>
+<li>格式化新建数组</li>
+</ol>
+<ul>
+<li><code>tf.zeros( [2,2] )</code>，注意参数为shape</li>
+<li><code>tf.zeros_like( a )</code>，参数为一个数组，根据数组a的尺寸建立<br />
+上<strong>面的<code>zeros</code>可以换成<code>ones</code></strong></li>
+<li><code>tf.fill( [2,2],0 )</code>，参数为尺寸和填充的元素值</li>
+</ul>
+<ol start="4">
+<li>随机新建数组</li>
+</ol>
+<ul>
+<li>正态分布：<code>tf.random.normal( [2,2], mean=1, stddev=1 )</code>，参数为尺寸，均值，标准差。均值标准差可以不写。</li>
+<li>截断正态分布：<code>tf.random.truncated_normal( [2,2], mean=1, stddev=1 )</code><br />
+范围为 <strong>[ mean - 2 * stddev, mean + 2 * stddev ]</strong></li>
+</ul>
+<ol start="5">
+<li>均匀分布：<code>tf.random.uniform( [2,2], minval=0, maxval=1 )</code>，参数为尺寸，和值域。</li>
+</ol>
+<ul>
+<li>随机打散功能<br />
+假设有10张图片，需要随机分布其索引号。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">idx &#x3D; tf.random(10)</span><br><span class="line">idx &#x3D; tf.random.shuffle( idx )</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/23/tensorflow/Tensorflow%E6%95%B0%E6%8D%AE%E5%B1%9E%E6%80%A7%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/23/tensorflow/Tensorflow%E6%95%B0%E6%8D%AE%E5%B1%9E%E6%80%A7%E8%BF%90%E7%AE%97/" class="post-title-link" itemprop="url">tensorflow数据常用属性和运算</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-23 12:05:07 / Modified: 19:42:29" itemprop="dateCreated datePublished" datetime="2021-03-23T12:05:07+08:00">2021-03-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="数据类型"><a class="markdownIt-Anchor" href="#数据类型"></a> 数据类型</h2>
+<ul>
+<li>scalar：标量</li>
+<li>vector：一维数组</li>
+<li>matrix：二维数组/矩阵</li>
+<li>tensor：维度&gt;2的数组</li>
+</ul>
+<h3 id="创建数据"><a class="markdownIt-Anchor" href="#创建数据"></a> 创建数据</h3>
+<ul>
+<li><strong>tf.constant(value，dtype)</strong> : 创建一个普通的数据
+<ul>
+<li>dtype可以省略，主要的数据类型有</li>
+</ul>
+<ol>
+<li>整数</li>
+</ol>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.int8：8位整数</span><br><span class="line">tf.int16：16位整数</span><br><span class="line">tf.int32：32位整数</span><br><span class="line">tf.int64：64位整数</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>无符号整数</li>
+</ol>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tf.uint8：8位无符号整数</span><br><span class="line">tf.uint16：16位无符号整数</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>浮点型</li>
+</ol>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.float16：16位浮点数</span><br><span class="line">tf.float32：32位浮点数</span><br><span class="line">tf.float64：64位浮点数</span><br><span class="line">tf.double：等同于tf.float64</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>字符串型：<code>tf.string</code></li>
+<li>布尔型：<code>tf.bool</code></li>
+<li>复数：</li>
+</ol>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tf.complex64：64位复数</span><br><span class="line">tf.complex128：128位复数</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="检测数据类型"><a class="markdownIt-Anchor" href="#检测数据类型"></a> 检测数据类型</h3>
+<p><code>tf.is_tensor(a)</code></p>
+<h3 id="数据类型转换"><a class="markdownIt-Anchor" href="#数据类型转换"></a> 数据类型转换</h3>
+<ul>
+<li><code>tf.convert_to_tensor</code>方法：将其他数据类型转换成tensor数据类型</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.arange(5)</span><br><span class="line">aa &#x3D; tf.convert_to_tensor(a)</span><br><span class="line">aa &#x3D; tf.convert_to_tensor(a, dtype&#x3D;tf.int32)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>tf.cast(aa, dtype=tf.float_32)</code>方法：转换tensor数据的数据类型</li>
+</ul>
+<h2 id="tensorflow数据所在设备"><a class="markdownIt-Anchor" href="#tensorflow数据所在设备"></a> tensorflow数据所在设备</h2>
+<ul>
+<li><code>aa.device</code>：返回数据所在设备</li>
+<li><code>tf.device()</code>：默认在gpu上</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with tf.device(&quot;cpu&quot;):</span><br><span class="line">    a &#x3D; tf.constant(1)</span><br><span class="line"></span><br><span class="line">with tf.device(&quot;gpu&quot;):</span><br><span class="line">    b &#x3D; tf.constant([1])</span><br></pre></td></tr></table></figure>
+<p>cpu/gpu只能使用对应的操作，无法跨硬件进行数据交互</p>
+<ul>
+<li>转换</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aa &#x3D; a.gpu()</span><br><span class="line">bb &#x3D; b.cpu()</span><br></pre></td></tr></table></figure>
+<h3 id="数据维度"><a class="markdownIt-Anchor" href="#数据维度"></a> 数据维度</h3>
+<ul>
+<li><code>a.ndim</code>：返回常数值</li>
+<li><code>tf.rank(a)</code>：返回tensor类型的数值</li>
+</ul>
+<h3 id="variable"><a class="markdownIt-Anchor" href="#variable"></a> Variable</h3>
+<p>对于线性代数<code>y=wx+b</code>，w与b除了是tensor型数据外，还需要被求导，即更新。可以设置w和b为<code>variable</code>型数据。设置Variable属性之后，就自动提供了梯度下降的功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; tf.range(5)</span><br><span class="line">b &#x3D; tf.Variable(a)</span><br><span class="line">b.trainable &#x3D; True</span><br></pre></td></tr></table></figure>
+<h3 id="numpy方法"><a class="markdownIt-Anchor" href="#numpy方法"></a> numpy方法</h3>
+<p>tensor数据的<code>numpy方法</code>可以直接返回其numpy数据<br />
+对于标量，可以直接使用<code>int(a)</code>或者<code>float(a)</code></p>
+<h2 id="数据运算"><a class="markdownIt-Anchor" href="#数据运算"></a> 数据运算</h2>
+<ol>
+<li>element-wise : <code>+ - * /</code></li>
+<li>matrix-wise: <code>@ matmul</code>
+<ul>
+<li>[b,3,4]@[b,4,5] = [b,3,5] 多维度的操作</li>
+</ul>
+</li>
+<li>dim-wise: <code>reduce_mean/max/min</code></li>
+<li>求对数：<code>tf.math.log(a)</code> 以e为底数<br />
+<code>tf.math.log(a)</code>/<code>tf.math.log(2)</code> 以2为底数</li>
+<li>e的幂值：<code>tf.exp</code></li>
+<li>多次方：<code>tf.pow(b,d)</code>/<code>b**d</code></li>
+<li>开方：<code>tf.sqrt(a)</code></li>
+<li>矩阵点乘：<code>a@b</code>/<code>tf.matmul(a,b)</code><br />
+这个操作是可以并行处理的，比如[b,2,3]@[b,3,5] = [b,2,5]<br />
+同时可以支持broadcast处理：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a.shape # [4,2,3]</span><br><span class="line">b.shape # [3,5]</span><br><span class="line">bb &#x3D; tf.broadcast_to(b, [4,3,5])</span><br><span class="line">a@bb    # [4,2,5]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -924,661 +1472,8 @@ java文件夹为source-root</li>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/20/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/EL%E5%B7%A5%E5%85%B7%E5%8C%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/20/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/EL%E5%B7%A5%E5%85%B7%E5%8C%85/" class="post-title-link" itemprop="url">EL工具包</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-20 20:12:11" itemprop="dateCreated datePublished" datetime="2021-03-20T20:12:11+08:00">2021-03-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-23 12:05:25" itemprop="dateModified" datetime="2021-03-23T12:05:25+08:00">2021-03-23</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
-<ul>
-<li>举例：<a target="_blank" rel="noopener" href="https://blog.csdn.net/w_linux/article/details/79850223">https://blog.csdn.net/w_linux/article/details/79850223</a></li>
-</ul>
-<h3 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h3>
-<ul>
-<li>Tomcat自带的使用Java技术开发的一个jar包</li>
-<li>降低JSP文件开发时的Java命令开发强度</li>
-</ul>
-<h3 id="作用"><a class="markdownIt-Anchor" href="#作用"></a> 作用</h3>
-<p>代替response响应对象，将Servlet中doGet和doPost的执行结果写入到响应体中</p>
-<h2 id="传统jsp开发步骤"><a class="markdownIt-Anchor" href="#传统jsp开发步骤"></a> 传统JSP开发步骤</h2>
-<ol>
-<li>从指定的作用域对象中读取处理结果</li>
-<li>将得到的数据进行类型强转</li>
-<li>将转换后的数据写入到响应体中</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class oneServlet extends HttpServlet &#123;</span><br><span class="line">	@Override</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 1。 分别将共享数据添加到作用域对象中</span><br><span class="line">		&#x2F;&#x2F; 全局作用对象</span><br><span class="line">		ServletContext application &#x3D; request.getServletContext();</span><br><span class="line">		&#x2F;&#x2F; 会话作用对象</span><br><span class="line">		HttpSession session &#x3D;  request.getSession();</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 设置</span><br><span class="line">		application.setAttribute(&quot;sid&quot;,&quot;18&quot;);</span><br><span class="line">		session.setAttribute(&quot;name&quot;,&quot;lyl&quot;);</span><br><span class="line">		request.setAttribute(&quot;home&quot;,&quot;China&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 2. 通过请求转发向Tomcat申请调用index_1.jsp，由该jsp负责将作用域对象共享数据读取并且写入到响应题中，交给浏览器</span><br><span class="line">		&#x2F;&#x2F; 请求转发，将共享数据写入响应体，交给Tomcat</span><br><span class="line">		request.getRequestDispatcher(&quot;&#x2F;index_1.jsp&quot;).forward(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    Integer sid &#x3D; (Integer) application.getAttribute(&quot;sid&quot;);</span><br><span class="line">    String name &#x3D; (String) session.getAttribute(&quot;name&quot;);</span><br><span class="line">    String home &#x3D; (String) request.getAttribute(&quot;home&quot;);</span><br><span class="line">%&gt;</span><br><span class="line">学员id：&lt;%&#x3D;sid%&gt; &lt;br&#x2F;&gt;</span><br><span class="line">学员姓名：&lt;%&#x3D;name%&gt; &lt;br&#x2F;&gt;</span><br><span class="line">学员住址：&lt;%&#x3D;home%&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="el表达式命提供的共享数据"><a class="markdownIt-Anchor" href="#el表达式命提供的共享数据"></a> EL表达式命提供的共享数据</h2>
-<ul>
-<li><code>$&#123; 作用域对象别名.共享数据 &#125;</code></li>
-<li>作用：
-<ul>
-<li>EL表达式是EL工具包提供的一种特殊的命令格式 【 表达式命令格式 】</li>
-<li>在JSP文件上使用</li>
-<li>负责在JSP文件上从作用域对象读取指定的共享数据并且输出到响应体中</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">学员id： $&#123;applicationScope.sid&#125; &lt;br&gt;</span><br><span class="line">学员姓名：$&#123;sessionScope.name&#125; &lt;br&#x2F;&gt;</span><br><span class="line">学员住址：$&#123;requestScope.home&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="作用域对象别名"><a class="markdownIt-Anchor" href="#作用域对象别名"></a> 作用域对象别名</h3>
-<ul>
-<li>JSP作用域对象</li>
-</ul>
-<ol>
-<li>ServletContext application    全局作用域对象</li>
-<li>HttpSession session           会话作用域对象</li>
-<li>HttpServletRequest request    请求作用域对象</li>
-<li>PageContext pageContext       当前页作用域对象
-<ul>
-<li>jsp独有，Servlet中不存在</li>
-<li>仅能在当前JSP文件中使用</li>
-<li>真是开发中，主要用于JSTL标签与JSP文件之间的数据共享</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>EL表达式中提供作用域对象的别名</li>
-</ul>
-<ol>
-<li>applicatio --&gt; <code>$&#123;applicationScope.共享数据&#125;</code></li>
-<li>session    --&gt; <code>$&#123;session.共享数据&#125;</code></li>
-<li>request    --&gt; <code>$&#123;requestScope.共享数据&#125;</code></li>
-<li>pageContext --&gt; <code>$&#123;pageScope.共享数据&#125;</code></li>
-</ol>
-<ul>
-<li>EL表达式无法遍历集合内容 --&gt; JSTL</li>
-</ul>
-<h3 id="el表达式简化版"><a class="markdownIt-Anchor" href="#el表达式简化版"></a> EL表达式简化版</h3>
-<ul>
-<li>命令格式：<code>$&#123;共享数据名&#125;</code></li>
-<li>命令作用：省略作用域对象名</li>
-<li>工作原理：采用<strong>猜算法</strong><br />
-依次从<strong>pageContext，request，session，application</strong>中得到数据，都没有则返回null。</li>
-<li>隐患：
-<ul>
-<li>降低程序执行速度</li>
-<li>导致定位错误</li>
-</ul>
-</li>
-<li>实际开发中，为了节省时间，一般都使用简化版</li>
-</ul>
-<h3 id="支持运算表达式"><a class="markdownIt-Anchor" href="#支持运算表达式"></a> 支持运算表达式</h3>
-<ol>
-<li>数学运算</li>
-<li>关系运算</li>
-</ol>
-<h2 id="功能2-el表达式提供的内置对象"><a class="markdownIt-Anchor" href="#功能2-el表达式提供的内置对象"></a> 功能2: EL表达式提供的内置对象</h2>
-<h3 id="前提getattribute和getparameter"><a class="markdownIt-Anchor" href="#前提getattribute和getparameter"></a> 前提，getAttribute和getParameter</h3>
-<h3 id="param-获取请求中的指定参数"><a class="markdownIt-Anchor" href="#param-获取请求中的指定参数"></a> param 获取请求中的指定参数</h3>
-<ul>
-<li>命令格式：<code>$&#123; param.请求参数名 &#125;</code></li>
-<li>命令作用：从通过请求对象读取当前请求包中的请求参数内容，并将请求参数内容<strong>写入到响应体</strong>中</li>
-<li>代码举例：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;$&#123;pageContext.request.contextPath &#125;&#x2F;show.jsp&quot; method&#x3D;&quot;POST&quot;&gt;</span><br><span class="line">    xxx&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;name&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">    yyy&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;age&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;点击&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    name&#x3D;$&#123;param.name &#125;&lt;br&gt;</span><br><span class="line">    age&#x3D;$&#123;param.age &#125;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="paramvalues-获取请求中的指定参数的所有值"><a class="markdownIt-Anchor" href="#paramvalues-获取请求中的指定参数的所有值"></a> paramValues 获取请求中的指定参数的所有值</h3>
-<ul>
-<li>命令格式：<code>$&#123;paramValues.name[索引值]</code></li>
-<li>代码举例：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;$&#123;pageContext.request.contextPath &#125;&#x2F;show.jsp&quot; method&#x3D;&quot;POST&quot;&gt;</span><br><span class="line">    爱好：</span><br><span class="line">    &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;sleep&quot;&gt;睡觉</span><br><span class="line">    &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;play&quot;&gt;玩</span><br><span class="line">    &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;eat&quot;&gt;吃</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;点击&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    name&#x3D;$&#123;param.name &#125;&lt;br&gt;</span><br><span class="line">    age&#x3D;$&#123;param.age &#125;&lt;br&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    hobby[0]&#x3D;$&#123;paramValues.hobby[0] &#125;&lt;br&gt;</span><br><span class="line">    hobby[1]&#x3D;$&#123;paramValues.hobby[1] &#125;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/20/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JSP/jsp%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/20/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JSP/jsp%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">JSP的使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-20 19:56:27 / Modified: 20:08:11" itemprop="dateCreated datePublished" datetime="2021-03-20T19:56:27+08:00">2021-03-20</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li>
-<p>用户通过get方式访问servlet</p>
-</li>
-<li>
-<p>得到需要处理的数据，通常是使用dao操作并且从数据库中得到操作或者查询结果</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QuestionDap dao &#x3D; new QuestionDap();</span><br><span class="line">List list &#x3D; dao.findAll();</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>将数据添加到共享文件中</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.setAttribute(&quot;list&quot;,list);</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>通过请求转发向Tomcat调用jsp将结果与html标签写入到响应体中</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.getRequestDispatcher(&quot;&#x2F;find.jsps&quot;).forward(request,response);</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/inclass/week-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/19/inclass/week-3/" class="post-title-link" itemprop="url">week-3</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-19 15:28:55" itemprop="dateCreated datePublished" datetime="2021-03-19T15:28:55+08:00">2021-03-19</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-20 19:56:03" itemprop="dateModified" datetime="2021-03-20T19:56:03+08:00">2021-03-20</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="testing-and-bugs"><a class="markdownIt-Anchor" href="#testing-and-bugs"></a> Testing and Bugs</h2>
-<ul>
-<li>
-<p>typical residual defect rates 典型残余缺陷率<br />
-kloc： (one thousand lines of source code) 每一千行源码</p>
-</li>
-<li>
-<p>Software Testing is Hard：</p>
-</li>
-</ul>
-<ol>
-<li>Exhaustive testing is infeasible 不可能测试所有样例</li>
-<li>Haphazard testing is less likely to find bugs 随机测试很难发现bug</li>
-<li>Random or statistical testing doesn’t work well for software 不适合随机或统计测试：
-<ul>
-<li>Software behavior varies discontinuously and discretely across the space of possible inputs. 软件行为在可能的输入空间中不连续地、离散地变化。</li>
-<li>could still abruptly fail at a single boundary point. 可能在单个边界点突然失效。</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>Test cases must be chosen systematically 需要系统地选择测试用例
-<ul>
-<li>测试用例是输入和预期输出结果的特殊选择</li>
-<li>测试套件(test suite)是一组用于实现的测试用例</li>
-</ul>
-</li>
-</ul>
-<h3 id="systematic-testing"><a class="markdownIt-Anchor" href="#systematic-testing"></a> Systematic Testing</h3>
-<ul>
-<li>介绍：系统测试表示我们用特定的方式来选择<strong>测试情况</strong></li>
-<li>目标：建立一个正确，彻底并且小的测试套件
-<ul>
-<li>正确 Correct：接受所有合法的输入</li>
-<li>彻底 Thorough：一个完整的测试套件会发现实际中，程序员的错误</li>
-<li>小 Small：更少的测试用例可以更快地编辑，更新和使用</li>
-</ul>
-</li>
-</ul>
-<h3 id="test-first-programming"><a class="markdownIt-Anchor" href="#test-first-programming"></a> Test-First Programming</h3>
-<p>you write tests before you even write any code</p>
-<ul>
-<li>步骤：
-<ol>
-<li>Spec：先为代码编写规范specification</li>
-<li>Test：编写执行规范的测试</li>
-<li>Implement：编写代码<br />
-最后代码通过测试后，即表示完成了</li>
-</ol>
-</li>
-</ul>
-<h4 id="the-specification-规范"><a class="markdownIt-Anchor" href="#the-specification-规范"></a> The Specification 规范</h4>
-<ul>
-<li>作用：描述函数的输入和输出</li>
-<li>组成： the method signature and the comment above it that describes what it does</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* @param val another BigInteger</span><br><span class="line">* @return a BigInteger whose value is (this * val). </span><br><span class="line">*&#x2F;</span><br><span class="line">public BigInteger multiply(BigInteger val)</span><br></pre></td></tr></table></figure>
-<h4 id="test-cases-测试用例"><a class="markdownIt-Anchor" href="#test-cases-测试用例"></a> Test Cases 测试用例</h4>
-<ul>
-<li>要求：<strong>small enough</strong> to run quickly, yet <strong>large enough</strong> to validate the program</li>
-<li>取法：
-<ol>
-<li>将定义域分成不同的子定义域，每一个输入都表示一种情况</li>
-<li>每一个测试样例都代表一个子定义域<br />
-我们同样也可以对值域进行上述操作</li>
-</ol>
-</li>
-</ul>
-<h2 id="recursion-递归"><a class="markdownIt-Anchor" href="#recursion-递归"></a> Recursion 递归</h2>
-<ul>
-<li>
-<p><strong>Recursion God</strong>:</p>
-<ul>
-<li>that if you solve a problem of original size, say size n</li>
-<li>Recursion God will answer correctly problems of size less than n</li>
-</ul>
-</li>
-<li>
-<p><strong>helper method</strong>:<br />
-Helper method introduces another parameter(s) to give you more flexibility in doing (more creative) recursion calls<br />
-引入另一个参数，帮助递归的调用。</p>
-</li>
-<li>
-<p>举例</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* Decide whether there is a subset in the input list</span><br><span class="line">* that adds up to the target sum.</span><br><span class="line">* For example, subsetSum([2, 5, 8], 10) → true.</span><br><span class="line">* @param list is the input list.</span><br><span class="line">* @param sum is the target sum.</span><br><span class="line">* @return true iff there is a subset of list that adds to sum. *&#x2F;</span><br><span class="line">public static boolean subsetSum(List&lt;Integer&gt; list, int sum)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private static boolean subsetSumHelper(List&lt;Integer&gt; list, int start, int sum) &#123;</span><br><span class="line">	&#x2F;&#x2F; base case</span><br><span class="line">    if (start &#x3D;&#x3D; list.size()) &#123; if (sum &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; recursive step</span><br><span class="line">    if (subsetSumHelper(list, start+1, sum-list.get(start))) return true;</span><br><span class="line">    if (subsetSumHelper(list, start+1, sum)) return true;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JSP/JSP%E8%A7%84%E8%8C%83%E4%BB%8B%E7%BB%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JSP/JSP%E8%A7%84%E8%8C%83%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">JSP规范介绍</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-16 17:28:53" itemprop="dateCreated datePublished" datetime="2021-03-16T17:28:53+08:00">2021-03-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-20 15:07:08" itemprop="dateModified" datetime="2021-03-20T15:07:08+08:00">2021-03-20</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="jsp规范介绍"><a class="markdownIt-Anchor" href="#jsp规范介绍"></a> JSP规范介绍</h2>
-<ul>
-<li>JSP存放在web/webapp文件夹下</li>
-<li>响应对象的弊端：响应对象执行时，获得一个输出流，然后通过doGet/doPost方法写入到响应体中。者但是这只适用于处理结果小的情况。</li>
-<li>JSP文件的优势：jsp文件执行时会自动将文件所有内容<strong>写入到响应体</strong>中：节约了out.print</li>
-</ul>
-<h2 id="jsp书写规范"><a class="markdownIt-Anchor" href="#jsp书写规范"></a> JSP书写规范</h2>
-<ul>
-<li>直接书写java命令需要写在特殊的标签中 <code>&lt;%</code>和<code>%&gt;</code>中。</li>
-<li>输出标记<code>&lt;%=变量名%&gt;</code>，变量名里面可以含运算符号</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    Stu s &#x3D; new Stu(123, &quot;yes&quot;);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;center style&#x3D;&quot;padding-top: 200px&quot;&gt;</span><br><span class="line">学员编号：&lt;%&#x3D;s.getSid()%&gt;&lt;br&#x2F;&gt;</span><br><span class="line">学员姓名：&lt;%&#x3D;s.getSname()%&gt;</span><br><span class="line">&lt;&#x2F;center&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用判断语句</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    if ( s.getSid()&gt;18 )&#123;</span><br><span class="line">%&gt;</span><br><span class="line">        &lt;font style&#x3D;&quot;color: darkred; font-size: 20px&quot;&gt;已成年&lt;&#x2F;font&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">%&gt;</span><br><span class="line">        &lt;font style&#x3D;&quot;color: darkred; font-size: 20px&quot;&gt;未成年&lt;&#x2F;font&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="内置对象-request"><a class="markdownIt-Anchor" href="#内置对象-request"></a> 内置对象 request</h3>
-<ul>
-<li>类型：HttpServletRequest</li>
-<li>作用：在JSP文件运行时读取请求包信息，与Servlet在请求转发过程中实现数据共享</li>
-<li>流程：<br />
-用户可以访问<code>http://localhost:8080/myWeb/request.jsp?userName=allen&amp;password=123</code><br />
-用户<strong>无需</strong>创建，可以直接借助于内部Request对象</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    String username &#x3D; request.getParameter(&quot;userName&quot;);</span><br><span class="line">    String password &#x3D; request.getParameter(&quot;password&quot;);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="内置对象-session"><a class="markdownIt-Anchor" href="#内置对象-session"></a> 内置对象 Session</h3>
-<ul>
-<li>类型：HttpSession</li>
-<li>作用：运行时通过Session指向当前用户的私人储物柜，添加或者读取共享数据</li>
-<li>流程：用户无需创建，直接调用session</li>
-</ul>
-<h3 id="内置对象-application"><a class="markdownIt-Anchor" href="#内置对象-application"></a> 内置对象 Application</h3>
-<ul>
-<li>类型：ServletContext application</li>
-<li>前提：同一个网站和JSP</li>
-<li>作用：运行时通过Session指向当前用户的私人储物柜，添加或者读取共享数据</li>
-<li>流程：用户无需创建，直接调用session</li>
-</ul>
-<p>隐含对象application是javax.servlet.ServletContext接口实现类的对象，其拥有application的作用范围，即application可以用于在多个用户之间保存数据，所有用户都共享同一个application，因此从application对象中读取和写入的数据都是共享的。</p>
-<p>application对象封装了jsp所在web应用程序的信息，整个web应用程序对应一个application对象。服务器启动后，一旦创建了application对象，则这个application对象将会永远保持下来，直到服务器关闭为止。</p>
-<h2 id="servlet与jsp的分工"><a class="markdownIt-Anchor" href="#servlet与jsp的分工"></a> Servlet与JSP的分工</h2>
-<ul>
-<li>Servlet负责处理业务并且得到处理结果             &gt; 大厨</li>
-<li>JSP不负责处理业务，只要任务是将Servlet中处理的结果写入到响应体中         &gt; 传菜员</li>
-</ul>
-<h3 id="调用关系"><a class="markdownIt-Anchor" href="#调用关系"></a> 调用关系</h3>
-<p>Servlet工作完毕后，一般通过请求转发的方式。向Tomcat申请调用JSP</p>
-<h3 id="数据共享"><a class="markdownIt-Anchor" href="#数据共享"></a> 数据共享</h3>
-<p>Servlet将结果添加到<strong>请求作用域对象</strong>中，JSP文件在运行时从<strong>请求作用域对象</strong>中得到处理结果。</p>
-<h3 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h3>
-<ul>
-<li>Servlet</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Servlet&#123;</span><br><span class="line">    ....</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 添加处理结果到请求作用域对象</span><br><span class="line">    request.setAttribute(&quot;key&quot;,&quot;value&quot;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 请求转发</span><br><span class="line">    request.getRequestDispatcher(&quot;&#x2F;jsp文件名&quot;).forward(request, response);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Jsp</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    List stu &#x3D; (List) request.getAttribute(&quot;key&quot;); &#x2F;&#x2F; 注意这里需要强制转换数据类型</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="http服务器调用jsp文件步骤"><a class="markdownIt-Anchor" href="#http服务器调用jsp文件步骤"></a> Http服务器调用Jsp文件步骤</h2>
-<ol>
-<li>Http服务器将jsp文件内容编译为一个Servlet接口实现类（.java)</li>
-<li>Http服务器将Servlet接口实现类编译为class文件（.class）</li>
-<li>Http服务器负责创建这个class的实例对象，这个实例对象就是Servlet实例对象</li>
-<li>Http服务器通过Servlet实例对象调用service方法，将jsp文件内容写入到响应体中</li>
-</ol>
-<ul>
-<li>Http服务器编辑/编译JSP的位置<br />
-地址： work文件夹下</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8E%A5%E5%8F%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">过滤器接口</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-16 13:49:09 / Modified: 16:06:11" itemprop="dateCreated datePublished" datetime="2021-03-16T13:49:09+08:00">2021-03-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="filter-接口"><a class="markdownIt-Anchor" href="#filter-接口"></a> Filter 接口</h3>
-<h3 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h3>
-<ul>
-<li>Servlet规范下的一个接口，在servlet-api.jar中</li>
-<li>Filter接口实现类由开发人员提供，Http服务器不负责提供</li>
-</ul>
-<h3 id="具体作用"><a class="markdownIt-Anchor" href="#具体作用"></a> 具体作用</h3>
-<ul>
-<li>Filter接口在Http服务器调用资源文件之前，负责对Http服务器进行拦截，帮助Http服务器检测当前请求的合法性</li>
-<li>拦截Http服务器，对当前请求进行增强操作</li>
-</ul>
-<h3 id="开发步骤"><a class="markdownIt-Anchor" href="#开发步骤"></a> 开发步骤</h3>
-<ol>
-<li>创建Java中的Filter接口实现类</li>
-<li>重写Filter接口中的doFilter方法</li>
-<li>在web.xml将过滤器接口实现类注册到Http服务器中</li>
-</ol>
-<h3 id="拦截作用-代码实现"><a class="markdownIt-Anchor" href="#拦截作用-代码实现"></a> 拦截作用 - 代码实现</h3>
-<p><strong>通过request的getParameter得到并且判断参数，如果通过则使用doFilter方法交给Tomcat。</strong></p>
-<ul>
-<li>Filter 文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class oneFilter implements Filter &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException ServletException &#123;</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 1. 通过拦截请求对象得到请求包中的参数信息，从而得到来访用户的年龄</span><br><span class="line">		String age &#x3D; servletRequest.getParameter(&quot;age&quot;);</span><br><span class="line">		&#x2F;&#x2F; 2. 根据年龄，帮助Http服务器判断本次请求的合法性</span><br><span class="line">		if(Integer.valueOf(age)&gt;18)&#123; &#x2F;&#x2F; 合法</span><br><span class="line">			&#x2F;&#x2F; 将拦截请求对象和响应对象交还给Tomcat，由Tomcat继续调用资源文件</span><br><span class="line">			filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			&#x2F;&#x2F; 过滤器代替Http服务器拒绝请求</span><br><span class="line">			servletResponse.setContentType(&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;);</span><br><span class="line">			PrintWriter out &#x3D;  servletResponse.getWriter();</span><br><span class="line">			out.print(&quot;&lt;center&gt;&lt;font style&#x3D;&#39;color:red;font-size:40px&#39;&gt; 别玩了，赶紧学吧 &lt;&#x2F;center&gt;&quot;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>web.xml 文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    将过滤器类文件目录交给Tomcat   --&gt;</span><br><span class="line">&lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;Filter.oneFilter&lt;&#x2F;filter-class&gt;</span><br><span class="line">&lt;&#x2F;filter&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    通知Tomcat在调用何种资源文件时候需要被拦截    --&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;pic.png&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这里重复下，静态的资源文件放置在webapp目录下，和web-inf文件夹同级。</li>
-</ul>
-<h3 id="增强作用-代码实现"><a class="markdownIt-Anchor" href="#增强作用-代码实现"></a> 增强作用 - 代码实现</h3>
-<ul>
-<li>情况：在使用doPost方法时，需要设置字符集：<code>request.setCharacterEncoding(Utf-8)</code>。当存在多个servlet都需要调用这个方法时候，则可以使用Filter增强操作。</li>
-<li>解决：只要Filter实现类检测到是需要调用doPost方法时，就会自动拦截调用自己的doFilter来设置字符集，然后交还给Tomcat。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class oneFilter implements Filter &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 通知拦截对象，使用utf-8字符集对当前请求体信息进行一次重新编辑</span><br><span class="line">		servletRequest.setCharacterEncoding(&quot;utf-8&quot;);</span><br><span class="line">		&#x2F;&#x2F; 交还res和req</span><br><span class="line">		filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    注册filter--&gt;</span><br><span class="line">&lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;Filter.oneFilter&lt;&#x2F;filter-class&gt;</span><br><span class="line">&lt;&#x2F;filter&gt;</span><br><span class="line"></span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt; &#x2F;* &lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>注意 <code>/*</code>表示了调用所有资源文件之前都调用oneFilter</strong></p>
-<h4 id="filter拦截地址的格式"><a class="markdownIt-Anchor" href="#filter拦截地址的格式"></a> Filter拦截地址的格式</h4>
-<ul>
-<li>命令格式：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt; 拦截地址 &lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>调用某一具体的文件,直接使用文件地址： <code>/img/pic.png</code></li>
-<li>调用某一文件夹下的任意资源文件，使用 * 表示文件名： <code>/img/*</code></li>
-<li>调用任意文件夹下的某种文件类型： <code>*.jpg</code></li>
-<li>任意文件： <code>/*</code></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

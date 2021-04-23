@@ -196,7 +196,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -243,6 +243,659 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/20/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/EL%E5%B7%A5%E5%85%B7%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/20/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/EL%E5%B7%A5%E5%85%B7%E5%8C%85/" class="post-title-link" itemprop="url">EL工具包</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-20 20:12:11" itemprop="dateCreated datePublished" datetime="2021-03-20T20:12:11+08:00">2021-03-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-23 12:05:25" itemprop="dateModified" datetime="2021-03-23T12:05:25+08:00">2021-03-23</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
+<ul>
+<li>举例：<a target="_blank" rel="noopener" href="https://blog.csdn.net/w_linux/article/details/79850223">https://blog.csdn.net/w_linux/article/details/79850223</a></li>
+</ul>
+<h3 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h3>
+<ul>
+<li>Tomcat自带的使用Java技术开发的一个jar包</li>
+<li>降低JSP文件开发时的Java命令开发强度</li>
+</ul>
+<h3 id="作用"><a class="markdownIt-Anchor" href="#作用"></a> 作用</h3>
+<p>代替response响应对象，将Servlet中doGet和doPost的执行结果写入到响应体中</p>
+<h2 id="传统jsp开发步骤"><a class="markdownIt-Anchor" href="#传统jsp开发步骤"></a> 传统JSP开发步骤</h2>
+<ol>
+<li>从指定的作用域对象中读取处理结果</li>
+<li>将得到的数据进行类型强转</li>
+<li>将转换后的数据写入到响应体中</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class oneServlet extends HttpServlet &#123;</span><br><span class="line">	@Override</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 1。 分别将共享数据添加到作用域对象中</span><br><span class="line">		&#x2F;&#x2F; 全局作用对象</span><br><span class="line">		ServletContext application &#x3D; request.getServletContext();</span><br><span class="line">		&#x2F;&#x2F; 会话作用对象</span><br><span class="line">		HttpSession session &#x3D;  request.getSession();</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 设置</span><br><span class="line">		application.setAttribute(&quot;sid&quot;,&quot;18&quot;);</span><br><span class="line">		session.setAttribute(&quot;name&quot;,&quot;lyl&quot;);</span><br><span class="line">		request.setAttribute(&quot;home&quot;,&quot;China&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 2. 通过请求转发向Tomcat申请调用index_1.jsp，由该jsp负责将作用域对象共享数据读取并且写入到响应题中，交给浏览器</span><br><span class="line">		&#x2F;&#x2F; 请求转发，将共享数据写入响应体，交给Tomcat</span><br><span class="line">		request.getRequestDispatcher(&quot;&#x2F;index_1.jsp&quot;).forward(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    Integer sid &#x3D; (Integer) application.getAttribute(&quot;sid&quot;);</span><br><span class="line">    String name &#x3D; (String) session.getAttribute(&quot;name&quot;);</span><br><span class="line">    String home &#x3D; (String) request.getAttribute(&quot;home&quot;);</span><br><span class="line">%&gt;</span><br><span class="line">学员id：&lt;%&#x3D;sid%&gt; &lt;br&#x2F;&gt;</span><br><span class="line">学员姓名：&lt;%&#x3D;name%&gt; &lt;br&#x2F;&gt;</span><br><span class="line">学员住址：&lt;%&#x3D;home%&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="el表达式命提供的共享数据"><a class="markdownIt-Anchor" href="#el表达式命提供的共享数据"></a> EL表达式命提供的共享数据</h2>
+<ul>
+<li><code>$&#123; 作用域对象别名.共享数据 &#125;</code></li>
+<li>作用：
+<ul>
+<li>EL表达式是EL工具包提供的一种特殊的命令格式 【 表达式命令格式 】</li>
+<li>在JSP文件上使用</li>
+<li>负责在JSP文件上从作用域对象读取指定的共享数据并且输出到响应体中</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">学员id： $&#123;applicationScope.sid&#125; &lt;br&gt;</span><br><span class="line">学员姓名：$&#123;sessionScope.name&#125; &lt;br&#x2F;&gt;</span><br><span class="line">学员住址：$&#123;requestScope.home&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="作用域对象别名"><a class="markdownIt-Anchor" href="#作用域对象别名"></a> 作用域对象别名</h3>
+<ul>
+<li>JSP作用域对象</li>
+</ul>
+<ol>
+<li>ServletContext application    全局作用域对象</li>
+<li>HttpSession session           会话作用域对象</li>
+<li>HttpServletRequest request    请求作用域对象</li>
+<li>PageContext pageContext       当前页作用域对象
+<ul>
+<li>jsp独有，Servlet中不存在</li>
+<li>仅能在当前JSP文件中使用</li>
+<li>真是开发中，主要用于JSTL标签与JSP文件之间的数据共享</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>EL表达式中提供作用域对象的别名</li>
+</ul>
+<ol>
+<li>applicatio --&gt; <code>$&#123;applicationScope.共享数据&#125;</code></li>
+<li>session    --&gt; <code>$&#123;session.共享数据&#125;</code></li>
+<li>request    --&gt; <code>$&#123;requestScope.共享数据&#125;</code></li>
+<li>pageContext --&gt; <code>$&#123;pageScope.共享数据&#125;</code></li>
+</ol>
+<ul>
+<li>EL表达式无法遍历集合内容 --&gt; JSTL</li>
+</ul>
+<h3 id="el表达式简化版"><a class="markdownIt-Anchor" href="#el表达式简化版"></a> EL表达式简化版</h3>
+<ul>
+<li>命令格式：<code>$&#123;共享数据名&#125;</code></li>
+<li>命令作用：省略作用域对象名</li>
+<li>工作原理：采用<strong>猜算法</strong><br />
+依次从<strong>pageContext，request，session，application</strong>中得到数据，都没有则返回null。</li>
+<li>隐患：
+<ul>
+<li>降低程序执行速度</li>
+<li>导致定位错误</li>
+</ul>
+</li>
+<li>实际开发中，为了节省时间，一般都使用简化版</li>
+</ul>
+<h3 id="支持运算表达式"><a class="markdownIt-Anchor" href="#支持运算表达式"></a> 支持运算表达式</h3>
+<ol>
+<li>数学运算</li>
+<li>关系运算</li>
+</ol>
+<h2 id="功能2-el表达式提供的内置对象"><a class="markdownIt-Anchor" href="#功能2-el表达式提供的内置对象"></a> 功能2: EL表达式提供的内置对象</h2>
+<h3 id="前提getattribute和getparameter"><a class="markdownIt-Anchor" href="#前提getattribute和getparameter"></a> 前提，getAttribute和getParameter</h3>
+<h3 id="param-获取请求中的指定参数"><a class="markdownIt-Anchor" href="#param-获取请求中的指定参数"></a> param 获取请求中的指定参数</h3>
+<ul>
+<li>命令格式：<code>$&#123; param.请求参数名 &#125;</code></li>
+<li>命令作用：从通过请求对象读取当前请求包中的请求参数内容，并将请求参数内容<strong>写入到响应体</strong>中</li>
+<li>代码举例：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;$&#123;pageContext.request.contextPath &#125;&#x2F;show.jsp&quot; method&#x3D;&quot;POST&quot;&gt;</span><br><span class="line">    xxx&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;name&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">    yyy&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;age&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;点击&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    name&#x3D;$&#123;param.name &#125;&lt;br&gt;</span><br><span class="line">    age&#x3D;$&#123;param.age &#125;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="paramvalues-获取请求中的指定参数的所有值"><a class="markdownIt-Anchor" href="#paramvalues-获取请求中的指定参数的所有值"></a> paramValues 获取请求中的指定参数的所有值</h3>
+<ul>
+<li>命令格式：<code>$&#123;paramValues.name[索引值]</code></li>
+<li>代码举例：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;$&#123;pageContext.request.contextPath &#125;&#x2F;show.jsp&quot; method&#x3D;&quot;POST&quot;&gt;</span><br><span class="line">    爱好：</span><br><span class="line">    &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;sleep&quot;&gt;睡觉</span><br><span class="line">    &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;play&quot;&gt;玩</span><br><span class="line">    &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;eat&quot;&gt;吃</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;点击&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    name&#x3D;$&#123;param.name &#125;&lt;br&gt;</span><br><span class="line">    age&#x3D;$&#123;param.age &#125;&lt;br&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    hobby[0]&#x3D;$&#123;paramValues.hobby[0] &#125;&lt;br&gt;</span><br><span class="line">    hobby[1]&#x3D;$&#123;paramValues.hobby[1] &#125;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/20/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JSP/jsp%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/20/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JSP/jsp%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">JSP的使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-20 19:56:27 / Modified: 20:08:11" itemprop="dateCreated datePublished" datetime="2021-03-20T19:56:27+08:00">2021-03-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li>
+<p>用户通过get方式访问servlet</p>
+</li>
+<li>
+<p>得到需要处理的数据，通常是使用dao操作并且从数据库中得到操作或者查询结果</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QuestionDap dao &#x3D; new QuestionDap();</span><br><span class="line">List list &#x3D; dao.findAll();</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>将数据添加到共享文件中</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.setAttribute(&quot;list&quot;,list);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>通过请求转发向Tomcat调用jsp将结果与html标签写入到响应体中</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.getRequestDispatcher(&quot;&#x2F;find.jsps&quot;).forward(request,response);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/inclass/JAVAOOP/week-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/19/inclass/JAVAOOP/week-3/" class="post-title-link" itemprop="url">week-3</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-19 15:28:55" itemprop="dateCreated datePublished" datetime="2021-03-19T15:28:55+08:00">2021-03-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-19 23:57:13" itemprop="dateModified" datetime="2021-04-19T23:57:13+08:00">2021-04-19</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="testing-and-bugs"><a class="markdownIt-Anchor" href="#testing-and-bugs"></a> Testing and Bugs</h2>
+<ul>
+<li>
+<p>typical residual defect rates 典型残余缺陷率<br />
+kloc： (one thousand lines of source code) 每一千行源码</p>
+</li>
+<li>
+<p>Software Testing is Hard：</p>
+</li>
+</ul>
+<ol>
+<li>Exhaustive testing is infeasible 不可能测试所有样例</li>
+<li>Haphazard testing is less likely to find bugs 随机测试很难发现bug</li>
+<li>Random or statistical testing doesn’t work well for software 不适合随机或统计测试：
+<ul>
+<li>Software behavior varies discontinuously and discretely across the space of possible inputs. 软件行为在可能的输入空间中不连续地、离散地变化。</li>
+<li>could still abruptly fail at a single boundary point. 可能在单个边界点突然失效。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Test cases must be chosen systematically 需要系统地选择测试用例
+<ul>
+<li>测试用例是输入和预期输出结果的特殊选择</li>
+<li>测试套件(test suite)是一组用于实现的测试用例</li>
+</ul>
+</li>
+</ul>
+<h3 id="systematic-testing"><a class="markdownIt-Anchor" href="#systematic-testing"></a> Systematic Testing</h3>
+<ul>
+<li>介绍：系统测试表示我们用特定的方式来选择<strong>测试情况</strong></li>
+<li>目标：建立一个正确，彻底并且小的测试套件
+<ul>
+<li>正确 Correct：接受所有合法的输入</li>
+<li>彻底 Thorough：一个完整的测试套件会发现实际中，程序员的错误</li>
+<li>小 Small：更少的测试用例可以更快地编辑，更新和使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="test-first-programming"><a class="markdownIt-Anchor" href="#test-first-programming"></a> Test-First Programming</h3>
+<p>you write tests before you even write any code</p>
+<ul>
+<li>步骤：
+<ol>
+<li>Spec：先为代码编写规范specification</li>
+<li>Test：编写执行规范的测试</li>
+<li>Implement：编写代码<br />
+最后代码通过测试后，即表示完成了</li>
+</ol>
+</li>
+</ul>
+<h4 id="the-specification-规范"><a class="markdownIt-Anchor" href="#the-specification-规范"></a> The Specification 规范</h4>
+<ul>
+<li>作用：描述函数的输入和输出</li>
+<li>组成： the method signature and the comment above it that describes what it does</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* @param val another BigInteger</span><br><span class="line">* @return a BigInteger whose value is (this * val). </span><br><span class="line">*&#x2F;</span><br><span class="line">public BigInteger multiply(BigInteger val)</span><br></pre></td></tr></table></figure>
+<h4 id="test-cases-测试用例"><a class="markdownIt-Anchor" href="#test-cases-测试用例"></a> Test Cases 测试用例</h4>
+<ul>
+<li>要求：<strong>small enough</strong> to run quickly, yet <strong>large enough</strong> to validate the program</li>
+<li>取法：
+<ol>
+<li>将定义域分成不同的子定义域，每一个输入都表示一种情况</li>
+<li>每一个测试样例都代表一个子定义域<br />
+我们同样也可以对值域进行上述操作</li>
+</ol>
+</li>
+</ul>
+<h2 id="recursion-递归"><a class="markdownIt-Anchor" href="#recursion-递归"></a> Recursion 递归</h2>
+<ul>
+<li>
+<p><strong>Recursion God</strong>:</p>
+<ul>
+<li>that if you solve a problem of original size, say size n</li>
+<li>Recursion God will answer correctly problems of size less than n</li>
+</ul>
+</li>
+<li>
+<p><strong>helper method</strong>:<br />
+Helper method introduces another parameter(s) to give you more flexibility in doing (more creative) recursion calls<br />
+引入另一个参数，帮助递归的调用。</p>
+</li>
+<li>
+<p>举例</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* Decide whether there is a subset in the input list</span><br><span class="line">* that adds up to the target sum.</span><br><span class="line">* For example, subsetSum([2, 5, 8], 10) → true.</span><br><span class="line">* @param list is the input list.</span><br><span class="line">* @param sum is the target sum.</span><br><span class="line">* @return true iff there is a subset of list that adds to sum. *&#x2F;</span><br><span class="line">public static boolean subsetSum(List&lt;Integer&gt; list, int sum)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private static boolean subsetSumHelper(List&lt;Integer&gt; list, int start, int sum) &#123;</span><br><span class="line">	&#x2F;&#x2F; base case</span><br><span class="line">    if (start &#x3D;&#x3D; list.size()) &#123; if (sum &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; recursive step</span><br><span class="line">    if (subsetSumHelper(list, start+1, sum-list.get(start))) return true;</span><br><span class="line">    if (subsetSumHelper(list, start+1, sum)) return true;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JSP/JSP%E8%A7%84%E8%8C%83%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/16/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JSP/JSP%E8%A7%84%E8%8C%83%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">JSP规范介绍</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-16 17:28:53" itemprop="dateCreated datePublished" datetime="2021-03-16T17:28:53+08:00">2021-03-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-20 15:07:08" itemprop="dateModified" datetime="2021-03-20T15:07:08+08:00">2021-03-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="jsp规范介绍"><a class="markdownIt-Anchor" href="#jsp规范介绍"></a> JSP规范介绍</h2>
+<ul>
+<li>JSP存放在web/webapp文件夹下</li>
+<li>响应对象的弊端：响应对象执行时，获得一个输出流，然后通过doGet/doPost方法写入到响应体中。者但是这只适用于处理结果小的情况。</li>
+<li>JSP文件的优势：jsp文件执行时会自动将文件所有内容<strong>写入到响应体</strong>中：节约了out.print</li>
+</ul>
+<h2 id="jsp书写规范"><a class="markdownIt-Anchor" href="#jsp书写规范"></a> JSP书写规范</h2>
+<ul>
+<li>直接书写java命令需要写在特殊的标签中 <code>&lt;%</code>和<code>%&gt;</code>中。</li>
+<li>输出标记<code>&lt;%=变量名%&gt;</code>，变量名里面可以含运算符号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    Stu s &#x3D; new Stu(123, &quot;yes&quot;);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;center style&#x3D;&quot;padding-top: 200px&quot;&gt;</span><br><span class="line">学员编号：&lt;%&#x3D;s.getSid()%&gt;&lt;br&#x2F;&gt;</span><br><span class="line">学员姓名：&lt;%&#x3D;s.getSname()%&gt;</span><br><span class="line">&lt;&#x2F;center&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用判断语句</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    if ( s.getSid()&gt;18 )&#123;</span><br><span class="line">%&gt;</span><br><span class="line">        &lt;font style&#x3D;&quot;color: darkred; font-size: 20px&quot;&gt;已成年&lt;&#x2F;font&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">%&gt;</span><br><span class="line">        &lt;font style&#x3D;&quot;color: darkred; font-size: 20px&quot;&gt;未成年&lt;&#x2F;font&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="内置对象-request"><a class="markdownIt-Anchor" href="#内置对象-request"></a> 内置对象 request</h3>
+<ul>
+<li>类型：HttpServletRequest</li>
+<li>作用：在JSP文件运行时读取请求包信息，与Servlet在请求转发过程中实现数据共享</li>
+<li>流程：<br />
+用户可以访问<code>http://localhost:8080/myWeb/request.jsp?userName=allen&amp;password=123</code><br />
+用户<strong>无需</strong>创建，可以直接借助于内部Request对象</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    String username &#x3D; request.getParameter(&quot;userName&quot;);</span><br><span class="line">    String password &#x3D; request.getParameter(&quot;password&quot;);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="内置对象-session"><a class="markdownIt-Anchor" href="#内置对象-session"></a> 内置对象 Session</h3>
+<ul>
+<li>类型：HttpSession</li>
+<li>作用：运行时通过Session指向当前用户的私人储物柜，添加或者读取共享数据</li>
+<li>流程：用户无需创建，直接调用session</li>
+</ul>
+<h3 id="内置对象-application"><a class="markdownIt-Anchor" href="#内置对象-application"></a> 内置对象 Application</h3>
+<ul>
+<li>类型：ServletContext application</li>
+<li>前提：同一个网站和JSP</li>
+<li>作用：运行时通过Session指向当前用户的私人储物柜，添加或者读取共享数据</li>
+<li>流程：用户无需创建，直接调用session</li>
+</ul>
+<p>隐含对象application是javax.servlet.ServletContext接口实现类的对象，其拥有application的作用范围，即application可以用于在多个用户之间保存数据，所有用户都共享同一个application，因此从application对象中读取和写入的数据都是共享的。</p>
+<p>application对象封装了jsp所在web应用程序的信息，整个web应用程序对应一个application对象。服务器启动后，一旦创建了application对象，则这个application对象将会永远保持下来，直到服务器关闭为止。</p>
+<h2 id="servlet与jsp的分工"><a class="markdownIt-Anchor" href="#servlet与jsp的分工"></a> Servlet与JSP的分工</h2>
+<ul>
+<li>Servlet负责处理业务并且得到处理结果             &gt; 大厨</li>
+<li>JSP不负责处理业务，只要任务是将Servlet中处理的结果写入到响应体中         &gt; 传菜员</li>
+</ul>
+<h3 id="调用关系"><a class="markdownIt-Anchor" href="#调用关系"></a> 调用关系</h3>
+<p>Servlet工作完毕后，一般通过请求转发的方式。向Tomcat申请调用JSP</p>
+<h3 id="数据共享"><a class="markdownIt-Anchor" href="#数据共享"></a> 数据共享</h3>
+<p>Servlet将结果添加到<strong>请求作用域对象</strong>中，JSP文件在运行时从<strong>请求作用域对象</strong>中得到处理结果。</p>
+<h3 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h3>
+<ul>
+<li>Servlet</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Servlet&#123;</span><br><span class="line">    ....</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 添加处理结果到请求作用域对象</span><br><span class="line">    request.setAttribute(&quot;key&quot;,&quot;value&quot;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 请求转发</span><br><span class="line">    request.getRequestDispatcher(&quot;&#x2F;jsp文件名&quot;).forward(request, response);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Jsp</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    List stu &#x3D; (List) request.getAttribute(&quot;key&quot;); &#x2F;&#x2F; 注意这里需要强制转换数据类型</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="http服务器调用jsp文件步骤"><a class="markdownIt-Anchor" href="#http服务器调用jsp文件步骤"></a> Http服务器调用Jsp文件步骤</h2>
+<ol>
+<li>Http服务器将jsp文件内容编译为一个Servlet接口实现类（.java)</li>
+<li>Http服务器将Servlet接口实现类编译为class文件（.class）</li>
+<li>Http服务器负责创建这个class的实例对象，这个实例对象就是Servlet实例对象</li>
+<li>Http服务器通过Servlet实例对象调用service方法，将jsp文件内容写入到响应体中</li>
+</ol>
+<ul>
+<li>Http服务器编辑/编译JSP的位置<br />
+地址： work文件夹下</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8E%A5%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yili">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raf Simons">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/16/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">过滤器接口</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-16 13:49:09 / Modified: 16:06:11" itemprop="dateCreated datePublished" datetime="2021-03-16T13:49:09+08:00">2021-03-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="filter-接口"><a class="markdownIt-Anchor" href="#filter-接口"></a> Filter 接口</h3>
+<h3 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h3>
+<ul>
+<li>Servlet规范下的一个接口，在servlet-api.jar中</li>
+<li>Filter接口实现类由开发人员提供，Http服务器不负责提供</li>
+</ul>
+<h3 id="具体作用"><a class="markdownIt-Anchor" href="#具体作用"></a> 具体作用</h3>
+<ul>
+<li>Filter接口在Http服务器调用资源文件之前，负责对Http服务器进行拦截，帮助Http服务器检测当前请求的合法性</li>
+<li>拦截Http服务器，对当前请求进行增强操作</li>
+</ul>
+<h3 id="开发步骤"><a class="markdownIt-Anchor" href="#开发步骤"></a> 开发步骤</h3>
+<ol>
+<li>创建Java中的Filter接口实现类</li>
+<li>重写Filter接口中的doFilter方法</li>
+<li>在web.xml将过滤器接口实现类注册到Http服务器中</li>
+</ol>
+<h3 id="拦截作用-代码实现"><a class="markdownIt-Anchor" href="#拦截作用-代码实现"></a> 拦截作用 - 代码实现</h3>
+<p><strong>通过request的getParameter得到并且判断参数，如果通过则使用doFilter方法交给Tomcat。</strong></p>
+<ul>
+<li>Filter 文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class oneFilter implements Filter &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException ServletException &#123;</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 1. 通过拦截请求对象得到请求包中的参数信息，从而得到来访用户的年龄</span><br><span class="line">		String age &#x3D; servletRequest.getParameter(&quot;age&quot;);</span><br><span class="line">		&#x2F;&#x2F; 2. 根据年龄，帮助Http服务器判断本次请求的合法性</span><br><span class="line">		if(Integer.valueOf(age)&gt;18)&#123; &#x2F;&#x2F; 合法</span><br><span class="line">			&#x2F;&#x2F; 将拦截请求对象和响应对象交还给Tomcat，由Tomcat继续调用资源文件</span><br><span class="line">			filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			&#x2F;&#x2F; 过滤器代替Http服务器拒绝请求</span><br><span class="line">			servletResponse.setContentType(&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;);</span><br><span class="line">			PrintWriter out &#x3D;  servletResponse.getWriter();</span><br><span class="line">			out.print(&quot;&lt;center&gt;&lt;font style&#x3D;&#39;color:red;font-size:40px&#39;&gt; 别玩了，赶紧学吧 &lt;&#x2F;center&gt;&quot;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>web.xml 文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    将过滤器类文件目录交给Tomcat   --&gt;</span><br><span class="line">&lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;Filter.oneFilter&lt;&#x2F;filter-class&gt;</span><br><span class="line">&lt;&#x2F;filter&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    通知Tomcat在调用何种资源文件时候需要被拦截    --&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;pic.png&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里重复下，静态的资源文件放置在webapp目录下，和web-inf文件夹同级。</li>
+</ul>
+<h3 id="增强作用-代码实现"><a class="markdownIt-Anchor" href="#增强作用-代码实现"></a> 增强作用 - 代码实现</h3>
+<ul>
+<li>情况：在使用doPost方法时，需要设置字符集：<code>request.setCharacterEncoding(Utf-8)</code>。当存在多个servlet都需要调用这个方法时候，则可以使用Filter增强操作。</li>
+<li>解决：只要Filter实现类检测到是需要调用doPost方法时，就会自动拦截调用自己的doFilter来设置字符集，然后交还给Tomcat。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class oneFilter implements Filter &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; 通知拦截对象，使用utf-8字符集对当前请求体信息进行一次重新编辑</span><br><span class="line">		servletRequest.setCharacterEncoding(&quot;utf-8&quot;);</span><br><span class="line">		&#x2F;&#x2F; 交还res和req</span><br><span class="line">		filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    注册filter--&gt;</span><br><span class="line">&lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;Filter.oneFilter&lt;&#x2F;filter-class&gt;</span><br><span class="line">&lt;&#x2F;filter&gt;</span><br><span class="line"></span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt; &#x2F;* &lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>注意 <code>/*</code>表示了调用所有资源文件之前都调用oneFilter</strong></p>
+<h4 id="filter拦截地址的格式"><a class="markdownIt-Anchor" href="#filter拦截地址的格式"></a> Filter拦截地址的格式</h4>
+<ul>
+<li>命令格式：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;oneFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt; 拦截地址 &lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>调用某一具体的文件,直接使用文件地址： <code>/img/pic.png</code></li>
+<li>调用某一文件夹下的任意资源文件，使用 * 表示文件名： <code>/img/*</code></li>
+<li>调用任意文件夹下的某种文件类型： <code>*.jpg</code></li>
+<li>任意文件： <code>/*</code></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -977,619 +1630,8 @@ servlet资源文件，必须抹掉开头的斜线</li>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/11/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/servlet%E5%88%9B%E5%BB%BA%E5%AE%9E%E7%8E%B0%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/11/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/servlet%E5%88%9B%E5%BB%BA%E5%AE%9E%E7%8E%B0%E7%B1%BB/" class="post-title-link" itemprop="url">servlet创建实现类</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-11 12:13:08 / Modified: 12:15:35" itemprop="dateCreated datePublished" datetime="2021-03-11T12:13:08+08:00">2021-03-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="servlet接口实现类的开发步骤"><a class="markdownIt-Anchor" href="#servlet接口实现类的开发步骤"></a> Servlet接口实现类的开发步骤</h2>
-<h3 id="创建一个java继承httpservlet子类使之成为一个servlet接口实现类"><a class="markdownIt-Anchor" href="#创建一个java继承httpservlet子类使之成为一个servlet接口实现类"></a> 创建一个JAVA继承HttpServlet子类，使之成为一个Servlet接口实现类</h3>
-<ul>
-<li>HttpServlet继承了GenericServlet抽象类，而GenericServlet实现了Servlet, ServletConfig, Serializable这三个接口。<br />
-<code>public class OneServlet extends HttpServlet &#123;&#125;</code></li>
-<li>抽象类GenericServlet的作用：
-<ul>
-<li>降低接口实现类对接口实现的难度</li>
-<li>将接口中不需要使用的方法在抽象类中完成</li>
-<li>这接口实现类只需要对接口需要的方法进行重写即可</li>
-</ul>
-</li>
-<li>Servlet 接口中：
-<ul>
-<li>init，getServletConfig，getServletInfo，destroy方法对Servlet接口实现类没用</li>
-<li>只有service方法被重写：</li>
-</ul>
-</li>
-<li>Tomcat根据Servlet规范调用Servlet接口实现类规则：
-<ul>
-<li>Tomcat有权创建Servlet接口实现类实例对象<br />
-Servlet oneServlet = new OneServlet();</li>
-<li>Tomcat根据实例对象调用Service方法处理请求<br />
-oneServlet.service();</li>
-</ul>
-</li>
-</ul>
-<h3 id="重写httpservlet父亲类两个方法doget或者dopost"><a class="markdownIt-Anchor" href="#重写httpservlet父亲类两个方法doget或者dopost"></a> 重写HttpServlet父亲类两个方法：doGet或者doPost</h3>
-<ul>
-<li>使用get方式访问使用doGet，post方式请求使用doPost</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException&#123;</span><br><span class="line">    &#x2F;&#x2F; get方式</span><br><span class="line">    System.out.println(&quot;get被调用&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException&#123;</span><br><span class="line">    &#x2F;&#x2F; post方式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>HttpServlet中的service()方法已经被重写，可以根据请求方式决定如何调用，所以只需要重写doGet和doPost</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">service(method, ...)&#123;</span><br><span class="line">    if method&#x3D;&#x3D;&quot;GeT&quot; doGet()</span><br><span class="line">    else if method&#x3D;&#x3D;&quot;Post&quot; doPost()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="将servlet接口的实现类信息注册到tomcat服务器中"><a class="markdownIt-Anchor" href="#将servlet接口的实现类信息注册到tomcat服务器中"></a> 将Servlet接口的实现类信息注册到Tomcat服务器中</h3>
-<p>在网站中会存在很多java类，有些是普通java类，有些是动态资源文件。</p>
-<ol>
-<li>将Servlet接口实现类路径地址交给Tomcat<br />
-在网站》web文件夹》web-inf》web.xml填写信息</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt; ServletName &lt;&#x2F;servlet-name&gt;  &#x2F;&#x2F;声明一个变量servlet接口实现类类路径</span><br><span class="line">    &lt;servlet-class&gt; controller&#x2F;OneServlet.java &lt;&#x2F;servlet-class&gt;  &#x2F;&#x2F;声明servlet接口的相对地址</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br></pre></td></tr></table></figure>
-<p>Tomcat会自动声明 <code>String ServletName = &quot;controller/OneServlet.java&quot;;</code><br />
-2. 为了降低用户访问Servlet接口实现类的难度，需要设置请求别名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt; name &lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt; &#x2F;one &lt;&#x2F;url-pattern&gt;   &#x2F;&#x2F; 设置简短的请求别名，以&quot;&#x2F;&quot;开头</span><br><span class="line">&lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="应用"><a class="markdownIt-Anchor" href="#应用"></a> 应用</h3>
-<p>如果浏览器向tTomcat索要OneServlet时，地址应该写<code>http://localhost:8080/myWeb/one</code></p>
-<h2 id="servlet生命周期"><a class="markdownIt-Anchor" href="#servlet生命周期"></a> Servlet生命周期</h2>
-<ol>
-<li>网站中所有Servlet接口实现类的实例对象，只能由Web服务器负责创建。开发人员无法手动创建。</li>
-<li>在默认情况下，当Wen服务器接收到对于当前servlet接口实现类第一次请求时，会自动创建这个Servlet接口实现类的实力例对象。</li>
-<li>在手动配置情况下，可以使用<code>&lt;load-on-startup&gt; 标签</code>令Web服务器启动时，就自动创建某个Servlet接口实现类的实力对象。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt; ServletName &lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt; controller&#x2F;OneServlet.java &lt;&#x2F;servlet-class&gt;</span><br><span class="line">    &lt;load-on-startup&gt; 30 &lt;&#x2F;load-on-startup&gt; &#x2F;&#x2F; &gt;0时自动启动</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>在web服务器运行期间， 一个servlet接口实现类只能被创建出一个实例对象</li>
-<li>在web服务器关闭时，会自动销毁servlet对象</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/10/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/servlet%E8%A7%84%E8%8C%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/10/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/servlet%E8%A7%84%E8%8C%83/" class="post-title-link" itemprop="url">Servlet</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-10 11:54:53" itemprop="dateCreated datePublished" datetime="2021-03-10T11:54:53+08:00">2021-03-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-11 12:12:33" itemprop="dateModified" datetime="2021-03-11T12:12:33+08:00">2021-03-11</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="servlet-servlet容器-和-web服务器等概念"><a class="markdownIt-Anchor" href="#servlet-servlet容器-和-web服务器等概念"></a> Servlet, Servlet容器 和 Web服务器等概念</h3>
-<p>来源：<code>http：//blog.csdn.net/iAm333</code></p>
-<h4 id="web技术"><a class="markdownIt-Anchor" href="#web技术"></a> web技术</h4>
-<p>早期web用于浏览静态页面，但是随着需求增多，用户需要更多的交互操作。<br />
-Java Servlet是一个基于Java技术的web组件，运行在服务器端，由Servlet容器所管理，用于生成动态内容。<br />
-Servlet是一个平台独立的Java类，编写一个Servlet其实就是编写一个java类。<br />
-Servlet被编译成独立的字节码然后传输到支持Java技术的Web服务器中运行。<br />
-Servlet容器也称Servlet引擎，是Web服务器的一部分，用于在发送的请求与响应之上提供网络服务。<br />
-Servlet不可以独立运行，只能够部署到Servlet容器中，由容器实现实力化和调用方法。</p>
-<ul>
-<li>流程：用户通过单机链接或者输入URL后，web服务器将请求交给Servlet容器，Servlet容器实例化Servlet并且调用相应的方法来处理请求，产生一个响应结果。这个响应结果由Servlet容器返回给Web服务器，Web服务器包装这个响应，以Http响应的形式恢传递给浏览器并展示。</li>
-</ul>
-<h4 id="servlet容器"><a class="markdownIt-Anchor" href="#servlet容器"></a> Servlet容器</h4>
-<ul>
-<li>通过提供对应的方法，链接web服务器和Servlet</li>
-<li>分类：
-<ol>
-<li>独立Servlet容器</li>
-<li>进程内的Servlet容器：<br />
-Servlet容器由Web服务器插件和Java容器两部分组成。Web服务插件在某个Web服务器内部地址空间中开启一个java虚拟机，使java容器可以在这个java虚拟机中加载并且运行Servlet。当获得调用Servlet的请求时，Servlet服务器插件取得控制并且传递给java容器，然后java容器将请求交给Servlet处理。</li>
-<li>进程外的Servlet容器：<br />
-Servlet容器存在于Web服务器之外，他也是由Web服务器插件和Java容器两部分组成，两者使用ipc机制通信。当一个调用Servlet请求传达时，web服务器插件得到请求并且传给java容器。</li>
-</ol>
-</li>
-</ul>
-<h4 id="tomcat"><a class="markdownIt-Anchor" href="#tomcat"></a> Tomcat</h4>
-<ul>
-<li>Servlet容器的一种</li>
-<li>流程：
-<ol>
-<li>客户端(浏览器)发送请求给Web服务器</li>
-<li>Web服务器收到请求后，传递给Servlet容器</li>
-<li>Servlet容器加载Servlet，产生Servlet实例后，创建实例处理请求</li>
-<li>Servlet实例处理并且返回结果给客户端，容器负责确保相应的正确输出，同时将控制返回给web服务器</li>
-</ol>
-</li>
-</ul>
-<p>来自于JAVAEE规范中的一种</p>
-<ul>
-<li>
-<p>作用：</p>
-<ol>
-<li>指定了动态资源文件开发步骤</li>
-<li>指定了Http服务器调用动态资源文件规则</li>
-<li>指定Http服务器管理动态资源文件实例对象规范</li>
-</ol>
-</li>
-<li>
-<p>Servlet接口实现类</p>
-<ol>
-<li>来自于Servlet规范下的一个接口，存在于Http服务器提供的jar包中。</li>
-<li>Tomcat服务器下lib文件有一个Servlet-api.jar存放Servlet接口。</li>
-<li>Servlet规范中认为能调用的资源文件必须是一个Servlet接口实现类。</li>
-</ol>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/09/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/09/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">Tomcat服务器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-09 19:55:04" itemprop="dateCreated datePublished" datetime="2021-03-09T19:55:04+08:00">2021-03-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-11 14:48:37" itemprop="dateModified" datetime="2021-03-11T14:48:37+08:00">2021-03-11</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="http服务器"><a class="markdownIt-Anchor" href="#http服务器"></a> HTTP服务器</h3>
-<ul>
-<li>服务器的一种，行为与HTTP协议相关。</li>
-<li>可以接收来自于浏览器发送的Http请求协议包，并且自动对Http请求协议包内容进行解析。</li>
-<li>解析后自动定位到被访问的文件，并且写入Http响应协议包中。</li>
-<li>最后负责将Http响应协议包推送回发起请求的浏览器上。</li>
-</ul>
-<h3 id="tomcat服务器"><a class="markdownIt-Anchor" href="#tomcat服务器"></a> Tomcat服务器</h3>
-<h4 id="一些配置运行问题"><a class="markdownIt-Anchor" href="#一些配置运行问题"></a> 一些配置运行问题</h4>
-<ol>
-<li>bin目录下，<code>sudo sh startup.sh</code>，可以开启tomcat服务器</li>
-<li>打开l<code>ocolhost:8080/</code>后，发现404，有可能是端口被占用</li>
-<li><code>sudo lsof -i :8080</code> 查看当前正在占用的进程</li>
-<li><code>sudo kill -9 838</code> 关闭在占用的进程，后面放置pid</li>
-<li>bin目录下,<code>sudo sh shutdown.sh</code>，可以关闭tomcat服务器</li>
-</ol>
-<h4 id="七个工作文件夹"><a class="markdownIt-Anchor" href="#七个工作文件夹"></a> 七个工作文件夹：</h4>
-<ol>
-<li>bin：管理命令中心</li>
-<li>conf：核心配置文件位置</li>
-<li>lib：tomcat运行时需要的jar包</li>
-<li>logs：日志，提供给运维工程师</li>
-<li>temp：临时的文件</li>
-<li>webapps：相关的资源文件</li>
-<li>work：工作空间</li>
-</ol>
-<h3 id="模拟第一次互联网通信"><a class="markdownIt-Anchor" href="#模拟第一次互联网通信"></a> 模拟第一次互联网通信</h3>
-<ul>
-<li>网站：放置可以被http服务器调用的静态和动态文件的文件夹</li>
-<li>在IDEA中管理Tomcat的步骤：
-<ol>
-<li>idea中</li>
-<li>把一个静态资源添加到网站中去</li>
-<li>启动Tomcat</li>
-</ol>
-</li>
-</ul>
-<h3 id="第一个网站"><a class="markdownIt-Anchor" href="#第一个网站"></a> 第一个网站</h3>
-<ol>
-<li>建立<br />
-new module/ java enterprise 然后根据指令建立<br />
-注意勾选 web Profile（8.0.1）</li>
-<li>建立成功后，会自动新建两个文件夹src和web。<br />
-这里遇到了问题，没有web文件夹。右击module/add framework support也找不到web文件夹的选项，则File-&gt;Project Structure-&gt;artifacts删除web。然后再右击创建。</li>
-</ol>
-<ul>
-<li>src文件夹：放置动态资源java文件</li>
-<li>web文件夹：存放静态资源文件，和需要的jar包，和配置文件<br />
-jar包需要在web文件夹手动新建文件夹lib，然后将jar包放进去。</li>
-</ul>
-<ol start="3">
-<li>run-&gt;Deployment将网站交给tomcat，+号选择artifact然后选择网站。可以在下方Application context设置网站别名</li>
-<li>每一次更新后，都需要重启tomcat太麻烦，可以在configuration中设置修改后，自动提交给deployment，然后以debug形式启动。<br />
-<img src="https://i.loli.net/2021/03/11/BcnC9VsR3oHZjt5.png" alt="" /></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/09/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/HTTP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/09/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/Java%20Web/HTTP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="post-title-link" itemprop="url">HTTP网络协议</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-09 19:24:28" itemprop="dateCreated datePublished" datetime="2021-03-09T19:24:28+08:00">2021-03-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-11 21:16:04" itemprop="dateModified" datetime="2021-03-11T21:16:04+08:00">2021-03-11</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="网络协议包"><a class="markdownIt-Anchor" href="#网络协议包"></a> 网络协议包</h4>
-<ul>
-<li>前提：网络中传递的信息都是以二进制的形式存在的。接收方(浏览器/服务器)在接收到信息后，需要将(二进制)数据编译成文字图片视频等。</li>
-<li>定义：网络协议包是一组有规律的二进制数据，在固定的空间内存放特定的信息。</li>
-<li>优点：降低了对接受二进制数据编译的难度。</li>
-</ul>
-<h4 id="http网络协议包"><a class="markdownIt-Anchor" href="#http网络协议包"></a> HTTP网络协议包</h4>
-<ul>
-<li>基于B/S结构下互联网通信过程中，所有在网络中传递的信息都是保存在HTTP网络协议包中的。</li>
-<li>分类：
-<ul>
-<li>HTTP请求协议包</li>
-<li>HTTP响应协议包</li>
-</ul>
-</li>
-</ul>
-<h5 id="http请求协议包"><a class="markdownIt-Anchor" href="#http请求协议包"></a> HTTP请求协议包</h5>
-<ul>
-<li>
-<p>流程：</p>
-<ul>
-<li>在浏览器准备发送请求时，负责创建一个http请求协议包</li>
-<li>浏览器将请求信息以二进制的形式保存在HTTP请求协议包各个空间</li>
-</ul>
-</li>
-<li>
-<p>内部空间:自上而下分为4个空间：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">请求行：</span><br><span class="line">    [   url：请求地址</span><br><span class="line">        method：请求方式  ]</span><br><span class="line"></span><br><span class="line">请求头：</span><br><span class="line">    [   请求参数信息（get) ]</span><br><span class="line"></span><br><span class="line">空白行：</span><br><span class="line">    [   (起到隔离作用)  ]</span><br><span class="line"></span><br><span class="line">请求体：</span><br><span class="line">    [   请求参数信息 (post) ]</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/03/09/mOwMclyWziFKdgb.jpg" alt="" /></p>
-<h5 id="http响应协议包"><a class="markdownIt-Anchor" href="#http响应协议包"></a> HTTP响应协议包</h5>
-<ul>
-<li>
-<p>流程</p>
-<ul>
-<li>HTTP服务器在定位到被访问的资源文件之后，负责创建一个HTTP响应协议包。</li>
-<li>HTTP服务器会将定位文件或者内容以二进制的形式写入到Http响应协议包的各个空间中。</li>
-<li>HTTP服务器将响应协议包推送回发送请求的浏览器上。</li>
-</ul>
-</li>
-<li>
-<p>内部空间：也是4个空间</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">状态行空间： [   HTTP状态码  ]</span><br><span class="line"></span><br><span class="line">响应头：    [   content-type：指定浏览器采用对应编译器对响应体中二进制信息的编译方式  ]</span><br><span class="line"></span><br><span class="line">空白行：    [   无内容，隔离作用   ]</span><br><span class="line"></span><br><span class="line">响应体：    [   被访问静态资源文件内容</span><br><span class="line">              &#x2F;被访问的静态资源文件命令</span><br><span class="line">              &#x2F;被访问动态资源文件运行结果  ]</span><br></pre></td></tr></table></figure>
-<h4 id="请求对象request和响应对象response生命周期"><a class="markdownIt-Anchor" href="#请求对象request和响应对象response生命周期"></a> 请求对象request和响应对象response生命周期</h4>
-<ul>
-<li>在Http服务器接收到浏览器发送的<strong>Http请求协议包</strong>之后，自动为当前的请求协议包生成<strong>一个请求对象</strong>和<strong>一个响应对象</strong></li>
-<li>在Http服务器调用doGet/doPost方法时，负责将<strong>请求对象request</strong>和<strong>响应对象response</strong>作为实参传递到方法中，确保方法的正确实行</li>
-<li>方法结束后，Tomcat负责<strong>销毁</strong>请求关联的<strong>请求对象request</strong>和<strong>响应对象response</strong><br />
-<em><strong>两者生命周期贯穿一次请求的处理过程中</strong></em><br />
-<img src="https://i.loli.net/2021/03/11/4EactLkGbPJm9j8.jpg" alt="" /></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/09/inclass/week-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yili">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Raf Simons">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/09/inclass/week-2/" class="post-title-link" itemprop="url">week-2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-09 13:35:33 / Modified: 14:17:31" itemprop="dateCreated datePublished" datetime="2021-03-09T13:35:33+08:00">2021-03-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="static-and-dynamic-checking"><a class="markdownIt-Anchor" href="#static-and-dynamic-checking"></a> static and dynamic checking</h3>
-<h3 id="public-and-static"><a class="markdownIt-Anchor" href="#public-and-static"></a> Public and Static</h3>
-<p>Public：任何代码都可以引用这个方法<br />
-static：只允许同类下的代码段使用</p>
-<h3 id="javadoc-comments"><a class="markdownIt-Anchor" href="#javadoc-comments"></a> Javadoc Comments</h3>
-<ul>
-<li>原因：只通过方法的参数和返回值乐行得到方法的信息是不足的，我们使用Javadoc comments来编辑出更多信息。</li>
-<li>例子：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Compute a hail sequence</span><br><span class="line"> * For example, hailstone(5) &#x3D; [5 16 8 4 2 1]</span><br><span class="line"> * @param n starting for sequence. Assumes n &gt; 0</span><br><span class="line"> * @return hailstone sequence starting at n and ending with 1</span><br><span class="line">**&#x2F;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>位置：在方法/类结束后插入</li>
-<li>元素：
-<ol>
-<li><strong>@param</strong>表示参数，并且举出例子</li>
-<li><strong>@return</strong>表示返回值，举出根据参数例子的返回值</li>
-</ol>
-</li>
-</ul>
-<h3 id="snapshot-diagrams"><a class="markdownIt-Anchor" href="#snapshot-diagrams"></a> Snapshot Diagrams</h3>
-<ul>
-<li>描述程序运行时的内部状态</li>
-<li>assign a variable: to a different value<br />
-<img src="https://i.loli.net/2021/03/09/fBCNjHoPqwRgVW4.png" alt="" /></li>
-<li>mutate the mutable value：list<br />
-<img src="https://i.loli.net/2021/03/09/kCvuj2IPKeTAlZw.png" alt="" /></li>
-<li>immutable value：string<br />
-values never change<br />
-<img src="https://i.loli.net/2021/03/09/j2qszGQgc9NM53e.png" alt="" /></li>
-<li>make a reference immutable: <code>final</code>– <strong>a double arrow</strong><br />
-<img src="https://i.loli.net/2021/03/09/SHIqbuyXM6sr79G.png" alt="" />
-<ul>
-<li>final can be used on both parameters and local variables</li>
-<li>final can be used on variables of any type</li>
-</ul>
-</li>
-</ul>
-<h3 id="map"><a class="markdownIt-Anchor" href="#map"></a> map</h3>
-<p><img src="https://i.loli.net/2021/03/09/3e4h8giZaT2czJt.png" alt="" /></p>
-<ul>
-<li>方法：
-<ol>
-<li>map.put(key, value)</li>
-<li>map.get(key) ==&gt; value</li>
-<li>map.containsKey(key) ==&gt; boolean</li>
-<li>map.remove(key) ==&gt; boolean</li>
-</ol>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
